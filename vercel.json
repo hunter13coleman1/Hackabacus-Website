@@ -1,6 +1,5 @@
 {
   "rewrites": [
-    { "source": "/", "destination": "/hackabacus-website.html" },
     { "source": "/compare", "destination": "/compare.html" }
   ]
 }
