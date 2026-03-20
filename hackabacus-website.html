@@ -1319,6 +1319,180 @@
       font-weight: 300;
     }
 
+    /* ── Competitor Compare ─────────────────────────────────── */
+    .compare-section {
+      padding: var(--section-pad) 32px;
+      text-align: center;
+      background: var(--warm-white);
+    }
+
+    .compare-section h2 {
+      font-family: var(--font-display);
+      font-size: clamp(40px, 5.5vw, 68px);
+      font-weight: 400;
+      letter-spacing: -0.03em;
+      color: var(--ink);
+      max-width: 680px;
+      margin: 20px auto 0;
+      line-height: 1.08;
+    }
+
+    .compare-table-wrap {
+      max-width: 880px;
+      margin: 64px auto 0;
+      border-radius: var(--radius);
+      overflow: hidden;
+      border: 1px solid var(--sand);
+    }
+
+    .compare-table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 15px;
+    }
+
+    .compare-table thead th {
+      padding: 20px 24px;
+      font-weight: 600;
+      font-size: 13px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      background: var(--cream);
+      border-bottom: 1px solid var(--sand);
+      color: var(--graphite);
+    }
+
+    .compare-table thead th:first-child {
+      text-align: left;
+      color: var(--ink);
+    }
+
+    .compare-table thead th.highlight-col {
+      background: var(--ink);
+      color: var(--warm-white);
+      position: relative;
+    }
+
+    .compare-table thead th.highlight-col::before {
+      content: 'Best Value';
+      position: absolute;
+      top: -13px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--copper);
+      color: white;
+      font-size: 10px;
+      font-weight: 600;
+      padding: 3px 14px;
+      border-radius: 980px;
+      white-space: nowrap;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .compare-table tbody td {
+      padding: 16px 24px;
+      border-bottom: 1px solid var(--sand);
+      color: var(--charcoal);
+      font-weight: 300;
+      vertical-align: middle;
+    }
+
+    .compare-table tbody td:first-child {
+      font-weight: 500;
+      color: var(--ink);
+    }
+
+    .compare-table tbody td.highlight-col {
+      background: rgba(26,24,21,0.03);
+      font-weight: 500;
+      color: var(--ink);
+    }
+
+    .compare-table tbody tr:last-child td {
+      border-bottom: none;
+    }
+
+    .compare-table .cell-check {
+      color: var(--emerald);
+      font-size: 16px;
+      font-weight: 700;
+    }
+
+    .compare-table .cell-x {
+      color: #C44D2C;
+      font-size: 16px;
+      font-weight: 700;
+    }
+
+    .compare-table .cell-slow {
+      color: #C4862C;
+      font-size: 13px;
+      font-weight: 400;
+    }
+
+    .compare-table .price-row td {
+      font-family: var(--font-display);
+      font-size: 22px;
+      font-weight: 400;
+      letter-spacing: -0.02em;
+      padding-top: 24px;
+      padding-bottom: 24px;
+      border-bottom: none;
+    }
+
+    .compare-table .price-row td:first-child {
+      font-family: var(--font-body);
+      font-size: 15px;
+    }
+
+    .compare-table .price-row td.highlight-col {
+      color: var(--emerald);
+      font-weight: 500;
+    }
+
+    .btn-compare-more {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 48px;
+      padding: 16px 36px;
+      border-radius: 980px;
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--ink);
+      background: transparent;
+      border: 1px solid var(--sand);
+      cursor: pointer;
+      transition: all 0.3s var(--ease);
+      text-decoration: none;
+      font-family: var(--font-body);
+    }
+
+    .btn-compare-more:hover {
+      background: var(--ink);
+      color: var(--warm-white);
+      border-color: var(--ink);
+      transform: translateY(-2px);
+      box-shadow: 0 12px 32px rgba(0,0,0,0.1);
+    }
+
+    @media (max-width: 900px) {
+      .compare-table-wrap { border-radius: var(--radius-sm); }
+      .compare-table { font-size: 13px; }
+      .compare-table thead th,
+      .compare-table tbody td { padding: 12px 14px; }
+      .compare-table .price-row td { font-size: 18px; }
+    }
+
+    @media (max-width: 600px) {
+      .compare-table { font-size: 12px; }
+      .compare-table thead th,
+      .compare-table tbody td { padding: 10px 10px; }
+      .compare-table .price-row td { font-size: 16px; }
+    }
+
     /* ── Pricing ──────────────────────────────────────────── */
     .pricing-section {
       padding: var(--section-pad) 32px;
@@ -1908,6 +2082,7 @@
       <ul class="nav-links">
         <li><a href="#features">Features</a></li>
         <li><a href="#demo">Demo</a></li>
+        <li><a href="#compare">Compare</a></li>
         <li><a href="#pricing">Pricing</a></li>
         <li><a href="#faq">FAQ</a></li>
         <li><a href="#pricing" class="nav-cta">Get Started</a></li>
@@ -2416,6 +2591,71 @@
     </div>
   </section>
 
+  <!-- ── Competitor Compare ────────────────────────────── -->
+  <section class="compare-section" id="compare">
+    <div class="container">
+      <p class="eyebrow reveal" style="text-align:center">See how we stack up</p>
+      <h2 class="reveal reveal-delay-1">
+        Why teams switch to<br/><em>Hackabacus.</em>
+      </h2>
+
+      <div class="compare-table-wrap scale-reveal">
+        <table class="compare-table">
+          <thead>
+            <tr>
+              <th></th>
+              <th class="highlight-col">Hackabacus</th>
+              <th>Macabacus</th>
+              <th>Training the Street</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Excel formatting suite</td>
+              <td class="highlight-col"><span class="cell-check">&#10003;</span> Instant</td>
+              <td><span class="cell-slow">&#9679; Slow &mdash; wait times</span></td>
+              <td><span class="cell-check">&#10003;</span></td>
+            </tr>
+            <tr>
+              <td>PowerPoint tools</td>
+              <td class="highlight-col"><span class="cell-check">&#10003;</span> Full suite</td>
+              <td><span class="cell-check">&#10003;</span></td>
+              <td><span class="cell-x">&#10005;</span> Not available</td>
+            </tr>
+            <tr>
+              <td>Formula auditing</td>
+              <td class="highlight-col"><span class="cell-check">&#10003;</span> Built-in</td>
+              <td><span class="cell-slow">&#9679; Limited</span></td>
+              <td><span class="cell-x">&#10005;</span> No auditing</td>
+            </tr>
+            <tr>
+              <td>Keyboard shortcuts</td>
+              <td class="highlight-col"><span class="cell-check">&#10003;</span> Custom engine</td>
+              <td><span class="cell-check">&#10003;</span> Basic</td>
+              <td><span class="cell-check">&#10003;</span> Basic</td>
+            </tr>
+            <tr>
+              <td>Speed &amp; responsiveness</td>
+              <td class="highlight-col"><span class="cell-check">&#10003;</span> No lag</td>
+              <td><span class="cell-slow">&#9679; Lag on large models</span></td>
+              <td><span class="cell-check">&#10003;</span></td>
+            </tr>
+            <tr class="price-row">
+              <td>Starting price</td>
+              <td class="highlight-col">$14/seat/mo</td>
+              <td>$25/seat/mo</td>
+              <td>$20/seat/mo</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <a href="compare.html" class="btn-compare-more reveal reveal-delay-2">
+        See full feature breakdown &#8594;
+      </a>
+    </div>
+  </section>
+
   <!-- ── Pricing ───────────────────────────────────────── -->
   <section class="pricing-section" id="pricing">
     <div class="container">
@@ -2585,6 +2825,7 @@
           <li><a href="#features">Features</a></li>
           <li><a href="#demo">Demo</a></li>
           <li><a href="#pricing">Pricing</a></li>
+          <li><a href="compare.html">Compare</a></li>
           <li><a href="#">Changelog</a></li>
           <li><a href="#">Roadmap</a></li>
         </ul>
