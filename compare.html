@@ -14,6 +14,21 @@
   <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,300;1,8..60,400&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet" />
 
   <style>
+    @font-face {
+      font-family: 'Suisse Intl Trial';
+      src: url('fonts/SuisseIntlTrial-Medium.otf') format('opentype');
+      font-weight: 500;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'Suisse Intl Trial';
+      src: url('fonts/SuisseIntlTrial-Semibold.otf') format('opentype');
+      font-weight: 600;
+      font-style: normal;
+      font-display: swap;
+    }
+
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
@@ -30,7 +45,7 @@
       --emerald:    #2D7A4F;
       --navy:       #1A3864;
 
-      --font-display: 'Source Serif 4', Georgia, serif;
+      --font-display: 'Suisse Intl Trial', 'Source Serif 4', Georgia, serif;
       --font-body:    'IBM Plex Sans', -apple-system, sans-serif;
 
       --section-pad: 120px;
@@ -462,13 +477,13 @@
   <!-- ── Navigation ─────────────────────────────────────── -->
   <nav>
     <div class="nav-inner">
-      <a href="hackabacus-website.html" class="nav-logo">Hack<span>abacus</span></a>
+      <a href="/" class="nav-logo">Hack<span>abacus</span></a>
       <ul class="nav-links">
-        <li><a href="hackabacus-website.html#features">Features</a></li>
-        <li><a href="hackabacus-website.html#demo">Demo</a></li>
+        <li><a href="/#features">Features</a></li>
+        <li><a href="/#demo">Demo</a></li>
         <li><a href="compare.html" style="color:var(--ink); font-weight:500;">Compare</a></li>
-        <li><a href="hackabacus-website.html#pricing">Pricing</a></li>
-        <li><a href="hackabacus-website.html#pricing" class="nav-cta">Get Started</a></li>
+        <li><a href="/#pricing">Pricing</a></li>
+        <li><a href="/#pricing" class="nav-cta">Get Started</a></li>
       </ul>
     </div>
   </nav>
@@ -786,15 +801,15 @@
       <h2>The faster, more affordable<br/><em>professional-grade</em> choice.</h2>
       <p>Hackabacus gives you everything Macabacus does &mdash; without the wait times &mdash; plus the auditing tools Training the Street lacks. At a lower price.</p>
       <div class="verdict-actions">
-        <a href="hackabacus-website.html#pricing" class="btn-primary">Start 14-Day Free Trial</a>
-        <a href="hackabacus-website.html" class="btn-ghost">Back to Hackabacus &#8594;</a>
+        <a href="/#pricing" class="btn-primary">Start 14-Day Free Trial</a>
+        <a href="/" class="btn-ghost">Back to Hackabacus &#8594;</a>
       </div>
     </div>
   </section>
 
   <!-- ── Footer ──────────────────────────────────────────── -->
   <footer>
-    <p class="footer-copy">&copy; 2025 Hackabacus, LLC. All rights reserved. &middot; <a href="hackabacus-website.html">Home</a></p>
+    <p class="footer-copy">&copy; 2025 Hackabacus, LLC. All rights reserved. &middot; <a href="/">Home</a></p>
   </footer>
 
   <!-- ── Script ──────────────────────────────────────────── -->
