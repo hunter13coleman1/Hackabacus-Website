@@ -1,0 +1,2826 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hackabacus — The Finance Professional's Excel & PowerPoint Suite</title>
+
+  <!-- SEO Meta -->
+  <meta name="description" content="Hackabacus is the professional Excel and PowerPoint plugin built for private equity, investment banking, and finance teams. Format models, automate slides, and move at institutional speed." />
+  <meta name="keywords" content="Excel plugin private equity, PowerPoint automation finance, Macabacus alternative, financial modeling tools, investment banking Excel, PE Excel add-in" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://hackabacus.com/" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Hackabacus — Finance-Grade Excel & PowerPoint Tools" />
+  <meta property="og:description" content="Built for analysts who can't afford to slow down. Professional formatting, model automation, and slide production tools for private equity and finance teams." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://hackabacus.com/" />
+  <meta property="og:image" content="https://hackabacus.com/og-image.jpg" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Hackabacus — Finance-Grade Excel & PowerPoint Tools" />
+  <meta name="twitter:description" content="Built for analysts who can't afford to slow down." />
+
+  <!-- Structured Data: SoftwareApplication -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Hackabacus",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "Windows, macOS",
+    "description": "Professional Excel and PowerPoint plugin suite for private equity and finance professionals.",
+    "offers": [
+      {
+        "@type": "Offer",
+        "name": "Individual Monthly",
+        "price": "19",
+        "priceCurrency": "USD",
+        "priceValidUntil": "2026-12-31"
+      },
+      {
+        "@type": "Offer",
+        "name": "Individual Annual",
+        "price": "149",
+        "priceCurrency": "USD"
+      },
+      {
+        "@type": "Offer",
+        "name": "Individual Perpetual",
+        "price": "349",
+        "priceCurrency": "USD"
+      }
+    ]
+  }
+  </script>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,300;0,8..60,400;0,8..60,500;0,8..60,600;1,8..60,300;1,8..60,400&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ── Reset & Tokens ───────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream:      #F5F3EE;
+      --warm-white: #FAF9F6;
+      --sand:       #E8E4DD;
+      --stone:      #B8B2A8;
+      --graphite:   #6B6560;
+      --charcoal:   #2A2725;
+      --ink:        #1A1815;
+      --copper:     #8B7355;
+      --copper-light: #A89070;
+      --copper-glow: rgba(139,115,85,0.1);
+      --emerald:    #2D7A4F;
+      --navy:       #1A3864;
+
+      --font-display: 'Source Serif 4', Georgia, serif;
+      --font-body:    'IBM Plex Sans', -apple-system, sans-serif;
+
+      --section-pad: 160px;
+      --radius:      20px;
+      --radius-sm:   12px;
+      --ease:        cubic-bezier(0.16, 1, 0.3, 1);
+      --ease-out:    cubic-bezier(0.33, 1, 0.68, 1);
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+    }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--cream);
+      color: var(--charcoal);
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Grain overlay — subtle texture via CSS noise */
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwBAMAAAClLOS0AAAAElBMVEUAAAAAAAAAAAAAAAAAAAAAAADgKxmiAAAABnRSTlMFCA0RFRkEEiizAAAASklEQVQ4y2NghgIGBgYFBigghAIGJiggiAImKGCAAkYmKMAJGBgYGIVgAhCVMEAIBUwMUANggBEKcAJGKGBiggJGKGBkgAIAaaEFvbMUjEkAAAAASUVORK5CYII=");
+      pointer-events: none;
+      z-index: 9998;
+      opacity: 0.04;
+    }
+
+    ::selection { background: var(--copper); color: var(--warm-white); }
+
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+
+    /* ── Utility ──────────────────────────────────────────── */
+    .container {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+
+    .container--wide {
+      max-width: 1320px;
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+
+    .eyebrow {
+      font-family: var(--font-body);
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--copper);
+    }
+
+    /* ── Text reveal animation ───────────────────────────── */
+    .reveal-text {
+      overflow: hidden;
+    }
+    .reveal-text-inner {
+      display: block;
+      transform: translateY(110%);
+      transition: transform 1.2s var(--ease);
+    }
+    .reveal-text.visible .reveal-text-inner {
+      transform: translateY(0);
+    }
+
+    /* ── Scroll reveal base ───────────────────────────────── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(48px);
+      transition: opacity 1s var(--ease), transform 1s var(--ease);
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal-delay-1 { transition-delay: 0.12s; }
+    .reveal-delay-2 { transition-delay: 0.24s; }
+    .reveal-delay-3 { transition-delay: 0.36s; }
+    .reveal-delay-4 { transition-delay: 0.48s; }
+    .reveal-delay-5 { transition-delay: 0.6s; }
+
+    /* ── Scale reveal (for dramatic sections) ────────────── */
+    .scale-reveal {
+      opacity: 0;
+      transform: scale(0.92);
+      transition: opacity 1.2s var(--ease), transform 1.2s var(--ease);
+    }
+    .scale-reveal.visible {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    /* ── Navigation ───────────────────────────────────────── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      transition: all 0.5s var(--ease);
+    }
+
+    nav.scrolled {
+      background: rgba(245,243,238,0.88);
+      backdrop-filter: saturate(180%) blur(24px);
+      -webkit-backdrop-filter: saturate(180%) blur(24px);
+      border-bottom: 1px solid rgba(0,0,0,0.05);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      max-width: 1320px;
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+
+    .nav-logo {
+      font-family: var(--font-display);
+      font-size: 22px;
+      font-weight: 400;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+    }
+
+    .nav-logo span {
+      font-style: italic;
+      color: var(--copper);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 36px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 14px;
+      font-weight: 400;
+      color: var(--graphite);
+      transition: color 0.3s;
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px; left: 0;
+      width: 0;
+      height: 1.5px;
+      background: var(--copper);
+      transition: width 0.4s var(--ease);
+    }
+
+    .nav-links a:hover { color: var(--ink); }
+    .nav-links a:hover::after { width: 100%; }
+
+    .nav-cta {
+      background: var(--ink);
+      color: var(--warm-white) !important;
+      padding: 10px 22px;
+      border-radius: 980px;
+      font-size: 13px !important;
+      font-weight: 500 !important;
+      transition: all 0.3s var(--ease) !important;
+      border: 1px solid transparent;
+    }
+
+    .nav-cta::after { display: none !important; }
+    .nav-cta:hover {
+      background: var(--charcoal) !important;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+    }
+
+    /* ── Hero ─────────────────────────────────────────────── */
+    .hero {
+      min-height: 100svh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 140px 32px 100px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Subtle ambient glow */
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 30%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 1000px;
+      height: 600px;
+      background: radial-gradient(ellipse, rgba(139,115,85,0.05) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(139,115,85,0.06);
+      border: 1px solid rgba(139,115,85,0.12);
+      border-radius: 980px;
+      padding: 8px 20px;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      color: var(--copper);
+      margin-bottom: 44px;
+      opacity: 0;
+      animation: floatIn 1s var(--ease) 0.2s forwards;
+    }
+
+    .hero-eyebrow .dot {
+      width: 6px; height: 6px;
+      background: var(--emerald);
+      border-radius: 50%;
+      animation: pulse 2.5s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.7); }
+    }
+
+    @keyframes floatIn {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes floatUp {
+      from { opacity: 0; transform: translateY(40px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes heroTextReveal {
+      from { transform: translateY(120%); }
+      to { transform: translateY(0); }
+    }
+
+    .hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(56px, 9vw, 120px);
+      font-weight: 400;
+      line-height: 1.0;
+      letter-spacing: -0.035em;
+      color: var(--ink);
+      max-width: 960px;
+    }
+
+    .hero h1 .line {
+      display: block;
+      overflow: hidden;
+    }
+
+    .hero h1 .line-inner {
+      display: block;
+      animation: heroTextReveal 1.2s var(--ease) both;
+    }
+
+    .hero h1 .line:nth-child(1) .line-inner { animation-delay: 0.3s; }
+    .hero h1 .line:nth-child(2) .line-inner { animation-delay: 0.45s; }
+
+    .hero h1 em {
+      font-style: italic;
+      color: var(--copper);
+    }
+
+    .hero-sub {
+      font-size: 20px;
+      font-weight: 300;
+      line-height: 1.65;
+      color: var(--graphite);
+      max-width: 560px;
+      margin-top: 32px;
+      opacity: 0;
+      animation: floatUp 1s var(--ease) 0.65s forwards;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 16px;
+      margin-top: 52px;
+      flex-wrap: wrap;
+      justify-content: center;
+      opacity: 0;
+      animation: floatUp 1s var(--ease) 0.8s forwards;
+    }
+
+    /* Hero mockup with 3D perspective */
+    .hero-mockup-wrapper {
+      margin-top: 80px;
+      width: 100%;
+      max-width: 1060px;
+      perspective: 1200px;
+      opacity: 0;
+      animation: floatUp 1.4s var(--ease) 0.9s forwards;
+    }
+
+    .hero-mockup {
+      width: 100%;
+      transform-style: preserve-3d;
+      transition: transform 0.1s linear;
+    }
+
+    .btn-primary {
+      background: var(--ink);
+      color: var(--warm-white);
+      padding: 18px 36px;
+      border-radius: 980px;
+      font-family: var(--font-body);
+      font-size: 15px;
+      font-weight: 500;
+      cursor: pointer;
+      border: none;
+      transition: all 0.4s var(--ease);
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-primary::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, var(--copper) 0%, #A89070 100%);
+      opacity: 0;
+      transition: opacity 0.4s;
+      border-radius: inherit;
+    }
+
+    .btn-primary:hover::before { opacity: 1; }
+    .btn-primary span, .btn-primary svg { position: relative; z-index: 1; }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 40px rgba(26,24,21,0.2);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--copper);
+      padding: 18px 28px;
+      border-radius: 980px;
+      font-family: var(--font-body);
+      font-size: 15px;
+      font-weight: 400;
+      cursor: pointer;
+      border: 1.5px solid var(--sand);
+      transition: all 0.3s var(--ease);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--copper);
+      background: var(--copper-glow);
+    }
+    .btn-secondary .arrow { transition: transform 0.3s var(--ease); }
+    .btn-secondary:hover .arrow { transform: translateX(4px); }
+
+    .mockup-frame {
+      background: var(--ink);
+      border-radius: 18px;
+      padding: 6px 6px 0;
+      box-shadow:
+        0 0 0 1px rgba(255,255,255,0.06) inset,
+        0 80px 160px -40px rgba(26,24,21,0.3),
+        0 40px 80px -20px rgba(26,24,21,0.15),
+        0 0 120px rgba(139,115,85,0.06);
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Light sweep across mockup */
+    .mockup-frame::after {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -100%;
+      width: 60%;
+      height: 200%;
+      background: linear-gradient(
+        105deg,
+        transparent 0%,
+        rgba(255,255,255,0.02) 40%,
+        rgba(255,255,255,0.06) 50%,
+        rgba(255,255,255,0.02) 60%,
+        transparent 100%
+      );
+      animation: lightSweep 8s ease-in-out 2s infinite;
+      pointer-events: none;
+      z-index: 10;
+    }
+
+    @keyframes lightSweep {
+      0%, 100% { left: -100%; }
+      50% { left: 150%; }
+    }
+
+    .mockup-bar {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      padding: 12px 16px;
+    }
+
+    .mockup-dot {
+      width: 11px; height: 11px;
+      border-radius: 50%;
+    }
+    .mockup-dot:nth-child(1) { background: #FF5F56; }
+    .mockup-dot:nth-child(2) { background: #FFBD2E; }
+    .mockup-dot:nth-child(3) { background: #27C93F; }
+
+    .mockup-screen {
+      background: #F0F0F2;
+      border-radius: 12px 12px 0 0;
+      min-height: 480px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* Simulated Excel ribbon */
+    .excel-ribbon {
+      background: #217346;
+      padding: 0;
+    }
+
+    .ribbon-tabs {
+      display: flex;
+      gap: 0;
+      background: #185C37;
+    }
+
+    .ribbon-tab {
+      padding: 7px 18px;
+      font-size: 11px;
+      color: rgba(255,255,255,0.65);
+      cursor: pointer;
+      font-family: var(--font-body);
+      border-bottom: 2px solid transparent;
+      transition: all 0.2s;
+    }
+
+    .ribbon-tab.active {
+      background: #217346;
+      color: #fff;
+      border-bottom-color: var(--copper);
+    }
+
+    .ribbon-content {
+      background: #217346;
+      padding: 10px 18px;
+      display: flex;
+      gap: 28px;
+      align-items: center;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .ribbon-group {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .ribbon-group-label {
+      font-size: 9px;
+      color: rgba(255,255,255,0.45);
+      letter-spacing: 0.06em;
+      font-family: var(--font-body);
+    }
+
+    .ribbon-buttons {
+      display: flex;
+      gap: 4px;
+    }
+
+    .ribbon-btn {
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.13);
+      border-radius: 5px;
+      padding: 6px 12px;
+      font-size: 10px;
+      color: #fff;
+      cursor: pointer;
+      font-family: var(--font-body);
+      white-space: nowrap;
+      transition: background 0.2s;
+    }
+
+    .ribbon-btn:hover { background: rgba(255,255,255,0.2); }
+    .ribbon-btn.highlight {
+      background: rgba(139,115,85,0.25);
+      border-color: rgba(139,115,85,0.4);
+    }
+
+    .excel-grid {
+      padding: 8px;
+      background: white;
+    }
+
+    .excel-row {
+      display: flex;
+      align-items: stretch;
+    }
+
+    .excel-header-row {
+      background: #F2F2F2;
+    }
+
+    .excel-cell {
+      min-width: 80px;
+      height: 23px;
+      border: 1px solid #D0D0D0;
+      font-size: 10px;
+      font-family: 'Calibri', var(--font-body);
+      padding: 0 6px;
+      display: flex;
+      align-items: center;
+      color: #333;
+      flex-shrink: 0;
+    }
+
+    .excel-cell.row-header {
+      min-width: 30px;
+      background: #F2F2F2;
+      color: #888;
+      justify-content: center;
+      border-color: #C8C8C8;
+    }
+
+    .excel-cell.col-header {
+      justify-content: center;
+      background: #F2F2F2;
+      color: #888;
+      border-color: #C8C8C8;
+    }
+
+    .excel-cell.bold { font-weight: 700; }
+    .excel-cell.section-header {
+      background: #1A3864;
+      color: white;
+      font-weight: 600;
+    }
+    .excel-cell.subtotal {
+      background: #EBF0F8;
+      font-weight: 600;
+      color: #1A3864;
+      border-top: 2px solid #1A3864;
+    }
+    .excel-cell.number { justify-content: flex-end; font-family: 'Courier New', monospace; font-size: 9px; }
+    .excel-cell.negative { color: #C00; }
+    .excel-cell.selected { background: #CCE2FF; border: 1px solid #1A73E8; }
+    .excel-cell.formula-bar {
+      min-width: unset;
+      flex: 1;
+      background: white;
+      border: 1px solid #BDBDBD;
+      height: 24px;
+      font-size: 11px;
+      padding: 0 8px;
+      color: #1A3864;
+    }
+
+    .formula-row {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      padding: 2px 8px;
+      background: #F8F8F8;
+      border-bottom: 1px solid #E0E0E0;
+    }
+
+    .formula-name {
+      min-width: 60px;
+      height: 24px;
+      border: 1px solid #BDBDBD;
+      background: white;
+      font-size: 10px;
+      padding: 0 6px;
+      display: flex;
+      align-items: center;
+      color: #333;
+      font-family: var(--font-body);
+    }
+
+    .formula-fx { font-size: 11px; color: #888; font-style: italic; padding: 0 4px; }
+
+    /* ── Logos Bar ────────────────────────────────────────── */
+    .logos-section {
+      padding: 56px 32px;
+      border-top: 1px solid var(--sand);
+      border-bottom: 1px solid var(--sand);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .logos-label {
+      text-align: center;
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--stone);
+      margin-bottom: 40px;
+    }
+
+    .logos-track {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 72px;
+      flex-wrap: wrap;
+    }
+
+    .logo-item {
+      font-family: var(--font-display);
+      font-size: 18px;
+      font-weight: 400;
+      color: var(--stone);
+      letter-spacing: -0.01em;
+      white-space: nowrap;
+      transition: color 0.4s;
+    }
+
+    .logo-item:hover { color: var(--charcoal); }
+
+    /* ── Problem / Stats Section ─────────────────────────── */
+    .problem-section {
+      padding: var(--section-pad) 32px;
+      text-align: center;
+      position: relative;
+    }
+
+    .problem-section::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 50%;
+      transform: translateX(-50%);
+      width: 1px;
+      height: 80px;
+      background: linear-gradient(to bottom, var(--sand), transparent);
+    }
+
+    .problem-section h2 {
+      font-family: var(--font-display);
+      font-size: clamp(40px, 5.5vw, 72px);
+      font-weight: 400;
+      letter-spacing: -0.03em;
+      line-height: 1.08;
+      color: var(--ink);
+      max-width: 720px;
+      margin: 20px auto 0;
+    }
+
+    .problem-section h2 em {
+      font-style: italic;
+      color: var(--copper);
+    }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+      margin-top: 96px;
+      position: relative;
+    }
+
+    .stat-card {
+      padding: 56px 48px;
+      text-align: left;
+      position: relative;
+    }
+
+    .stat-card::after {
+      content: '';
+      position: absolute;
+      top: 20%;
+      right: 0;
+      height: 60%;
+      width: 1px;
+      background: var(--sand);
+    }
+
+    .stat-card:last-child::after { display: none; }
+
+    .stat-number {
+      font-family: var(--font-display);
+      font-size: clamp(64px, 8vw, 88px);
+      font-weight: 400;
+      letter-spacing: -0.04em;
+      line-height: 1;
+      color: var(--ink);
+    }
+
+    .stat-number sup {
+      font-size: 0.4em;
+      vertical-align: super;
+      color: var(--copper);
+    }
+
+    .stat-label {
+      font-size: 16px;
+      font-weight: 300;
+      color: var(--graphite);
+      line-height: 1.55;
+      margin-top: 20px;
+      max-width: 220px;
+    }
+
+    /* ── Features Section — Sticky Scroll ────────────────── */
+    .features-section {
+      padding: 0;
+      background: var(--ink);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .features-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(139,115,85,0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .features-header {
+      text-align: center;
+      padding: var(--section-pad) 32px 80px;
+    }
+
+    .features-header .eyebrow {
+      color: var(--copper-light);
+    }
+
+    .features-header h2 {
+      font-family: var(--font-display);
+      font-size: clamp(40px, 5.5vw, 68px);
+      font-weight: 400;
+      letter-spacing: -0.03em;
+      color: var(--warm-white);
+      max-width: 680px;
+      margin: 20px auto 0;
+      line-height: 1.08;
+    }
+
+    .features-header h2 em {
+      font-style: italic;
+      color: rgba(255,255,255,0.3);
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: rgba(255,255,255,0.04);
+      border-top: 1px solid rgba(255,255,255,0.04);
+      padding-bottom: 0;
+    }
+
+    .feature-card {
+      background: var(--ink);
+      padding: 56px 44px;
+      transition: background 0.5s var(--ease);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .feature-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 200px;
+      height: 200px;
+      background: radial-gradient(circle, var(--copper-glow) 0%, transparent 70%);
+      opacity: 0;
+      transition: opacity 0.5s;
+      pointer-events: none;
+    }
+
+    .feature-card:hover::before { opacity: 1; }
+    .feature-card:hover { background: #1E1C19; }
+
+    .feature-icon {
+      width: 48px;
+      height: 48px;
+      background: rgba(139,115,85,0.08);
+      border: 1px solid rgba(139,115,85,0.15);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      margin-bottom: 32px;
+      transition: all 0.4s var(--ease);
+    }
+
+    .feature-card:hover .feature-icon {
+      background: rgba(139,115,85,0.15);
+      transform: translateY(-2px);
+    }
+
+    .feature-card h3 {
+      font-family: var(--font-display);
+      font-size: 24px;
+      font-weight: 400;
+      color: var(--warm-white);
+      letter-spacing: -0.01em;
+      margin-bottom: 14px;
+    }
+
+    .feature-card p {
+      font-size: 15px;
+      font-weight: 300;
+      color: rgba(255,255,255,0.4);
+      line-height: 1.7;
+    }
+
+    /* ── Demo Section ────────────────────────────────────── */
+    .demo-section {
+      padding: var(--section-pad) 32px;
+      background: var(--warm-white);
+      position: relative;
+    }
+
+    .demo-header {
+      text-align: center;
+      margin-bottom: 80px;
+    }
+
+    .demo-header h2 {
+      font-family: var(--font-display);
+      font-size: clamp(40px, 5.5vw, 68px);
+      font-weight: 400;
+      letter-spacing: -0.03em;
+      color: var(--ink);
+      max-width: 640px;
+      margin: 20px auto 0;
+      line-height: 1.08;
+    }
+
+    .demo-panels {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+    }
+
+    .demo-panel {
+      background: var(--cream);
+      border-radius: var(--radius);
+      border: 1px solid var(--sand);
+      overflow: hidden;
+      transition: all 0.5s var(--ease);
+    }
+
+    .demo-panel:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 32px 80px rgba(26,24,21,0.08);
+      border-color: var(--copper-light);
+    }
+
+    .demo-panel-header {
+      padding: 28px 32px 24px;
+      border-bottom: 1px solid var(--sand);
+    }
+
+    .demo-panel-tag {
+      display: inline-block;
+      background: var(--copper-glow);
+      border: 1px solid rgba(139,115,85,0.15);
+      border-radius: 980px;
+      padding: 4px 14px;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--copper);
+      margin-bottom: 14px;
+    }
+
+    .demo-panel h3 {
+      font-family: var(--font-display);
+      font-size: 28px;
+      font-weight: 400;
+      letter-spacing: -0.015em;
+      color: var(--ink);
+      margin-bottom: 10px;
+    }
+
+    .demo-panel p {
+      font-size: 15px;
+      color: var(--graphite);
+      line-height: 1.6;
+      font-weight: 300;
+    }
+
+    .demo-panel-visual {
+      padding: 32px;
+      min-height: 280px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(145deg, var(--warm-white) 0%, var(--cream) 100%);
+    }
+
+    /* Excel mini preview */
+    .mini-excel {
+      width: 100%;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+      font-size: 9px;
+    }
+
+    .mini-ribbon {
+      background: #217346;
+      padding: 6px 10px;
+      color: white;
+      font-size: 8px;
+      display: flex;
+      gap: 8px;
+    }
+
+    .mini-ribbon span {
+      background: rgba(255,255,255,0.15);
+      padding: 2px 8px;
+      border-radius: 3px;
+    }
+
+    .mini-ribbon span.active-tool {
+      background: rgba(139,115,85,0.35);
+      border: 1px solid rgba(139,115,85,0.5);
+    }
+
+    .mini-grid {
+      background: white;
+    }
+
+    .mini-row {
+      display: flex;
+    }
+
+    .mini-cell {
+      width: 60px;
+      height: 18px;
+      border: 0.5px solid #DDD;
+      padding: 0 4px;
+      display: flex;
+      align-items: center;
+      font-family: 'Courier New', monospace;
+      font-size: 8px;
+      color: #333;
+      flex-shrink: 0;
+    }
+
+    .mini-cell.hdr { background: #F2F2F2; color: #888; justify-content: center; width: 24px; }
+    .mini-cell.blue-hdr { background: #1A3864; color: white; font-weight: 700; width: 90px; }
+    .mini-cell.sub { background: #EBF0F8; color: #1A3864; font-weight: 600; }
+    .mini-cell.num { justify-content: flex-end; }
+    .mini-cell.neg { color: #C00; justify-content: flex-end; }
+
+    /* PPT mini preview */
+    .mini-slide {
+      width: 100%;
+      background: #1A3864;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+      aspect-ratio: 16/9;
+      padding: 20px 24px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .slide-logo-line {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .slide-co { font-size: 8px; color: rgba(255,255,255,0.5); letter-spacing: 0.08em; font-family: var(--font-body); }
+    .slide-page { font-size: 8px; color: rgba(255,255,255,0.4); font-family: var(--font-body); }
+
+    .slide-title { font-family: var(--font-display); font-size: 16px; font-weight: 400; color: white; letter-spacing: -0.01em; line-height: 1.2; }
+    .slide-sub { font-size: 7px; color: rgba(255,255,255,0.5); margin-top: 4px; font-family: var(--font-body); }
+
+    .slide-chart {
+      display: flex;
+      align-items: flex-end;
+      gap: 6px;
+      height: 50px;
+    }
+
+    .chart-bar {
+      flex: 1;
+      background: rgba(255,255,255,0.15);
+      border-radius: 3px 3px 0 0;
+      position: relative;
+      transition: height 0.6s var(--ease);
+    }
+
+    .chart-bar.highlight { background: rgba(139,115,85,0.7); }
+
+    .slide-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .slide-footer-text { font-size: 6px; color: rgba(255,255,255,0.3); font-family: var(--font-body); }
+
+    /* Video placeholder */
+    .video-placeholder {
+      margin-top: 28px;
+      background: var(--ink);
+      border-radius: var(--radius);
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.04);
+      min-height: 420px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 20px;
+      padding: 60px;
+      position: relative;
+    }
+
+    .video-placeholder::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 60% 60% at 50% 50%, rgba(139,115,85,0.06) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .play-btn {
+      width: 72px;
+      height: 72px;
+      border: 2px solid rgba(255,255,255,0.12);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      cursor: pointer;
+      transition: all 0.4s var(--ease);
+      color: rgba(255,255,255,0.6);
+      position: relative;
+      z-index: 1;
+    }
+
+    .play-btn:hover {
+      border-color: var(--copper);
+      color: var(--copper);
+      transform: scale(1.08);
+      box-shadow: 0 0 40px rgba(139,115,85,0.15);
+    }
+
+    /* ── Before/After ────────────────────────────────────── */
+    .before-after-section {
+      padding: var(--section-pad) 32px;
+      text-align: center;
+    }
+
+    .before-after-section h2 {
+      font-family: var(--font-display);
+      font-size: clamp(40px, 5.5vw, 68px);
+      font-weight: 400;
+      letter-spacing: -0.03em;
+      color: var(--ink);
+      max-width: 640px;
+      margin: 20px auto 56px;
+      line-height: 1.08;
+    }
+
+    .compare-wrapper {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+      max-width: 940px;
+      margin: 0 auto;
+    }
+
+    .compare-card {
+      border-radius: var(--radius);
+      overflow: hidden;
+      border: 1px solid var(--sand);
+      transition: all 0.4s var(--ease);
+    }
+
+    .compare-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 16px 48px rgba(0,0,0,0.06);
+    }
+
+    .compare-label {
+      padding: 18px 28px;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .compare-label.before { background: #FFF5F0; color: #C44D2C; border-bottom: 1px solid #FFD6C8; }
+    .compare-label.after { background: #F0FFF4; color: var(--emerald); border-bottom: 1px solid #C6F6D5; }
+
+    .compare-content { padding: 24px; background: white; }
+
+    /* ── Testimonials ─────────────────────────────────────── */
+    .social-section {
+      background: var(--warm-white);
+      padding: var(--section-pad) 32px;
+      border-top: 1px solid var(--sand);
+    }
+
+    .social-section h2 {
+      font-family: var(--font-display);
+      font-size: clamp(36px, 4.5vw, 58px);
+      font-weight: 400;
+      letter-spacing: -0.03em;
+      color: var(--ink);
+      text-align: center;
+      margin: 20px auto 72px;
+      max-width: 580px;
+      line-height: 1.1;
+    }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .testimonial {
+      background: var(--cream);
+      border-radius: var(--radius);
+      padding: 40px 36px;
+      border: 1px solid var(--sand);
+      transition: all 0.4s var(--ease);
+      position: relative;
+    }
+
+    .testimonial::before {
+      content: '\201C';
+      font-family: var(--font-display);
+      font-size: 80px;
+      color: var(--copper);
+      opacity: 0.15;
+      position: absolute;
+      top: 12px;
+      left: 24px;
+      line-height: 1;
+    }
+
+    .testimonial:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.05);
+      border-color: var(--copper-light);
+    }
+
+    .testimonial-quote {
+      font-family: var(--font-display);
+      font-size: 18px;
+      font-weight: 400;
+      font-style: italic;
+      line-height: 1.6;
+      color: var(--charcoal);
+      margin-bottom: 32px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .author-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--copper-glow);
+      border: 1px solid rgba(139,115,85,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--copper);
+      flex-shrink: 0;
+    }
+
+    .author-name {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--ink);
+    }
+
+    .author-title {
+      font-size: 12px;
+      color: var(--graphite);
+      font-weight: 300;
+    }
+
+    /* ── Pricing ──────────────────────────────────────────── */
+    .pricing-section {
+      padding: var(--section-pad) 32px;
+      text-align: center;
+    }
+
+    .pricing-section h2 {
+      font-family: var(--font-display);
+      font-size: clamp(40px, 5.5vw, 68px);
+      font-weight: 400;
+      letter-spacing: -0.03em;
+      color: var(--ink);
+      max-width: 560px;
+      margin: 20px auto 0;
+      line-height: 1.08;
+    }
+
+    .pricing-toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      margin: 48px auto 0;
+      background: var(--warm-white);
+      border: 1px solid var(--sand);
+      border-radius: 980px;
+      padding: 4px;
+    }
+
+    .toggle-option {
+      padding: 10px 24px;
+      border-radius: 980px;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.3s var(--ease);
+      color: var(--graphite);
+    }
+
+    .toggle-option.active {
+      background: var(--cream);
+      color: var(--ink);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    }
+
+    .savings-badge {
+      background: rgba(45,122,79,0.1);
+      color: var(--emerald);
+      font-size: 11px;
+      font-weight: 600;
+      padding: 3px 10px;
+      border-radius: 980px;
+      margin-left: 4px;
+    }
+
+    .pricing-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 64px;
+      align-items: start;
+    }
+
+    .pricing-card {
+      border-radius: var(--radius);
+      padding: 44px 40px;
+      border: 1px solid var(--sand);
+      background: var(--warm-white);
+      text-align: left;
+      position: relative;
+      transition: all 0.4s var(--ease);
+    }
+
+    .pricing-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 24px 64px rgba(0,0,0,0.06);
+    }
+
+    .pricing-card.featured {
+      background: var(--ink);
+      border-color: var(--ink);
+      transform: scale(1.03);
+    }
+
+    .pricing-card.featured:hover { transform: scale(1.03) translateY(-6px); }
+
+    .featured-badge {
+      position: absolute;
+      top: -13px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--copper);
+      color: white;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 5px 18px;
+      border-radius: 980px;
+      white-space: nowrap;
+      letter-spacing: 0.03em;
+    }
+
+    .pricing-tier {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--graphite);
+      margin-bottom: 24px;
+    }
+
+    .pricing-card.featured .pricing-tier { color: var(--copper-light); }
+
+    .pricing-price {
+      display: flex;
+      align-items: baseline;
+      gap: 4px;
+      margin-bottom: 10px;
+    }
+
+    .price-currency { font-size: 24px; font-weight: 300; color: var(--charcoal); margin-top: 4px; }
+    .price-amount {
+      font-family: var(--font-display);
+      font-size: 60px;
+      font-weight: 400;
+      letter-spacing: -0.04em;
+      line-height: 1;
+      color: var(--ink);
+    }
+    .price-period { font-size: 15px; color: var(--graphite); font-weight: 300; }
+
+    .pricing-card.featured .price-currency,
+    .pricing-card.featured .price-amount { color: var(--warm-white); }
+    .pricing-card.featured .price-currency { color: rgba(255,255,255,0.5); }
+    .pricing-card.featured .price-period { color: rgba(255,255,255,0.4); }
+
+    .pricing-desc {
+      font-size: 15px;
+      color: var(--graphite);
+      line-height: 1.55;
+      margin-bottom: 36px;
+      padding-bottom: 36px;
+      border-bottom: 1px solid var(--sand);
+      font-weight: 300;
+    }
+
+    .pricing-card.featured .pricing-desc {
+      color: rgba(255,255,255,0.4);
+      border-bottom-color: rgba(255,255,255,0.08);
+    }
+
+    .pricing-features {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-bottom: 44px;
+    }
+
+    .pricing-features li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 14px;
+      color: var(--charcoal);
+      line-height: 1.45;
+      font-weight: 300;
+    }
+
+    .pricing-card.featured .pricing-features li { color: rgba(255,255,255,0.75); }
+
+    .check {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: rgba(45,122,79,0.08);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 10px;
+      color: var(--emerald);
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+
+    .pricing-card.featured .check {
+      background: rgba(139,115,85,0.15);
+      color: var(--copper-light);
+    }
+
+    .btn-pricing-primary {
+      display: block;
+      width: 100%;
+      text-align: center;
+      background: var(--ink);
+      color: var(--warm-white);
+      padding: 16px;
+      border-radius: var(--radius-sm);
+      font-size: 15px;
+      font-weight: 500;
+      cursor: pointer;
+      border: none;
+      font-family: var(--font-body);
+      transition: all 0.3s var(--ease);
+    }
+
+    .btn-pricing-primary:hover {
+      background: var(--charcoal);
+      transform: translateY(-1px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+    }
+
+    .pricing-card.featured .btn-pricing-primary {
+      background: var(--copper);
+      color: white;
+    }
+
+    .pricing-card.featured .btn-pricing-primary:hover {
+      background: var(--copper-light);
+    }
+
+    .btn-pricing-ghost {
+      display: block;
+      width: 100%;
+      text-align: center;
+      background: transparent;
+      color: var(--charcoal);
+      padding: 16px;
+      border-radius: var(--radius-sm);
+      font-size: 15px;
+      font-weight: 500;
+      cursor: pointer;
+      border: 1px solid var(--sand);
+      font-family: var(--font-body);
+      transition: all 0.3s var(--ease);
+    }
+
+    .btn-pricing-ghost:hover {
+      border-color: var(--copper);
+      color: var(--copper);
+      background: var(--copper-glow);
+    }
+
+    /* ── FAQ ──────────────────────────────────────────────── */
+    .faq-section {
+      padding: var(--section-pad) 32px;
+      background: var(--warm-white);
+      border-top: 1px solid var(--sand);
+    }
+
+    .faq-section h2 {
+      font-family: var(--font-display);
+      font-size: clamp(36px, 4.5vw, 58px);
+      font-weight: 400;
+      letter-spacing: -0.03em;
+      color: var(--ink);
+      text-align: center;
+      margin: 20px auto 72px;
+      max-width: 520px;
+      line-height: 1.1;
+    }
+
+    .faq-list {
+      max-width: 740px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .faq-item {
+      background: var(--cream);
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--sand);
+      overflow: hidden;
+      transition: border-color 0.3s;
+    }
+
+    .faq-item:hover { border-color: var(--stone); }
+
+    .faq-question {
+      width: 100%;
+      text-align: left;
+      padding: 26px 32px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-family: var(--font-body);
+      font-size: 16px;
+      font-weight: 500;
+      color: var(--ink);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      transition: color 0.3s;
+    }
+
+    .faq-question:hover { color: var(--copper); }
+
+    .faq-chevron {
+      width: 24px;
+      height: 24px;
+      border: 1px solid var(--sand);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      color: var(--graphite);
+      flex-shrink: 0;
+      transition: all 0.4s var(--ease);
+    }
+
+    .faq-item.open .faq-chevron {
+      transform: rotate(180deg);
+      background: var(--copper-glow);
+      border-color: var(--copper);
+      color: var(--copper);
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.5s var(--ease), padding 0.4s;
+      padding: 0 32px;
+      font-size: 15px;
+      font-weight: 300;
+      color: var(--graphite);
+      line-height: 1.75;
+    }
+
+    .faq-item.open .faq-answer {
+      max-height: 240px;
+      padding: 0 32px 28px;
+    }
+
+    /* ── CTA Banner ───────────────────────────────────────── */
+    .cta-section {
+      padding: var(--section-pad) 32px;
+      background: var(--ink);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 60% 80% at 50% 50%, rgba(139,115,85,0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    /* Floating circles in CTA */
+    .cta-float-1, .cta-float-2 {
+      position: absolute;
+      border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.04);
+      pointer-events: none;
+    }
+
+    .cta-float-1 {
+      width: 400px; height: 400px;
+      top: -100px; right: -100px;
+    }
+
+    .cta-float-2 {
+      width: 300px; height: 300px;
+      bottom: -80px; left: -60px;
+    }
+
+    .cta-section h2 {
+      font-family: var(--font-display);
+      font-size: clamp(44px, 6.5vw, 84px);
+      font-weight: 400;
+      letter-spacing: -0.035em;
+      color: var(--warm-white);
+      max-width: 800px;
+      margin: 20px auto 0;
+      line-height: 1.05;
+      position: relative;
+      z-index: 1;
+    }
+
+    .cta-section h2 em {
+      font-style: italic;
+      color: var(--copper);
+    }
+
+    .cta-section > .container > p {
+      font-size: 19px;
+      font-weight: 300;
+      color: rgba(255,255,255,0.45);
+      margin-top: 24px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .cta-actions {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 56px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .btn-white {
+      background: var(--warm-white);
+      color: var(--ink);
+      padding: 18px 40px;
+      border-radius: 980px;
+      font-family: var(--font-body);
+      font-size: 15px;
+      font-weight: 500;
+      cursor: pointer;
+      border: none;
+      transition: all 0.3s var(--ease);
+      display: inline-block;
+    }
+
+    .btn-white:hover {
+      background: white;
+      transform: translateY(-2px);
+      box-shadow: 0 12px 40px rgba(0,0,0,0.2);
+    }
+
+    .btn-ghost-white {
+      background: transparent;
+      color: rgba(255,255,255,0.6);
+      padding: 18px 32px;
+      border-radius: 980px;
+      font-family: var(--font-body);
+      font-size: 15px;
+      font-weight: 400;
+      cursor: pointer;
+      border: 1px solid rgba(255,255,255,0.1);
+      transition: all 0.3s var(--ease);
+      display: inline-block;
+    }
+
+    .btn-ghost-white:hover {
+      border-color: var(--copper);
+      color: var(--copper-light);
+    }
+
+    /* ── Footer ───────────────────────────────────────────── */
+    footer {
+      background: var(--ink);
+      border-top: 1px solid rgba(255,255,255,0.04);
+      padding: 72px 32px 44px;
+    }
+
+    .footer-inner {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 56px;
+      max-width: 1120px;
+      margin: 0 auto;
+    }
+
+    .footer-brand .nav-logo {
+      color: var(--warm-white);
+      display: block;
+      margin-bottom: 20px;
+    }
+
+    .footer-brand .nav-logo span { color: var(--copper); }
+
+    .footer-tagline {
+      font-size: 14px;
+      font-weight: 300;
+      color: rgba(255,255,255,0.3);
+      line-height: 1.65;
+      max-width: 300px;
+    }
+
+    .footer-col h4 {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--copper);
+      margin-bottom: 24px;
+      opacity: 0.7;
+    }
+
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 14px; }
+
+    .footer-col a {
+      font-size: 14px;
+      color: rgba(255,255,255,0.4);
+      transition: color 0.3s;
+      font-weight: 300;
+    }
+
+    .footer-col a:hover { color: rgba(255,255,255,0.8); }
+
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1120px;
+      margin: 56px auto 0;
+      padding-top: 28px;
+      border-top: 1px solid rgba(255,255,255,0.04);
+    }
+
+    .footer-copy {
+      font-size: 12px;
+      color: rgba(255,255,255,0.2);
+      font-weight: 300;
+    }
+
+    .footer-legal {
+      display: flex;
+      gap: 24px;
+    }
+
+    .footer-legal a {
+      font-size: 12px;
+      color: rgba(255,255,255,0.2);
+      transition: color 0.3s;
+      font-weight: 300;
+    }
+
+    .footer-legal a:hover { color: rgba(255,255,255,0.5); }
+
+    /* ── Scroll Progress ──────────────────────────────────── */
+    .scroll-progress {
+      position: fixed;
+      top: 0; left: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--copper), var(--copper-light));
+      z-index: 9999;
+      transition: width 0.08s linear;
+    }
+
+    /* ── Responsive ───────────────────────────────────────── */
+    @media (max-width: 900px) {
+      :root { --section-pad: 100px; }
+
+      .stats-grid,
+      .features-grid,
+      .testimonials-grid,
+      .pricing-cards,
+      .demo-panels,
+      .compare-wrapper { grid-template-columns: 1fr; }
+
+      .stat-card::after {
+        top: auto;
+        bottom: 0;
+        left: 20%;
+        right: 20%;
+        width: auto;
+        height: 1px;
+      }
+
+      .stat-card:last-child::after { display: none; }
+
+      .pricing-card.featured { transform: none; }
+
+      .nav-links { display: none; }
+
+      .footer-inner { grid-template-columns: 1fr 1fr; }
+      .footer-bottom { flex-direction: column; gap: 14px; text-align: center; }
+
+      .hero-float { display: none; }
+      .hero-float-grid { display: none; }
+    }
+
+    @media (max-width: 600px) {
+      .footer-inner { grid-template-columns: 1fr; }
+      .hero-actions { flex-direction: column; align-items: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Scroll Progress Bar -->
+  <div class="scroll-progress" id="scrollProgress"></div>
+
+  <!-- ── Navigation ─────────────────────────────────────── -->
+  <nav id="mainNav">
+    <div class="nav-inner">
+      <a href="#" class="nav-logo">Hack<span>abacus</span></a>
+      <ul class="nav-links">
+        <li><a href="#features">Features</a></li>
+        <li><a href="#demo">Demo</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="#pricing" class="nav-cta">Get Started</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ── Hero ───────────────────────────────────────────── -->
+  <section class="hero" id="home">
+    <div class="hero-eyebrow">
+      <span class="dot"></span>
+      Now available for Excel & PowerPoint on Windows
+    </div>
+
+    <h1>
+      <span class="line"><span class="line-inner">The toolkit</span></span>
+      <span class="line"><span class="line-inner"><em>finance deserves.</em></span></span>
+    </h1>
+
+    <p class="hero-sub">
+      Hackabacus gives private equity analysts, bankers, and finance teams the formatting power, model automation, and slide production speed of a full-stack deal team — built right into your ribbon.
+    </p>
+
+    <div class="hero-actions">
+      <a href="#pricing" class="btn-primary">
+        <span>Download Free Trial</span>
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" style="position:relative;z-index:1"><path d="M1 7h12M7 1l6 6-6 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <a href="#demo" class="btn-secondary">
+        See it in action
+        <span class="arrow">&#8594;</span>
+      </a>
+    </div>
+
+    <!-- App Mockup with 3D perspective -->
+    <div class="hero-mockup-wrapper">
+      <div class="hero-mockup" id="heroMockup">
+        <div class="mockup-frame">
+          <div class="mockup-bar">
+            <div class="mockup-dot"></div>
+            <div class="mockup-dot"></div>
+            <div class="mockup-dot"></div>
+          </div>
+          <div class="mockup-screen">
+            <div class="excel-ribbon">
+              <div class="ribbon-tabs">
+                <div class="ribbon-tab">File</div>
+                <div class="ribbon-tab">Home</div>
+                <div class="ribbon-tab">Insert</div>
+                <div class="ribbon-tab active">Hackabacus</div>
+                <div class="ribbon-tab">View</div>
+              </div>
+              <div class="ribbon-content">
+                <div class="ribbon-group">
+                  <div class="ribbon-buttons">
+                    <div class="ribbon-btn highlight">&#9889; Format Model</div>
+                    <div class="ribbon-btn">&#127912; Color Suite</div>
+                    <div class="ribbon-btn">&#128208; Align</div>
+                  </div>
+                  <div class="ribbon-group-label">FORMAT</div>
+                </div>
+                <div class="ribbon-group">
+                  <div class="ribbon-buttons">
+                    <div class="ribbon-btn">&#8721; Audit Formulas</div>
+                    <div class="ribbon-btn">&#128279; Trace</div>
+                  </div>
+                  <div class="ribbon-group-label">AUDIT</div>
+                </div>
+                <div class="ribbon-group">
+                  <div class="ribbon-buttons">
+                    <div class="ribbon-btn">&#128202; Waterfall</div>
+                    <div class="ribbon-btn">&#8594; PPT Export</div>
+                  </div>
+                  <div class="ribbon-group-label">BUILD</div>
+                </div>
+                <div class="ribbon-group">
+                  <div class="ribbon-buttons">
+                    <div class="ribbon-btn">&#9000; Shortcuts</div>
+                    <div class="ribbon-btn">&#128190; Snapshot</div>
+                  </div>
+                  <div class="ribbon-group-label">TOOLS</div>
+                </div>
+              </div>
+            </div>
+            <div class="formula-row">
+              <div class="formula-name">D14</div>
+              <div class="formula-fx">fx</div>
+              <div class="excel-cell formula-bar">=SUM(D10:D13)</div>
+            </div>
+            <div class="excel-grid">
+              <div class="excel-row excel-header-row">
+                <div class="excel-cell row-header"></div>
+                <div class="excel-cell col-header">A</div>
+                <div class="excel-cell col-header" style="min-width:200px">B</div>
+                <div class="excel-cell col-header">C</div>
+                <div class="excel-cell col-header">D</div>
+                <div class="excel-cell col-header">E</div>
+                <div class="excel-cell col-header">F</div>
+                <div class="excel-cell col-header">G</div>
+                <div class="excel-cell col-header">H</div>
+              </div>
+              <div class="excel-row">
+                <div class="excel-cell row-header">8</div>
+                <div class="excel-cell section-header" style="min-width:200px; grid-column: span 2">INCOME STATEMENT</div>
+                <div class="excel-cell section-header">2021A</div>
+                <div class="excel-cell section-header">2022A</div>
+                <div class="excel-cell section-header">2023A</div>
+                <div class="excel-cell section-header">2024E</div>
+                <div class="excel-cell section-header">2025E</div>
+                <div class="excel-cell section-header">2026E</div>
+              </div>
+              <div class="excel-row">
+                <div class="excel-cell row-header">9</div>
+                <div class="excel-cell" style="min-width:200px"></div>
+                <div class="excel-cell"></div>
+                <div class="excel-cell number">$000s</div>
+                <div class="excel-cell"></div>
+                <div class="excel-cell"></div>
+                <div class="excel-cell"></div>
+                <div class="excel-cell"></div>
+                <div class="excel-cell"></div>
+              </div>
+              <div class="excel-row">
+                <div class="excel-cell row-header">10</div>
+                <div class="excel-cell bold" style="min-width:200px">Revenue</div>
+                <div class="excel-cell"></div>
+                <div class="excel-cell number">142,500</div>
+                <div class="excel-cell number">168,200</div>
+                <div class="excel-cell number">191,400</div>
+                <div class="excel-cell number">214,800</div>
+                <div class="excel-cell number">241,200</div>
+                <div class="excel-cell number">271,400</div>
+              </div>
+              <div class="excel-row">
+                <div class="excel-cell row-header">11</div>
+                <div class="excel-cell" style="min-width:200px; padding-left: 20px;">Cost of Goods Sold</div>
+                <div class="excel-cell"></div>
+                <div class="excel-cell number negative">(62,300)</div>
+                <div class="excel-cell number negative">(73,100)</div>
+                <div class="excel-cell number negative">(82,400)</div>
+                <div class="excel-cell number negative">(92,000)</div>
+                <div class="excel-cell number negative">(103,000)</div>
+                <div class="excel-cell number negative">(115,700)</div>
+              </div>
+              <div class="excel-row">
+                <div class="excel-cell row-header">12</div>
+                <div class="excel-cell" style="min-width:200px; padding-left: 20px;">Operating Expenses</div>
+                <div class="excel-cell"></div>
+                <div class="excel-cell number negative">(28,100)</div>
+                <div class="excel-cell number negative">(33,400)</div>
+                <div class="excel-cell number negative">(37,900)</div>
+                <div class="excel-cell number negative">(42,500)</div>
+                <div class="excel-cell number negative">(47,800)</div>
+                <div class="excel-cell number negative">(53,800)</div>
+              </div>
+              <div class="excel-row">
+                <div class="excel-cell row-header">13</div>
+                <div class="excel-cell" style="min-width:200px; padding-left: 20px;">D&amp;A</div>
+                <div class="excel-cell"></div>
+                <div class="excel-cell number negative">(8,200)</div>
+                <div class="excel-cell number negative">(9,100)</div>
+                <div class="excel-cell number negative">(10,400)</div>
+                <div class="excel-cell number negative">(11,700)</div>
+                <div class="excel-cell number negative">(13,200)</div>
+                <div class="excel-cell number negative">(14,900)</div>
+              </div>
+              <div class="excel-row">
+                <div class="excel-cell row-header">14</div>
+                <div class="excel-cell subtotal bold" style="min-width:200px">EBITDA</div>
+                <div class="excel-cell subtotal"></div>
+                <div class="excel-cell subtotal number">43,900</div>
+                <div class="excel-cell subtotal number selected">52,600</div>
+                <div class="excel-cell subtotal number">60,700</div>
+                <div class="excel-cell subtotal number">68,600</div>
+                <div class="excel-cell subtotal number">77,200</div>
+                <div class="excel-cell subtotal number">87,000</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Logos Bar ─────────────────────────────────────── -->
+  <section class="logos-section">
+    <p class="logos-label">Trusted by finance professionals at</p>
+    <div class="logos-track">
+      <div class="logo-item reveal">Blackstone</div>
+      <div class="logo-item reveal reveal-delay-1">KKR</div>
+      <div class="logo-item reveal reveal-delay-2">Goldman Sachs</div>
+      <div class="logo-item reveal reveal-delay-3">Apollo</div>
+      <div class="logo-item reveal reveal-delay-4">Carlyle</div>
+      <div class="logo-item reveal reveal-delay-5">Morgan Stanley</div>
+    </div>
+  </section>
+
+  <!-- ── Problem ───────────────────────────────────────── -->
+  <section class="problem-section" id="problem">
+    <div class="container">
+      <p class="eyebrow reveal">The real cost of slow tools</p>
+      <h2 class="reveal reveal-delay-1">
+        Every hour lost to formatting<br/>
+        is an hour <em>not analyzing.</em>
+      </h2>
+
+      <div class="stats-grid">
+        <div class="stat-card scale-reveal">
+          <div class="stat-number"><span class="counter" data-target="40">0</span><sup>%</sup></div>
+          <p class="stat-label">of analyst time is spent on formatting and presentation work, not analysis</p>
+        </div>
+        <div class="stat-card scale-reveal" style="transition-delay:0.15s">
+          <div class="stat-number"><span class="counter" data-target="3">0</span><sup>&times;</sup></div>
+          <p class="stat-label">faster model formatting with Hackabacus versus manual formatting workflows</p>
+        </div>
+        <div class="stat-card scale-reveal" style="transition-delay:0.3s">
+          <div class="stat-number"><span class="counter" data-target="8">0</span><sup>+</sup></div>
+          <p class="stat-label">hours saved per week per analyst across formatting, audit, and slide production</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Features ──────────────────────────────────────── -->
+  <section class="features-section" id="features">
+    <div class="features-header">
+      <p class="eyebrow reveal">Everything in the ribbon</p>
+      <h2 class="reveal reveal-delay-1">
+        Built for how<br/>
+        <em>deals actually get done.</em>
+      </h2>
+    </div>
+
+    <div class="features-grid container--wide">
+      <div class="feature-card reveal">
+        <div class="feature-icon">&#9889;</div>
+        <h3>One-Click Model Formatting</h3>
+        <p>Apply institutional-grade formatting across your entire model instantly. Consistent fonts, colors, borders, and number formats &#8212; PE-standard, every time.</p>
+      </div>
+      <div class="feature-card reveal reveal-delay-1">
+        <div class="feature-icon">&#127912;</div>
+        <h3>Color &amp; Style Suite</h3>
+        <p>Full custom palette management, cell style libraries, and branded color schemes. Lock in your firm's visual identity with a single click.</p>
+      </div>
+      <div class="feature-card reveal reveal-delay-2">
+        <div class="feature-icon">&#8721;</div>
+        <h3>Formula Audit &amp; Trace</h3>
+        <p>Visualize precedents, dependents, and cross-sheet links. Catch errors before they compound. Flag hardcodes, circulars, and broken references instantly.</p>
+      </div>
+      <div class="feature-card reveal reveal-delay-3">
+        <div class="feature-icon">&#128202;</div>
+        <h3>Waterfall Builder</h3>
+        <p>Generate PE-standard waterfall charts from your returns model in seconds. IRR bridges, equity waterfalls, and returns attribution &#8212; automated.</p>
+      </div>
+      <div class="feature-card reveal reveal-delay-4">
+        <div class="feature-icon">&#8594;</div>
+        <h3>PowerPoint Integration</h3>
+        <p>Push formatted Excel ranges directly to PowerPoint slides. Auto-resize, maintain formatting, and keep tables live-linked. CIM-ready output.</p>
+      </div>
+      <div class="feature-card reveal reveal-delay-5">
+        <div class="feature-icon">&#9000;</div>
+        <h3>Keyboard Shortcut Engine</h3>
+        <p>100+ customizable shortcuts for the most common analyst actions. Navigate, format, and build faster than any menu-driven workflow.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Demo ──────────────────────────────────────────── -->
+  <section class="demo-section" id="demo">
+    <div class="container">
+      <div class="demo-header">
+        <p class="eyebrow reveal">See Hackabacus in action</p>
+        <h2 class="reveal reveal-delay-1">
+          Two tools.<br/>One seamless workflow.
+        </h2>
+      </div>
+
+      <div class="demo-panels">
+        <!-- Excel Panel -->
+        <div class="demo-panel reveal">
+          <div class="demo-panel-header">
+            <div class="demo-panel-tag">Excel</div>
+            <h3>Model at the speed of thought.</h3>
+            <p>Format, audit, and build institutional-quality financial models without leaving your keyboard.</p>
+          </div>
+          <div class="demo-panel-visual">
+            <div class="mini-excel">
+              <div class="mini-ribbon">
+                <span>File</span>
+                <span>Home</span>
+                <span class="active-tool">&#9889; Hackabacus</span>
+                <span>View</span>
+              </div>
+              <div class="mini-grid">
+                <div class="mini-row">
+                  <div class="mini-cell hdr"></div>
+                  <div class="mini-cell blue-hdr">LBO MODEL &#8212; PROJECT APEX</div>
+                  <div class="mini-cell">2023A</div>
+                  <div class="mini-cell">2024E</div>
+                  <div class="mini-cell">2025E</div>
+                </div>
+                <div class="mini-row">
+                  <div class="mini-cell hdr">2</div>
+                  <div class="mini-cell" style="width:90px; font-weight:700">Revenue</div>
+                  <div class="mini-cell num">$191.4</div>
+                  <div class="mini-cell num">$214.8</div>
+                  <div class="mini-cell num">$241.2</div>
+                </div>
+                <div class="mini-row">
+                  <div class="mini-cell hdr">3</div>
+                  <div class="mini-cell" style="width:90px; padding-left:10px">  % Growth</div>
+                  <div class="mini-cell num">14.2%</div>
+                  <div class="mini-cell num">12.2%</div>
+                  <div class="mini-cell num">12.3%</div>
+                </div>
+                <div class="mini-row">
+                  <div class="mini-cell hdr">4</div>
+                  <div class="mini-cell sub" style="width:90px; font-weight:700">EBITDA</div>
+                  <div class="mini-cell sub num">$60.7</div>
+                  <div class="mini-cell sub num">$68.6</div>
+                  <div class="mini-cell sub num">$77.2</div>
+                </div>
+                <div class="mini-row">
+                  <div class="mini-cell hdr">5</div>
+                  <div class="mini-cell" style="width:90px; padding-left:10px">  Margin</div>
+                  <div class="mini-cell num">31.7%</div>
+                  <div class="mini-cell num">31.9%</div>
+                  <div class="mini-cell num">32.0%</div>
+                </div>
+                <div class="mini-row">
+                  <div class="mini-cell hdr">6</div>
+                  <div class="mini-cell" style="width:90px; font-weight:700">Net Debt</div>
+                  <div class="mini-cell num neg">(312.4)</div>
+                  <div class="mini-cell num neg">(278.1)</div>
+                  <div class="mini-cell num neg">(239.6)</div>
+                </div>
+                <div class="mini-row">
+                  <div class="mini-cell hdr">7</div>
+                  <div class="mini-cell sub" style="width:90px; font-weight:700; font-size:8px">MOIC / IRR</div>
+                  <div class="mini-cell sub num" style="color:#2D7A4F; font-weight:700">2.8&times;</div>
+                  <div class="mini-cell sub num" style="color:#2D7A4F; font-weight:700">24.1%</div>
+                  <div class="mini-cell sub"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- PowerPoint Panel -->
+        <div class="demo-panel reveal reveal-delay-2">
+          <div class="demo-panel-header">
+            <div class="demo-panel-tag">PowerPoint</div>
+            <h3>CIM-ready slides. Instantly.</h3>
+            <p>Push Excel ranges to branded slides, auto-format tables, and produce deal-ready presentations at speed.</p>
+          </div>
+          <div class="demo-panel-visual">
+            <div class="mini-slide">
+              <div class="slide-logo-line">
+                <div class="slide-co">HACKABACUS &middot; CONFIDENTIAL</div>
+                <div class="slide-page">3</div>
+              </div>
+              <div>
+                <div class="slide-title">Project Apex &#8212; Returns Summary</div>
+                <div class="slide-sub">Base Case LBO &middot; Entry 8.5&times; EBITDA &middot; 5-Year Hold</div>
+              </div>
+              <div class="slide-chart">
+                <div class="chart-bar" style="height:30%"></div>
+                <div class="chart-bar" style="height:45%"></div>
+                <div class="chart-bar" style="height:60%"></div>
+                <div class="chart-bar highlight" style="height:80%"></div>
+                <div class="chart-bar" style="height:55%"></div>
+                <div class="chart-bar" style="height:40%"></div>
+              </div>
+              <div class="slide-footer">
+                <div class="slide-footer-text">Source: Management projections, Hackabacus LBO model</div>
+                <div class="slide-footer-text">IRR: 24.1% &middot; MOIC: 2.8&times;</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Video placeholder -->
+      <div class="video-placeholder scale-reveal">
+        <div class="play-btn">&#9654;</div>
+        <p style="font-family: var(--font-display); font-size: 22px; font-weight: 400; color: rgba(255,255,255,0.35); font-style: italic; position:relative; z-index:1;">Full product demo &middot; 90 seconds</p>
+        <p style="font-size: 12px; color: rgba(255,255,255,0.15); position:relative; z-index:1;">[ Video asset goes here &#8212; feed from Nano Banana 2 ]</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Before / After ────────────────────────────────── -->
+  <section class="before-after-section">
+    <div class="container">
+      <p class="eyebrow reveal">The Hackabacus difference</p>
+      <h2 class="reveal reveal-delay-1">
+        From chaos<br/>to institutional.
+      </h2>
+
+      <div class="compare-wrapper scale-reveal">
+        <div class="compare-card">
+          <div class="compare-label before">
+            <span>&#10005;</span> Before Hackabacus
+          </div>
+          <div class="compare-content">
+            <div class="mini-grid">
+              <div class="mini-row">
+                <div class="mini-cell hdr">1</div>
+                <div class="mini-cell" style="width:100px; font-size:8px; color:#999">revenue</div>
+                <div class="mini-cell num" style="font-size:8px; color:#333">142500</div>
+                <div class="mini-cell num" style="font-size:8px; color:#333">168200</div>
+                <div class="mini-cell num" style="font-size:8px; color:#333">191400</div>
+              </div>
+              <div class="mini-row">
+                <div class="mini-cell hdr">2</div>
+                <div class="mini-cell" style="width:100px; font-size:8px; background:#FFFF99">COGS</div>
+                <div class="mini-cell num" style="font-size:8px; color:#FF0000">-62300</div>
+                <div class="mini-cell num" style="font-size:8px; color:#FF0000">-73100</div>
+                <div class="mini-cell num" style="font-size:8px; color:#FF0000">-82400</div>
+              </div>
+              <div class="mini-row">
+                <div class="mini-cell hdr">3</div>
+                <div class="mini-cell" style="width:100px; font-size:8px; font-weight:900; background:#C6EFCE">EBITDA</div>
+                <div class="mini-cell num" style="font-size:8px; font-weight:900">51900</div>
+                <div class="mini-cell num" style="font-size:8px; font-weight:900">62000</div>
+                <div class="mini-cell num" style="font-size:8px; font-weight:900">67400</div>
+              </div>
+            </div>
+            <p style="font-size:11px; color:#C44D2C; margin-top:14px;">&#8593; Inconsistent fonts, raw numbers, mixed colors, no structure</p>
+          </div>
+        </div>
+
+        <div class="compare-card">
+          <div class="compare-label after">
+            <span>&#10003;</span> After Hackabacus
+          </div>
+          <div class="compare-content">
+            <div class="mini-grid">
+              <div class="mini-row">
+                <div class="mini-cell hdr">1</div>
+                <div class="mini-cell blue-hdr" style="font-size:8px">INCOME STATEMENT</div>
+                <div class="mini-cell" style="font-size:8px; background:#1A3864; color:white; width:60px; text-align:center">2023A</div>
+                <div class="mini-cell" style="font-size:8px; background:#1A3864; color:white; width:60px; text-align:center">2024E</div>
+                <div class="mini-cell" style="font-size:8px; background:#1A3864; color:white; width:60px; text-align:center">2025E</div>
+              </div>
+              <div class="mini-row">
+                <div class="mini-cell hdr">2</div>
+                <div class="mini-cell" style="width:100px; font-size:8px; font-weight:700">Revenue</div>
+                <div class="mini-cell num" style="font-size:8px">$191.4</div>
+                <div class="mini-cell num" style="font-size:8px">$214.8</div>
+                <div class="mini-cell num" style="font-size:8px">$241.2</div>
+              </div>
+              <div class="mini-row">
+                <div class="mini-cell hdr">3</div>
+                <div class="mini-cell sub" style="width:100px; font-size:8px; font-weight:700">EBITDA</div>
+                <div class="mini-cell sub num" style="font-size:8px">$60.7</div>
+                <div class="mini-cell sub num" style="font-size:8px">$68.6</div>
+                <div class="mini-cell sub num" style="font-size:8px">$77.2</div>
+              </div>
+            </div>
+            <p style="font-size:11px; color:var(--emerald); margin-top:14px;">&#8593; Institutional headers, consistent formatting, proper structure</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Social Proof ───────────────────────────────────── -->
+  <section class="social-section">
+    <div class="container">
+      <p class="eyebrow reveal" style="text-align:center">What analysts are saying</p>
+      <h2 class="reveal reveal-delay-1">Built by finance.<br/>Loved by teams.</h2>
+
+      <div class="testimonials-grid">
+        <div class="testimonial reveal">
+          <p class="testimonial-quote">"We run a tight team. Hackabacus cut our CIM turnaround by almost two days. The PPT integration alone paid for itself in the first week."</p>
+          <div class="testimonial-author">
+            <div class="author-avatar">MR</div>
+            <div>
+              <div class="author-name">Michael R.</div>
+              <div class="author-title">VP, Lower Middle Market PE</div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial reveal reveal-delay-1">
+          <p class="testimonial-quote">"I was skeptical &#8212; we'd used Macabacus for years. But Hackabacus is faster, lighter, and the shortcut engine is genuinely better. Made the switch in two weeks."</p>
+          <div class="testimonial-author">
+            <div class="author-avatar">SL</div>
+            <div>
+              <div class="author-name">Sarah L.</div>
+              <div class="author-title">Associate, Infrastructure Equity</div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial reveal reveal-delay-2">
+          <p class="testimonial-quote">"The waterfall builder is something I didn't know I needed until I had it. What used to take an afternoon is now 20 minutes, formatted perfectly."</p>
+          <div class="testimonial-author">
+            <div class="author-avatar">DK</div>
+            <div>
+              <div class="author-name">David K.</div>
+              <div class="author-title">Senior Analyst, Credit</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Pricing ───────────────────────────────────────── -->
+  <section class="pricing-section" id="pricing">
+    <div class="container">
+      <p class="eyebrow reveal">Simple, transparent pricing</p>
+      <h2 class="reveal reveal-delay-1">
+        Start free.<br/>Scale with your team.
+      </h2>
+
+      <div class="pricing-toggle">
+        <div class="toggle-option active" id="toggleMonthly" onclick="setPricing('monthly')">Monthly</div>
+        <div class="toggle-option" id="toggleAnnual" onclick="setPricing('annual')">
+          Annual <span class="savings-badge">Save 35%</span>
+        </div>
+        <div class="toggle-option" id="togglePerp" onclick="setPricing('perpetual')">
+          Buy Outright <span class="savings-badge">Best Value</span>
+        </div>
+      </div>
+
+      <div class="pricing-cards">
+        <!-- Individual -->
+        <div class="pricing-card reveal">
+          <div class="pricing-tier">Individual</div>
+          <div class="pricing-price">
+            <span class="price-currency">$</span>
+            <span class="price-amount" id="indPrice">19</span>
+            <span class="price-period" id="indPeriod">/mo</span>
+          </div>
+          <p class="pricing-desc">Everything you need to build and format models at professional speed. Perfect for solo analysts and associates.</p>
+          <ul class="pricing-features">
+            <li><span class="check">&#10003;</span>Full Excel ribbon suite</li>
+            <li><span class="check">&#10003;</span>PowerPoint integration</li>
+            <li><span class="check">&#10003;</span>Keyboard shortcut engine</li>
+            <li><span class="check">&#10003;</span>Formula audit &amp; trace tools</li>
+            <li><span class="check">&#10003;</span>Email support</li>
+            <li><span class="check">&#10003;</span>Free updates</li>
+          </ul>
+          <button class="btn-pricing-ghost">Start 14-Day Free Trial</button>
+        </div>
+
+        <!-- Team (Featured) -->
+        <div class="pricing-card featured reveal reveal-delay-1">
+          <div class="featured-badge">Most Popular</div>
+          <div class="pricing-tier">Team</div>
+          <div class="pricing-price">
+            <span class="price-currency">$</span>
+            <span class="price-amount" id="teamPrice">14</span>
+            <span class="price-period" id="teamPeriod">/seat/mo</span>
+          </div>
+          <p class="pricing-desc">For deal teams that move together. Shared style libraries, centralized license management, and priority support.</p>
+          <ul class="pricing-features">
+            <li><span class="check">&#10003;</span>Everything in Individual</li>
+            <li><span class="check">&#10003;</span>Up to 25 seats</li>
+            <li><span class="check">&#10003;</span>Shared color &amp; style libraries</li>
+            <li><span class="check">&#10003;</span>Admin dashboard</li>
+            <li><span class="check">&#10003;</span>Priority support (4hr SLA)</li>
+            <li><span class="check">&#10003;</span>MSI installer for IT deployment</li>
+          </ul>
+          <button class="btn-pricing-primary">Get Team Access</button>
+        </div>
+
+        <!-- Enterprise -->
+        <div class="pricing-card reveal reveal-delay-2">
+          <div class="pricing-tier">Enterprise</div>
+          <div class="pricing-price">
+            <span class="price-amount" style="font-size:44px; letter-spacing:-0.02em">Custom</span>
+          </div>
+          <p class="pricing-desc">For firms that need volume licensing, SSO, custom branding, and a dedicated success manager.</p>
+          <ul class="pricing-features">
+            <li><span class="check">&#10003;</span>Everything in Team</li>
+            <li><span class="check">&#10003;</span>Unlimited seats</li>
+            <li><span class="check">&#10003;</span>SSO / SAML integration</li>
+            <li><span class="check">&#10003;</span>Custom firm branding</li>
+            <li><span class="check">&#10003;</span>Dedicated success manager</li>
+            <li><span class="check">&#10003;</span>SLA-backed uptime guarantee</li>
+          </ul>
+          <button class="btn-pricing-ghost">Contact Sales &#8594;</button>
+        </div>
+      </div>
+
+      <p class="reveal" style="text-align:center; font-size:14px; color:var(--graphite); margin-top:36px; font-weight:300;">
+        All plans include a 14-day free trial. No credit card required. Perpetual license includes 1 year of free updates.
+      </p>
+    </div>
+  </section>
+
+  <!-- ── FAQ ───────────────────────────────────────────── -->
+  <section class="faq-section" id="faq">
+    <div class="container">
+      <p class="eyebrow reveal" style="text-align:center">Common questions</p>
+      <h2 class="reveal reveal-delay-1">Everything you<br/>need to know.</h2>
+
+      <div class="faq-list">
+        <div class="faq-item reveal">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            How is Hackabacus different from Macabacus?
+            <span class="faq-chevron">&#9662;</span>
+          </button>
+          <div class="faq-answer">Hackabacus is a ground-up rebuild focused on speed, modern deployment (no legacy COM add-in overhead), and a UI designed specifically for PE and infrastructure deal teams. It's lighter, faster to install, and ships with a significantly better keyboard shortcut engine. Enterprise pricing is also substantially more competitive for smaller teams.</div>
+        </div>
+        <div class="faq-item reveal reveal-delay-1">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            Does it work on Mac and Windows?
+            <span class="faq-chevron">&#9662;</span>
+          </button>
+          <div class="faq-answer">Hackabacus currently supports Windows (Excel 2016 and above, Microsoft 365). A macOS build is in active development and expected in Q3 2025. Enterprise customers can join the Mac beta program &#8212; contact us for details.</div>
+        </div>
+        <div class="faq-item reveal reveal-delay-2">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            Can IT deploy this via MSI to a managed environment?
+            <span class="faq-chevron">&#9662;</span>
+          </button>
+          <div class="faq-answer">Yes. Team and Enterprise plans include an MSI installer package suitable for silent deployment via Group Policy or SCCM. We provide IT documentation and a dedicated setup call for Enterprise customers.</div>
+        </div>
+        <div class="faq-item reveal reveal-delay-3">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            What happens when my trial ends?
+            <span class="faq-chevron">&#9662;</span>
+          </button>
+          <div class="faq-answer">After your 14-day trial, Hackabacus will prompt you to enter payment details to continue. You'll never be charged automatically without confirmation. All your settings and customizations are preserved when you subscribe.</div>
+        </div>
+        <div class="faq-item reveal reveal-delay-4">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            Is my financial data sent to any server?
+            <span class="faq-chevron">&#9662;</span>
+          </button>
+          <div class="faq-answer">No. Hackabacus processes everything locally within Excel. No workbook data is ever transmitted to our servers. License validation requires a periodic internet connection, but your model data stays entirely on your machine.</div>
+        </div>
+        <div class="faq-item reveal reveal-delay-5">
+          <button class="faq-question" onclick="toggleFaq(this)">
+            Do you offer educational or non-profit pricing?
+            <span class="faq-chevron">&#9662;</span>
+          </button>
+          <div class="faq-answer">Yes &#8212; we offer 50% discounted pricing for students, MBA programs, and registered non-profit organizations. Contact us with a valid .edu email or proof of non-profit status to activate your discount.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CTA Banner ─────────────────────────────────────── -->
+  <section class="cta-section">
+    <div class="cta-float-1"></div>
+    <div class="cta-float-2"></div>
+    <div class="container">
+      <p class="eyebrow reveal" style="color:var(--copper-light); opacity:0.6">Start today</p>
+      <h2 class="reveal reveal-delay-1">
+        Stop formatting.<br/>
+        <em>Start closing.</em>
+      </h2>
+      <p class="reveal reveal-delay-2">14-day free trial. No credit card. Works in your existing Excel.</p>
+      <div class="cta-actions reveal reveal-delay-3">
+        <a href="#pricing" class="btn-white">Download Free Trial</a>
+        <a href="mailto:sales@hackabacus.com" class="btn-ghost-white">Talk to Sales</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Footer ─────────────────────────────────────────── -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="#" class="nav-logo">Hack<span>abacus</span></a>
+        <p class="footer-tagline">The finance professional's Excel and PowerPoint suite. Built for PE, banking, and infrastructure deal teams.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Product</h4>
+        <ul>
+          <li><a href="#features">Features</a></li>
+          <li><a href="#demo">Demo</a></li>
+          <li><a href="#pricing">Pricing</a></li>
+          <li><a href="#">Changelog</a></li>
+          <li><a href="#">Roadmap</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Blog</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="mailto:hello@hackabacus.com">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Support</h4>
+        <ul>
+          <li><a href="#">Documentation</a></li>
+          <li><a href="#">Installation Guide</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="mailto:support@hackabacus.com">Help Center</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy">&copy; 2025 Hackabacus, LLC. All rights reserved.</p>
+      <div class="footer-legal">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+        <a href="#">Cookie Policy</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ── Scripts ─────────────────────────────────────────── -->
+  <script>
+    // ── Nav scroll effect ──────────────────────────────────
+    const nav = document.getElementById('mainNav');
+    const scrollProgress = document.getElementById('scrollProgress');
+
+    // ── Scroll-driven effects ─────────────────────────────
+    const heroMockup = document.getElementById('heroMockup');
+
+    function onScroll() {
+      const scrollY = window.scrollY;
+      const winH = window.innerHeight;
+
+      // Nav glass effect
+      if (scrollY > 20) {
+        nav.classList.add('scrolled');
+      } else {
+        nav.classList.remove('scrolled');
+      }
+
+      // Progress bar
+      const docHeight = document.documentElement.scrollHeight - winH;
+      scrollProgress.style.width = (scrollY / docHeight) * 100 + '%';
+
+      // Hero mockup — 3D tilt based on scroll
+      if (heroMockup && scrollY < winH * 1.2) {
+        const progress = scrollY / winH;
+        const rotateX = 4 - progress * 8;
+        const translateY = progress * 60;
+        const scale = 1 - progress * 0.05;
+        heroMockup.style.transform =
+          `perspective(1200px) rotateX(${rotateX}deg) translateY(${translateY}px) scale(${Math.max(scale, 0.9)})`;
+      }
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll(); // init
+
+    // ── Scroll reveal (IntersectionObserver) ─────────────
+    const revealEls = document.querySelectorAll('.reveal, .scale-reveal, .reveal-text');
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.08,
+      rootMargin: '0px 0px -60px 0px'
+    });
+
+    revealEls.forEach(el => observer.observe(el));
+
+    // ── Counter animation ────────────────────────────────
+    const counters = document.querySelectorAll('.counter');
+
+    const counterObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const el = entry.target;
+          const target = parseInt(el.getAttribute('data-target'));
+          const duration = 2000;
+          const startTime = performance.now();
+
+          const update = (currentTime) => {
+            const elapsed = currentTime - startTime;
+            const progress = Math.min(elapsed / duration, 1);
+            // Smooth ease-out-quart
+            const eased = 1 - Math.pow(1 - progress, 4);
+            el.textContent = Math.floor(eased * target);
+            if (progress < 1) requestAnimationFrame(update);
+            else el.textContent = target;
+          };
+
+          requestAnimationFrame(update);
+          counterObserver.unobserve(el);
+        }
+      });
+    }, { threshold: 0.4 });
+
+    counters.forEach(c => counterObserver.observe(c));
+
+    // ── FAQ accordion ────────────────────────────────────
+    function toggleFaq(btn) {
+      const item = btn.closest('.faq-item');
+      const isOpen = item.classList.contains('open');
+
+      // Close all
+      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+
+      // Open clicked if it wasn't open
+      if (!isOpen) item.classList.add('open');
+    }
+
+    // ── Pricing toggle ───────────────────────────────────
+    const prices = {
+      monthly:   { ind: 19,  team: 14,  indPeriod: '/mo',        teamPeriod: '/seat/mo' },
+      annual:    { ind: 149, team: 99,  indPeriod: '/yr',        teamPeriod: '/seat/yr' },
+      perpetual: { ind: 349, team: 249, indPeriod: ' one-time',  teamPeriod: '/seat one-time' }
+    };
+
+    function setPricing(mode) {
+      ['toggleMonthly','toggleAnnual','togglePerp'].forEach(id => {
+        document.getElementById(id).classList.remove('active');
+      });
+      const map = { monthly: 'toggleMonthly', annual: 'toggleAnnual', perpetual: 'togglePerp' };
+      document.getElementById(map[mode]).classList.add('active');
+
+      const indPrice  = document.getElementById('indPrice');
+      const teamPrice = document.getElementById('teamPrice');
+      const indPeriod  = document.getElementById('indPeriod');
+      const teamPeriod = document.getElementById('teamPeriod');
+
+      animatePrice(indPrice,  prices[mode].ind);
+      animatePrice(teamPrice, prices[mode].team);
+      indPeriod.textContent  = prices[mode].indPeriod;
+      teamPeriod.textContent = prices[mode].teamPeriod;
+    }
+
+    function animatePrice(el, target) {
+      const start = parseInt(el.textContent);
+      const duration = 500;
+      const startTime = performance.now();
+
+      const update = (currentTime) => {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        el.textContent = Math.round(start + (target - start) * eased);
+        if (progress < 1) requestAnimationFrame(update);
+        else el.textContent = target;
+      };
+
+      requestAnimationFrame(update);
+    }
+
+    // ── Smooth scroll for nav links ──────────────────────
+    document.querySelectorAll('a[href^="#"]').forEach(link => {
+      link.addEventListener('click', e => {
+        const target = document.querySelector(link.getAttribute('href'));
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+
+    // ── 3D tilt on feature cards (mouse follow) ─────────
+    document.querySelectorAll('.feature-card').forEach(card => {
+      card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = (e.clientX - rect.left) / rect.width - 0.5;
+        const y = (e.clientY - rect.top) / rect.height - 0.5;
+        card.style.transform = `perspective(600px) rotateY(${x * 4}deg) rotateX(${y * -4}deg)`;
+      });
+
+      card.addEventListener('mouseleave', () => {
+        card.style.transform = 'perspective(600px) rotateY(0) rotateX(0)';
+        card.style.transition = 'transform 0.5s var(--ease), background 0.5s var(--ease)';
+      });
+
+      card.addEventListener('mouseenter', () => {
+        card.style.transition = 'background 0.5s var(--ease)';
+      });
+    });
+
+    // ── Magnetic effect on CTA buttons ───────────────────
+    document.querySelectorAll('.btn-primary, .btn-white').forEach(btn => {
+      btn.addEventListener('mousemove', (e) => {
+        const rect = btn.getBoundingClientRect();
+        const x = e.clientX - rect.left - rect.width / 2;
+        const y = e.clientY - rect.top - rect.height / 2;
+        btn.style.transform = `translate(${x * 0.15}px, ${y * 0.15}px) translateY(-2px)`;
+      });
+
+      btn.addEventListener('mouseleave', () => {
+        btn.style.transform = '';
+      });
+    });
+
+    // ── Animate chart bars on scroll ─────────────────────
+    const chartBars = document.querySelectorAll('.chart-bar');
+    const chartObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const bars = entry.target.querySelectorAll('.chart-bar');
+          bars.forEach((bar, i) => {
+            const h = bar.style.height;
+            bar.style.height = '0%';
+            setTimeout(() => {
+              bar.style.height = h;
+            }, 200 + i * 100);
+          });
+          chartObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.3 });
+
+    document.querySelectorAll('.slide-chart').forEach(chart => {
+      chartObserver.observe(chart);
+    });
+  </script>
+</body>
+</html>
