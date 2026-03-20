@@ -434,10 +434,14 @@
 
     /* Social proof bar within hero */
     .hero-social-proof {
-      width: 100%;
-      max-width: 1200px;
+      width: 100vw;
+      margin-left: calc(-50vw + 50%);
       margin-top: 72px;
+      padding: 48px 32px;
       text-align: center;
+      background: var(--warm-white);
+      border-top: 1px solid var(--sand);
+      border-bottom: 1px solid var(--sand);
       opacity: 0;
       animation: floatUp 1s var(--ease) 1s forwards;
     }
@@ -445,11 +449,31 @@
     .hero-social-proof .proof-label {
       font-size: 12px;
       font-weight: 500;
-      letter-spacing: 0.1em;
+      letter-spacing: 0.14em;
       text-transform: uppercase;
       color: var(--stone);
-      margin-bottom: 24px;
+      margin-bottom: 32px;
     }
+
+    .hero-social-proof .proof-logos {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 72px;
+      flex-wrap: wrap;
+    }
+
+    .hero-social-proof .proof-logo {
+      font-family: var(--font-display);
+      font-size: 18px;
+      font-weight: 400;
+      color: var(--stone);
+      letter-spacing: -0.01em;
+      white-space: nowrap;
+      transition: color 0.4s;
+    }
+
+    .hero-social-proof .proof-logo:hover { color: var(--charcoal); }
 
     /* Buttons */
     .btn-primary {
@@ -569,12 +593,12 @@
 
     .problem-section h2 {
       font-family: var(--font-display);
-      font-size: clamp(40px, 5.5vw, 72px);
+      font-size: clamp(36px, 4.5vw, 64px);
       font-weight: 400;
       letter-spacing: -0.03em;
-      line-height: 1.08;
+      line-height: 1.12;
       color: var(--ink);
-      max-width: 720px;
+      max-width: 800px;
       margin: 20px auto 0;
     }
 
@@ -761,13 +785,13 @@
 
     .demo-header h2 {
       font-family: var(--font-display);
-      font-size: clamp(40px, 5.5vw, 68px);
+      font-size: clamp(36px, 4.5vw, 60px);
       font-weight: 400;
       letter-spacing: -0.03em;
       color: var(--ink);
-      max-width: 640px;
+      max-width: 800px;
       margin: 20px auto 0;
-      line-height: 1.08;
+      line-height: 1.12;
     }
 
     .demo-panels {
@@ -1980,29 +2004,25 @@
     <!-- Social proof -->
     <div class="hero-social-proof">
       <p class="proof-label">Built by a team who has worked with</p>
+      <div class="proof-logos">
+        <span class="proof-logo">Blackstone</span>
+        <span class="proof-logo">KKR</span>
+        <span class="proof-logo">Goldman Sachs</span>
+        <span class="proof-logo">Apollo</span>
+        <span class="proof-logo">Carlyle</span>
+        <span class="proof-logo">Morgan Stanley</span>
+      </div>
     </div>
   </section>
 
-  <!-- ── Logos Bar ─────────────────────────────────────── -->
-  <section class="logos-section">
-    <p class="logos-label"></p>
-    <div class="logos-track">
-      <div class="logo-item reveal">Blackstone</div>
-      <div class="logo-item reveal reveal-delay-1">KKR</div>
-      <div class="logo-item reveal reveal-delay-2">Goldman Sachs</div>
-      <div class="logo-item reveal reveal-delay-3">Apollo</div>
-      <div class="logo-item reveal reveal-delay-4">Carlyle</div>
-      <div class="logo-item reveal reveal-delay-5">Morgan Stanley</div>
-    </div>
-  </section>
+  <!-- Logos bar moved into hero social proof section above -->
 
   <!-- ── Problem ───────────────────────────────────────── -->
   <section class="problem-section" id="problem">
     <div class="container">
       <p class="eyebrow reveal">The real cost of slow tools</p>
       <h2 class="reveal reveal-delay-1">
-        Every hour lost to formatting<br/>
-        is an hour <em>not analyzing.</em>
+        Every hour lost to formatting is an hour <em>not analyzing.</em>
       </h2>
 
       <div class="stats-grid">
@@ -2072,7 +2092,7 @@
       <div class="demo-header">
         <p class="eyebrow reveal">See Hackabacus in action</p>
         <h2 class="reveal reveal-delay-1">
-          Two tools.<br/>One seamless workflow.
+          Two tools. One seamless workflow.
         </h2>
       </div>
 
