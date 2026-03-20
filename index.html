@@ -475,25 +475,37 @@
       margin-bottom: 32px;
     }
 
-    .hero-social-proof .proof-logos {
+    .hero-social-proof .proof-carousel {
+      position: relative;
+      overflow: hidden;
+      width: 100%;
+      mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+      -webkit-mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+    }
+
+    .hero-social-proof .proof-track {
       display: flex;
       align-items: center;
-      justify-content: center;
-      gap: 72px;
-      flex-wrap: wrap;
+      gap: 64px;
+      width: max-content;
+      animation: logoScroll 40s linear infinite;
     }
 
     .hero-social-proof .proof-logo {
-      font-family: var(--font-display);
-      font-size: 18px;
-      font-weight: 400;
-      color: var(--stone);
-      letter-spacing: -0.01em;
-      white-space: nowrap;
-      transition: color 0.4s;
+      flex-shrink: 0;
+      height: 28px;
+      width: auto;
+      filter: brightness(0) saturate(100%) invert(48%) sepia(8%) saturate(1200%) hue-rotate(357deg) brightness(92%) contrast(88%);
+      opacity: 0.7;
+      transition: opacity 0.4s;
     }
 
-    .hero-social-proof .proof-logo:hover { color: var(--charcoal); }
+    .hero-social-proof .proof-logo:hover { opacity: 1; }
+
+    @keyframes logoScroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
 
     /* Buttons */
     .btn-primary {
@@ -555,44 +567,7 @@
     .btn-secondary .arrow { transition: transform 0.3s var(--ease); }
     .btn-secondary:hover .arrow { transform: translateX(4px); }
 
-    /* ── Logos Bar ────────────────────────────────────────── */
-    .logos-section {
-      padding: 56px 32px;
-      border-top: 1px solid var(--sand);
-      border-bottom: 1px solid var(--sand);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .logos-label {
-      text-align: center;
-      font-size: 12px;
-      font-weight: 500;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--stone);
-      margin-bottom: 40px;
-    }
-
-    .logos-track {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 72px;
-      flex-wrap: wrap;
-    }
-
-    .logo-item {
-      font-family: var(--font-display);
-      font-size: 18px;
-      font-weight: 400;
-      color: var(--stone);
-      letter-spacing: -0.01em;
-      white-space: nowrap;
-      transition: color 0.4s;
-    }
-
-    .logo-item:hover { color: var(--charcoal); }
+    /* ── Logos Bar (replaced by carousel in hero social proof) ── */
 
     /* ── Problem / Stats Section ─────────────────────────── */
     .problem-section {
@@ -2024,13 +1999,40 @@
     <!-- Social proof -->
     <div class="hero-social-proof">
       <p class="proof-label">Built by a team who has worked with</p>
-      <div class="proof-logos">
-        <span class="proof-logo">Blackstone</span>
-        <span class="proof-logo">KKR</span>
-        <span class="proof-logo">Goldman Sachs</span>
-        <span class="proof-logo">Apollo</span>
-        <span class="proof-logo">Carlyle</span>
-        <span class="proof-logo">Morgan Stanley</span>
+      <div class="proof-carousel">
+        <div class="proof-track">
+          <img src="logos/Blackstone.svg" alt="Blackstone" class="proof-logo">
+          <img src="logos/KKR.svg" alt="KKR" class="proof-logo">
+          <img src="logos/Apollo.svg" alt="Apollo" class="proof-logo">
+          <img src="logos/Carlyle.svg" alt="Carlyle" class="proof-logo">
+          <img src="logos/MorganStanley.svg" alt="Morgan Stanley" class="proof-logo">
+          <img src="logos/BlackRock.svg" alt="BlackRock" class="proof-logo">
+          <img src="logos/Ares.svg" alt="Ares" class="proof-logo">
+          <img src="logos/Brookfield.svg" alt="Brookfield" class="proof-logo">
+          <img src="logos/CBRE.svg" alt="CBRE" class="proof-logo">
+          <img src="logos/TPG.svg" alt="TPG" class="proof-logo">
+          <img src="logos/BlueOwl.svg" alt="Blue Owl" class="proof-logo">
+          <img src="logos/Macquarie.svg" alt="Macquarie" class="proof-logo">
+          <img src="logos/Oaktree.svg" alt="Oaktree" class="proof-logo">
+          <img src="logos/SixthStreet.svg" alt="Sixth Street" class="proof-logo">
+          <img src="logos/ISquared.svg" alt="I Squared" class="proof-logo">
+          <!-- Duplicate set for seamless loop -->
+          <img src="logos/Blackstone.svg" alt="Blackstone" class="proof-logo">
+          <img src="logos/KKR.svg" alt="KKR" class="proof-logo">
+          <img src="logos/Apollo.svg" alt="Apollo" class="proof-logo">
+          <img src="logos/Carlyle.svg" alt="Carlyle" class="proof-logo">
+          <img src="logos/MorganStanley.svg" alt="Morgan Stanley" class="proof-logo">
+          <img src="logos/BlackRock.svg" alt="BlackRock" class="proof-logo">
+          <img src="logos/Ares.svg" alt="Ares" class="proof-logo">
+          <img src="logos/Brookfield.svg" alt="Brookfield" class="proof-logo">
+          <img src="logos/CBRE.svg" alt="CBRE" class="proof-logo">
+          <img src="logos/TPG.svg" alt="TPG" class="proof-logo">
+          <img src="logos/BlueOwl.svg" alt="Blue Owl" class="proof-logo">
+          <img src="logos/Macquarie.svg" alt="Macquarie" class="proof-logo">
+          <img src="logos/Oaktree.svg" alt="Oaktree" class="proof-logo">
+          <img src="logos/SixthStreet.svg" alt="Sixth Street" class="proof-logo">
+          <img src="logos/ISquared.svg" alt="I Squared" class="proof-logo">
+        </div>
       </div>
     </div>
   </section>
