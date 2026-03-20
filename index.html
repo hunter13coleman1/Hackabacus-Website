@@ -62,6 +62,22 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet" />
 
   <style>
+    /* ── Font Faces ──────────────────────────────────────── */
+    @font-face {
+      font-family: 'Suisse Intl Trial';
+      src: url('fonts/SuisseIntlTrial-Medium.otf') format('opentype');
+      font-weight: 500;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'Suisse Intl Trial';
+      src: url('fonts/SuisseIntlTrial-Semibold.otf') format('opentype');
+      font-weight: 600;
+      font-style: normal;
+      font-display: swap;
+    }
+
     /* ── Reset & Tokens ───────────────────────────────────── */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -79,7 +95,7 @@
       --emerald:    #2D7A4F;
       --navy:       #1A3864;
 
-      --font-display: 'Inter', -apple-system, sans-serif;
+      --font-display: 'Suisse Intl Trial', 'Inter', -apple-system, sans-serif;
       --font-body:    'IBM Plex Sans', -apple-system, sans-serif;
 
       --section-pad: 160px;
