@@ -1192,7 +1192,7 @@
       max-width: 880px;
       margin: 64px auto 0;
       border-radius: var(--radius);
-      overflow: hidden;
+      overflow: visible;
       border: 1px solid var(--sand);
     }
 
@@ -1201,7 +1201,11 @@
       border-collapse: collapse;
       text-align: left;
       font-size: 15px;
+      table-layout: fixed;
     }
+
+    .compare-table col.col-feature  { width: 28%; }
+    .compare-table col.col-data     { width: 24%; }
 
     .compare-table thead th {
       padding: 20px 24px;
@@ -1217,6 +1221,11 @@
     .compare-table thead th:first-child {
       text-align: left;
       color: var(--ink);
+      border-radius: var(--radius) 0 0 0;
+    }
+
+    .compare-table thead th:last-child {
+      border-radius: 0 var(--radius) 0 0;
     }
 
     .compare-table thead th.highlight-col {
@@ -1263,6 +1272,14 @@
 
     .compare-table tbody tr:last-child td {
       border-bottom: none;
+    }
+
+    .compare-table tbody tr:last-child td:first-child {
+      border-radius: 0 0 0 var(--radius);
+    }
+
+    .compare-table tbody tr:last-child td:last-child {
+      border-radius: 0 0 var(--radius) 0;
     }
 
     .compare-table .cell-check {
@@ -2714,6 +2731,12 @@
 
       <div class="compare-table-wrap scale-reveal">
         <table class="compare-table">
+          <colgroup>
+            <col class="col-feature">
+            <col class="col-data">
+            <col class="col-data">
+            <col class="col-data">
+          </colgroup>
           <thead>
             <tr>
               <th></th>
