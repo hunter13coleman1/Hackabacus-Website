@@ -2068,7 +2068,8 @@
       .testimonial:nth-child(2):hover { transform: translateY(-4px); }
       .testimonial:nth-child(3) { max-width: none; }
 
-      /* Pricing */
+      /* Pricing — pad top so "Most Popular" badge isn't clipped */
+      .pricing-cards { padding-top: 20px; }
       .pricing-card.featured { transform: none; }
 
       /* Let carousel overflow out of container */
@@ -2102,16 +2103,16 @@
         width: 28px;
         border-radius: 4px;
       }
-      /* Dots inside dark sections — use outline for visibility */
+      /* Dots inside dark sections — filled style matching other sections */
       .features-section .carousel-dots .dot,
       .demo-section .carousel-dots .dot {
-        background: transparent;
-        border: 2px solid rgba(255,255,255,0.7);
+        background: rgba(255,255,255,0.3);
+        border: none;
       }
       .features-section .carousel-dots .dot.active,
       .demo-section .carousel-dots .dot.active {
         background: #C9A96E;
-        border-color: #C9A96E;
+        border: none;
       }
     }
 
@@ -2373,7 +2374,7 @@
         <p>100+ customizable shortcuts for the most common analyst actions. Navigate, format, and build faster than any menu-driven workflow.</p>
       </div>
     </div>
-    <div class="carousel-dots" data-for="features-grid" style="position:relative;z-index:10"><span class="dot active" style="background:#C9A96E;border:2px solid #C9A96E"></span><span class="dot" style="background:transparent;border:2px solid rgba(255,255,255,0.7)"></span><span class="dot" style="background:transparent;border:2px solid rgba(255,255,255,0.7)"></span><span class="dot" style="background:transparent;border:2px solid rgba(255,255,255,0.7)"></span><span class="dot" style="background:transparent;border:2px solid rgba(255,255,255,0.7)"></span><span class="dot" style="background:transparent;border:2px solid rgba(255,255,255,0.7)"></span></div>
+    <div class="carousel-dots" data-for="features-grid" style="position:relative;z-index:10"><span class="dot active" style="background:#C9A96E;border:none"></span><span class="dot" style="background:rgba(255,255,255,0.3);border:none"></span><span class="dot" style="background:rgba(255,255,255,0.3);border:none"></span><span class="dot" style="background:rgba(255,255,255,0.3);border:none"></span><span class="dot" style="background:rgba(255,255,255,0.3);border:none"></span><span class="dot" style="background:rgba(255,255,255,0.3);border:none"></span></div>
   </section>
 
   <!-- ── Demo ──────────────────────────────────────────── -->
@@ -2490,7 +2491,7 @@
           </div>
         </div>
       </div>
-      <div class="carousel-dots" data-for="demo-panels" style="position:relative;z-index:10"><span class="dot active" style="background:#C9A96E;border:2px solid #C9A96E"></span><span class="dot" style="background:transparent;border:2px solid rgba(255,255,255,0.7)"></span></div>
+      <div class="carousel-dots" data-for="demo-panels" style="position:relative;z-index:10"><span class="dot active" style="background:#C9A96E;border:none"></span><span class="dot" style="background:rgba(255,255,255,0.3);border:none"></span></div>
 
       <!-- Video placeholder -->
       <div class="video-placeholder scale-reveal">
@@ -3047,8 +3048,8 @@
           const isActive = i === activeIndex;
           d.classList.toggle('active', isActive);
           if (isDark) {
-            d.style.background = isActive ? '#C9A96E' : 'transparent';
-            d.style.border = isActive ? '2px solid #C9A96E' : '2px solid rgba(255,255,255,0.7)';
+            d.style.background = isActive ? '#C9A96E' : 'rgba(255,255,255,0.3)';
+            d.style.border = 'none';
           }
         });
       }, { passive: true });
