@@ -3017,6 +3017,8 @@
       const enterpriseCard = allCards[2]; // Enterprise
       const dotsContainer = document.querySelector('.carousel-dots[data-for="pricing-cards"]');
 
+      const wasPerpetual = pricingCards.classList.contains('perpetual-mode');
+
       if (mode === 'perpetual') {
         teamCard.classList.add('card-hidden');
         enterpriseCard.classList.add('card-hidden');
@@ -3027,12 +3029,13 @@
         enterpriseCard.classList.remove('card-hidden');
         pricingCards.classList.remove('perpetual-mode');
         if (dotsContainer) dotsContainer.style.display = '';
-      }
-
-      // Always reset mobile carousel to Individual (first card) on toggle
-      pricingCards.scrollTo({ left: 0, behavior: 'smooth' });
-      if (dotsContainer) {
-        dotsContainer.querySelectorAll('.dot').forEach((d, i) => d.classList.toggle('active', i === 0));
+        // Only reset carousel to Individual when coming back from Buy Outright
+        if (wasPerpetual) {
+          pricingCards.scrollTo({ left: 0, behavior: 'smooth' });
+          if (dotsContainer) {
+            dotsContainer.querySelectorAll('.dot').forEach((d, i) => d.classList.toggle('active', i === 0));
+          }
+        }
       }
     }
 
