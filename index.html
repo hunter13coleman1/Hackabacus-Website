@@ -2103,15 +2103,15 @@
         width: 28px;
         border-radius: 4px;
       }
-      /* Dots inside dark sections — filled style matching other sections */
+      /* Dots inside dark sections — same colors as light sections */
       .features-section .carousel-dots .dot,
       .demo-section .carousel-dots .dot {
-        background: rgba(255,255,255,0.3);
+        background: var(--sand);
         border: none;
       }
       .features-section .carousel-dots .dot.active,
       .demo-section .carousel-dots .dot.active {
-        background: #C9A96E;
+        background: var(--copper);
         border: none;
       }
     }
@@ -2374,7 +2374,7 @@
         <p>100+ customizable shortcuts for the most common analyst actions. Navigate, format, and build faster than any menu-driven workflow.</p>
       </div>
     </div>
-    <div class="carousel-dots" data-for="features-grid" style="position:relative;z-index:10"><span class="dot active" style="background:#C9A96E;border:none"></span><span class="dot" style="background:rgba(255,255,255,0.3);border:none"></span><span class="dot" style="background:rgba(255,255,255,0.3);border:none"></span><span class="dot" style="background:rgba(255,255,255,0.3);border:none"></span><span class="dot" style="background:rgba(255,255,255,0.3);border:none"></span><span class="dot" style="background:rgba(255,255,255,0.3);border:none"></span></div>
+    <div class="carousel-dots" data-for="features-grid" style="position:relative;z-index:10"><span class="dot active"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
   </section>
 
   <!-- ── Demo ──────────────────────────────────────────── -->
@@ -2491,7 +2491,7 @@
           </div>
         </div>
       </div>
-      <div class="carousel-dots" data-for="demo-panels" style="position:relative;z-index:10"><span class="dot active" style="background:#C9A96E;border:none"></span><span class="dot" style="background:rgba(255,255,255,0.3);border:none"></span></div>
+      <div class="carousel-dots" data-for="demo-panels" style="position:relative;z-index:10"><span class="dot active"></span><span class="dot"></span></div>
 
       <!-- Video placeholder -->
       <div class="video-placeholder scale-reveal">
@@ -3037,21 +3037,11 @@
       const dots = dotsContainer.querySelectorAll('.dot');
       const cards = scrollEl.children;
 
-      // Check if dots are inside a dark section
-      const isDark = dotsContainer.closest('.features-section, .demo-section') !== null;
-
       scrollEl.addEventListener('scroll', () => {
         const scrollLeft = scrollEl.scrollLeft;
         const cardWidth = cards[0].offsetWidth + 16; // card + gap
         const activeIndex = Math.round(scrollLeft / cardWidth);
-        dots.forEach((d, i) => {
-          const isActive = i === activeIndex;
-          d.classList.toggle('active', isActive);
-          if (isDark) {
-            d.style.background = isActive ? '#C9A96E' : 'rgba(255,255,255,0.3)';
-            d.style.border = 'none';
-          }
-        });
+        dots.forEach((d, i) => d.classList.toggle('active', i === activeIndex));
       }, { passive: true });
 
       // Allow tapping a dot to scroll to that card
