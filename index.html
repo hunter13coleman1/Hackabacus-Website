@@ -1902,6 +1902,9 @@
       transition: width 0.08s linear;
     }
 
+    /* ── Carousel dots: hidden on desktop ───────────────── */
+    .carousel-dots { display: none; }
+
     /* ── Responsive ───────────────────────────────────────── */
     @media (max-width: 900px) {
       :root { --section-pad: 72px; }
@@ -2014,12 +2017,14 @@
       .pricing-cards {
         display: flex !important;
         overflow-x: auto;
+        overflow-y: hidden;
         -webkit-overflow-scrolling: touch;
         scroll-snap-type: x mandatory;
         scrollbar-width: none;
         -ms-overflow-style: none;
         gap: 16px;
         padding-bottom: 8px;
+        overscroll-behavior-x: contain;
       }
       .stats-grid::-webkit-scrollbar,
       .features-grid::-webkit-scrollbar,
@@ -2027,14 +2032,14 @@
       .testimonials-grid::-webkit-scrollbar,
       .pricing-cards::-webkit-scrollbar { display: none; }
 
-      /* Each card snaps and has a fixed width */
+      /* Each card snaps — sized to peek the next card */
       .stat-card,
       .feature-card,
       .demo-panel,
       .testimonial,
       .pricing-card {
-        flex: 0 0 80vw;
-        max-width: 340px;
+        flex: 0 0 75vw;
+        max-width: 320px;
         scroll-snap-align: start;
       }
 
@@ -2043,7 +2048,7 @@
       .stat-card::after { display: none; }
       .stat-number { font-size: clamp(48px, 10vw, 64px); }
 
-      /* Features: need full-bleed scroll inside dark section */
+      /* Features: full-bleed scroll inside dark section */
       .features-grid {
         background: transparent;
         border-top: none;
@@ -2052,22 +2057,22 @@
       .feature-card {
         padding: 32px 28px;
         border-radius: var(--radius);
-        flex: 0 0 75vw;
-        max-width: 300px;
+        flex: 0 0 70vw;
+        max-width: 280px;
       }
 
-      /* Demo panels */
+      /* Demo panels — only 2, so wider peek */
       .demo-panels { padding: 0; }
-      .demo-panel { flex: 0 0 85vw; max-width: 400px; }
+      .demo-panel { flex: 0 0 80vw; max-width: 380px; }
 
       /* Testimonials: reset stagger */
       .testimonial:nth-child(2) { transform: none; }
       .testimonial:nth-child(2):hover { transform: translateY(-4px); }
       .testimonial:nth-child(3) { max-width: none; }
-      .testimonial { flex: 0 0 80vw; max-width: 320px; }
+      .testimonial { flex: 0 0 75vw; max-width: 300px; }
 
-      /* Pricing: all same height */
-      .pricing-card { flex: 0 0 85vw; max-width: 360px; }
+      /* Pricing */
+      .pricing-card { flex: 0 0 78vw; max-width: 340px; }
       .pricing-card.featured { transform: none; }
 
       /* Allow parent containers to let carousel overflow */
@@ -2078,6 +2083,29 @@
       .pricing-section .container {
         overflow: visible;
       }
+
+      /* ── Scroll dot indicators ── */
+      .carousel-dots {
+        display: flex;
+        justify-content: center;
+        gap: 8px;
+        margin-top: 20px;
+      }
+      .carousel-dots .dot {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: var(--sand);
+        transition: all 0.3s ease;
+      }
+      .carousel-dots .dot.active {
+        background: var(--copper);
+        width: 20px;
+        border-radius: 3px;
+      }
+      /* Dots inside dark sections */
+      .features-section .carousel-dots .dot { background: rgba(255,255,255,0.15); }
+      .features-section .carousel-dots .dot.active { background: var(--copper); }
     }
 
     @media (max-width: 600px) {
@@ -2086,17 +2114,17 @@
       .footer-inner { grid-template-columns: 1fr; gap: 28px; }
       .hero-actions { flex-direction: column; align-items: center; }
 
-      /* Narrower cards on small screens */
+      /* Card sizes on small screens — peek next card */
       .stat-card { flex: 0 0 72vw; padding: 28px 24px; }
       .stat-number { font-size: 48px; }
 
-      .feature-card { flex: 0 0 72vw; padding: 28px 24px; }
+      .feature-card { flex: 0 0 68vw; padding: 28px 24px; }
 
-      .demo-panel { flex: 0 0 85vw; }
+      .demo-panel { flex: 0 0 80vw; }
 
-      .testimonial { flex: 0 0 80vw; padding: 28px 24px; }
+      .testimonial { flex: 0 0 72vw; padding: 28px 24px; }
 
-      .pricing-card { flex: 0 0 85vw; padding: 28px 24px; }
+      .pricing-card { flex: 0 0 76vw; padding: 28px 24px; }
       .price-amount { font-size: 48px; }
       .pricing-features { gap: 10px; }
 
@@ -2282,6 +2310,7 @@
           <p class="stat-label">hours saved per week per analyst across formatting, audit, and slide production</p>
         </div>
       </div>
+      <div class="carousel-dots" data-for="stats-grid"><span class="dot active"></span><span class="dot"></span><span class="dot"></span></div>
     </div>
   </section>
 
@@ -2339,6 +2368,7 @@
         <p>100+ customizable shortcuts for the most common analyst actions. Navigate, format, and build faster than any menu-driven workflow.</p>
       </div>
     </div>
+    <div class="carousel-dots" data-for="features-grid" style="padding:0 32px"><span class="dot active"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
   </section>
 
   <!-- ── Demo ──────────────────────────────────────────── -->
@@ -2455,6 +2485,7 @@
           </div>
         </div>
       </div>
+      <div class="carousel-dots" data-for="demo-panels"><span class="dot active"></span><span class="dot"></span></div>
 
       <!-- Video placeholder -->
       <div class="video-placeholder scale-reveal">
@@ -2504,6 +2535,7 @@
           </div>
         </div>
       </div>
+      <div class="carousel-dots" data-for="testimonials-grid"><span class="dot active"></span><span class="dot"></span><span class="dot"></span></div>
     </div>
   </section>
 
@@ -2650,6 +2682,7 @@
           <button class="btn-pricing-ghost">Contact Sales &#8594;</button>
         </div>
       </div>
+      <div class="carousel-dots" data-for="pricing-cards"><span class="dot active"></span><span class="dot"></span><span class="dot"></span></div>
 
       <p class="reveal" style="text-align:center; font-size:14px; color:var(--graphite); margin-top:36px; font-weight:300;">
         All plans include a 14-day free trial. No credit card required. Perpetual license includes 1 year of free updates.
@@ -2979,6 +3012,40 @@
 
     document.querySelectorAll('.slide-chart').forEach(chart => {
       chartObserver.observe(chart);
+    });
+
+    // ── Carousel dot indicators ──────────────────────────
+    const carouselMap = {
+      'stats-grid': '.stats-grid',
+      'features-grid': '.features-grid',
+      'demo-panels': '.demo-panels',
+      'testimonials-grid': '.testimonials-grid',
+      'pricing-cards': '.pricing-cards'
+    };
+
+    document.querySelectorAll('.carousel-dots').forEach(dotsContainer => {
+      const key = dotsContainer.getAttribute('data-for');
+      const scrollEl = document.querySelector(carouselMap[key]);
+      if (!scrollEl) return;
+
+      const dots = dotsContainer.querySelectorAll('.dot');
+      const cards = scrollEl.children;
+
+      scrollEl.addEventListener('scroll', () => {
+        const scrollLeft = scrollEl.scrollLeft;
+        const cardWidth = cards[0].offsetWidth + 16; // card + gap
+        const activeIndex = Math.round(scrollLeft / cardWidth);
+        dots.forEach((d, i) => d.classList.toggle('active', i === activeIndex));
+      }, { passive: true });
+
+      // Allow tapping a dot to scroll to that card
+      dots.forEach((dot, i) => {
+        dot.addEventListener('click', () => {
+          const cardWidth = cards[0].offsetWidth + 16;
+          scrollEl.scrollTo({ left: i * cardWidth, behavior: 'smooth' });
+        });
+        dot.style.cursor = 'pointer';
+      });
     });
   </script>
 </body>
