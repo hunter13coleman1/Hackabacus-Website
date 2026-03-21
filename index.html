@@ -2005,7 +2005,6 @@
 
       /* ── Compact headings on mobile (wrap naturally, no scroll) ── */
       .features-header h2 br,
-      .social-section h2 br,
       .pricing-section h2 br { display: none; }
 
       /* ── Horizontal-scroll card carousels on mobile ────── */
@@ -2032,14 +2031,14 @@
       .testimonials-grid::-webkit-scrollbar,
       .pricing-cards::-webkit-scrollbar { display: none; }
 
-      /* Each card snaps — sized to peek the next card */
+      /* Each card snaps — sized to show full card with next peeking */
       .stat-card,
       .feature-card,
       .demo-panel,
       .testimonial,
       .pricing-card {
-        flex: 0 0 75vw;
-        max-width: 320px;
+        flex: 0 0 82vw;
+        max-width: 380px;
         scroll-snap-align: start;
       }
 
@@ -2057,22 +2056,22 @@
       .feature-card {
         padding: 32px 28px;
         border-radius: var(--radius);
-        flex: 0 0 70vw;
-        max-width: 280px;
+        flex: 0 0 78vw;
+        max-width: 340px;
       }
 
-      /* Demo panels — only 2, so wider peek */
+      /* Demo panels — only 2, so wider */
       .demo-panels { padding: 0; }
-      .demo-panel { flex: 0 0 80vw; max-width: 380px; }
+      .demo-panel { flex: 0 0 88vw; max-width: 420px; }
 
       /* Testimonials: reset stagger */
       .testimonial:nth-child(2) { transform: none; }
       .testimonial:nth-child(2):hover { transform: translateY(-4px); }
       .testimonial:nth-child(3) { max-width: none; }
-      .testimonial { flex: 0 0 75vw; max-width: 300px; }
+      .testimonial { flex: 0 0 82vw; max-width: 360px; }
 
-      /* Pricing */
-      .pricing-card { flex: 0 0 78vw; max-width: 340px; }
+      /* Pricing — wider so content isn't cut off */
+      .pricing-card { flex: 0 0 86vw; max-width: 400px; }
       .pricing-card.featured { transform: none; }
 
       /* Allow parent containers to let carousel overflow */
@@ -2092,16 +2091,16 @@
         margin-top: 20px;
       }
       .carousel-dots .dot {
-        width: 6px;
-        height: 6px;
+        width: 8px;
+        height: 8px;
         border-radius: 50%;
         background: var(--sand);
         transition: all 0.3s ease;
       }
       .carousel-dots .dot.active {
         background: var(--copper);
-        width: 20px;
-        border-radius: 3px;
+        width: 28px;
+        border-radius: 4px;
       }
       /* Dots inside dark sections */
       .features-section .carousel-dots .dot { background: rgba(255,255,255,0.15); }
@@ -2114,17 +2113,17 @@
       .footer-inner { grid-template-columns: 1fr; gap: 28px; }
       .hero-actions { flex-direction: column; align-items: center; }
 
-      /* Card sizes on small screens — peek next card */
-      .stat-card { flex: 0 0 72vw; padding: 28px 24px; }
+      /* Card sizes on small screens */
+      .stat-card { flex: 0 0 80vw; padding: 28px 24px; }
       .stat-number { font-size: 48px; }
 
-      .feature-card { flex: 0 0 68vw; padding: 28px 24px; }
+      .feature-card { flex: 0 0 76vw; padding: 28px 24px; }
 
-      .demo-panel { flex: 0 0 80vw; }
+      .demo-panel { flex: 0 0 88vw; }
 
-      .testimonial { flex: 0 0 72vw; padding: 28px 24px; }
+      .testimonial { flex: 0 0 80vw; padding: 28px 24px; }
 
-      .pricing-card { flex: 0 0 76vw; padding: 28px 24px; }
+      .pricing-card { flex: 0 0 86vw; padding: 28px 24px; }
       .price-amount { font-size: 48px; }
       .pricing-features { gap: 10px; }
 
@@ -2377,7 +2376,7 @@
       <div class="demo-header">
         <p class="eyebrow reveal">See Hackabacus in action</p>
         <h2 class="reveal reveal-delay-1">
-          Two tools. One seamless workflow.
+          Two tools. One seamless&nbsp;workflow.
         </h2>
       </div>
 
