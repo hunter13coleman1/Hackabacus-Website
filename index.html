@@ -1366,7 +1366,7 @@
 
     .pricing-toggle {
       display: inline-flex;
-      align-items: center;
+      align-items: stretch;
       gap: 4px;
       margin: 48px auto 0;
       background: var(--warm-white);
@@ -1383,6 +1383,10 @@
       cursor: pointer;
       transition: all 0.3s var(--ease);
       color: var(--graphite);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
     }
 
     .toggle-option.active {
