@@ -1063,58 +1063,6 @@
     }
 
     /* ── Before/After ────────────────────────────────────── */
-    .before-after-section {
-      padding: var(--section-pad) 32px;
-      text-align: center;
-    }
-
-    .before-after-section h2 {
-      font-family: var(--font-display);
-      font-size: clamp(40px, 5.5vw, 68px);
-      font-weight: 400;
-      letter-spacing: -0.03em;
-      color: var(--ink);
-      max-width: 640px;
-      margin: 20px auto 56px;
-      line-height: 1.08;
-    }
-
-    .compare-wrapper {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 28px;
-      max-width: 940px;
-      margin: 0 auto;
-    }
-
-    .compare-card {
-      border-radius: var(--radius);
-      overflow: hidden;
-      border: 1px solid var(--sand);
-      transition: all 0.4s var(--ease);
-    }
-
-    .compare-card:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 16px 48px rgba(0,0,0,0.06);
-    }
-
-    .compare-label {
-      padding: 18px 28px;
-      font-size: 12px;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .compare-label.before { background: #FFF5F0; color: #C44D2C; border-bottom: 1px solid #FFD6C8; }
-    .compare-label.after { background: #F0FFF4; color: var(--emerald); border-bottom: 1px solid #C6F6D5; }
-
-    .compare-content { padding: 24px; background: white; }
-
     /* ── Testimonials ─────────────────────────────────────── */
     .social-section {
       background: var(--warm-white);
@@ -1960,8 +1908,7 @@
 
       .stats-grid,
       .pricing-cards,
-      .demo-panels,
-      .compare-wrapper { grid-template-columns: 1fr; }
+      .demo-panels { grid-template-columns: 1fr; }
 
       /* Features: 2-column grid on tablet instead of stacking all 6 */
       .features-grid { grid-template-columns: repeat(2, 1fr); }
@@ -2021,9 +1968,6 @@
       .feature-card { padding: 36px 28px; }
       .features-header { padding: var(--section-pad) 32px 48px; }
 
-      /* Tighten before/after heading */
-      .before-after-section h2 { margin: 16px auto 36px; }
-
       /* Tighten social/testimonials */
       .social-section h2 { margin: 16px auto 48px; }
 
@@ -2055,6 +1999,30 @@
 
       /* Tighten hero social proof */
       .hero-social-proof { margin-top: 48px; padding: 32px 24px; }
+
+      /* ── Mobile horizontal-scroll headings ── */
+      .problem-section h2,
+      .features-header h2,
+      .demo-header h2,
+      .social-section h2,
+      .pricing-section h2 {
+        overflow-x: auto;
+        white-space: nowrap;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;          /* Firefox */
+        -ms-overflow-style: none;       /* IE/Edge */
+        padding-bottom: 4px;
+      }
+      .problem-section h2::-webkit-scrollbar,
+      .features-header h2::-webkit-scrollbar,
+      .demo-header h2::-webkit-scrollbar,
+      .social-section h2::-webkit-scrollbar,
+      .pricing-section h2::-webkit-scrollbar { display: none; }
+
+      /* Remove <br> in headings on mobile so they flow as single scrollable lines */
+      .features-header h2 br,
+      .social-section h2 br,
+      .pricing-section h2 br { display: none; }
     }
 
     @media (max-width: 600px) {
@@ -2448,81 +2416,6 @@
   </section>
 
   <!-- ── Before / After ────────────────────────────────── -->
-  <section class="before-after-section">
-    <div class="container">
-      <p class="eyebrow reveal">The Hackabacus difference</p>
-      <h2 class="reveal reveal-delay-1">
-        From chaos<br/>to institutional.
-      </h2>
-
-      <div class="compare-wrapper scale-reveal">
-        <div class="compare-card">
-          <div class="compare-label before">
-            <span>&#10005;</span> Before Hackabacus
-          </div>
-          <div class="compare-content">
-            <div class="mini-grid">
-              <div class="mini-row">
-                <div class="mini-cell hdr">1</div>
-                <div class="mini-cell" style="width:100px; font-size:8px; color:#999">revenue</div>
-                <div class="mini-cell num" style="font-size:8px; color:#333">142500</div>
-                <div class="mini-cell num" style="font-size:8px; color:#333">168200</div>
-                <div class="mini-cell num" style="font-size:8px; color:#333">191400</div>
-              </div>
-              <div class="mini-row">
-                <div class="mini-cell hdr">2</div>
-                <div class="mini-cell" style="width:100px; font-size:8px; background:#FFFF99">COGS</div>
-                <div class="mini-cell num" style="font-size:8px; color:#FF0000">-62300</div>
-                <div class="mini-cell num" style="font-size:8px; color:#FF0000">-73100</div>
-                <div class="mini-cell num" style="font-size:8px; color:#FF0000">-82400</div>
-              </div>
-              <div class="mini-row">
-                <div class="mini-cell hdr">3</div>
-                <div class="mini-cell" style="width:100px; font-size:8px; font-weight:900; background:#C6EFCE">EBITDA</div>
-                <div class="mini-cell num" style="font-size:8px; font-weight:900">51900</div>
-                <div class="mini-cell num" style="font-size:8px; font-weight:900">62000</div>
-                <div class="mini-cell num" style="font-size:8px; font-weight:900">67400</div>
-              </div>
-            </div>
-            <p style="font-size:11px; color:#C44D2C; margin-top:14px;">&#8593; Inconsistent fonts, raw numbers, mixed colors, no structure</p>
-          </div>
-        </div>
-
-        <div class="compare-card">
-          <div class="compare-label after">
-            <span>&#10003;</span> After Hackabacus
-          </div>
-          <div class="compare-content">
-            <div class="mini-grid">
-              <div class="mini-row">
-                <div class="mini-cell hdr">1</div>
-                <div class="mini-cell blue-hdr" style="font-size:8px">INCOME STATEMENT</div>
-                <div class="mini-cell" style="font-size:8px; background:#1A3864; color:white; width:60px; text-align:center">2023A</div>
-                <div class="mini-cell" style="font-size:8px; background:#1A3864; color:white; width:60px; text-align:center">2024E</div>
-                <div class="mini-cell" style="font-size:8px; background:#1A3864; color:white; width:60px; text-align:center">2025E</div>
-              </div>
-              <div class="mini-row">
-                <div class="mini-cell hdr">2</div>
-                <div class="mini-cell" style="width:100px; font-size:8px; font-weight:700">Revenue</div>
-                <div class="mini-cell num" style="font-size:8px">$191.4</div>
-                <div class="mini-cell num" style="font-size:8px">$214.8</div>
-                <div class="mini-cell num" style="font-size:8px">$241.2</div>
-              </div>
-              <div class="mini-row">
-                <div class="mini-cell hdr">3</div>
-                <div class="mini-cell sub" style="width:100px; font-size:8px; font-weight:700">EBITDA</div>
-                <div class="mini-cell sub num" style="font-size:8px">$60.7</div>
-                <div class="mini-cell sub num" style="font-size:8px">$68.6</div>
-                <div class="mini-cell sub num" style="font-size:8px">$77.2</div>
-              </div>
-            </div>
-            <p style="font-size:11px; color:var(--emerald); margin-top:14px;">&#8593; Institutional headers, consistent formatting, proper structure</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- ── Social Proof ───────────────────────────────────── -->
   <section class="social-section">
     <div class="container">
