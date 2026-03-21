@@ -1406,11 +1406,16 @@
     }
 
     .pricing-cards {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      display: flex;
+      justify-content: center;
       gap: 24px;
       margin-top: 64px;
       align-items: start;
+    }
+
+    .pricing-cards > .pricing-card {
+      flex: 0 0 calc(33.333% - 16px);
+      max-width: 400px;
     }
 
     .pricing-card {
@@ -1420,7 +1425,22 @@
       background: var(--warm-white);
       text-align: left;
       position: relative;
-      transition: all 0.4s var(--ease);
+      transition: all 0.4s var(--ease), opacity 0.5s var(--ease), transform 0.5s var(--ease), max-height 0.5s var(--ease), padding 0.5s var(--ease), margin 0.5s var(--ease), border-width 0.5s var(--ease), flex 0.5s var(--ease);
+      max-height: 800px;
+    }
+
+    .pricing-card.card-hidden {
+      opacity: 0;
+      transform: translateY(40px) scale(0.95) !important;
+      max-height: 0;
+      padding-top: 0;
+      padding-bottom: 0;
+      margin: 0;
+      border-width: 0;
+      pointer-events: none;
+      flex: 0 0 0% !important;
+      overflow: hidden;
+      gap: 0;
     }
 
     .pricing-card:hover {
@@ -2102,6 +2122,24 @@
       /* Pricing — pad top so "Most Popular" badge isn't clipped */
       .pricing-cards { padding-top: 20px; }
       .pricing-card.featured { transform: none; }
+
+      /* Perpetual mode on mobile — stop carousel, center individual card */
+      .pricing-cards.perpetual-mode {
+        overflow-x: hidden;
+        scroll-snap-type: none;
+        justify-content: center;
+      }
+      .pricing-cards.perpetual-mode .pricing-card:first-child {
+        flex: 0 0 85%;
+      }
+      .pricing-cards.perpetual-mode .card-hidden {
+        flex: 0 0 0;
+        min-width: 0;
+        width: 0;
+        padding-left: 0;
+        padding-right: 0;
+        border-width: 0;
+      }
 
       /* Let carousel overflow out of container */
       .problem-section .container,
@@ -2966,6 +3004,26 @@
       animatePrice(teamPrice, prices[mode].team);
       indPeriod.textContent  = prices[mode].indPeriod;
       teamPeriod.textContent = prices[mode].teamPeriod;
+
+      // Hide Team & Enterprise cards for Buy Outright
+      const pricingCards = document.querySelector('.pricing-cards');
+      const allCards = pricingCards.querySelectorAll('.pricing-card');
+      const teamCard = allCards[1];       // Team (Featured)
+      const enterpriseCard = allCards[2]; // Enterprise
+      const dotsContainer = document.querySelector('.carousel-dots[data-for="pricing-cards"]');
+
+      if (mode === 'perpetual') {
+        teamCard.classList.add('card-hidden');
+        enterpriseCard.classList.add('card-hidden');
+        pricingCards.classList.add('perpetual-mode');
+        if (dotsContainer) dotsContainer.style.display = 'none';
+      } else {
+        teamCard.classList.remove('card-hidden');
+        enterpriseCard.classList.remove('card-hidden');
+        pricingCards.classList.remove('perpetual-mode');
+        // Re-show dots on mobile only
+        if (dotsContainer) dotsContainer.style.display = '';
+      }
     }
 
     function animatePrice(el, target) {
