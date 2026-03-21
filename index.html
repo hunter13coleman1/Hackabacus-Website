@@ -111,6 +111,7 @@
     html {
       scroll-behavior: smooth;
       font-size: 16px;
+      overflow-x: hidden;
     }
 
     /* Prevent orphaned words on headlines */
@@ -548,7 +549,7 @@
 
     @keyframes logoScroll {
       0% { transform: translateX(0); }
-      100% { transform: translateX(-50%); }
+      100% { transform: translateX(calc(-50% - 32px)); }
     }
 
     /* Buttons */
@@ -1301,6 +1302,9 @@
       color: var(--emerald);
       font-weight: 500;
     }
+
+    /* ── Mobile compare cards (hidden on desktop) ──────────── */
+    .compare-cards { display: none; }
 
     .btn-compare-more {
       display: inline-flex;
@@ -2218,11 +2222,90 @@
       .faq-question { padding: 18px 20px; font-size: 15px; }
       .faq-item.open .faq-answer { padding: 0 20px 20px; }
 
-      /* Compact compare table */
-      .compare-table { font-size: 12px; }
-      .compare-table thead th,
-      .compare-table tbody td { padding: 10px 10px; }
-      .compare-table .price-row td { font-size: 16px; }
+      /* Hide table on mobile, show cards instead */
+      .compare-table-wrap { display: none; }
+      .compare-cards {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        margin: 40px auto 0;
+        max-width: 480px;
+      }
+      .compare-card {
+        border: 1px solid var(--sand);
+        border-radius: var(--radius-sm);
+        overflow: hidden;
+        text-align: left;
+      }
+      .compare-card.card-highlight {
+        border: 2px solid var(--ink);
+        box-shadow: 0 4px 24px rgba(26,24,21,0.08);
+      }
+      .compare-card-header {
+        padding: 16px 20px;
+        font-family: var(--font-display);
+        font-size: 18px;
+        font-weight: 400;
+        letter-spacing: -0.02em;
+        background: var(--cream);
+        border-bottom: 1px solid var(--sand);
+        color: var(--graphite);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .compare-card.card-highlight .compare-card-header {
+        background: var(--ink);
+        color: var(--warm-white);
+        border-bottom-color: var(--ink);
+      }
+      .compare-card-badge {
+        font-size: 10px;
+        font-weight: 600;
+        font-family: var(--font-body);
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        background: var(--copper);
+        color: white;
+        padding: 3px 12px;
+        border-radius: 980px;
+      }
+      .compare-card-body {
+        padding: 0;
+      }
+      .compare-card-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 12px 20px;
+        border-bottom: 1px solid var(--sand);
+        font-size: 14px;
+        color: var(--charcoal);
+      }
+      .compare-card-row:last-child { border-bottom: none; }
+      .compare-card-row .row-label {
+        font-weight: 500;
+        color: var(--ink);
+      }
+      .compare-card-row .row-value {
+        font-weight: 300;
+        text-align: right;
+      }
+      .compare-card-row.card-price-row {
+        padding: 16px 20px;
+        background: rgba(26,24,21,0.02);
+      }
+      .compare-card-row.card-price-row .row-value {
+        font-family: var(--font-display);
+        font-size: 20px;
+        font-weight: 400;
+        letter-spacing: -0.02em;
+        color: var(--ink);
+      }
+      .compare-card.card-highlight .compare-card-row.card-price-row .row-value {
+        color: var(--emerald);
+        font-weight: 500;
+      }
 
       /* Compact CTA */
       .cta-section h2 { font-size: clamp(32px, 8vw, 44px); }
@@ -2678,6 +2761,102 @@
             </tr>
           </tbody>
         </table>
+      </div>
+
+      <!-- Mobile compare cards (shown < 600px) -->
+      <div class="compare-cards scale-reveal">
+        <div class="compare-card card-highlight">
+          <div class="compare-card-header">
+            Hackabacus
+            <span class="compare-card-badge">Best Value</span>
+          </div>
+          <div class="compare-card-body">
+            <div class="compare-card-row">
+              <span class="row-label">Excel formatting</span>
+              <span class="row-value"><span class="cell-check">&#10003;</span> Instant</span>
+            </div>
+            <div class="compare-card-row">
+              <span class="row-label">PowerPoint tools</span>
+              <span class="row-value"><span class="cell-check">&#10003;</span> Full suite</span>
+            </div>
+            <div class="compare-card-row">
+              <span class="row-label">Formula auditing</span>
+              <span class="row-value"><span class="cell-check">&#10003;</span> Built-in</span>
+            </div>
+            <div class="compare-card-row">
+              <span class="row-label">Keyboard shortcuts</span>
+              <span class="row-value"><span class="cell-check">&#10003;</span> Custom engine</span>
+            </div>
+            <div class="compare-card-row">
+              <span class="row-label">Speed</span>
+              <span class="row-value"><span class="cell-check">&#10003;</span> No lag</span>
+            </div>
+            <div class="compare-card-row card-price-row">
+              <span class="row-label">Starting price</span>
+              <span class="row-value">$14/seat/mo</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="compare-card">
+          <div class="compare-card-header">Macabacus</div>
+          <div class="compare-card-body">
+            <div class="compare-card-row">
+              <span class="row-label">Excel formatting</span>
+              <span class="row-value"><span class="cell-slow">&#9679; Slow</span></span>
+            </div>
+            <div class="compare-card-row">
+              <span class="row-label">PowerPoint tools</span>
+              <span class="row-value"><span class="cell-check">&#10003;</span></span>
+            </div>
+            <div class="compare-card-row">
+              <span class="row-label">Formula auditing</span>
+              <span class="row-value"><span class="cell-slow">&#9679; Limited</span></span>
+            </div>
+            <div class="compare-card-row">
+              <span class="row-label">Keyboard shortcuts</span>
+              <span class="row-value"><span class="cell-check">&#10003;</span> Basic</span>
+            </div>
+            <div class="compare-card-row">
+              <span class="row-label">Speed</span>
+              <span class="row-value"><span class="cell-slow">&#9679; Lag on large models</span></span>
+            </div>
+            <div class="compare-card-row card-price-row">
+              <span class="row-label">Starting price</span>
+              <span class="row-value">$25/seat/mo</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="compare-card">
+          <div class="compare-card-header">Training the Street</div>
+          <div class="compare-card-body">
+            <div class="compare-card-row">
+              <span class="row-label">Excel formatting</span>
+              <span class="row-value"><span class="cell-check">&#10003;</span></span>
+            </div>
+            <div class="compare-card-row">
+              <span class="row-label">PowerPoint tools</span>
+              <span class="row-value"><span class="cell-x">&#10005;</span> N/A</span>
+            </div>
+            <div class="compare-card-row">
+              <span class="row-label">Formula auditing</span>
+              <span class="row-value"><span class="cell-x">&#10005;</span> None</span>
+            </div>
+            <div class="compare-card-row">
+              <span class="row-label">Keyboard shortcuts</span>
+              <span class="row-value"><span class="cell-check">&#10003;</span> Basic</span>
+            </div>
+            <div class="compare-card-row">
+              <span class="row-label">Speed</span>
+              <span class="row-value"><span class="cell-check">&#10003;</span></span>
+            </div>
+            <div class="compare-card-row card-price-row">
+              <span class="row-label">Starting price</span>
+              <span class="row-value">$20/seat/mo</span>
+            </div>
+          </div>
+        </div>
       </div>
 
       <a href="compare.html" class="btn-compare-more reveal reveal-delay-2">
