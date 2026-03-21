@@ -3028,6 +3028,12 @@
         pricingCards.classList.remove('perpetual-mode');
         // Re-show dots on mobile only
         if (dotsContainer) dotsContainer.style.display = '';
+        // Scroll carousel back to first card (Individual) on mobile
+        pricingCards.scrollTo({ left: 0, behavior: 'smooth' });
+        // Reset dots to first active
+        if (dotsContainer) {
+          dotsContainer.querySelectorAll('.dot').forEach((d, i) => d.classList.toggle('active', i === 0));
+        }
       }
     }
 
