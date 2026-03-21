@@ -2034,12 +2034,12 @@
       .testimonials-grid::-webkit-scrollbar,
       .pricing-cards::-webkit-scrollbar { display: none; }
 
-      /* Cards: full width minus just container padding on each side */
+      /* Cards: 85% viewport width so they fit with visible peek */
       .stat-card,
       .demo-panel,
       .testimonial,
       .pricing-card {
-        flex: 0 0 calc(100vw - 52px);
+        flex: 0 0 85%;
         scroll-snap-align: start;
       }
 
@@ -2057,7 +2057,7 @@
         padding-right: 16px;
       }
       .feature-card {
-        flex: 0 0 calc(100vw - 52px);
+        flex: 0 0 85%;
         scroll-snap-align: start;
         padding: 32px 28px;
         border-radius: var(--radius);
@@ -2102,11 +2102,17 @@
         width: 28px;
         border-radius: 4px;
       }
-      /* Dots inside dark sections — high contrast */
+      /* Dots inside dark sections — use outline for visibility */
       .features-section .carousel-dots .dot,
-      .demo-section .carousel-dots .dot { background: rgba(255,255,255,0.5); }
+      .demo-section .carousel-dots .dot {
+        background: transparent;
+        border: 2px solid rgba(255,255,255,0.7);
+      }
       .features-section .carousel-dots .dot.active,
-      .demo-section .carousel-dots .dot.active { background: var(--copper-light); }
+      .demo-section .carousel-dots .dot.active {
+        background: #C9A96E;
+        border-color: #C9A96E;
+      }
     }
 
     @media (max-width: 600px) {
@@ -2367,7 +2373,7 @@
         <p>100+ customizable shortcuts for the most common analyst actions. Navigate, format, and build faster than any menu-driven workflow.</p>
       </div>
     </div>
-    <div class="carousel-dots" data-for="features-grid" style="position:relative;z-index:10"><span class="dot active" style="background:#C9A96E"></span><span class="dot" style="background:rgba(255,255,255,0.6)"></span><span class="dot" style="background:rgba(255,255,255,0.6)"></span><span class="dot" style="background:rgba(255,255,255,0.6)"></span><span class="dot" style="background:rgba(255,255,255,0.6)"></span><span class="dot" style="background:rgba(255,255,255,0.6)"></span></div>
+    <div class="carousel-dots" data-for="features-grid" style="position:relative;z-index:10"><span class="dot active" style="background:#C9A96E;border:2px solid #C9A96E"></span><span class="dot" style="background:transparent;border:2px solid rgba(255,255,255,0.7)"></span><span class="dot" style="background:transparent;border:2px solid rgba(255,255,255,0.7)"></span><span class="dot" style="background:transparent;border:2px solid rgba(255,255,255,0.7)"></span><span class="dot" style="background:transparent;border:2px solid rgba(255,255,255,0.7)"></span><span class="dot" style="background:transparent;border:2px solid rgba(255,255,255,0.7)"></span></div>
   </section>
 
   <!-- ── Demo ──────────────────────────────────────────── -->
@@ -2484,7 +2490,7 @@
           </div>
         </div>
       </div>
-      <div class="carousel-dots" data-for="demo-panels" style="position:relative;z-index:10"><span class="dot active" style="background:#C9A96E"></span><span class="dot" style="background:rgba(255,255,255,0.6)"></span></div>
+      <div class="carousel-dots" data-for="demo-panels" style="position:relative;z-index:10"><span class="dot active" style="background:#C9A96E;border:2px solid #C9A96E"></span><span class="dot" style="background:transparent;border:2px solid rgba(255,255,255,0.7)"></span></div>
 
       <!-- Video placeholder -->
       <div class="video-placeholder scale-reveal">
@@ -3032,8 +3038,6 @@
 
       // Check if dots are inside a dark section
       const isDark = dotsContainer.closest('.features-section, .demo-section') !== null;
-      const activeColor = '#C9A96E';
-      const inactiveColor = isDark ? 'rgba(255,255,255,0.6)' : '';
 
       scrollEl.addEventListener('scroll', () => {
         const scrollLeft = scrollEl.scrollLeft;
@@ -3043,7 +3047,8 @@
           const isActive = i === activeIndex;
           d.classList.toggle('active', isActive);
           if (isDark) {
-            d.style.background = isActive ? activeColor : inactiveColor;
+            d.style.background = isActive ? '#C9A96E' : 'transparent';
+            d.style.border = isActive ? '2px solid #C9A96E' : '2px solid rgba(255,255,255,0.7)';
           }
         });
       }, { passive: true });
