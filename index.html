@@ -2000,29 +2000,84 @@
       /* Tighten hero social proof */
       .hero-social-proof { margin-top: 48px; padding: 32px 24px; }
 
-      /* ── Mobile horizontal-scroll headings ── */
-      .problem-section h2,
-      .features-header h2,
-      .demo-header h2,
-      .social-section h2,
-      .pricing-section h2 {
-        overflow-x: auto;
-        white-space: nowrap;
-        -webkit-overflow-scrolling: touch;
-        scrollbar-width: none;          /* Firefox */
-        -ms-overflow-style: none;       /* IE/Edge */
-        padding-bottom: 4px;
-      }
-      .problem-section h2::-webkit-scrollbar,
-      .features-header h2::-webkit-scrollbar,
-      .demo-header h2::-webkit-scrollbar,
-      .social-section h2::-webkit-scrollbar,
-      .pricing-section h2::-webkit-scrollbar { display: none; }
-
-      /* Remove <br> in headings on mobile so they flow as single scrollable lines */
+      /* ── Compact headings on mobile (wrap naturally, no scroll) ── */
       .features-header h2 br,
       .social-section h2 br,
       .pricing-section h2 br { display: none; }
+
+      /* ── Horizontal-scroll card carousels on mobile ────── */
+      /* Shared scroll-container pattern */
+      .stats-grid,
+      .features-grid,
+      .demo-panels,
+      .testimonials-grid,
+      .pricing-cards {
+        display: flex !important;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scroll-snap-type: x mandatory;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+        gap: 16px;
+        padding-bottom: 8px;
+      }
+      .stats-grid::-webkit-scrollbar,
+      .features-grid::-webkit-scrollbar,
+      .demo-panels::-webkit-scrollbar,
+      .testimonials-grid::-webkit-scrollbar,
+      .pricing-cards::-webkit-scrollbar { display: none; }
+
+      /* Each card snaps and has a fixed width */
+      .stat-card,
+      .feature-card,
+      .demo-panel,
+      .testimonial,
+      .pricing-card {
+        flex: 0 0 80vw;
+        max-width: 340px;
+        scroll-snap-align: start;
+      }
+
+      /* Stats: remove vertical dividers, keep compact */
+      .stat-card { padding: 32px 28px; }
+      .stat-card::after { display: none; }
+      .stat-number { font-size: clamp(48px, 10vw, 64px); }
+
+      /* Features: need full-bleed scroll inside dark section */
+      .features-grid {
+        background: transparent;
+        border-top: none;
+        padding: 0 32px;
+      }
+      .feature-card {
+        padding: 32px 28px;
+        border-radius: var(--radius);
+        flex: 0 0 75vw;
+        max-width: 300px;
+      }
+
+      /* Demo panels */
+      .demo-panels { padding: 0; }
+      .demo-panel { flex: 0 0 85vw; max-width: 400px; }
+
+      /* Testimonials: reset stagger */
+      .testimonial:nth-child(2) { transform: none; }
+      .testimonial:nth-child(2):hover { transform: translateY(-4px); }
+      .testimonial:nth-child(3) { max-width: none; }
+      .testimonial { flex: 0 0 80vw; max-width: 320px; }
+
+      /* Pricing: all same height */
+      .pricing-card { flex: 0 0 85vw; max-width: 360px; }
+      .pricing-card.featured { transform: none; }
+
+      /* Allow parent containers to let carousel overflow */
+      .problem-section .container,
+      .features-section,
+      .demo-section .container,
+      .social-section .container,
+      .pricing-section .container {
+        overflow: visible;
+      }
     }
 
     @media (max-width: 600px) {
@@ -2031,22 +2086,17 @@
       .footer-inner { grid-template-columns: 1fr; gap: 28px; }
       .hero-actions { flex-direction: column; align-items: center; }
 
-      /* Features: single column on small mobile */
-      .features-grid { grid-template-columns: 1fr; }
-      .feature-card { padding: 28px 24px; }
-
-      /* Testimonials: single column */
-      .testimonials-grid { grid-template-columns: 1fr; }
-      .testimonial:nth-child(3) { max-width: none; }
-      .testimonial { padding: 28px 24px; }
-
-      /* Compact stats */
-      .stats-grid { margin-top: 40px; }
-      .stat-card { padding: 28px 24px; }
+      /* Narrower cards on small screens */
+      .stat-card { flex: 0 0 72vw; padding: 28px 24px; }
       .stat-number { font-size: 48px; }
 
-      /* Compact pricing */
-      .pricing-card { padding: 28px 24px; }
+      .feature-card { flex: 0 0 72vw; padding: 28px 24px; }
+
+      .demo-panel { flex: 0 0 85vw; }
+
+      .testimonial { flex: 0 0 80vw; padding: 28px 24px; }
+
+      .pricing-card { flex: 0 0 85vw; padding: 28px 24px; }
       .price-amount { font-size: 48px; }
       .pricing-features { gap: 10px; }
 
