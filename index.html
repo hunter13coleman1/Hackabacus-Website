@@ -3158,8 +3158,12 @@
     });
 
     // Ensure pricing carousel starts on Individual card on page load
+    // Reset both now and on window load to override browser scroll restoration
     const pricingScroll = document.querySelector('.pricing-cards');
-    if (pricingScroll) pricingScroll.scrollLeft = 0;
+    if (pricingScroll) {
+      pricingScroll.scrollLeft = 0;
+      window.addEventListener('load', () => { pricingScroll.scrollLeft = 0; });
+    }
   </script>
 </body>
 </html>
