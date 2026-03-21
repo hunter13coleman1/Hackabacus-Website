@@ -111,6 +111,7 @@
     html {
       scroll-behavior: smooth;
       font-size: 16px;
+      overflow-x: hidden;
     }
 
     /* Prevent orphaned words on headlines */
@@ -2218,11 +2219,13 @@
       .faq-question { padding: 18px 20px; font-size: 15px; }
       .faq-item.open .faq-answer { padding: 0 20px 20px; }
 
-      /* Compact compare table */
-      .compare-table { font-size: 12px; }
+      /* Compact compare table — horizontally scrollable on mobile */
+      .compare-table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+      .compare-table { font-size: 12px; min-width: 480px; }
       .compare-table thead th,
       .compare-table tbody td { padding: 10px 10px; }
       .compare-table .price-row td { font-size: 16px; }
+      .compare-table thead th.highlight-col::before { font-size: 9px; padding: 3px 8px; }
 
       /* Compact CTA */
       .cta-section h2 { font-size: clamp(32px, 8vw, 44px); }
