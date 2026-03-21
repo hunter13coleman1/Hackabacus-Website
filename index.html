@@ -2074,6 +2074,7 @@
       .testimonials-grid,
       .pricing-cards {
         display: flex !important;
+        justify-content: flex-start;
         overflow-x: auto;
         overflow-y: hidden;
         -webkit-overflow-scrolling: touch;
@@ -3032,18 +3033,12 @@
         if (dotsContainer) dotsContainer.style.display = '';
         // Only reset carousel to Individual when coming back from Buy Outright
         if (wasPerpetual) {
-          // Wait for hidden cards to transition back, then force scroll to Individual
-          setTimeout(() => {
-            pricingCards.style.scrollSnapType = 'none';
+          requestAnimationFrame(() => {
             pricingCards.scrollLeft = 0;
-            requestAnimationFrame(() => {
-              pricingCards.scrollLeft = 0;
-              requestAnimationFrame(() => { pricingCards.style.scrollSnapType = ''; });
-            });
             if (dotsContainer) {
               dotsContainer.querySelectorAll('.dot').forEach((d, i) => d.classList.toggle('active', i === 0));
             }
-          }, 50);
+          });
         }
       }
     }
@@ -3169,31 +3164,14 @@
       });
     });
 
-    // Ensure pricing carousel ALWAYS starts on Individual card (first card)
-    // Browser scroll restoration + scroll-snap can fight this, so we:
-    //  1. Temporarily disable scroll-snap to prevent snap interference
-    //  2. Force scrollLeft = 0 at multiple timings to beat async restoration
-    //  3. Re-enable scroll-snap after position is locked in
-    if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
-
+    // Ensure pricing carousel starts on Individual card on page load / bfcache restore
     function resetPricingScroll() {
       const el = document.querySelector('.pricing-cards');
-      if (!el) return;
-      const dotsEl = document.querySelector('.carousel-dots[data-for="pricing-cards"]');
-      function forceToStart() {
-        el.style.scrollSnapType = 'none';
+      if (el) {
         el.scrollLeft = 0;
-        requestAnimationFrame(() => {
-          el.scrollLeft = 0;
-          requestAnimationFrame(() => {
-            el.style.scrollSnapType = '';
-          });
-        });
+        const dotsEl = document.querySelector('.carousel-dots[data-for="pricing-cards"]');
         if (dotsEl) dotsEl.querySelectorAll('.dot').forEach((d, i) => d.classList.toggle('active', i === 0));
       }
-      forceToStart();
-      // Also fire after a short delay to beat any late scroll restoration
-      setTimeout(forceToStart, 50);
     }
     resetPricingScroll();
     window.addEventListener('pageshow', resetPricingScroll);
