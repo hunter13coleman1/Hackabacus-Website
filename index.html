@@ -1971,7 +1971,21 @@
 
       /* Tighten demo section */
       .demo-header { margin-bottom: 48px; }
-      .demo-panel-visual { min-height: 200px; padding: 24px; }
+      .demo-panel {
+        display: flex;
+        flex-direction: column;
+      }
+      .demo-panel-header {
+        min-height: 180px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+      }
+      .demo-panel-visual {
+        min-height: 240px;
+        padding: 24px;
+        flex: 1;
+      }
       .video-placeholder { min-height: 280px; padding: 40px 24px; }
 
       /* Tighten feature cards */
