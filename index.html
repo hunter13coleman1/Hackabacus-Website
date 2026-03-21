@@ -3032,10 +3032,13 @@
         if (dotsContainer) dotsContainer.style.display = '';
         // Only reset carousel to Individual when coming back from Buy Outright
         if (wasPerpetual) {
-          pricingCards.scrollTo({ left: 0, behavior: 'smooth' });
-          if (dotsContainer) {
-            dotsContainer.querySelectorAll('.dot').forEach((d, i) => d.classList.toggle('active', i === 0));
-          }
+          // Wait for hidden cards to transition back before resetting scroll
+          requestAnimationFrame(() => {
+            pricingCards.scrollTo({ left: 0, behavior: 'smooth' });
+            if (dotsContainer) {
+              dotsContainer.querySelectorAll('.dot').forEach((d, i) => d.classList.toggle('active', i === 0));
+            }
+          });
         }
       }
     }
@@ -3142,8 +3145,12 @@
 
       scrollEl.addEventListener('scroll', () => {
         const scrollLeft = scrollEl.scrollLeft;
+        const maxScroll = scrollEl.scrollWidth - scrollEl.clientWidth;
         const cardWidth = cards[0].offsetWidth + 16; // card + gap
-        const activeIndex = Math.round(scrollLeft / cardWidth);
+        // If near the end of scroll, activate the last dot
+        const activeIndex = (maxScroll > 0 && maxScroll - scrollLeft < cardWidth * 0.3)
+          ? dots.length - 1
+          : Math.round(scrollLeft / cardWidth);
         dots.forEach((d, i) => d.classList.toggle('active', i === activeIndex));
       }, { passive: true });
 
@@ -3158,12 +3165,18 @@
     });
 
     // Ensure pricing carousel starts on Individual card on page load
-    // Reset both now and on window load to override browser scroll restoration
-    const pricingScroll = document.querySelector('.pricing-cards');
-    if (pricingScroll) {
-      pricingScroll.scrollLeft = 0;
-      window.addEventListener('load', () => { pricingScroll.scrollLeft = 0; });
+    // Use pageshow (fires on bfcache restore too) + rAF for reliable timing
+    function resetPricingScroll() {
+      const el = document.querySelector('.pricing-cards');
+      if (el) {
+        el.scrollLeft = 0;
+        requestAnimationFrame(() => { el.scrollLeft = 0; });
+        const dotsEl = document.querySelector('.carousel-dots[data-for="pricing-cards"]');
+        if (dotsEl) dotsEl.querySelectorAll('.dot').forEach((d, i) => d.classList.toggle('active', i === 0));
+      }
     }
+    resetPricingScroll();
+    window.addEventListener('pageshow', resetPricingScroll);
   </script>
 </body>
 </html>
