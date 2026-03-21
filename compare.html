@@ -8,6 +8,9 @@
   <meta name="description" content="Compare Hackabacus, Macabacus, and Training the Street side by side. See which Excel and PowerPoint tool is best for finance professionals." />
   <meta name="robots" content="index, follow" />
 
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%231A1815'/><text x='50' y='68' font-family='system-ui' font-size='56' font-weight='700' fill='%238B7355' text-anchor='middle'>H</text></svg>" />
+
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -56,12 +59,45 @@
 
     html { scroll-behavior: smooth; font-size: 16px; }
 
+    h1, h2, h3 { text-wrap: balance; }
+    p { text-wrap: pretty; }
+
     body {
       font-family: var(--font-body);
       background: var(--cream);
       color: var(--charcoal);
       -webkit-font-smoothing: antialiased;
       overflow-x: hidden;
+    }
+
+    /* Focus rings for keyboard navigation */
+    :focus-visible {
+      outline: 2px solid var(--copper);
+      outline-offset: 3px;
+    }
+    button:focus-visible,
+    a:focus-visible {
+      outline: 2px solid var(--copper);
+      outline-offset: 3px;
+      border-radius: 4px;
+    }
+
+    /* Skip-to-content link */
+    .skip-link {
+      position: absolute;
+      top: -100%;
+      left: 16px;
+      background: var(--ink);
+      color: var(--warm-white);
+      padding: 12px 24px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 500;
+      z-index: 300;
+      transition: top 0.2s;
+    }
+    .skip-link:focus {
+      top: 12px;
     }
 
     .container { max-width: 1120px; margin: 0 auto; padding: 0 32px; }
@@ -119,6 +155,7 @@
     }
 
     .nav-links a:hover { color: var(--ink); }
+    .nav-links a.nav-active { color: var(--ink); font-weight: 500; }
 
     .nav-cta {
       background: var(--ink) !important;
@@ -133,6 +170,10 @@
     .nav-cta:hover {
       background: var(--charcoal) !important;
       box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+    }
+
+    .nav-cta:active {
+      transform: scale(0.96) !important;
     }
 
     @media (max-width: 900px) {
@@ -405,6 +446,11 @@
       box-shadow: 0 12px 32px rgba(0,0,0,0.15);
     }
 
+    .btn-primary:active {
+      transform: translateY(1px) scale(0.98);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
     .btn-ghost {
       display: inline-flex;
       align-items: center;
@@ -425,6 +471,10 @@
     .btn-ghost:hover {
       border-color: var(--ink);
       transform: translateY(-2px);
+    }
+
+    .btn-ghost:active {
+      transform: scale(0.98);
     }
 
     /* ── Footer ──────────────────────────────────────────── */
@@ -474,20 +524,24 @@
 </head>
 <body>
 
+  <!-- Skip to content (accessibility) -->
+  <a href="#compare-content" class="skip-link">Skip to content</a>
+
   <!-- ── Navigation ─────────────────────────────────────── -->
-  <nav>
+  <nav aria-label="Main navigation">
     <div class="nav-inner">
       <a href="/" class="nav-logo">Hack<span>abacus</span></a>
       <ul class="nav-links">
         <li><a href="/#features">Features</a></li>
         <li><a href="/#demo">Demo</a></li>
-        <li><a href="compare.html" style="color:var(--ink); font-weight:500;">Compare</a></li>
+        <li><a href="compare.html" class="nav-active">Compare</a></li>
         <li><a href="/#pricing">Pricing</a></li>
         <li><a href="/#pricing" class="nav-cta">Get Started</a></li>
       </ul>
     </div>
   </nav>
 
+  <main id="compare-content">
   <!-- ── Hero ───────────────────────────────────────────── -->
   <section class="compare-hero">
     <div class="container">
@@ -807,9 +861,11 @@
     </div>
   </section>
 
+  </main>
+
   <!-- ── Footer ──────────────────────────────────────────── -->
   <footer>
-    <p class="footer-copy">&copy; 2025 Hackabacus, LLC. All rights reserved. &middot; <a href="/">Home</a></p>
+    <p class="footer-copy">&copy; 2026 Hackabacus, LLC. All rights reserved. &middot; <a href="/">Home</a></p>
   </footer>
 
   <!-- ── Script ──────────────────────────────────────────── -->

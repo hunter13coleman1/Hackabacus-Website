@@ -56,6 +56,9 @@
   }
   </script>
 
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%231A1815'/><text x='50' y='68' font-family='system-ui' font-size='56' font-weight='700' fill='%238B7355' text-anchor='middle'>H</text></svg>" />
+
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -110,6 +113,14 @@
       font-size: 16px;
     }
 
+    /* Prevent orphaned words on headlines */
+    h1, h2, h3 {
+      text-wrap: balance;
+    }
+    p {
+      text-wrap: pretty;
+    }
+
     body {
       font-family: var(--font-body);
       background: var(--cream);
@@ -126,11 +137,41 @@
       inset: 0;
       background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwBAMAAAClLOS0AAAAElBMVEUAAAAAAAAAAAAAAAAAAAAAAADgKxmiAAAABnRSTlMFCA0RFRkEEiizAAAASklEQVQ4y2NghgIGBgYFBigghAIGJiggiAImKGCAAkYmKMAJGBgYGIVgAhCVMEAIBUwMUANggBEKcAJGKGBiggJGKGBkgAIAaaEFvbMUjEkAAAAASUVORK5CYII=");
       pointer-events: none;
-      z-index: 9998;
+      z-index: 100;
       opacity: 0.04;
     }
 
     ::selection { background: var(--copper); color: var(--warm-white); }
+
+    /* Focus rings for keyboard navigation (accessibility) */
+    :focus-visible {
+      outline: 2px solid var(--copper);
+      outline-offset: 3px;
+    }
+    button:focus-visible,
+    a:focus-visible {
+      outline: 2px solid var(--copper);
+      outline-offset: 3px;
+      border-radius: 4px;
+    }
+
+    /* Skip-to-content link (hidden, shown on Tab focus) */
+    .skip-link {
+      position: absolute;
+      top: -100%;
+      left: 16px;
+      background: var(--ink);
+      color: var(--warm-white);
+      padding: 12px 24px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 500;
+      z-index: 300;
+      transition: top 0.2s;
+    }
+    .skip-link:focus {
+      top: 12px;
+    }
 
     img { max-width: 100%; display: block; }
     a { color: inherit; text-decoration: none; }
@@ -282,6 +323,9 @@
       background: var(--charcoal) !important;
       transform: translateY(-1px);
       box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+    }
+    .nav-cta:active {
+      transform: scale(0.96) !important;
     }
 
     /* ── Hero ─────────────────────────────────────────────── */
@@ -544,6 +588,11 @@
       box-shadow: 0 12px 40px rgba(26,24,21,0.2);
     }
 
+    .btn-primary:active {
+      transform: translateY(1px) scale(0.98);
+      box-shadow: 0 4px 12px rgba(26,24,21,0.15);
+    }
+
     .btn-secondary {
       background: transparent;
       color: var(--copper);
@@ -563,6 +612,10 @@
     .btn-secondary:hover {
       border-color: var(--copper);
       background: var(--copper-glow);
+    }
+
+    .btn-secondary:active {
+      transform: scale(0.98);
     }
     .btn-secondary .arrow { transition: transform 0.3s var(--ease); }
     .btn-secondary:hover .arrow { transform: translateX(4px); }
@@ -737,11 +790,11 @@
       height: 48px;
       background: rgba(139,115,85,0.08);
       border: 1px solid rgba(139,115,85,0.15);
-      border-radius: 12px;
+      border-radius: 10px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 20px;
+      color: var(--copper-light);
       margin-bottom: 32px;
       transition: all 0.4s var(--ease);
     }
@@ -1085,6 +1138,11 @@
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 24px;
+      align-items: start;
+    }
+
+    .testimonial:nth-child(2) {
+      transform: translateY(24px);
     }
 
     .testimonial {
@@ -1112,6 +1170,10 @@
       transform: translateY(-4px);
       box-shadow: 0 20px 60px rgba(0,0,0,0.05);
       border-color: var(--copper-light);
+    }
+
+    .testimonial:nth-child(2):hover {
+      transform: translateY(20px);
     }
 
     .testimonial-quote {
@@ -1318,6 +1380,10 @@
       box-shadow: 0 12px 32px rgba(0,0,0,0.1);
     }
 
+    .btn-compare-more:active {
+      transform: translateY(1px) scale(0.98);
+    }
+
     @media (max-width: 900px) {
       .compare-table-wrap { border-radius: var(--radius-sm); }
       .compare-table { font-size: 13px; }
@@ -1505,7 +1571,7 @@
     .check {
       width: 20px;
       height: 20px;
-      border-radius: 50%;
+      border-radius: 6px;
       background: rgba(45,122,79,0.08);
       display: flex;
       align-items: center;
@@ -1543,6 +1609,10 @@
       box-shadow: 0 8px 24px rgba(0,0,0,0.12);
     }
 
+    .btn-pricing-primary:active {
+      transform: translateY(1px) scale(0.98);
+    }
+
     .pricing-card.featured .btn-pricing-primary {
       background: var(--copper);
       color: white;
@@ -1572,6 +1642,10 @@
       border-color: var(--copper);
       color: var(--copper);
       background: var(--copper-glow);
+    }
+
+    .btn-pricing-ghost:active {
+      transform: scale(0.98);
     }
 
     /* ── FAQ ──────────────────────────────────────────────── */
@@ -1760,6 +1834,11 @@
       box-shadow: 0 12px 40px rgba(0,0,0,0.2);
     }
 
+    .btn-white:active {
+      transform: translateY(1px) scale(0.98);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+
     .btn-ghost-white {
       background: transparent;
       color: rgba(255,255,255,0.6);
@@ -1777,6 +1856,10 @@
     .btn-ghost-white:hover {
       border-color: var(--copper);
       color: var(--copper-light);
+    }
+
+    .btn-ghost-white:active {
+      transform: scale(0.98);
     }
 
     /* ── Footer ───────────────────────────────────────────── */
@@ -1867,7 +1950,7 @@
       top: 0; left: 0;
       height: 2px;
       background: linear-gradient(90deg, var(--copper), var(--copper-light));
-      z-index: 9999;
+      z-index: 200;
       transition: width 0.08s linear;
     }
 
@@ -1931,11 +2014,14 @@
 </head>
 <body>
 
+  <!-- Skip to content (accessibility) -->
+  <a href="#home" class="skip-link">Skip to content</a>
+
   <!-- Scroll Progress Bar -->
-  <div class="scroll-progress" id="scrollProgress"></div>
+  <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
 
   <!-- ── Navigation ─────────────────────────────────────── -->
-  <nav id="mainNav">
+  <nav id="mainNav" aria-label="Main navigation">
     <div class="nav-inner">
       <a href="#" class="nav-logo">Hack<span>abacus</span></a>
       <ul class="nav-links">
@@ -1949,6 +2035,7 @@
     </div>
   </nav>
 
+  <main>
   <!-- ── Hero ───────────────────────────────────────────── -->
   <section class="hero" id="home">
     <div class="hero-grid">
@@ -2085,33 +2172,45 @@
 
     <div class="features-grid container--wide">
       <div class="feature-card reveal">
-        <div class="feature-icon">&#9889;</div>
-        <h3>One-Click Model Formatting</h3>
+        <div class="feature-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+        </div>
+        <h3>One-click model formatting</h3>
         <p>Apply institutional-grade formatting across your entire model instantly. Consistent fonts, colors, borders, and number formats &#8212; PE-standard, every time.</p>
       </div>
       <div class="feature-card reveal reveal-delay-1">
-        <div class="feature-icon">&#127912;</div>
-        <h3>Color &amp; Style Suite</h3>
+        <div class="feature-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="13.5" cy="6.5" r="2.5"/><circle cx="17.5" cy="10.5" r="2.5"/><circle cx="8.5" cy="7.5" r="2.5"/><circle cx="6.5" cy="12.5" r="2.5"/><path d="M12 22c-4.97 0-9-2.24-9-5v-.36C5.11 18.1 8.36 19 12 19s6.89-.9 9-2.36V17c0 2.76-4.03 5-9 5z"/></svg>
+        </div>
+        <h3>Color and style suite</h3>
         <p>Full custom palette management, cell style libraries, and branded color schemes. Lock in your firm's visual identity with a single click.</p>
       </div>
       <div class="feature-card reveal reveal-delay-2">
-        <div class="feature-icon">&#8721;</div>
-        <h3>Formula Audit &amp; Trace</h3>
+        <div class="feature-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg>
+        </div>
+        <h3>Formula audit and trace</h3>
         <p>Visualize precedents, dependents, and cross-sheet links. Catch errors before they compound. Flag hardcodes, circulars, and broken references instantly.</p>
       </div>
       <div class="feature-card reveal reveal-delay-3">
-        <div class="feature-icon">&#128202;</div>
-        <h3>Waterfall Builder</h3>
+        <div class="feature-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M3 15h18"/><path d="M9 3v18"/><path d="M15 3v18"/></svg>
+        </div>
+        <h3>Waterfall builder</h3>
         <p>Generate PE-standard waterfall charts from your returns model in seconds. IRR bridges, equity waterfalls, and returns attribution &#8212; automated.</p>
       </div>
       <div class="feature-card reveal reveal-delay-4">
-        <div class="feature-icon">&#8594;</div>
-        <h3>PowerPoint Integration</h3>
+        <div class="feature-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8"/><path d="M12 17v4"/><path d="M7 8h4"/><path d="M13 8h4"/><path d="M7 12h10"/></svg>
+        </div>
+        <h3>PowerPoint integration</h3>
         <p>Push formatted Excel ranges directly to PowerPoint slides. Auto-resize, maintain formatting, and keep tables live-linked. CIM-ready output.</p>
       </div>
       <div class="feature-card reveal reveal-delay-5">
-        <div class="feature-icon">&#9000;</div>
-        <h3>Keyboard Shortcut Engine</h3>
+        <div class="feature-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M6 8h.01"/><path d="M10 8h.01"/><path d="M14 8h.01"/><path d="M18 8h.01"/><path d="M8 12h.01"/><path d="M12 12h.01"/><path d="M16 12h.01"/><path d="M7 16h10"/></svg>
+        </div>
+        <h3>Keyboard shortcut engine</h3>
         <p>100+ customizable shortcuts for the most common analyst actions. Navigate, format, and build faster than any menu-driven workflow.</p>
       </div>
     </div>
@@ -2579,6 +2678,8 @@
     </div>
   </section>
 
+  </main>
+
   <!-- ── Footer ─────────────────────────────────────────── -->
   <footer>
     <div class="footer-inner">
@@ -2617,7 +2718,7 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <p class="footer-copy">&copy; 2025 Hackabacus, LLC. All rights reserved.</p>
+      <p class="footer-copy">&copy; 2026 Hackabacus, LLC. All rights reserved.</p>
       <div class="footer-legal">
         <a href="#">Privacy Policy</a>
         <a href="#">Terms of Service</a>
