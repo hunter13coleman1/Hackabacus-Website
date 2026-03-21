@@ -1411,11 +1411,16 @@
       gap: 24px;
       margin-top: 64px;
       align-items: start;
+      transition: gap 0.5s var(--ease);
     }
 
     .pricing-cards > .pricing-card {
       flex: 0 0 calc(33.333% - 16px);
       max-width: 400px;
+    }
+
+    .pricing-cards.perpetual-mode {
+      gap: 0;
     }
 
     .pricing-card {
