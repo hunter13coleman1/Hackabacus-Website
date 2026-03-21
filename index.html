@@ -2024,6 +2024,9 @@
         gap: 16px;
         padding-bottom: 8px;
         overscroll-behavior-x: contain;
+        /* Left padding for first card inset, right padding so last card isn't flush */
+        padding-left: 24px;
+        padding-right: 24px;
       }
       .stats-grid::-webkit-scrollbar,
       .features-grid::-webkit-scrollbar,
@@ -2031,14 +2034,13 @@
       .testimonials-grid::-webkit-scrollbar,
       .pricing-cards::-webkit-scrollbar { display: none; }
 
-      /* Each card snaps — sized to show full card with next peeking */
+      /* Each card snaps — calc width to fill screen minus padding with peek */
       .stat-card,
       .feature-card,
       .demo-panel,
       .testimonial,
       .pricing-card {
-        flex: 0 0 82vw;
-        max-width: 380px;
+        flex: 0 0 calc(100vw - 72px);
         scroll-snap-align: start;
       }
 
@@ -2047,31 +2049,32 @@
       .stat-card::after { display: none; }
       .stat-number { font-size: clamp(48px, 10vw, 64px); }
 
-      /* Features: full-bleed scroll inside dark section */
+      /* Features: scroll inside dark section */
+      .features-section { overflow: visible; padding-bottom: 48px; }
       .features-grid {
         background: transparent;
         border-top: none;
-        padding: 0 32px;
+        padding-left: 24px;
+        padding-right: 24px;
       }
       .feature-card {
         padding: 32px 28px;
         border-radius: var(--radius);
-        flex: 0 0 78vw;
-        max-width: 340px;
+        flex: 0 0 calc(100vw - 80px);
       }
 
-      /* Demo panels — only 2, so wider */
-      .demo-panels { padding: 0; }
-      .demo-panel { flex: 0 0 88vw; max-width: 420px; }
+      /* Demo panels — only 2, so slightly wider */
+      .demo-panels { padding-left: 24px; padding-right: 24px; }
+      .demo-panel { flex: 0 0 calc(100vw - 64px); }
 
       /* Testimonials: reset stagger */
       .testimonial:nth-child(2) { transform: none; }
       .testimonial:nth-child(2):hover { transform: translateY(-4px); }
       .testimonial:nth-child(3) { max-width: none; }
-      .testimonial { flex: 0 0 82vw; max-width: 360px; }
+      .testimonial { flex: 0 0 calc(100vw - 72px); }
 
-      /* Pricing — wider so content isn't cut off */
-      .pricing-card { flex: 0 0 86vw; max-width: 400px; }
+      /* Pricing — full card visible */
+      .pricing-card { flex: 0 0 calc(100vw - 64px); }
       .pricing-card.featured { transform: none; }
 
       /* Allow parent containers to let carousel overflow */
@@ -2082,6 +2085,9 @@
       .pricing-section .container {
         overflow: visible;
       }
+
+      /* Features dots need padding since they're inside dark section */
+      .features-section .carousel-dots { padding: 0 32px; }
 
       /* ── Scroll dot indicators ── */
       .carousel-dots {
@@ -2113,17 +2119,15 @@
       .footer-inner { grid-template-columns: 1fr; gap: 28px; }
       .hero-actions { flex-direction: column; align-items: center; }
 
-      /* Card sizes on small screens */
-      .stat-card { flex: 0 0 80vw; padding: 28px 24px; }
+      /* Card sizes on small screens — tighter padding */
+      .stat-card { padding: 28px 24px; }
       .stat-number { font-size: 48px; }
 
-      .feature-card { flex: 0 0 76vw; padding: 28px 24px; }
+      .feature-card { padding: 28px 24px; }
 
-      .demo-panel { flex: 0 0 88vw; }
+      .testimonial { padding: 28px 24px; }
 
-      .testimonial { flex: 0 0 80vw; padding: 28px 24px; }
-
-      .pricing-card { flex: 0 0 86vw; padding: 28px 24px; }
+      .pricing-card { padding: 28px 24px; }
       .price-amount { font-size: 48px; }
       .pricing-features { gap: 10px; }
 
@@ -2367,7 +2371,7 @@
         <p>100+ customizable shortcuts for the most common analyst actions. Navigate, format, and build faster than any menu-driven workflow.</p>
       </div>
     </div>
-    <div class="carousel-dots" data-for="features-grid" style="padding:0 32px"><span class="dot active"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+    <div class="carousel-dots" data-for="features-grid"><span class="dot active"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
   </section>
 
   <!-- ── Demo ──────────────────────────────────────────── -->
