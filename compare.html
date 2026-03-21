@@ -377,15 +377,43 @@
     }
 
     @media (max-width: 900px) {
+      .summary-cards { grid-template-columns: 1fr; gap: 16px; }
+      .summary-card { padding: 28px 24px; }
+
+      .compare-hero { padding: 120px 24px 48px; }
+      .compare-hero h1 { margin: 16px auto 0; }
+      .compare-hero .subtitle { margin: 16px auto 0; }
+      .summary-cards { margin-top: 48px; }
+
+      .compare-category { margin-top: 56px; }
+      .category-title { margin-bottom: 32px; }
+
       .detail-table { font-size: 13px; }
       .detail-table thead th,
       .detail-table tbody td { padding: 12px 14px; }
+      .detail-note { font-size: 11px; }
+
+      .verdict-section { margin-top: 56px; padding: 48px 0; }
+      .verdict-actions { margin-top: 32px; }
+
+      footer { padding: 32px 24px; }
     }
 
     @media (max-width: 600px) {
+      .compare-hero { padding: 100px 20px 36px; }
+      .compare-hero .subtitle { font-size: 15px; }
+
       .detail-table { font-size: 12px; }
       .detail-table thead th,
-      .detail-table tbody td { padding: 10px 10px; }
+      .detail-table tbody td { padding: 10px 8px; }
+      .detail-note { display: none; }
+
+      .verdict-section { margin-top: 40px; padding: 36px 0; }
+      .verdict-section p { font-size: 15px; }
+      .verdict-actions { flex-direction: column; align-items: center; }
+      .btn-primary, .btn-ghost { padding: 14px 28px; font-size: 14px; }
+
+      .category-title { font-size: clamp(24px, 5vw, 32px); }
     }
 
     /* ── Verdict Section ─────────────────────────────────── */

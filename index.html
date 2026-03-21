@@ -1956,14 +1956,25 @@
 
     /* ── Responsive ───────────────────────────────────────── */
     @media (max-width: 900px) {
-      :root { --section-pad: 100px; }
+      :root { --section-pad: 72px; }
 
       .stats-grid,
-      .features-grid,
-      .testimonials-grid,
       .pricing-cards,
       .demo-panels,
       .compare-wrapper { grid-template-columns: 1fr; }
+
+      /* Features: 2-column grid on tablet instead of stacking all 6 */
+      .features-grid { grid-template-columns: repeat(2, 1fr); }
+
+      /* Testimonials: show 2 columns on tablet */
+      .testimonials-grid { grid-template-columns: repeat(2, 1fr); }
+      .testimonial:nth-child(2) { transform: none; }
+      .testimonial:nth-child(2):hover { transform: translateY(-4px); }
+      .testimonial:nth-child(3) { grid-column: 1 / -1; max-width: 480px; justify-self: center; }
+
+      .stat-card {
+        padding: 36px 32px;
+      }
 
       .stat-card::after {
         top: auto;
@@ -1976,11 +1987,15 @@
 
       .stat-card:last-child::after { display: none; }
 
+      .stat-number { font-size: clamp(48px, 10vw, 64px); }
+
+      .stats-grid { margin-top: 56px; }
+
       .pricing-card.featured { transform: none; }
 
       .nav-links { display: none; }
 
-      .footer-inner { grid-template-columns: 1fr 1fr; }
+      .footer-inner { grid-template-columns: 1fr 1fr; gap: 36px; }
       .footer-bottom { flex-direction: column; gap: 14px; text-align: center; }
 
       .hero-float { display: none; }
@@ -1988,7 +2003,7 @@
 
       .hero-grid {
         grid-template-columns: 1fr;
-        gap: 48px;
+        gap: 36px;
         text-align: center;
       }
 
@@ -1996,11 +2011,103 @@
       .hero-sub { margin-left: auto; margin-right: auto; }
       .hero-actions { justify-content: center; }
       .hero-tagline { text-align: center; }
+
+      /* Tighten demo section */
+      .demo-header { margin-bottom: 48px; }
+      .demo-panel-visual { min-height: 200px; padding: 24px; }
+      .video-placeholder { min-height: 280px; padding: 40px 24px; }
+
+      /* Tighten feature cards */
+      .feature-card { padding: 36px 28px; }
+      .features-header { padding: var(--section-pad) 32px 48px; }
+
+      /* Tighten before/after heading */
+      .before-after-section h2 { margin: 16px auto 36px; }
+
+      /* Tighten social/testimonials */
+      .social-section h2 { margin: 16px auto 48px; }
+
+      /* Tighten compare section */
+      .compare-section h2 { margin: 16px auto 0; }
+      .compare-table-wrap { margin: 40px auto 0; border-radius: var(--radius-sm); }
+      .compare-table { font-size: 13px; }
+      .compare-table thead th,
+      .compare-table tbody td { padding: 12px 14px; }
+      .compare-table .price-row td { font-size: 18px; }
+
+      /* Tighten pricing */
+      .pricing-section h2 { margin: 16px auto 0; }
+      .pricing-toggle { margin: 32px auto 0; }
+      .pricing-cards { margin-top: 40px; gap: 20px; }
+      .pricing-card { padding: 32px 28px; }
+      .pricing-features { margin-bottom: 32px; gap: 12px; }
+
+      /* Tighten FAQ */
+      .faq-section h2 { margin: 16px auto 48px; }
+      .faq-question { padding: 20px 24px; }
+
+      /* Tighten CTA */
+      .cta-actions { margin-top: 36px; }
+
+      /* Tighten footer */
+      footer { padding: 48px 32px 32px; }
+      .footer-bottom { margin: 36px auto 0; }
+
+      /* Tighten hero social proof */
+      .hero-social-proof { margin-top: 48px; padding: 32px 24px; }
     }
 
     @media (max-width: 600px) {
-      .footer-inner { grid-template-columns: 1fr; }
+      :root { --section-pad: 56px; }
+
+      .footer-inner { grid-template-columns: 1fr; gap: 28px; }
       .hero-actions { flex-direction: column; align-items: center; }
+
+      /* Features: single column on small mobile */
+      .features-grid { grid-template-columns: 1fr; }
+      .feature-card { padding: 28px 24px; }
+
+      /* Testimonials: single column */
+      .testimonials-grid { grid-template-columns: 1fr; }
+      .testimonial:nth-child(3) { max-width: none; }
+      .testimonial { padding: 28px 24px; }
+
+      /* Compact stats */
+      .stats-grid { margin-top: 40px; }
+      .stat-card { padding: 28px 24px; }
+      .stat-number { font-size: 48px; }
+
+      /* Compact pricing */
+      .pricing-card { padding: 28px 24px; }
+      .price-amount { font-size: 48px; }
+      .pricing-features { gap: 10px; }
+
+      /* Compact demo */
+      .demo-panel-visual { min-height: 160px; padding: 16px; }
+      .video-placeholder { min-height: 220px; padding: 32px 16px; }
+
+      /* Compact FAQ */
+      .faq-question { padding: 18px 20px; font-size: 15px; }
+      .faq-item.open .faq-answer { padding: 0 20px 20px; }
+
+      /* Compact compare table */
+      .compare-table { font-size: 12px; }
+      .compare-table thead th,
+      .compare-table tbody td { padding: 10px 10px; }
+      .compare-table .price-row td { font-size: 16px; }
+
+      /* Compact CTA */
+      .cta-section h2 { font-size: clamp(32px, 8vw, 44px); }
+      .btn-white, .btn-ghost-white { padding: 14px 28px; }
+
+      /* Compact hero */
+      .hero { padding: 100px 24px 48px; min-height: auto; }
+      .hero h1 { font-size: clamp(32px, 8vw, 48px); }
+      .hero-social-proof { margin-top: 36px; padding: 28px 16px; }
+      .hero-social-proof .proof-label { font-size: 11px; margin-bottom: 20px; }
+
+      /* Compact buttons */
+      .btn-primary, .btn-secondary { padding: 14px 24px; font-size: 14px; }
     }
   </style>
 
