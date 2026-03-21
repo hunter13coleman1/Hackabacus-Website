@@ -2024,9 +2024,11 @@
         gap: 16px;
         padding-bottom: 8px;
         overscroll-behavior-x: contain;
-        /* Left padding for first card inset, right padding so last card isn't flush */
-        padding-left: 24px;
-        padding-right: 24px;
+        /* Break out of .container padding so cards span full viewport */
+        margin-left: -32px;
+        margin-right: -32px;
+        padding-left: 20px;
+        padding-right: 20px;
       }
       .stats-grid::-webkit-scrollbar,
       .features-grid::-webkit-scrollbar,
@@ -2034,13 +2036,13 @@
       .testimonials-grid::-webkit-scrollbar,
       .pricing-cards::-webkit-scrollbar { display: none; }
 
-      /* Each card snaps — calc width to fill screen minus padding with peek */
+      /* Each card snaps — nearly full width with small peek of next */
       .stat-card,
       .feature-card,
       .demo-panel,
       .testimonial,
       .pricing-card {
-        flex: 0 0 calc(100vw - 72px);
+        flex: 0 0 calc(100vw - 56px);
         scroll-snap-align: start;
       }
 
@@ -2049,32 +2051,32 @@
       .stat-card::after { display: none; }
       .stat-number { font-size: clamp(48px, 10vw, 64px); }
 
-      /* Features: scroll inside dark section */
+      /* Features: scroll inside dark section (no .container parent) */
       .features-section { overflow: visible; padding-bottom: 48px; }
       .features-grid {
         background: transparent;
         border-top: none;
-        padding-left: 24px;
-        padding-right: 24px;
+        /* features-grid has no .container parent, so no negative margin needed */
+        margin-left: 0;
+        margin-right: 0;
+        padding-left: 20px;
+        padding-right: 20px;
       }
       .feature-card {
         padding: 32px 28px;
         border-radius: var(--radius);
-        flex: 0 0 calc(100vw - 80px);
       }
 
-      /* Demo panels — only 2, so slightly wider */
-      .demo-panels { padding-left: 24px; padding-right: 24px; }
-      .demo-panel { flex: 0 0 calc(100vw - 64px); }
+      /* Demo panels */
+      .demo-panels { }
+      .demo-panel { }
 
       /* Testimonials: reset stagger */
       .testimonial:nth-child(2) { transform: none; }
       .testimonial:nth-child(2):hover { transform: translateY(-4px); }
       .testimonial:nth-child(3) { max-width: none; }
-      .testimonial { flex: 0 0 calc(100vw - 72px); }
 
-      /* Pricing — full card visible */
-      .pricing-card { flex: 0 0 calc(100vw - 64px); }
+      /* Pricing */
       .pricing-card.featured { transform: none; }
 
       /* Allow parent containers to let carousel overflow */
@@ -2086,8 +2088,8 @@
         overflow: visible;
       }
 
-      /* Features dots need padding since they're inside dark section */
-      .features-section .carousel-dots { padding: 0 32px; }
+      /* Features dots — centered within dark section */
+      .features-section .carousel-dots { padding: 0 20px; }
 
       /* ── Scroll dot indicators ── */
       .carousel-dots {
@@ -2108,9 +2110,11 @@
         width: 28px;
         border-radius: 4px;
       }
-      /* Dots inside dark sections */
-      .features-section .carousel-dots .dot { background: rgba(255,255,255,0.15); }
-      .features-section .carousel-dots .dot.active { background: var(--copper); }
+      /* Dots inside dark sections — higher contrast */
+      .features-section .carousel-dots .dot,
+      .demo-section .carousel-dots .dot { background: rgba(255,255,255,0.35); }
+      .features-section .carousel-dots .dot.active,
+      .demo-section .carousel-dots .dot.active { background: var(--copper); }
     }
 
     @media (max-width: 600px) {
