@@ -2034,13 +2034,12 @@
       .testimonials-grid::-webkit-scrollbar,
       .pricing-cards::-webkit-scrollbar { display: none; }
 
-      /* Cards: nearly full viewport width, small peek of next card */
+      /* Cards: full width minus just container padding on each side */
       .stat-card,
-      .feature-card,
       .demo-panel,
       .testimonial,
       .pricing-card {
-        flex: 0 0 calc(100vw - 48px);
+        flex: 0 0 calc(100vw - 52px);
         scroll-snap-align: start;
       }
 
@@ -2049,7 +2048,7 @@
       .stat-card::after { display: none; }
       .stat-number { font-size: clamp(48px, 10vw, 64px); }
 
-      /* Features: inside dark section */
+      /* Features: inside dark section (has its own padding, not inside .container) */
       .features-section { overflow: visible; padding-bottom: 48px; }
       .features-grid {
         background: transparent;
@@ -2058,6 +2057,8 @@
         padding-right: 16px;
       }
       .feature-card {
+        flex: 0 0 calc(100vw - 52px);
+        scroll-snap-align: start;
         padding: 32px 28px;
         border-radius: var(--radius);
       }
@@ -2366,7 +2367,7 @@
         <p>100+ customizable shortcuts for the most common analyst actions. Navigate, format, and build faster than any menu-driven workflow.</p>
       </div>
     </div>
-    <div class="carousel-dots" data-for="features-grid"><span class="dot active"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+    <div class="carousel-dots" data-for="features-grid" style="position:relative;z-index:10"><span class="dot active" style="background:#C9A96E"></span><span class="dot" style="background:rgba(255,255,255,0.6)"></span><span class="dot" style="background:rgba(255,255,255,0.6)"></span><span class="dot" style="background:rgba(255,255,255,0.6)"></span><span class="dot" style="background:rgba(255,255,255,0.6)"></span><span class="dot" style="background:rgba(255,255,255,0.6)"></span></div>
   </section>
 
   <!-- ── Demo ──────────────────────────────────────────── -->
@@ -2483,7 +2484,7 @@
           </div>
         </div>
       </div>
-      <div class="carousel-dots" data-for="demo-panels"><span class="dot active"></span><span class="dot"></span></div>
+      <div class="carousel-dots" data-for="demo-panels" style="position:relative;z-index:10"><span class="dot active" style="background:#C9A96E"></span><span class="dot" style="background:rgba(255,255,255,0.6)"></span></div>
 
       <!-- Video placeholder -->
       <div class="video-placeholder scale-reveal">
@@ -3029,11 +3030,22 @@
       const dots = dotsContainer.querySelectorAll('.dot');
       const cards = scrollEl.children;
 
+      // Check if dots are inside a dark section
+      const isDark = dotsContainer.closest('.features-section, .demo-section') !== null;
+      const activeColor = '#C9A96E';
+      const inactiveColor = isDark ? 'rgba(255,255,255,0.6)' : '';
+
       scrollEl.addEventListener('scroll', () => {
         const scrollLeft = scrollEl.scrollLeft;
         const cardWidth = cards[0].offsetWidth + 16; // card + gap
         const activeIndex = Math.round(scrollLeft / cardWidth);
-        dots.forEach((d, i) => d.classList.toggle('active', i === activeIndex));
+        dots.forEach((d, i) => {
+          const isActive = i === activeIndex;
+          d.classList.toggle('active', isActive);
+          if (isDark) {
+            d.style.background = isActive ? activeColor : inactiveColor;
+          }
+        });
       }, { passive: true });
 
       // Allow tapping a dot to scroll to that card
