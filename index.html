@@ -1909,6 +1909,9 @@
     @media (max-width: 900px) {
       :root { --section-pad: 72px; }
 
+      /* Reduce container side padding so carousel cards have room */
+      .container { padding: 0 16px; }
+
       .stats-grid,
       .pricing-cards,
       .demo-panels { grid-template-columns: 1fr; }
@@ -2008,7 +2011,7 @@
       .pricing-section h2 br { display: none; }
 
       /* ── Horizontal-scroll card carousels on mobile ────── */
-      /* Shared scroll-container pattern */
+      /* ── Horizontal-scroll card carousels ────── */
       .stats-grid,
       .features-grid,
       .demo-panels,
@@ -2024,11 +2027,6 @@
         gap: 16px;
         padding-bottom: 8px;
         overscroll-behavior-x: contain;
-        /* Break out of .container padding so cards span full viewport */
-        margin-left: -32px;
-        margin-right: -32px;
-        padding-left: 20px;
-        padding-right: 20px;
       }
       .stats-grid::-webkit-scrollbar,
       .features-grid::-webkit-scrollbar,
@@ -2036,40 +2034,33 @@
       .testimonials-grid::-webkit-scrollbar,
       .pricing-cards::-webkit-scrollbar { display: none; }
 
-      /* Each card snaps — nearly full width with small peek of next */
+      /* Cards: nearly full viewport width, small peek of next card */
       .stat-card,
       .feature-card,
       .demo-panel,
       .testimonial,
       .pricing-card {
-        flex: 0 0 calc(100vw - 56px);
+        flex: 0 0 calc(100vw - 48px);
         scroll-snap-align: start;
       }
 
-      /* Stats: remove vertical dividers, keep compact */
+      /* Stats */
       .stat-card { padding: 32px 28px; }
       .stat-card::after { display: none; }
       .stat-number { font-size: clamp(48px, 10vw, 64px); }
 
-      /* Features: scroll inside dark section (no .container parent) */
+      /* Features: inside dark section */
       .features-section { overflow: visible; padding-bottom: 48px; }
       .features-grid {
         background: transparent;
         border-top: none;
-        /* features-grid has no .container parent, so no negative margin needed */
-        margin-left: 0;
-        margin-right: 0;
-        padding-left: 20px;
-        padding-right: 20px;
+        padding-left: 16px;
+        padding-right: 16px;
       }
       .feature-card {
         padding: 32px 28px;
         border-radius: var(--radius);
       }
-
-      /* Demo panels */
-      .demo-panels { }
-      .demo-panel { }
 
       /* Testimonials: reset stagger */
       .testimonial:nth-child(2) { transform: none; }
@@ -2079,7 +2070,7 @@
       /* Pricing */
       .pricing-card.featured { transform: none; }
 
-      /* Allow parent containers to let carousel overflow */
+      /* Let carousel overflow out of container */
       .problem-section .container,
       .features-section,
       .demo-section .container,
@@ -2088,8 +2079,8 @@
         overflow: visible;
       }
 
-      /* Features dots — centered within dark section */
-      .features-section .carousel-dots { padding: 0 20px; }
+      /* Dots: z-index so they render above section ::before overlays */
+      .carousel-dots { position: relative; z-index: 2; }
 
       /* ── Scroll dot indicators ── */
       .carousel-dots {
@@ -2110,11 +2101,11 @@
         width: 28px;
         border-radius: 4px;
       }
-      /* Dots inside dark sections — higher contrast */
+      /* Dots inside dark sections — high contrast */
       .features-section .carousel-dots .dot,
-      .demo-section .carousel-dots .dot { background: rgba(255,255,255,0.35); }
+      .demo-section .carousel-dots .dot { background: rgba(255,255,255,0.5); }
       .features-section .carousel-dots .dot.active,
-      .demo-section .carousel-dots .dot.active { background: var(--copper); }
+      .demo-section .carousel-dots .dot.active { background: var(--copper-light); }
     }
 
     @media (max-width: 600px) {
