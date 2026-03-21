@@ -3155,6 +3155,10 @@
         dot.style.cursor = 'pointer';
       });
     });
+
+    // Ensure pricing carousel starts on Individual card on page load
+    const pricingScroll = document.querySelector('.pricing-cards');
+    if (pricingScroll) pricingScroll.scrollLeft = 0;
   </script>
 </body>
 </html>
