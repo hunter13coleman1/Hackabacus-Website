@@ -3026,14 +3026,13 @@
         teamCard.classList.remove('card-hidden');
         enterpriseCard.classList.remove('card-hidden');
         pricingCards.classList.remove('perpetual-mode');
-        // Re-show dots on mobile only
         if (dotsContainer) dotsContainer.style.display = '';
-        // Scroll carousel back to first card (Individual) on mobile
-        pricingCards.scrollTo({ left: 0, behavior: 'smooth' });
-        // Reset dots to first active
-        if (dotsContainer) {
-          dotsContainer.querySelectorAll('.dot').forEach((d, i) => d.classList.toggle('active', i === 0));
-        }
+      }
+
+      // Always reset mobile carousel to Individual (first card) on toggle
+      pricingCards.scrollTo({ left: 0, behavior: 'smooth' });
+      if (dotsContainer) {
+        dotsContainer.querySelectorAll('.dot').forEach((d, i) => d.classList.toggle('active', i === 0));
       }
     }
 
