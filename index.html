@@ -56,6 +56,9 @@
   }
   </script>
 
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%231A1815'/><text x='50' y='68' font-family='system-ui' font-size='56' font-weight='700' fill='%238B7355' text-anchor='middle'>H</text></svg>" />
+
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -110,6 +113,14 @@
       font-size: 16px;
     }
 
+    /* Prevent orphaned words on headlines */
+    h1, h2, h3 {
+      text-wrap: balance;
+    }
+    p {
+      text-wrap: pretty;
+    }
+
     body {
       font-family: var(--font-body);
       background: var(--cream);
@@ -126,11 +137,41 @@
       inset: 0;
       background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwBAMAAAClLOS0AAAAElBMVEUAAAAAAAAAAAAAAAAAAAAAAADgKxmiAAAABnRSTlMFCA0RFRkEEiizAAAASklEQVQ4y2NghgIGBgYFBigghAIGJiggiAImKGCAAkYmKMAJGBgYGIVgAhCVMEAIBUwMUANggBEKcAJGKGBiggJGKGBkgAIAaaEFvbMUjEkAAAAASUVORK5CYII=");
       pointer-events: none;
-      z-index: 9998;
+      z-index: 100;
       opacity: 0.04;
     }
 
     ::selection { background: var(--copper); color: var(--warm-white); }
+
+    /* Focus rings for keyboard navigation (accessibility) */
+    :focus-visible {
+      outline: 2px solid var(--copper);
+      outline-offset: 3px;
+    }
+    button:focus-visible,
+    a:focus-visible {
+      outline: 2px solid var(--copper);
+      outline-offset: 3px;
+      border-radius: 4px;
+    }
+
+    /* Skip-to-content link (hidden, shown on Tab focus) */
+    .skip-link {
+      position: absolute;
+      top: -100%;
+      left: 16px;
+      background: var(--ink);
+      color: var(--warm-white);
+      padding: 12px 24px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 500;
+      z-index: 300;
+      transition: top 0.2s;
+    }
+    .skip-link:focus {
+      top: 12px;
+    }
 
     img { max-width: 100%; display: block; }
     a { color: inherit; text-decoration: none; }
@@ -282,6 +323,9 @@
       background: var(--charcoal) !important;
       transform: translateY(-1px);
       box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+    }
+    .nav-cta:active {
+      transform: scale(0.96) !important;
     }
 
     /* ── Hero ─────────────────────────────────────────────── */
@@ -544,6 +588,11 @@
       box-shadow: 0 12px 40px rgba(26,24,21,0.2);
     }
 
+    .btn-primary:active {
+      transform: translateY(1px) scale(0.98);
+      box-shadow: 0 4px 12px rgba(26,24,21,0.15);
+    }
+
     .btn-secondary {
       background: transparent;
       color: var(--copper);
@@ -563,6 +612,10 @@
     .btn-secondary:hover {
       border-color: var(--copper);
       background: var(--copper-glow);
+    }
+
+    .btn-secondary:active {
+      transform: scale(0.98);
     }
     .btn-secondary .arrow { transition: transform 0.3s var(--ease); }
     .btn-secondary:hover .arrow { transform: translateX(4px); }
@@ -737,11 +790,11 @@
       height: 48px;
       background: rgba(139,115,85,0.08);
       border: 1px solid rgba(139,115,85,0.15);
-      border-radius: 12px;
+      border-radius: 10px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 20px;
+      color: var(--copper-light);
       margin-bottom: 32px;
       transition: all 0.4s var(--ease);
     }
@@ -1010,58 +1063,6 @@
     }
 
     /* ── Before/After ────────────────────────────────────── */
-    .before-after-section {
-      padding: var(--section-pad) 32px;
-      text-align: center;
-    }
-
-    .before-after-section h2 {
-      font-family: var(--font-display);
-      font-size: clamp(40px, 5.5vw, 68px);
-      font-weight: 400;
-      letter-spacing: -0.03em;
-      color: var(--ink);
-      max-width: 640px;
-      margin: 20px auto 56px;
-      line-height: 1.08;
-    }
-
-    .compare-wrapper {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 28px;
-      max-width: 940px;
-      margin: 0 auto;
-    }
-
-    .compare-card {
-      border-radius: var(--radius);
-      overflow: hidden;
-      border: 1px solid var(--sand);
-      transition: all 0.4s var(--ease);
-    }
-
-    .compare-card:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 16px 48px rgba(0,0,0,0.06);
-    }
-
-    .compare-label {
-      padding: 18px 28px;
-      font-size: 12px;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .compare-label.before { background: #FFF5F0; color: #C44D2C; border-bottom: 1px solid #FFD6C8; }
-    .compare-label.after { background: #F0FFF4; color: var(--emerald); border-bottom: 1px solid #C6F6D5; }
-
-    .compare-content { padding: 24px; background: white; }
-
     /* ── Testimonials ─────────────────────────────────────── */
     .social-section {
       background: var(--warm-white);
@@ -1085,6 +1086,11 @@
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 24px;
+      align-items: start;
+    }
+
+    .testimonial:nth-child(2) {
+      transform: translateY(24px);
     }
 
     .testimonial {
@@ -1112,6 +1118,10 @@
       transform: translateY(-4px);
       box-shadow: 0 20px 60px rgba(0,0,0,0.05);
       border-color: var(--copper-light);
+    }
+
+    .testimonial:nth-child(2):hover {
+      transform: translateY(20px);
     }
 
     .testimonial-quote {
@@ -1318,6 +1328,10 @@
       box-shadow: 0 12px 32px rgba(0,0,0,0.1);
     }
 
+    .btn-compare-more:active {
+      transform: translateY(1px) scale(0.98);
+    }
+
     @media (max-width: 900px) {
       .compare-table-wrap { border-radius: var(--radius-sm); }
       .compare-table { font-size: 13px; }
@@ -1352,7 +1366,7 @@
 
     .pricing-toggle {
       display: inline-flex;
-      align-items: center;
+      align-items: stretch;
       gap: 4px;
       margin: 48px auto 0;
       background: var(--warm-white);
@@ -1369,6 +1383,10 @@
       cursor: pointer;
       transition: all 0.3s var(--ease);
       color: var(--graphite);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
     }
 
     .toggle-option.active {
@@ -1388,11 +1406,21 @@
     }
 
     .pricing-cards {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
+      display: flex;
+      justify-content: center;
       gap: 24px;
       margin-top: 64px;
       align-items: start;
+      transition: gap 0.5s var(--ease);
+    }
+
+    .pricing-cards > .pricing-card {
+      flex: 0 0 calc(33.333% - 16px);
+      max-width: 400px;
+    }
+
+    .pricing-cards.perpetual-mode {
+      gap: 0;
     }
 
     .pricing-card {
@@ -1402,7 +1430,22 @@
       background: var(--warm-white);
       text-align: left;
       position: relative;
-      transition: all 0.4s var(--ease);
+      transition: all 0.4s var(--ease), opacity 0.5s var(--ease), transform 0.5s var(--ease), max-height 0.5s var(--ease), padding 0.5s var(--ease), margin 0.5s var(--ease), border-width 0.5s var(--ease), flex 0.5s var(--ease);
+      max-height: 800px;
+    }
+
+    .pricing-card.card-hidden {
+      opacity: 0;
+      transform: translateY(40px) scale(0.95) !important;
+      max-height: 0;
+      padding-top: 0;
+      padding-bottom: 0;
+      margin: 0;
+      border-width: 0;
+      pointer-events: none;
+      flex: 0 0 0% !important;
+      overflow: hidden;
+      gap: 0;
     }
 
     .pricing-card:hover {
@@ -1505,7 +1548,7 @@
     .check {
       width: 20px;
       height: 20px;
-      border-radius: 50%;
+      border-radius: 6px;
       background: rgba(45,122,79,0.08);
       display: flex;
       align-items: center;
@@ -1543,6 +1586,10 @@
       box-shadow: 0 8px 24px rgba(0,0,0,0.12);
     }
 
+    .btn-pricing-primary:active {
+      transform: translateY(1px) scale(0.98);
+    }
+
     .pricing-card.featured .btn-pricing-primary {
       background: var(--copper);
       color: white;
@@ -1572,6 +1619,10 @@
       border-color: var(--copper);
       color: var(--copper);
       background: var(--copper-glow);
+    }
+
+    .btn-pricing-ghost:active {
+      transform: scale(0.98);
     }
 
     /* ── FAQ ──────────────────────────────────────────────── */
@@ -1760,6 +1811,11 @@
       box-shadow: 0 12px 40px rgba(0,0,0,0.2);
     }
 
+    .btn-white:active {
+      transform: translateY(1px) scale(0.98);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+
     .btn-ghost-white {
       background: transparent;
       color: rgba(255,255,255,0.6);
@@ -1777,6 +1833,10 @@
     .btn-ghost-white:hover {
       border-color: var(--copper);
       color: var(--copper-light);
+    }
+
+    .btn-ghost-white:active {
+      transform: scale(0.98);
     }
 
     /* ── Footer ───────────────────────────────────────────── */
@@ -1867,20 +1927,36 @@
       top: 0; left: 0;
       height: 2px;
       background: linear-gradient(90deg, var(--copper), var(--copper-light));
-      z-index: 9999;
+      z-index: 200;
       transition: width 0.08s linear;
     }
 
+    /* ── Carousel dots: hidden on desktop ───────────────── */
+    .carousel-dots { display: none; }
+
     /* ── Responsive ───────────────────────────────────────── */
     @media (max-width: 900px) {
-      :root { --section-pad: 100px; }
+      :root { --section-pad: 72px; }
+
+      /* Reduce container side padding so carousel cards have room */
+      .container { padding: 0 16px; }
 
       .stats-grid,
-      .features-grid,
-      .testimonials-grid,
       .pricing-cards,
-      .demo-panels,
-      .compare-wrapper { grid-template-columns: 1fr; }
+      .demo-panels { grid-template-columns: 1fr; }
+
+      /* Features: 2-column grid on tablet instead of stacking all 6 */
+      .features-grid { grid-template-columns: repeat(2, 1fr); }
+
+      /* Testimonials: show 2 columns on tablet */
+      .testimonials-grid { grid-template-columns: repeat(2, 1fr); }
+      .testimonial:nth-child(2) { transform: none; }
+      .testimonial:nth-child(2):hover { transform: translateY(-4px); }
+      .testimonial:nth-child(3) { grid-column: 1 / -1; max-width: 480px; justify-self: center; }
+
+      .stat-card {
+        padding: 36px 32px;
+      }
 
       .stat-card::after {
         top: auto;
@@ -1893,11 +1969,15 @@
 
       .stat-card:last-child::after { display: none; }
 
+      .stat-number { font-size: clamp(48px, 10vw, 64px); }
+
+      .stats-grid { margin-top: 56px; }
+
       .pricing-card.featured { transform: none; }
 
       .nav-links { display: none; }
 
-      .footer-inner { grid-template-columns: 1fr 1fr; }
+      .footer-inner { grid-template-columns: 1fr 1fr; gap: 36px; }
       .footer-bottom { flex-direction: column; gap: 14px; text-align: center; }
 
       .hero-float { display: none; }
@@ -1905,7 +1985,7 @@
 
       .hero-grid {
         grid-template-columns: 1fr;
-        gap: 48px;
+        gap: 36px;
         text-align: center;
       }
 
@@ -1913,11 +1993,249 @@
       .hero-sub { margin-left: auto; margin-right: auto; }
       .hero-actions { justify-content: center; }
       .hero-tagline { text-align: center; }
+
+      /* Tighten demo section */
+      .demo-header { margin-bottom: 48px; }
+      .demo-panel {
+        display: flex;
+        flex-direction: column;
+      }
+      .demo-panel-header {
+        min-height: 220px;
+        flex-shrink: 0;
+      }
+      .demo-panel-visual {
+        padding: 24px;
+        min-height: 300px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .video-placeholder { min-height: 280px; padding: 40px 24px; }
+
+      /* Tighten feature cards */
+      .feature-card { padding: 36px 28px; }
+      .features-header { padding: var(--section-pad) 32px 48px; }
+
+      /* Tighten social/testimonials */
+      .social-section h2 { margin: 16px auto 48px; }
+
+      /* Tighten compare section */
+      .compare-section h2 { margin: 16px auto 0; }
+      .compare-table-wrap { margin: 40px auto 0; border-radius: var(--radius-sm); }
+      .compare-table { font-size: 13px; }
+      .compare-table thead th,
+      .compare-table tbody td { padding: 12px 14px; }
+      .compare-table .price-row td { font-size: 18px; }
+
+      /* Tighten pricing */
+      .pricing-section h2 { margin: 16px auto 0; }
+      .pricing-toggle {
+        margin: 32px auto 0;
+        width: 100%;
+        max-width: 100%;
+      }
+      .pricing-toggle .toggle-option {
+        padding: 10px 14px;
+        font-size: 13px;
+        flex: 1;
+      }
+      .pricing-toggle .savings-badge {
+        font-size: 10px;
+        padding: 2px 6px;
+      }
+      .pricing-cards { margin-top: 40px; gap: 20px; }
+      .pricing-card { padding: 32px 28px; }
+      .pricing-features { margin-bottom: 32px; gap: 12px; }
+
+      /* Tighten FAQ */
+      .faq-section h2 { margin: 16px auto 48px; }
+      .faq-question { padding: 20px 24px; }
+
+      /* Tighten CTA */
+      .cta-actions { margin-top: 36px; }
+
+      /* Tighten footer */
+      footer { padding: 48px 32px 32px; }
+      .footer-bottom { margin: 36px auto 0; }
+
+      /* Tighten hero social proof */
+      .hero-social-proof { margin-top: 48px; padding: 32px 24px; }
+
+      /* ── Compact headings on mobile (wrap naturally, no scroll) ── */
+      .features-header h2 br,
+      .pricing-section h2 br { display: none; }
+
+      /* ── Horizontal-scroll card carousels on mobile ────── */
+      /* ── Horizontal-scroll card carousels ────── */
+      .stats-grid,
+      .features-grid,
+      .demo-panels,
+      .testimonials-grid,
+      .pricing-cards {
+        display: flex !important;
+        justify-content: flex-start;
+        overflow-x: auto;
+        overflow-y: hidden;
+        -webkit-overflow-scrolling: touch;
+        scroll-snap-type: x mandatory;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
+        gap: 16px;
+        padding-bottom: 8px;
+        overscroll-behavior-x: contain;
+      }
+      .stats-grid::-webkit-scrollbar,
+      .features-grid::-webkit-scrollbar,
+      .demo-panels::-webkit-scrollbar,
+      .testimonials-grid::-webkit-scrollbar,
+      .pricing-cards::-webkit-scrollbar { display: none; }
+
+      /* Cards: 85% viewport width so they fit with visible peek */
+      .stat-card,
+      .demo-panel,
+      .testimonial,
+      .pricing-card,
+      .pricing-cards > .pricing-card {
+        flex: 0 0 85%;
+        scroll-snap-align: start;
+      }
+
+      /* Stats */
+      .stat-card { padding: 32px 28px; }
+      .stat-card::after { display: none; }
+      .stat-number { font-size: clamp(48px, 10vw, 64px); }
+
+      /* Features: inside dark section (has its own padding, not inside .container) */
+      .features-section { overflow: visible; padding-bottom: 48px; }
+      .features-grid {
+        background: transparent;
+        border-top: none;
+        padding-left: 16px;
+        padding-right: 16px;
+      }
+      .feature-card {
+        flex: 0 0 85%;
+        scroll-snap-align: start;
+        padding: 32px 28px;
+        border-radius: var(--radius);
+      }
+
+      /* Testimonials: reset stagger */
+      .testimonial:nth-child(2) { transform: none; }
+      .testimonial:nth-child(2):hover { transform: translateY(-4px); }
+      .testimonial:nth-child(3) { max-width: none; }
+
+      /* Pricing — pad top so "Most Popular" badge isn't clipped */
+      .pricing-cards { padding-top: 20px; }
+      .pricing-card.featured { transform: none; }
+
+      /* Perpetual mode on mobile — stop carousel, center individual card */
+      .pricing-cards.perpetual-mode {
+        overflow-x: hidden;
+        scroll-snap-type: none;
+        justify-content: center;
+      }
+      .pricing-cards.perpetual-mode .pricing-card:first-child {
+        flex: 0 0 85%;
+      }
+      .pricing-cards.perpetual-mode .card-hidden {
+        flex: 0 0 0;
+        min-width: 0;
+        width: 0;
+        padding-left: 0;
+        padding-right: 0;
+        border-width: 0;
+      }
+
+      /* Let carousel overflow out of container */
+      .problem-section .container,
+      .features-section,
+      .demo-section .container,
+      .social-section .container,
+      .pricing-section .container {
+        overflow: visible;
+      }
+
+      /* Dots: z-index so they render above section ::before overlays */
+      .carousel-dots { position: relative; z-index: 2; }
+
+      /* ── Scroll dot indicators ── */
+      .carousel-dots {
+        display: flex;
+        justify-content: center;
+        gap: 8px;
+        margin-top: 20px;
+      }
+      .carousel-dots .dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: var(--sand);
+        transition: all 0.3s ease;
+      }
+      .carousel-dots .dot.active {
+        background: var(--copper);
+        width: 28px;
+        border-radius: 4px;
+      }
+      /* Dots inside dark sections — same colors as light sections */
+      .features-section .carousel-dots .dot,
+      .demo-section .carousel-dots .dot {
+        background: var(--sand);
+        border: none;
+      }
+      .features-section .carousel-dots .dot.active,
+      .demo-section .carousel-dots .dot.active {
+        background: var(--copper);
+        border: none;
+      }
     }
 
     @media (max-width: 600px) {
-      .footer-inner { grid-template-columns: 1fr; }
+      :root { --section-pad: 56px; }
+
+      .footer-inner { grid-template-columns: 1fr; gap: 28px; }
       .hero-actions { flex-direction: column; align-items: center; }
+
+      /* Card sizes on small screens — tighter padding */
+      .stat-card { padding: 28px 24px; }
+      .stat-number { font-size: 48px; }
+
+      .feature-card { padding: 28px 24px; }
+
+      .testimonial { padding: 28px 24px; }
+
+      .pricing-card { padding: 28px 24px; }
+      .price-amount { font-size: 48px; }
+      .pricing-features { gap: 10px; }
+
+      /* Compact demo */
+      .demo-panel-visual { min-height: 160px; padding: 16px; }
+      .video-placeholder { min-height: 220px; padding: 32px 16px; }
+
+      /* Compact FAQ */
+      .faq-question { padding: 18px 20px; font-size: 15px; }
+      .faq-item.open .faq-answer { padding: 0 20px 20px; }
+
+      /* Compact compare table */
+      .compare-table { font-size: 12px; }
+      .compare-table thead th,
+      .compare-table tbody td { padding: 10px 10px; }
+      .compare-table .price-row td { font-size: 16px; }
+
+      /* Compact CTA */
+      .cta-section h2 { font-size: clamp(32px, 8vw, 44px); }
+      .btn-white, .btn-ghost-white { padding: 14px 28px; }
+
+      /* Compact hero */
+      .hero { padding: 100px 24px 48px; min-height: auto; }
+      .hero h1 { font-size: clamp(32px, 8vw, 48px); }
+      .hero-social-proof { margin-top: 36px; padding: 28px 16px; }
+      .hero-social-proof .proof-label { font-size: 11px; margin-bottom: 20px; }
+
+      /* Compact buttons */
+      .btn-primary, .btn-secondary { padding: 14px 24px; font-size: 14px; }
     }
   </style>
 
@@ -1931,11 +2249,14 @@
 </head>
 <body>
 
+  <!-- Skip to content (accessibility) -->
+  <a href="#home" class="skip-link">Skip to content</a>
+
   <!-- Scroll Progress Bar -->
-  <div class="scroll-progress" id="scrollProgress"></div>
+  <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
 
   <!-- ── Navigation ─────────────────────────────────────── -->
-  <nav id="mainNav">
+  <nav id="mainNav" aria-label="Main navigation">
     <div class="nav-inner">
       <a href="#" class="nav-logo">Hack<span>abacus</span></a>
       <ul class="nav-links">
@@ -1949,6 +2270,7 @@
     </div>
   </nav>
 
+  <main>
   <!-- ── Hero ───────────────────────────────────────────── -->
   <section class="hero" id="home">
     <div class="hero-grid">
@@ -2070,6 +2392,7 @@
           <p class="stat-label">hours saved per week per analyst across formatting, audit, and slide production</p>
         </div>
       </div>
+      <div class="carousel-dots" data-for="stats-grid"><span class="dot active"></span><span class="dot"></span><span class="dot"></span></div>
     </div>
   </section>
 
@@ -2085,36 +2408,49 @@
 
     <div class="features-grid container--wide">
       <div class="feature-card reveal">
-        <div class="feature-icon">&#9889;</div>
-        <h3>One-Click Model Formatting</h3>
+        <div class="feature-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+        </div>
+        <h3>One-click model formatting</h3>
         <p>Apply institutional-grade formatting across your entire model instantly. Consistent fonts, colors, borders, and number formats &#8212; PE-standard, every time.</p>
       </div>
       <div class="feature-card reveal reveal-delay-1">
-        <div class="feature-icon">&#127912;</div>
-        <h3>Color &amp; Style Suite</h3>
+        <div class="feature-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="13.5" cy="6.5" r="2.5"/><circle cx="17.5" cy="10.5" r="2.5"/><circle cx="8.5" cy="7.5" r="2.5"/><circle cx="6.5" cy="12.5" r="2.5"/><path d="M12 22c-4.97 0-9-2.24-9-5v-.36C5.11 18.1 8.36 19 12 19s6.89-.9 9-2.36V17c0 2.76-4.03 5-9 5z"/></svg>
+        </div>
+        <h3>Color and style suite</h3>
         <p>Full custom palette management, cell style libraries, and branded color schemes. Lock in your firm's visual identity with a single click.</p>
       </div>
       <div class="feature-card reveal reveal-delay-2">
-        <div class="feature-icon">&#8721;</div>
-        <h3>Formula Audit &amp; Trace</h3>
+        <div class="feature-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7z"/><circle cx="12" cy="12" r="3"/></svg>
+        </div>
+        <h3>Formula audit and trace</h3>
         <p>Visualize precedents, dependents, and cross-sheet links. Catch errors before they compound. Flag hardcodes, circulars, and broken references instantly.</p>
       </div>
       <div class="feature-card reveal reveal-delay-3">
-        <div class="feature-icon">&#128202;</div>
-        <h3>Waterfall Builder</h3>
+        <div class="feature-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M3 15h18"/><path d="M9 3v18"/><path d="M15 3v18"/></svg>
+        </div>
+        <h3>Waterfall builder</h3>
         <p>Generate PE-standard waterfall charts from your returns model in seconds. IRR bridges, equity waterfalls, and returns attribution &#8212; automated.</p>
       </div>
       <div class="feature-card reveal reveal-delay-4">
-        <div class="feature-icon">&#8594;</div>
-        <h3>PowerPoint Integration</h3>
+        <div class="feature-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8"/><path d="M12 17v4"/><path d="M7 8h4"/><path d="M13 8h4"/><path d="M7 12h10"/></svg>
+        </div>
+        <h3>PowerPoint integration</h3>
         <p>Push formatted Excel ranges directly to PowerPoint slides. Auto-resize, maintain formatting, and keep tables live-linked. CIM-ready output.</p>
       </div>
       <div class="feature-card reveal reveal-delay-5">
-        <div class="feature-icon">&#9000;</div>
-        <h3>Keyboard Shortcut Engine</h3>
+        <div class="feature-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M6 8h.01"/><path d="M10 8h.01"/><path d="M14 8h.01"/><path d="M18 8h.01"/><path d="M8 12h.01"/><path d="M12 12h.01"/><path d="M16 12h.01"/><path d="M7 16h10"/></svg>
+        </div>
+        <h3>Keyboard shortcut engine</h3>
         <p>100+ customizable shortcuts for the most common analyst actions. Navigate, format, and build faster than any menu-driven workflow.</p>
       </div>
     </div>
+    <div class="carousel-dots" data-for="features-grid" style="position:relative;z-index:10"><span class="dot active"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
   </section>
 
   <!-- ── Demo ──────────────────────────────────────────── -->
@@ -2123,7 +2459,7 @@
       <div class="demo-header">
         <p class="eyebrow reveal">See Hackabacus in action</p>
         <h2 class="reveal reveal-delay-1">
-          Two tools. One seamless workflow.
+          Two tools. One seamless&nbsp;workflow.
         </h2>
       </div>
 
@@ -2231,6 +2567,7 @@
           </div>
         </div>
       </div>
+      <div class="carousel-dots" data-for="demo-panels" style="position:relative;z-index:10"><span class="dot active"></span><span class="dot"></span></div>
 
       <!-- Video placeholder -->
       <div class="video-placeholder scale-reveal">
@@ -2242,81 +2579,6 @@
   </section>
 
   <!-- ── Before / After ────────────────────────────────── -->
-  <section class="before-after-section">
-    <div class="container">
-      <p class="eyebrow reveal">The Hackabacus difference</p>
-      <h2 class="reveal reveal-delay-1">
-        From chaos<br/>to institutional.
-      </h2>
-
-      <div class="compare-wrapper scale-reveal">
-        <div class="compare-card">
-          <div class="compare-label before">
-            <span>&#10005;</span> Before Hackabacus
-          </div>
-          <div class="compare-content">
-            <div class="mini-grid">
-              <div class="mini-row">
-                <div class="mini-cell hdr">1</div>
-                <div class="mini-cell" style="width:100px; font-size:8px; color:#999">revenue</div>
-                <div class="mini-cell num" style="font-size:8px; color:#333">142500</div>
-                <div class="mini-cell num" style="font-size:8px; color:#333">168200</div>
-                <div class="mini-cell num" style="font-size:8px; color:#333">191400</div>
-              </div>
-              <div class="mini-row">
-                <div class="mini-cell hdr">2</div>
-                <div class="mini-cell" style="width:100px; font-size:8px; background:#FFFF99">COGS</div>
-                <div class="mini-cell num" style="font-size:8px; color:#FF0000">-62300</div>
-                <div class="mini-cell num" style="font-size:8px; color:#FF0000">-73100</div>
-                <div class="mini-cell num" style="font-size:8px; color:#FF0000">-82400</div>
-              </div>
-              <div class="mini-row">
-                <div class="mini-cell hdr">3</div>
-                <div class="mini-cell" style="width:100px; font-size:8px; font-weight:900; background:#C6EFCE">EBITDA</div>
-                <div class="mini-cell num" style="font-size:8px; font-weight:900">51900</div>
-                <div class="mini-cell num" style="font-size:8px; font-weight:900">62000</div>
-                <div class="mini-cell num" style="font-size:8px; font-weight:900">67400</div>
-              </div>
-            </div>
-            <p style="font-size:11px; color:#C44D2C; margin-top:14px;">&#8593; Inconsistent fonts, raw numbers, mixed colors, no structure</p>
-          </div>
-        </div>
-
-        <div class="compare-card">
-          <div class="compare-label after">
-            <span>&#10003;</span> After Hackabacus
-          </div>
-          <div class="compare-content">
-            <div class="mini-grid">
-              <div class="mini-row">
-                <div class="mini-cell hdr">1</div>
-                <div class="mini-cell blue-hdr" style="font-size:8px">INCOME STATEMENT</div>
-                <div class="mini-cell" style="font-size:8px; background:#1A3864; color:white; width:60px; text-align:center">2023A</div>
-                <div class="mini-cell" style="font-size:8px; background:#1A3864; color:white; width:60px; text-align:center">2024E</div>
-                <div class="mini-cell" style="font-size:8px; background:#1A3864; color:white; width:60px; text-align:center">2025E</div>
-              </div>
-              <div class="mini-row">
-                <div class="mini-cell hdr">2</div>
-                <div class="mini-cell" style="width:100px; font-size:8px; font-weight:700">Revenue</div>
-                <div class="mini-cell num" style="font-size:8px">$191.4</div>
-                <div class="mini-cell num" style="font-size:8px">$214.8</div>
-                <div class="mini-cell num" style="font-size:8px">$241.2</div>
-              </div>
-              <div class="mini-row">
-                <div class="mini-cell hdr">3</div>
-                <div class="mini-cell sub" style="width:100px; font-size:8px; font-weight:700">EBITDA</div>
-                <div class="mini-cell sub num" style="font-size:8px">$60.7</div>
-                <div class="mini-cell sub num" style="font-size:8px">$68.6</div>
-                <div class="mini-cell sub num" style="font-size:8px">$77.2</div>
-              </div>
-            </div>
-            <p style="font-size:11px; color:var(--emerald); margin-top:14px;">&#8593; Institutional headers, consistent formatting, proper structure</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- ── Social Proof ───────────────────────────────────── -->
   <section class="social-section">
     <div class="container">
@@ -2355,6 +2617,7 @@
           </div>
         </div>
       </div>
+      <div class="carousel-dots" data-for="testimonials-grid"><span class="dot active"></span><span class="dot"></span><span class="dot"></span></div>
     </div>
   </section>
 
@@ -2437,7 +2700,7 @@
           Annual <span class="savings-badge">Save 35%</span>
         </div>
         <div class="toggle-option" id="togglePerp" onclick="setPricing('perpetual')">
-          Buy Outright <span class="savings-badge">Best Value</span>
+          Buy Outright
         </div>
       </div>
 
@@ -2447,7 +2710,7 @@
           <div class="pricing-tier">Individual</div>
           <div class="pricing-price">
             <span class="price-currency">$</span>
-            <span class="price-amount" id="indPrice">19</span>
+            <span class="price-amount" id="indPrice">14</span>
             <span class="price-period" id="indPeriod">/mo</span>
           </div>
           <p class="pricing-desc">Everything you need to build and format models at professional speed. Perfect for solo analysts and associates.</p>
@@ -2468,7 +2731,7 @@
           <div class="pricing-tier">Team</div>
           <div class="pricing-price">
             <span class="price-currency">$</span>
-            <span class="price-amount" id="teamPrice">14</span>
+            <span class="price-amount" id="teamPrice">12</span>
             <span class="price-period" id="teamPeriod">/seat/mo</span>
           </div>
           <p class="pricing-desc">For deal teams that move together. Shared style libraries, centralized license management, and priority support.</p>
@@ -2501,6 +2764,7 @@
           <button class="btn-pricing-ghost">Contact Sales &#8594;</button>
         </div>
       </div>
+      <div class="carousel-dots" data-for="pricing-cards"><span class="dot active"></span><span class="dot"></span><span class="dot"></span></div>
 
       <p class="reveal" style="text-align:center; font-size:14px; color:var(--graphite); margin-top:36px; font-weight:300;">
         All plans include a 14-day free trial. No credit card required. Perpetual license includes 1 year of free updates.
@@ -2579,6 +2843,8 @@
     </div>
   </section>
 
+  </main>
+
   <!-- ── Footer ─────────────────────────────────────────── -->
   <footer>
     <div class="footer-inner">
@@ -2617,7 +2883,7 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <p class="footer-copy">&copy; 2025 Hackabacus, LLC. All rights reserved.</p>
+      <p class="footer-copy">&copy; 2026 Hackabacus, LLC. All rights reserved.</p>
       <div class="footer-legal">
         <a href="#">Privacy Policy</a>
         <a href="#">Terms of Service</a>
@@ -2724,8 +2990,8 @@
 
     // ── Pricing toggle ───────────────────────────────────
     const prices = {
-      monthly:   { ind: 19,  team: 14,  indPeriod: '/mo',        teamPeriod: '/seat/mo' },
-      annual:    { ind: 149, team: 99,  indPeriod: '/yr',        teamPeriod: '/seat/yr' },
+      monthly:   { ind: 14,  team: 12,  indPeriod: '/mo',        teamPeriod: '/seat/mo' },
+      annual:    { ind: 139, team: 99,  indPeriod: '/yr',        teamPeriod: '/seat/yr' },
       perpetual: { ind: 349, team: 249, indPeriod: ' one-time',  teamPeriod: '/seat one-time' }
     };
 
@@ -2745,6 +3011,36 @@
       animatePrice(teamPrice, prices[mode].team);
       indPeriod.textContent  = prices[mode].indPeriod;
       teamPeriod.textContent = prices[mode].teamPeriod;
+
+      // Hide Team & Enterprise cards for Buy Outright
+      const pricingCards = document.querySelector('.pricing-cards');
+      const allCards = pricingCards.querySelectorAll('.pricing-card');
+      const teamCard = allCards[1];       // Team (Featured)
+      const enterpriseCard = allCards[2]; // Enterprise
+      const dotsContainer = document.querySelector('.carousel-dots[data-for="pricing-cards"]');
+
+      const wasPerpetual = pricingCards.classList.contains('perpetual-mode');
+
+      if (mode === 'perpetual') {
+        teamCard.classList.add('card-hidden');
+        enterpriseCard.classList.add('card-hidden');
+        pricingCards.classList.add('perpetual-mode');
+        if (dotsContainer) dotsContainer.style.display = 'none';
+      } else {
+        teamCard.classList.remove('card-hidden');
+        enterpriseCard.classList.remove('card-hidden');
+        pricingCards.classList.remove('perpetual-mode');
+        if (dotsContainer) dotsContainer.style.display = '';
+        // Only reset carousel to Individual when coming back from Buy Outright
+        if (wasPerpetual) {
+          requestAnimationFrame(() => {
+            pricingCards.scrollLeft = 0;
+            if (dotsContainer) {
+              dotsContainer.querySelectorAll('.dot').forEach((d, i) => d.classList.toggle('active', i === 0));
+            }
+          });
+        }
+      }
     }
 
     function animatePrice(el, target) {
@@ -2829,6 +3125,56 @@
     document.querySelectorAll('.slide-chart').forEach(chart => {
       chartObserver.observe(chart);
     });
+
+    // ── Carousel dot indicators ──────────────────────────
+    const carouselMap = {
+      'stats-grid': '.stats-grid',
+      'features-grid': '.features-grid',
+      'demo-panels': '.demo-panels',
+      'testimonials-grid': '.testimonials-grid',
+      'pricing-cards': '.pricing-cards'
+    };
+
+    document.querySelectorAll('.carousel-dots').forEach(dotsContainer => {
+      const key = dotsContainer.getAttribute('data-for');
+      const scrollEl = document.querySelector(carouselMap[key]);
+      if (!scrollEl) return;
+
+      const dots = dotsContainer.querySelectorAll('.dot');
+      const cards = scrollEl.children;
+
+      scrollEl.addEventListener('scroll', () => {
+        const scrollLeft = scrollEl.scrollLeft;
+        const maxScroll = scrollEl.scrollWidth - scrollEl.clientWidth;
+        const cardWidth = cards[0].offsetWidth + 16; // card + gap
+        // If near the end of scroll, activate the last dot
+        const activeIndex = (maxScroll > 0 && maxScroll - scrollLeft < cardWidth * 0.3)
+          ? dots.length - 1
+          : Math.round(scrollLeft / cardWidth);
+        dots.forEach((d, i) => d.classList.toggle('active', i === activeIndex));
+      }, { passive: true });
+
+      // Allow tapping a dot to scroll to that card
+      dots.forEach((dot, i) => {
+        dot.addEventListener('click', () => {
+          const cardWidth = cards[0].offsetWidth + 16;
+          scrollEl.scrollTo({ left: i * cardWidth, behavior: 'smooth' });
+        });
+        dot.style.cursor = 'pointer';
+      });
+    });
+
+    // Ensure pricing carousel starts on Individual card on page load / bfcache restore
+    function resetPricingScroll() {
+      const el = document.querySelector('.pricing-cards');
+      if (el) {
+        el.scrollLeft = 0;
+        const dotsEl = document.querySelector('.carousel-dots[data-for="pricing-cards"]');
+        if (dotsEl) dotsEl.querySelectorAll('.dot').forEach((d, i) => d.classList.toggle('active', i === 0));
+      }
+    }
+    resetPricingScroll();
+    window.addEventListener('pageshow', resetPricingScroll);
   </script>
 </body>
 </html>
