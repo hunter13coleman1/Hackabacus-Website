@@ -10,6 +10,18 @@
     { "source": "/installation", "destination": "/installation.html" },
     { "source": "/privacy", "destination": "/privacy.html" },
     { "source": "/terms", "destination": "/terms.html" },
-    { "source": "/cookies", "destination": "/cookies.html" }
+    { "source": "/cookies", "destination": "/cookies.html" },
+    { "source": "/download", "destination": "/download.html" },
+    { "source": "/download/windows", "destination": "/downloads/HackabacusSetup.exe" },
+    { "source": "/download/mac", "destination": "/downloads/Hackabacus.dmg" }
+  ],
+  "headers": [
+    {
+      "source": "/downloads/(.*)",
+      "headers": [
+        { "key": "Content-Disposition", "value": "attachment" },
+        { "key": "Cache-Control", "value": "public, max-age=3600" }
+      ]
+    }
   ]
 }
