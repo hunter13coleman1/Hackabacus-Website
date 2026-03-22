@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About Hackabacus — The Finance Professional's Excel &amp; PowerPoint Suite</title>
+    <meta name="description" content="Learn about Hackabacus and our mission to build best-in-class Excel and PowerPoint tools for private equity, investment banking, and finance professionals worldwide." />
+    <meta name="keywords" content="about Hackabacus, Excel plugin company, PowerPoint automation, finance software, PE tools, Macabacus alternative" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://hackabacus.com/about" />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="About Hackabacus — The Finance Professional's Excel &amp; PowerPoint Suite" />
+    <meta property="og:description" content="Learn about Hackabacus and our mission to build best-in-class Excel and PowerPoint tools for private equity, investment banking, and finance professionals worldwide." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://hackabacus.com/about" />
+    <meta property="og:image" content="https://hackabacus.com/og-image.jpg" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="About Hackabacus — The Finance Professional's Excel &amp; PowerPoint Suite" />
+    <meta name="twitter:description" content="Learn about Hackabacus and our mission to build best-in-class Excel and PowerPoint tools for private equity, investment banking, and finance professionals worldwide." />
+    <meta name="twitter:image" content="https://hackabacus.com/og-image.jpg" />
+
+    <!-- JSON-LD Organization Schema -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "Hackabacus",
+        "url": "https://hackabacus.com",
+        "description": "Professional Excel and PowerPoint plugin suite for private equity and finance professionals.",
+        "foundingDate": "2025",
+        "contactPoint": {
+            "@type": "ContactPoint",
+            "email": "hello@hackabacus.com",
+            "contactType": "customer service"
+        }
+    }
+    </script>
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%231A1815'/><text x='50' y='68' font-family='system-ui' font-size='56' font-weight='700' fill='%238B7355' text-anchor='middle'>H</text></svg>" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+    <style>
+        @font-face {
+            font-family: 'Suisse Intl Trial';
+            src: url('fonts/SuisseIntlTrial-Medium.otf') format('opentype');
+            font-weight: 500;
+            font-display: swap;
+        }
+
+        @font-face {
+            font-family: 'Suisse Intl Trial';
+            src: url('fonts/SuisseIntlTrial-Semibold.otf') format('opentype');
+            font-weight: 600;
+            font-display: swap;
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        :root {
+            --cream: #F5F3EE;
+            --warm-white: #FAF9F6;
+            --sand: #E8E4DD;
+            --stone: #B8B2A8;
+            --graphite: #6B6560;
+            --charcoal: #2A2725;
+            --ink: #1A1815;
+            --copper: #8B7355;
+            --copper-light: #A89070;
+            --copper-glow: rgba(139, 115, 85, 0.1);
+            --emerald: #2D7A4F;
+            --navy: #1A3864;
+            --font-display: 'Suisse Intl Trial', 'Inter', -apple-system, sans-serif;
+            --font-body: 'IBM Plex Sans', -apple-system, sans-serif;
+            --section-pad: 120px;
+            --radius: 20px;
+            --radius-sm: 12px;
+            --ease: cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background: var(--cream);
+            color: var(--charcoal);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            opacity: 0.03;
+            z-index: 9999;
+            background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwBAMAAAClLOS0AAAAElBMVEUAAAAAAAAAAAAAAAAAAAAAAADgKxmiAAAABnRSTlMFCA0RFRkAn8MTAAAACXBIWXMAAA7DAAAOwwHHb6hkAAAAbklEQVQ4y2MQRAKMUAYzlCHEwIBkgCiUYQRlGEMZJlCGKZRhBmWYQxkWUIYllGEFZVhDGTZQhi2UYQdl2EMZDlCGI5ThBGU4QxkuUIYrlOEGZbhDGR5QhieU4QVleEMZPlCGL5ThB2X4AwARABEJIizmkQAAAABJRU5ErkJggg==");
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        .container {
+            max-width: 1120px;
+            margin: 0 auto;
+            padding: 0 32px;
+        }
+
+        /* Navigation */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 56px;
+            background: rgba(245, 243, 238, 0.95);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 1320px;
+            margin: 0 auto;
+            padding: 0 32px;
+            width: 100%;
+        }
+
+        .nav-logo {
+            font-family: var(--font-display);
+            font-size: 22px;
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            color: var(--ink);
+        }
+
+        .nav-logo span {
+            font-weight: 400;
+            color: var(--copper);
+        }
+
+        .nav-back {
+            font-size: 14px;
+            color: var(--graphite);
+            transition: color 0.3s var(--ease);
+        }
+
+        .nav-back:hover {
+            color: var(--copper);
+        }
+
+        /* Hero */
+        .hero {
+            padding-top: 160px;
+            padding-bottom: var(--section-pad);
+        }
+
+        .hero h1 {
+            font-family: var(--font-display);
+            font-size: 44px;
+            font-weight: 600;
+            letter-spacing: -0.03em;
+            line-height: 1.15;
+            color: var(--ink);
+            max-width: 720px;
+            margin-bottom: 24px;
+        }
+
+        .hero .subtitle {
+            font-size: 18px;
+            line-height: 1.7;
+            color: var(--graphite);
+            max-width: 640px;
+        }
+
+        /* Sections */
+        .section {
+            padding: var(--section-pad) 0;
+        }
+
+        .section-title {
+            font-family: var(--font-display);
+            font-size: 13px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--copper);
+            margin-bottom: 24px;
+        }
+
+        .section h2 {
+            font-family: var(--font-display);
+            font-size: 32px;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            color: var(--ink);
+            margin-bottom: 32px;
+        }
+
+        .section p {
+            font-size: 17px;
+            line-height: 1.8;
+            color: var(--graphite);
+            max-width: 720px;
+            margin-bottom: 20px;
+        }
+
+        /* Values Grid */
+        .values-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            margin-top: 48px;
+        }
+
+        .value-card {
+            background: var(--warm-white);
+            border-radius: var(--radius-sm);
+            padding: 40px;
+            border: 1px solid var(--sand);
+            transition: transform 0.4s var(--ease), box-shadow 0.4s var(--ease);
+        }
+
+        .value-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.04);
+        }
+
+        .value-card h3 {
+            font-family: var(--font-display);
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--ink);
+            margin-bottom: 12px;
+        }
+
+        .value-card p {
+            font-size: 15px;
+            line-height: 1.7;
+            color: var(--graphite);
+            margin-bottom: 0;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: var(--section-pad) 0;
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            font-family: var(--font-display);
+            font-size: 36px;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            color: var(--ink);
+            margin-bottom: 16px;
+        }
+
+        .cta-section p {
+            font-size: 17px;
+            color: var(--graphite);
+            margin: 0 auto 40px;
+            max-width: 480px;
+        }
+
+        .cta-btn {
+            display: inline-block;
+            padding: 16px 40px;
+            background: var(--ink);
+            color: var(--cream);
+            font-family: var(--font-body);
+            font-size: 15px;
+            font-weight: 500;
+            border-radius: var(--radius-sm);
+            transition: background 0.3s var(--ease), transform 0.3s var(--ease);
+        }
+
+        .cta-btn:hover {
+            background: var(--charcoal);
+            transform: translateY(-1px);
+        }
+
+        /* Divider */
+        .divider {
+            width: 100%;
+            height: 1px;
+            background: var(--sand);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--ink);
+            color: var(--stone);
+            padding: 80px 0 40px;
+        }
+
+        .footer-inner {
+            max-width: 1120px;
+            margin: 0 auto;
+            padding: 0 32px;
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr 1fr;
+            gap: 48px;
+        }
+
+        .footer-brand .footer-logo {
+            font-family: var(--font-display);
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--cream);
+            letter-spacing: -0.03em;
+            margin-bottom: 16px;
+        }
+
+        .footer-brand .footer-logo span {
+            font-weight: 400;
+            color: var(--copper);
+        }
+
+        .footer-brand .footer-tagline {
+            font-size: 14px;
+            line-height: 1.7;
+            color: var(--stone);
+            max-width: 280px;
+        }
+
+        .footer-col h4 {
+            font-family: var(--font-display);
+            font-size: 13px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--cream);
+            margin-bottom: 20px;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 12px;
+        }
+
+        .footer-col ul li a {
+            font-size: 14px;
+            color: var(--stone);
+            transition: color 0.3s var(--ease);
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--copper-light);
+        }
+
+        .footer-bottom {
+            max-width: 1120px;
+            margin: 48px auto 0;
+            padding: 24px 32px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .footer-bottom .copyright {
+            font-size: 13px;
+            color: var(--graphite);
+        }
+
+        .footer-bottom .legal-links {
+            display: flex;
+            gap: 24px;
+        }
+
+        .footer-bottom .legal-links a {
+            font-size: 13px;
+            color: var(--graphite);
+            transition: color 0.3s var(--ease);
+        }
+
+        .footer-bottom .legal-links a:hover {
+            color: var(--copper-light);
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            :root {
+                --section-pad: 80px;
+            }
+
+            .hero h1 {
+                font-size: 36px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            :root {
+                --section-pad: 64px;
+            }
+
+            .hero {
+                padding-top: 120px;
+            }
+
+            .hero h1 {
+                font-size: 30px;
+            }
+
+            .values-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-inner {
+                grid-template-columns: 1fr 1fr;
+                gap: 32px;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                gap: 16px;
+                text-align: center;
+            }
+
+            .cta-section h2 {
+                font-size: 28px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 20px;
+            }
+
+            .nav-inner {
+                padding: 0 20px;
+            }
+
+            .hero h1 {
+                font-size: 26px;
+            }
+
+            .value-card {
+                padding: 28px;
+            }
+
+            .footer-inner {
+                grid-template-columns: 1fr;
+                padding: 0 20px;
+            }
+
+            .footer-bottom {
+                padding: 24px 20px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-inner">
+            <a href="/" class="nav-logo">Hack<span>abacus</span></a>
+            <a href="/" class="nav-back">&larr; Back to Home</a>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="container">
+            <h1>Built by finance professionals, for finance professionals</h1>
+            <p class="subtitle">Hackabacus is on a mission to eliminate the tedious, repetitive work that consumes the best hours of analysts, associates, and directors at the world's top firms. We build tools that let you focus on what actually matters: the analysis.</p>
+        </div>
+    </section>
+
+    <div class="container"><div class="divider"></div></div>
+
+    <!-- Our Mission -->
+    <section class="section">
+        <div class="container">
+            <p class="section-title">Our Mission</p>
+            <h2>Reclaiming lost hours for the finance industry</h2>
+            <p>Every day, thousands of analysts and associates at private equity firms, investment banks, and infrastructure funds spend hours on repetitive formatting tasks. Aligning decimals. Standardizing fonts. Reformatting pitch decks. Adjusting number formats across hundreds of cells. It's work that has to be done, but it shouldn't take this long.</p>
+            <p>Hackabacus was founded to solve that problem. Our Excel and PowerPoint plugin suite automates the formatting workflows that eat into your day, giving you back the time to focus on financial modeling, deal analysis, and the strategic thinking that drives real value.</p>
+        </div>
+    </section>
+
+    <div class="container"><div class="divider"></div></div>
+
+    <!-- What We Believe -->
+    <section class="section">
+        <div class="container">
+            <p class="section-title">What We Believe</p>
+            <h2>The principles behind everything we build</h2>
+            <div class="values-grid">
+                <div class="value-card">
+                    <h3>Speed</h3>
+                    <p>Every millisecond matters when you're closing a deal. Our tools are engineered for instant response so you never lose momentum during a live model or last-minute pitch revision.</p>
+                </div>
+                <div class="value-card">
+                    <h3>Precision</h3>
+                    <p>Institutional-grade formatting that meets the highest standards. From GAAP-compliant number formats to pixel-perfect slide layouts, every detail is handled with care.</p>
+                </div>
+                <div class="value-card">
+                    <h3>Reliability</h3>
+                    <p>Tools that work every time, because your deadlines don't wait. We obsess over stability and testing so you can trust Hackabacus at 2 AM before a partner review.</p>
+                </div>
+                <div class="value-card">
+                    <h3>Simplicity</h3>
+                    <p>Powerful features that feel intuitive from day one. No steep learning curves, no bloated menus. Just clean, purposeful design that gets out of your way.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="container"><div class="divider"></div></div>
+
+    <!-- The Problem We Solve -->
+    <section class="section">
+        <div class="container">
+            <p class="section-title">The Problem We Solve</p>
+            <h2>Finance teams deserve better tools</h2>
+            <p>Studies consistently show that PE analysts, investment bankers, and finance professionals spend 30% or more of their working hours on formatting and presentation tasks rather than substantive analysis. That's hundreds of hours per year per person spent on Excel formatting, PowerPoint automation, and slide standardization instead of financial modeling, valuation analysis, and deal execution.</p>
+            <p>The existing tools on the market were built in a different era. They're slow, bloated, and designed without genuine input from the people who use them daily. Hackabacus takes a different approach. We work directly with deal teams at leading firms to understand their actual workflows, then build focused, high-performance tools that address real pain points.</p>
+            <p>Whether you're formatting a three-statement model, standardizing a 200-page CIM, or preparing a management presentation deck under a tight deadline, Hackabacus gives you the speed and precision to deliver institutional-quality work in a fraction of the time.</p>
+        </div>
+    </section>
+
+    <div class="container"><div class="divider"></div></div>
+
+    <!-- CTA -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>Ready to move faster?</h2>
+            <p>Join the growing number of finance teams who are reclaiming their time with Hackabacus.</p>
+            <a href="/#pricing" class="cta-btn">View Pricing</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-inner">
+            <div class="footer-brand">
+                <div class="footer-logo">Hack<span>abacus</span></div>
+                <p class="footer-tagline">The finance professional's Excel and PowerPoint suite. Built for PE, banking, and infrastructure deal teams.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Product</h4>
+                <ul>
+                    <li><a href="/#features">Features</a></li>
+                    <li><a href="/#demo">Demo</a></li>
+                    <li><a href="/#pricing">Pricing</a></li>
+                    <li><a href="compare.html">Compare</a></li>
+                    <li><a href="changelog.html">Changelog</a></li>
+                    <li><a href="roadmap.html">Roadmap</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="blog.html">Blog</a></li>
+                    <li><a href="careers.html">Careers</a></li>
+                    <li><a href="mailto:hello@hackabacus.com">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Support</h4>
+                <ul>
+                    <li><a href="docs.html">Documentation</a></li>
+                    <li><a href="installation.html">Installation Guide</a></li>
+                    <li><a href="/#faq">FAQ</a></li>
+                    <li><a href="mailto:support@hackabacus.com">Help Center</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <span class="copyright">&copy; 2026 Hackabacus, LLC. All rights reserved.</span>
+            <div class="legal-links">
+                <a href="privacy.html">Privacy Policy</a>
+                <a href="terms.html">Terms of Service</a>
+                <a href="cookies.html">Cookie Policy</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

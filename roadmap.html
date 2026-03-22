@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hackabacus Product Roadmap — What's Coming Next</title>
+
+  <!-- SEO Meta -->
+  <meta name="description" content="Explore the Hackabacus product roadmap. See completed features, current development, and planned enhancements for our Excel and PowerPoint plugin built for private equity, banking, and finance teams." />
+  <meta name="keywords" content="Hackabacus roadmap, Excel plugin updates, PowerPoint automation features, finance tools roadmap, PE Excel add-in development, financial modeling plugin" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://hackabacus.com/roadmap" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Hackabacus Product Roadmap — What's Coming Next" />
+  <meta property="og:description" content="See what we've shipped, what we're building, and what's planned next for Hackabacus — the finance professional's Excel and PowerPoint suite." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://hackabacus.com/roadmap" />
+  <meta property="og:image" content="https://hackabacus.com/og-image.jpg" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Hackabacus Product Roadmap — What's Coming Next" />
+  <meta name="twitter:description" content="See what we've shipped, what we're building, and what's planned next for Hackabacus." />
+
+  <!-- Structured Data: SoftwareApplication -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Hackabacus",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "Windows, macOS",
+    "description": "Professional Excel and PowerPoint plugin suite for private equity and finance professionals.",
+    "offers": [
+      {
+        "@type": "Offer",
+        "name": "Individual Monthly",
+        "price": "19",
+        "priceCurrency": "USD",
+        "priceValidUntil": "2026-12-31"
+      },
+      {
+        "@type": "Offer",
+        "name": "Individual Annual",
+        "price": "149",
+        "priceCurrency": "USD"
+      },
+      {
+        "@type": "Offer",
+        "name": "Individual Perpetual",
+        "price": "349",
+        "priceCurrency": "USD"
+      }
+    ]
+  }
+  </script>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%231A1815'/><text x='50' y='68' font-family='system-ui' font-size='56' font-weight='700' fill='%238B7355' text-anchor='middle'>H</text></svg>" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ── Font Faces ──────────────────────────────────────── */
+    @font-face {
+      font-family: 'Suisse Intl Trial';
+      src: url('fonts/SuisseIntlTrial-Medium.otf') format('opentype');
+      font-weight: 500;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'Suisse Intl Trial';
+      src: url('fonts/SuisseIntlTrial-Semibold.otf') format('opentype');
+      font-weight: 600;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    /* ── Reset & Tokens ───────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream:      #F5F3EE;
+      --warm-white: #FAF9F6;
+      --sand:       #E8E4DD;
+      --stone:      #B8B2A8;
+      --graphite:   #6B6560;
+      --charcoal:   #2A2725;
+      --ink:        #1A1815;
+      --copper:     #8B7355;
+      --copper-light: #A89070;
+      --copper-glow: rgba(139,115,85,0.1);
+      --emerald:    #2D7A4F;
+      --emerald-light: #34925D;
+
+      --font-display: 'Suisse Intl Trial', 'Inter', -apple-system, sans-serif;
+      --font-body:    'IBM Plex Sans', -apple-system, sans-serif;
+
+      --radius:      20px;
+      --radius-sm:   12px;
+      --ease:        cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3 { text-wrap: balance; }
+    p { text-wrap: pretty; }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--cream);
+      color: var(--charcoal);
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Grain overlay */
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwBAMAAAClLOS0AAAAElBMVEUAAAAAAAAAAAAAAAAAAAAAAADgKxmiAAAABnRSTlMFCA0RFRkEEiizAAAASklEQVQ4y2NghgIGBgYFBigghAIGJiggiAImKGCAAkYmKMAJGBgYGIVgAhCVMEAIBUwMUANggBEKcAJGKGBiggJGKGBkgAIAaaEFvbMUjEkAAAAASUVORK5CYII=");
+      pointer-events: none;
+      z-index: 100;
+      opacity: 0.04;
+    }
+
+    ::selection { background: var(--copper); color: var(--warm-white); }
+
+    :focus-visible {
+      outline: 2px solid var(--copper);
+      outline-offset: 3px;
+    }
+
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+
+    /* ── Utility ──────────────────────────────────────────── */
+    .container {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+
+    .eyebrow {
+      font-family: var(--font-body);
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--copper);
+    }
+
+    /* ── Scroll reveal ───────────────────────────────────── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(48px);
+      transition: opacity 1s var(--ease), transform 1s var(--ease);
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal-delay-1 { transition-delay: 0.12s; }
+    .reveal-delay-2 { transition-delay: 0.24s; }
+    .reveal-delay-3 { transition-delay: 0.36s; }
+
+    /* ── Navigation ───────────────────────────────────────── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      background: rgba(245,243,238,0.88);
+      backdrop-filter: saturate(180%) blur(24px);
+      -webkit-backdrop-filter: saturate(180%) blur(24px);
+      border-bottom: 1px solid rgba(0,0,0,0.05);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      max-width: 1320px;
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+
+    .nav-logo {
+      font-family: var(--font-display);
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      color: var(--ink);
+    }
+
+    .nav-logo span {
+      font-weight: 400;
+      color: var(--copper);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 36px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 14px;
+      font-weight: 400;
+      color: var(--graphite);
+      transition: color 0.3s;
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px; left: 0;
+      width: 0;
+      height: 1.5px;
+      background: var(--copper);
+      transition: width 0.4s var(--ease);
+    }
+
+    .nav-links a:hover { color: var(--ink); }
+    .nav-links a:hover::after { width: 100%; }
+
+    /* ── Hero ─────────────────────────────────────────────── */
+    .hero {
+      padding: 140px 0 80px;
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(36px, 5vw, 56px);
+      font-weight: 600;
+      letter-spacing: -0.035em;
+      line-height: 1.1;
+      color: var(--ink);
+      margin-bottom: 20px;
+    }
+
+    .hero p {
+      font-size: 18px;
+      font-weight: 300;
+      color: var(--graphite);
+      line-height: 1.65;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* ── Roadmap Grid ─────────────────────────────────────── */
+    .roadmap-section {
+      padding: 40px 0 120px;
+    }
+
+    .roadmap-columns {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+    }
+
+    .roadmap-column {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .column-header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 20px 24px;
+      border-radius: var(--radius-sm);
+      margin-bottom: 4px;
+    }
+
+    .column-header--completed {
+      background: rgba(45,122,79,0.06);
+      border: 1px solid rgba(45,122,79,0.12);
+    }
+
+    .column-header--in-progress {
+      background: var(--copper-glow);
+      border: 1px solid rgba(139,115,85,0.15);
+    }
+
+    .column-header--planned {
+      background: rgba(184,178,168,0.12);
+      border: 1px solid rgba(184,178,168,0.2);
+    }
+
+    .column-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .column-icon--completed {
+      background: var(--emerald);
+    }
+
+    .column-icon--in-progress {
+      background: var(--copper);
+    }
+
+    .column-icon--planned {
+      background: var(--stone);
+    }
+
+    .column-icon svg {
+      width: 18px;
+      height: 18px;
+      stroke: var(--warm-white);
+      fill: none;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .column-header h2 {
+      font-family: var(--font-display);
+      font-size: 18px;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+    }
+
+    .column-header .column-count {
+      font-size: 13px;
+      font-weight: 400;
+      color: var(--graphite);
+      margin-left: auto;
+    }
+
+    /* ── Feature Card ─────────────────────────────────────── */
+    .feature-card {
+      background: var(--warm-white);
+      border: 1px solid var(--sand);
+      border-radius: var(--radius-sm);
+      padding: 24px;
+      transition: transform 0.4s var(--ease), box-shadow 0.4s var(--ease);
+    }
+
+    .feature-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 32px rgba(26,24,21,0.06);
+    }
+
+    .feature-card__header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 10px;
+    }
+
+    .feature-card__title {
+      font-family: var(--font-display);
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--ink);
+      letter-spacing: -0.01em;
+      line-height: 1.35;
+    }
+
+    .feature-card__desc {
+      font-size: 13.5px;
+      font-weight: 300;
+      color: var(--graphite);
+      line-height: 1.6;
+    }
+
+    /* ── Status Badge ─────────────────────────────────────── */
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.03em;
+      padding: 4px 10px;
+      border-radius: 980px;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .badge--completed {
+      background: rgba(45,122,79,0.08);
+      color: var(--emerald);
+    }
+
+    .badge--in-progress {
+      background: var(--copper-glow);
+      color: var(--copper);
+    }
+
+    .badge--planned {
+      background: rgba(184,178,168,0.15);
+      color: var(--graphite);
+    }
+
+    .badge__dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+    }
+
+    .badge--completed .badge__dot { background: var(--emerald); }
+    .badge--in-progress .badge__dot { background: var(--copper); animation: pulse 2s ease-in-out infinite; }
+    .badge--planned .badge__dot { background: var(--stone); }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+
+    /* ── CTA Section ──────────────────────────────────────── */
+    .cta-section {
+      padding: 80px 0;
+      text-align: center;
+    }
+
+    .cta-box {
+      background: var(--ink);
+      border-radius: var(--radius);
+      padding: 64px 48px;
+      max-width: 720px;
+      margin: 0 auto;
+    }
+
+    .cta-box h2 {
+      font-family: var(--font-display);
+      font-size: clamp(24px, 3vw, 32px);
+      font-weight: 600;
+      color: var(--warm-white);
+      letter-spacing: -0.03em;
+      margin-bottom: 12px;
+    }
+
+    .cta-box p {
+      font-size: 15px;
+      font-weight: 300;
+      color: rgba(255,255,255,0.45);
+      margin-bottom: 32px;
+      line-height: 1.6;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      background: var(--copper);
+      color: var(--warm-white);
+      padding: 14px 32px;
+      border-radius: 980px;
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      transition: all 0.3s var(--ease);
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn-primary:hover {
+      background: var(--copper-light);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(139,115,85,0.25);
+    }
+
+    /* ── Footer ───────────────────────────────────────────── */
+    footer {
+      background: var(--ink);
+      border-top: 1px solid rgba(255,255,255,0.04);
+      padding: 72px 32px 44px;
+    }
+
+    .footer-inner {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 56px;
+      max-width: 1120px;
+      margin: 0 auto;
+    }
+
+    .footer-brand .nav-logo {
+      color: var(--warm-white);
+      display: block;
+      margin-bottom: 20px;
+    }
+
+    .footer-brand .nav-logo span { color: var(--copper); }
+
+    .footer-tagline {
+      font-size: 14px;
+      font-weight: 300;
+      color: rgba(255,255,255,0.3);
+      line-height: 1.65;
+      max-width: 300px;
+    }
+
+    .footer-col h4 {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--copper);
+      margin-bottom: 24px;
+      opacity: 0.7;
+    }
+
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 14px; }
+
+    .footer-col a {
+      font-size: 14px;
+      color: rgba(255,255,255,0.4);
+      transition: color 0.3s;
+      font-weight: 300;
+    }
+
+    .footer-col a:hover { color: rgba(255,255,255,0.8); }
+
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1120px;
+      margin: 56px auto 0;
+      padding-top: 28px;
+      border-top: 1px solid rgba(255,255,255,0.04);
+    }
+
+    .footer-copy {
+      font-size: 12px;
+      color: rgba(255,255,255,0.2);
+      font-weight: 300;
+    }
+
+    .footer-legal {
+      display: flex;
+      gap: 24px;
+    }
+
+    .footer-legal a {
+      font-size: 12px;
+      color: rgba(255,255,255,0.2);
+      transition: color 0.3s;
+      font-weight: 300;
+    }
+
+    .footer-legal a:hover { color: rgba(255,255,255,0.5); }
+
+    /* ── Responsive ───────────────────────────────────────── */
+    @media (max-width: 900px) {
+      .roadmap-columns {
+        grid-template-columns: 1fr;
+        gap: 48px;
+      }
+
+      .footer-inner {
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .hero { padding: 120px 0 56px; }
+      .hero p { font-size: 16px; }
+
+      .feature-card { padding: 20px; }
+
+      .cta-box { padding: 48px 28px; }
+
+      .footer-inner {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+        gap: 16px;
+        text-align: center;
+      }
+
+      .nav-links { gap: 20px; }
+      .nav-links a { font-size: 13px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── Navigation ──────────────────────────────────────── -->
+  <nav>
+    <div class="nav-inner">
+      <a href="/" class="nav-logo">Hack<span>abacus</span></a>
+      <ul class="nav-links">
+        <li><a href="/">Back to Home</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ── Hero ────────────────────────────────────────────── -->
+  <main id="main">
+    <section class="hero">
+      <div class="container">
+        <p class="eyebrow" style="margin-bottom:16px;">Product Roadmap</p>
+        <h1>What we're building next</h1>
+        <p>A transparent look at where Hackabacus is headed. See what we've shipped, what's in progress, and what's on deck for finance teams everywhere.</p>
+      </div>
+    </section>
+
+    <!-- ── Roadmap ──────────────────────────────────────── -->
+    <section class="roadmap-section">
+      <div class="container">
+        <div class="roadmap-columns">
+
+          <!-- ── Completed ──────────────────────────────── -->
+          <div class="roadmap-column reveal">
+            <div class="column-header column-header--completed">
+              <div class="column-icon column-icon--completed">
+                <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              </div>
+              <h2>Completed</h2>
+              <span class="column-count">4 features</span>
+            </div>
+
+            <article class="feature-card">
+              <div class="feature-card__header">
+                <h3 class="feature-card__title">One-click number formatting</h3>
+                <span class="badge badge--completed"><span class="badge__dot"></span>Shipped</span>
+              </div>
+              <p class="feature-card__desc">Apply institutional-grade number formats to any Excel range in a single click. Supports GAAP, IFRS, and PE-standard conventions including parenthetical negatives and basis-point notation.</p>
+            </article>
+
+            <article class="feature-card">
+              <div class="feature-card__header">
+                <h3 class="feature-card__title">Excel cell styling engine</h3>
+                <span class="badge badge--completed"><span class="badge__dot"></span>Shipped</span>
+              </div>
+              <p class="feature-card__desc">Enforce firm-wide formatting standards across workbooks. Automatically styles headers, inputs, outputs, and check cells to match your team's style guide.</p>
+            </article>
+
+            <article class="feature-card">
+              <div class="feature-card__header">
+                <h3 class="feature-card__title">PowerPoint template library</h3>
+                <span class="badge badge--completed"><span class="badge__dot"></span>Shipped</span>
+              </div>
+              <p class="feature-card__desc">Curated library of 40+ finance-ready slide layouts. Includes deal overview, waterfall charts, org structures, and IC memo templates built for banking and PE workflows.</p>
+            </article>
+
+            <article class="feature-card">
+              <div class="feature-card__header">
+                <h3 class="feature-card__title">Model audit trail</h3>
+                <span class="badge badge--completed"><span class="badge__dot"></span>Shipped</span>
+              </div>
+              <p class="feature-card__desc">Track every change to your financial model with timestamped logs. See who modified which cells, when, and what the previous values were for full audit compliance.</p>
+            </article>
+          </div>
+
+          <!-- ── In Progress ────────────────────────────── -->
+          <div class="roadmap-column reveal reveal-delay-1">
+            <div class="column-header column-header--in-progress">
+              <div class="column-icon column-icon--in-progress">
+                <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+              </div>
+              <h2>In Progress</h2>
+              <span class="column-count">4 features</span>
+            </div>
+
+            <article class="feature-card">
+              <div class="feature-card__header">
+                <h3 class="feature-card__title">AI-assisted formula review</h3>
+                <span class="badge badge--in-progress"><span class="badge__dot"></span>Building</span>
+              </div>
+              <p class="feature-card__desc">Intelligent analysis that scans your model for broken references, circular logic, and hardcoded assumptions. Flags errors before they reach your managing director's desk.</p>
+            </article>
+
+            <article class="feature-card">
+              <div class="feature-card__header">
+                <h3 class="feature-card__title">Batch slide generation</h3>
+                <span class="badge badge--in-progress"><span class="badge__dot"></span>Building</span>
+              </div>
+              <p class="feature-card__desc">Generate dozens of formatted slides from a single data source. Map Excel tables directly to PowerPoint templates and produce entire pitch decks in minutes, not hours.</p>
+            </article>
+
+            <article class="feature-card">
+              <div class="feature-card__header">
+                <h3 class="feature-card__title">Custom formatting presets</h3>
+                <span class="badge badge--in-progress"><span class="badge__dot"></span>Building</span>
+              </div>
+              <p class="feature-card__desc">Save and share your firm's exact formatting rules as reusable presets. Apply them across workbooks with one click and distribute to your entire team seamlessly.</p>
+            </article>
+
+            <article class="feature-card">
+              <div class="feature-card__header">
+                <h3 class="feature-card__title">Team collaboration sync</h3>
+                <span class="badge badge--in-progress"><span class="badge__dot"></span>Building</span>
+              </div>
+              <p class="feature-card__desc">Real-time syncing of styles, templates, and presets across your team. Admin controls for brand consistency so every analyst outputs work that looks like it came from one hand.</p>
+            </article>
+          </div>
+
+          <!-- ── Planned ────────────────────────────────── -->
+          <div class="roadmap-column reveal reveal-delay-2">
+            <div class="column-header column-header--planned">
+              <div class="column-icon column-icon--planned">
+                <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="16"></line><line x1="8" y1="12" x2="16" y2="12"></line></svg>
+              </div>
+              <h2>Planned</h2>
+              <span class="column-count">4 features</span>
+            </div>
+
+            <article class="feature-card">
+              <div class="feature-card__header">
+                <h3 class="feature-card__title">Excel web add-in support</h3>
+                <span class="badge badge--planned"><span class="badge__dot"></span>Planned</span>
+              </div>
+              <p class="feature-card__desc">Bring Hackabacus formatting and automation tools to Excel for the web. Work from any browser with the same powerful features available in the desktop plugin.</p>
+            </article>
+
+            <article class="feature-card">
+              <div class="feature-card__header">
+                <h3 class="feature-card__title">Automated IC memo builder</h3>
+                <span class="badge badge--planned"><span class="badge__dot"></span>Planned</span>
+              </div>
+              <p class="feature-card__desc">Pull key metrics from your model and auto-populate investment committee memo templates. Reduce hours of copy-paste into a structured, presentation-ready document.</p>
+            </article>
+
+            <article class="feature-card">
+              <div class="feature-card__header">
+                <h3 class="feature-card__title">Data room integration</h3>
+                <span class="badge badge--planned"><span class="badge__dot"></span>Planned</span>
+              </div>
+              <p class="feature-card__desc">Connect directly to major virtual data room providers. Import documents, extract key data points, and link source materials to your model cells for seamless diligence workflows.</p>
+            </article>
+
+            <article class="feature-card">
+              <div class="feature-card__header">
+                <h3 class="feature-card__title">Multi-language support</h3>
+                <span class="badge badge--planned"><span class="badge__dot"></span>Planned</span>
+              </div>
+              <p class="feature-card__desc">Localized interface and formatting conventions for international teams. Support for European number formats, multilingual templates, and region-specific financial standards.</p>
+            </article>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ── CTA ──────────────────────────────────────────── -->
+    <section class="cta-section reveal">
+      <div class="container">
+        <div class="cta-box">
+          <h2>Have a feature request?</h2>
+          <p>We build Hackabacus based on what finance professionals actually need. Tell us what would make your workflow faster.</p>
+          <a href="mailto:hello@hackabacus.com" class="btn-primary">Send us feedback</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ── Footer ──────────────────────────────────────────── -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="/" class="nav-logo">Hack<span>abacus</span></a>
+        <p class="footer-tagline">The finance professional's Excel and PowerPoint suite. Built for PE, banking, and infrastructure deal teams.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Product</h4>
+        <ul>
+          <li><a href="changelog.html">Changelog</a></li>
+          <li><a href="roadmap.html">Roadmap</a></li>
+          <li><a href="docs.html">Documentation</a></li>
+          <li><a href="installation.html">Installation Guide</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="about.html">About</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="careers.html">Careers</a></li>
+          <li><a href="mailto:hello@hackabacus.com">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="privacy.html">Privacy Policy</a></li>
+          <li><a href="terms.html">Terms of Service</a></li>
+          <li><a href="cookies.html">Cookie Policy</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy">&copy; 2026 Hackabacus, LLC. All rights reserved.</p>
+      <div class="footer-legal">
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms of Service</a>
+        <a href="cookies.html">Cookie Policy</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ── Scripts ─────────────────────────────────────────── -->
+  <script>
+    // Scroll reveal
+    const revealEls = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.08,
+      rootMargin: '0px 0px -60px 0px'
+    });
+    revealEls.forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>

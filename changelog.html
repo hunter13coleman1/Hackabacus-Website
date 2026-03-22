@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hackabacus Changelog — Latest Updates & New Features</title>
+
+  <!-- SEO Meta -->
+  <meta name="description" content="Stay up to date with the latest Hackabacus product updates, new features, and improvements for the Excel and PowerPoint plugin built for PE, banking, and finance teams." />
+  <meta name="keywords" content="Hackabacus changelog, Excel plugin updates, PowerPoint automation updates, finance tools changelog, Hackabacus new features, Excel add-in release notes" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://hackabacus.com/changelog" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Hackabacus Changelog — Latest Updates & New Features" />
+  <meta property="og:description" content="See what's new in Hackabacus. Product updates, new features, and improvements for the finance professional's Excel and PowerPoint plugin." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://hackabacus.com/changelog" />
+  <meta property="og:image" content="https://hackabacus.com/og-image.jpg" />
+  <meta property="og:site_name" content="Hackabacus" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Hackabacus Changelog — Latest Updates & New Features" />
+  <meta name="twitter:description" content="See what's new in Hackabacus. Product updates, new features, and improvements for the finance professional's Excel and PowerPoint plugin." />
+
+  <!-- Structured Data: SoftwareApplication -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Hackabacus",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "Windows, macOS",
+    "description": "Professional Excel and PowerPoint plugin suite for private equity, investment banking, and finance professionals.",
+    "url": "https://hackabacus.com",
+    "offers": [
+      {
+        "@type": "Offer",
+        "name": "Individual Monthly",
+        "price": "19",
+        "priceCurrency": "USD",
+        "priceValidUntil": "2026-12-31"
+      },
+      {
+        "@type": "Offer",
+        "name": "Individual Annual",
+        "price": "149",
+        "priceCurrency": "USD"
+      },
+      {
+        "@type": "Offer",
+        "name": "Individual Perpetual",
+        "price": "349",
+        "priceCurrency": "USD"
+      }
+    ]
+  }
+  </script>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%231A1815'/><text x='50' y='68' font-family='system-ui' font-size='56' font-weight='700' fill='%238B7355' text-anchor='middle'>H</text></svg>" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet" />
+
+  <style>
+    /* -- Font Faces ---------------------------------------- */
+    @font-face {
+      font-family: 'Suisse Intl Trial';
+      src: url('fonts/SuisseIntlTrial-Medium.otf') format('opentype');
+      font-weight: 500;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'Suisse Intl Trial';
+      src: url('fonts/SuisseIntlTrial-Semibold.otf') format('opentype');
+      font-weight: 600;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    /* -- Reset & Tokens ----------------------------------- */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream:      #F5F3EE;
+      --warm-white: #FAF9F6;
+      --sand:       #E8E4DD;
+      --stone:      #B8B2A8;
+      --graphite:   #6B6560;
+      --charcoal:   #2A2725;
+      --ink:        #1A1815;
+      --copper:     #8B7355;
+      --copper-light: #A89070;
+      --copper-glow: rgba(139,115,85,0.1);
+
+      --font-display: 'Suisse Intl Trial', 'Inter', -apple-system, sans-serif;
+      --font-body:    'IBM Plex Sans', -apple-system, sans-serif;
+
+      --radius:     20px;
+      --radius-sm:  12px;
+      --ease:       cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3 { text-wrap: balance; }
+    p { text-wrap: pretty; }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--cream);
+      color: var(--charcoal);
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Grain overlay */
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwBAMAAAClLOS0AAAAElBMVEUAAAAAAAAAAAAAAAAAAAAAAADgKxmiAAAABnRSTlMFCA0RFRkEEiizAAAASklEQVQ4y2NghgIGBgYFBigghAIGJiggiAImKGCAAkYmKMAJGBgYGIVgAhCVMEAIBUwMUANggBEKcAJGKGBiggJGKGBkgAIAaaEFvbMUjEkAAAAASUVORK5CYII=");
+      pointer-events: none;
+      z-index: 100;
+      opacity: 0.04;
+    }
+
+    ::selection { background: var(--copper); color: var(--warm-white); }
+
+    :focus-visible {
+      outline: 2px solid var(--copper);
+      outline-offset: 3px;
+    }
+    button:focus-visible,
+    a:focus-visible {
+      outline: 2px solid var(--copper);
+      outline-offset: 3px;
+      border-radius: 4px;
+    }
+
+    .skip-link {
+      position: absolute;
+      top: -100%;
+      left: 16px;
+      background: var(--ink);
+      color: var(--warm-white);
+      padding: 12px 24px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 500;
+      z-index: 300;
+      transition: top 0.2s;
+    }
+    .skip-link:focus { top: 12px; }
+
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+
+    /* -- Utility ------------------------------------------ */
+    .container {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+
+    .eyebrow {
+      font-family: var(--font-body);
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--copper);
+    }
+
+    /* -- Scroll reveal ------------------------------------- */
+    .reveal {
+      opacity: 0;
+      transform: translateY(48px);
+      transition: opacity 1s var(--ease), transform 1s var(--ease);
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* -- Nav ---------------------------------------------- */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      background: rgba(245,243,238,0.88);
+      backdrop-filter: saturate(180%) blur(24px);
+      -webkit-backdrop-filter: saturate(180%) blur(24px);
+      border-bottom: 1px solid rgba(0,0,0,0.05);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      max-width: 1320px;
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+
+    .nav-logo {
+      font-family: var(--font-display);
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      color: var(--ink);
+    }
+
+    .nav-logo span {
+      font-weight: 400;
+      color: var(--copper);
+    }
+
+    .nav-back {
+      font-size: 14px;
+      font-weight: 400;
+      color: var(--graphite);
+      transition: color 0.3s;
+    }
+    .nav-back:hover {
+      color: var(--copper);
+    }
+    .nav-back svg {
+      display: inline-block;
+      vertical-align: middle;
+      margin-right: 6px;
+      transition: transform 0.3s var(--ease);
+    }
+    .nav-back:hover svg {
+      transform: translateX(-3px);
+    }
+
+    /* -- Page Header -------------------------------------- */
+    .page-header {
+      padding: 140px 0 64px;
+      text-align: center;
+    }
+
+    .page-header h1 {
+      font-family: var(--font-display);
+      font-size: clamp(36px, 5vw, 56px);
+      font-weight: 600;
+      letter-spacing: -0.03em;
+      color: var(--ink);
+      margin-top: 16px;
+      line-height: 1.1;
+    }
+
+    .page-header p {
+      font-size: 18px;
+      font-weight: 300;
+      color: var(--graphite);
+      line-height: 1.65;
+      max-width: 580px;
+      margin: 20px auto 0;
+    }
+
+    /* -- Timeline ----------------------------------------- */
+    .timeline {
+      padding: 40px 0 120px;
+      position: relative;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 2px;
+      height: 100%;
+      background: linear-gradient(to bottom, var(--sand), transparent);
+      display: none;
+    }
+
+    .timeline-entries {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+      max-width: 780px;
+      margin: 0 auto;
+    }
+
+    /* -- Entry Card --------------------------------------- */
+    .entry-card {
+      background: var(--warm-white);
+      border: 1px solid var(--sand);
+      border-radius: var(--radius);
+      padding: 40px 44px;
+      transition: box-shadow 0.4s var(--ease), transform 0.4s var(--ease);
+    }
+
+    .entry-card:hover {
+      box-shadow: 0 8px 40px rgba(139,115,85,0.08);
+      transform: translateY(-2px);
+    }
+
+    .entry-header {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+    }
+
+    .version-badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 6px 16px;
+      background: var(--copper-glow);
+      color: var(--copper);
+      font-family: var(--font-display);
+      font-size: 15px;
+      font-weight: 600;
+      border-radius: 100px;
+      letter-spacing: -0.01em;
+    }
+
+    .entry-date {
+      font-size: 14px;
+      font-weight: 400;
+      color: var(--stone);
+    }
+
+    .entry-tag {
+      display: inline-flex;
+      align-items: center;
+      padding: 4px 12px;
+      font-size: 12px;
+      font-weight: 500;
+      border-radius: 100px;
+      letter-spacing: 0.02em;
+    }
+
+    .entry-tag--feature {
+      background: rgba(45,122,79,0.08);
+      color: #2D7A4F;
+    }
+    .entry-tag--improvement {
+      background: rgba(26,56,100,0.08);
+      color: #1A3864;
+    }
+    .entry-tag--fix {
+      background: rgba(139,115,85,0.08);
+      color: var(--copper);
+    }
+
+    .entry-title {
+      font-family: var(--font-display);
+      font-size: 22px;
+      font-weight: 600;
+      color: var(--ink);
+      letter-spacing: -0.02em;
+      margin-bottom: 16px;
+    }
+
+    .entry-changes {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .entry-changes li {
+      font-size: 15px;
+      font-weight: 300;
+      color: var(--charcoal);
+      line-height: 1.6;
+      padding-left: 24px;
+      position: relative;
+    }
+
+    .entry-changes li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 10px;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--copper-glow);
+      border: 2px solid var(--copper-light);
+    }
+
+    .entry-changes li strong {
+      font-weight: 500;
+      color: var(--ink);
+    }
+
+    /* -- Footer ------------------------------------------- */
+    footer {
+      background: var(--ink);
+      border-top: 1px solid rgba(255,255,255,0.04);
+      padding: 72px 32px 44px;
+    }
+
+    .footer-inner {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 56px;
+      max-width: 1120px;
+      margin: 0 auto;
+    }
+
+    .footer-brand .nav-logo {
+      color: var(--warm-white);
+      display: block;
+      margin-bottom: 20px;
+    }
+
+    .footer-brand .nav-logo span { color: var(--copper); }
+
+    .footer-tagline {
+      font-size: 14px;
+      font-weight: 300;
+      color: rgba(255,255,255,0.3);
+      line-height: 1.65;
+      max-width: 300px;
+    }
+
+    .footer-col h4 {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--copper);
+      margin-bottom: 24px;
+      opacity: 0.7;
+    }
+
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 14px; }
+
+    .footer-col a {
+      font-size: 14px;
+      color: rgba(255,255,255,0.4);
+      transition: color 0.3s;
+      font-weight: 300;
+    }
+
+    .footer-col a:hover { color: rgba(255,255,255,0.8); }
+
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1120px;
+      margin: 56px auto 0;
+      padding-top: 28px;
+      border-top: 1px solid rgba(255,255,255,0.04);
+    }
+
+    .footer-copy {
+      font-size: 12px;
+      color: rgba(255,255,255,0.2);
+      font-weight: 300;
+    }
+
+    .footer-legal {
+      display: flex;
+      gap: 24px;
+    }
+
+    .footer-legal a {
+      font-size: 12px;
+      color: rgba(255,255,255,0.2);
+      transition: color 0.3s;
+      font-weight: 300;
+    }
+
+    .footer-legal a:hover { color: rgba(255,255,255,0.5); }
+
+    /* -- Responsive --------------------------------------- */
+    @media (max-width: 1024px) {
+      .footer-inner { grid-template-columns: 1fr 1fr; gap: 36px; }
+      .footer-bottom { flex-direction: column; gap: 14px; text-align: center; }
+    }
+
+    @media (max-width: 768px) {
+      .page-header { padding: 120px 0 48px; }
+      .page-header p { font-size: 16px; }
+      .entry-card { padding: 28px 24px; }
+      .entry-header { gap: 10px; }
+      .entry-title { font-size: 19px; }
+      .entry-changes li { font-size: 14px; }
+      .timeline { padding: 24px 0 80px; }
+    }
+
+    @media (max-width: 600px) {
+      footer { padding: 48px 32px 32px; }
+      .footer-inner { grid-template-columns: 1fr; gap: 28px; }
+      .footer-bottom { margin: 36px auto 0; }
+      .footer-legal { flex-wrap: wrap; justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- Nav -->
+  <nav>
+    <div class="nav-inner">
+      <a href="/" class="nav-logo">Hack<span>abacus</span></a>
+      <a href="/" class="nav-back">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10 12L6 8l4-4"/></svg>Back to Home
+      </a>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main id="main">
+
+    <!-- Page Header -->
+    <section class="page-header">
+      <div class="container">
+        <span class="eyebrow">Changelog</span>
+        <h1>What's New in Hackabacus</h1>
+        <p>Every update, improvement, and new feature we ship for the Excel and PowerPoint plugin trusted by PE, banking, and finance teams.</p>
+      </div>
+    </section>
+
+    <!-- Timeline -->
+    <section class="timeline">
+      <div class="container">
+        <div class="timeline-entries">
+
+          <!-- v2.4.0 -->
+          <article class="entry-card reveal">
+            <div class="entry-header">
+              <span class="version-badge">v2.4.0</span>
+              <time class="entry-date" datetime="2026-03-10">March 10, 2026</time>
+              <span class="entry-tag entry-tag--feature">Feature</span>
+            </div>
+            <h2 class="entry-title">Model Audit Dashboard &amp; Slide Layout Engine</h2>
+            <ul class="entry-changes">
+              <li><strong>Model Audit Dashboard</strong> &mdash; New panel that scans Excel workbooks for hardcoded values, broken references, and circular dependencies in real time.</li>
+              <li><strong>PowerPoint Layout Engine v2</strong> &mdash; Completely rewritten slide layout engine with automatic alignment grids, margin snapping, and multi-object distribute tools.</li>
+              <li><strong>Conditional number formatting</strong> &mdash; Apply DARP, MOIC, and IRR-aware number formats with a single shortcut. Supports parenthetical negatives and basis-point notation.</li>
+              <li>Improved COM add-in startup time by 40% on Windows through lazy initialization of non-critical modules.</li>
+            </ul>
+          </article>
+
+          <!-- v2.3.1 -->
+          <article class="entry-card reveal">
+            <div class="entry-header">
+              <span class="version-badge">v2.3.1</span>
+              <time class="entry-date" datetime="2026-01-22">January 22, 2026</time>
+              <span class="entry-tag entry-tag--fix">Bug Fix</span>
+            </div>
+            <h2 class="entry-title">Stability Patch &amp; Excel 365 Compatibility</h2>
+            <ul class="entry-changes">
+              <li>Fixed a regression where cell style presets were not persisting across workbook save and reopen in Excel 365 (Build 16.0.17928).</li>
+              <li>Resolved intermittent COM disconnection on macOS when switching between Excel and PowerPoint rapidly.</li>
+              <li>Corrected border formatting inconsistencies in merged cell ranges when using the Quick Format panel.</li>
+              <li>Updated certificate signing for Windows installer to resolve SmartScreen warnings on fresh installs.</li>
+            </ul>
+          </article>
+
+          <!-- v2.3.0 -->
+          <article class="entry-card reveal">
+            <div class="entry-header">
+              <span class="version-badge">v2.3.0</span>
+              <time class="entry-date" datetime="2025-11-14">November 14, 2025</time>
+              <span class="entry-tag entry-tag--feature">Feature</span>
+            </div>
+            <h2 class="entry-title">PowerPoint Slide Automation &amp; Team Style Sync</h2>
+            <ul class="entry-changes">
+              <li><strong>Slide Automation Workflows</strong> &mdash; Build repeatable slide generation pipelines that pull data from Excel models directly into PowerPoint placeholders, tables, and charts.</li>
+              <li><strong>Team Style Sync</strong> &mdash; Share cell style presets, number formats, and color palettes across your team via a centralized configuration file.</li>
+              <li>New keyboard shortcut editor for customizing all Hackabacus commands in both Excel and PowerPoint.</li>
+              <li>Added support for Apple Silicon native execution on macOS &mdash; eliminates Rosetta dependency for M1/M2/M3 machines.</li>
+            </ul>
+          </article>
+
+          <!-- v2.2.0 -->
+          <article class="entry-card reveal">
+            <div class="entry-header">
+              <span class="version-badge">v2.2.0</span>
+              <time class="entry-date" datetime="2025-08-29">August 29, 2025</time>
+              <span class="entry-tag entry-tag--improvement">Improvement</span>
+            </div>
+            <h2 class="entry-title">Enhanced Number Formatting &amp; Cell Styling</h2>
+            <ul class="entry-changes">
+              <li><strong>Smart Number Formatting</strong> &mdash; Automatically detects column context (currency, percentage, multiple) and suggests the appropriate format with configurable decimal precision.</li>
+              <li>Overhauled the cell styling toolbar with live preview, recently-used styles, and one-click border presets for financial tables.</li>
+              <li>New alternating row shading tool with customizable color steps that respects print-safe palettes.</li>
+              <li>Performance: reduced memory footprint by 25% when processing workbooks with 50+ sheets.</li>
+            </ul>
+          </article>
+
+          <!-- v2.1.0 -->
+          <article class="entry-card reveal">
+            <div class="entry-header">
+              <span class="version-badge">v2.1.0</span>
+              <time class="entry-date" datetime="2025-06-05">June 5, 2025</time>
+              <span class="entry-tag entry-tag--feature">Feature</span>
+            </div>
+            <h2 class="entry-title">Quick Format Panel &amp; Print Optimization</h2>
+            <ul class="entry-changes">
+              <li><strong>Quick Format Panel</strong> &mdash; A dockable sidebar in Excel for applying institutional-grade formatting to selected ranges: fonts, borders, number formats, and column widths in one action.</li>
+              <li><strong>Print Optimizer</strong> &mdash; Automatically adjusts page breaks, headers, footers, and scaling to produce clean PDF output from complex models.</li>
+              <li>Added VLOOKUP and INDEX/MATCH audit highlighting to trace formula dependencies across sheets visually.</li>
+              <li>Improved PowerPoint table styling with automatic header detection and finance-standard gridline presets.</li>
+            </ul>
+          </article>
+
+          <!-- v2.0.0 -->
+          <article class="entry-card reveal">
+            <div class="entry-header">
+              <span class="version-badge">v2.0.0</span>
+              <time class="entry-date" datetime="2025-03-18">March 18, 2025</time>
+              <span class="entry-tag entry-tag--feature">Feature</span>
+            </div>
+            <h2 class="entry-title">Hackabacus 2.0 &mdash; Full Rewrite</h2>
+            <ul class="entry-changes">
+              <li><strong>Complete architecture rewrite</strong> &mdash; Rebuilt from the ground up as a modern COM add-in with native .NET 8 runtime for dramatically improved stability and performance.</li>
+              <li><strong>PowerPoint support</strong> &mdash; Hackabacus now extends beyond Excel with a full suite of slide formatting, layout, and automation tools for PowerPoint.</li>
+              <li><strong>New ribbon UI</strong> &mdash; Redesigned ribbon interface with contextual tabs, search-as-you-type command palette, and customizable quick-access toolbar.</li>
+              <li>Cross-platform installer for Windows 10/11 and macOS 13+. Silent deployment via MSI and PKG for IT teams.</li>
+              <li>Introduced per-seat team licensing with centralized admin portal for managing deployments across the firm.</li>
+            </ul>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="/" class="nav-logo">Hack<span>abacus</span></a>
+        <p class="footer-tagline">The finance professional's Excel and PowerPoint suite. Built for PE, banking, and infrastructure deal teams.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Product</h4>
+        <ul>
+          <li><a href="compare.html">Compare</a></li>
+          <li><a href="changelog.html">Changelog</a></li>
+          <li><a href="roadmap.html">Roadmap</a></li>
+          <li><a href="docs.html">Documentation</a></li>
+          <li><a href="installation.html">Installation Guide</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="about.html">About</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="careers.html">Careers</a></li>
+          <li><a href="mailto:hello@hackabacus.com">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="privacy.html">Privacy Policy</a></li>
+          <li><a href="terms.html">Terms of Service</a></li>
+          <li><a href="cookies.html">Cookie Policy</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy">&copy; 2026 Hackabacus, LLC. All rights reserved.</p>
+      <div class="footer-legal">
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+        <a href="cookies.html">Cookies</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script>
+    // Scroll reveal (IntersectionObserver)
+    const revealEls = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.08,
+      rootMargin: '0px 0px -60px 0px'
+    });
+    revealEls.forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>

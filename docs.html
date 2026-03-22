@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hackabacus Documentation — Excel &amp; PowerPoint Plugin Guide</title>
+
+  <!-- SEO Meta -->
+  <meta name="description" content="Learn how to use the Hackabacus Excel and PowerPoint plugin. Guides for financial modeling formatting, slide automation, keyboard shortcuts, and team configuration for PE and banking professionals." />
+  <meta name="keywords" content="Hackabacus documentation, Excel plugin guide, PowerPoint automation docs, financial modeling formatting, slide automation tutorial, PE Excel tools, investment banking plugin help" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://hackabacus.com/docs" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Hackabacus Documentation — Excel &amp; PowerPoint Plugin Guide" />
+  <meta property="og:description" content="Comprehensive guides for using Hackabacus Excel and PowerPoint tools. Financial modeling formatting, slide automation, and team configuration for finance professionals." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://hackabacus.com/docs" />
+  <meta property="og:image" content="https://hackabacus.com/og-image.jpg" />
+  <meta property="og:site_name" content="Hackabacus" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Hackabacus Documentation — Excel &amp; PowerPoint Plugin Guide" />
+  <meta name="twitter:description" content="Comprehensive guides for using Hackabacus Excel and PowerPoint tools for PE and banking teams." />
+  <meta name="twitter:image" content="https://hackabacus.com/og-image.jpg" />
+
+  <!-- Structured Data: TechArticle -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "Hackabacus Documentation — Excel & PowerPoint Plugin Guide",
+    "description": "Learn how to use the Hackabacus Excel and PowerPoint plugin with guides for financial modeling formatting and slide automation.",
+    "url": "https://hackabacus.com/docs",
+    "author": {
+      "@type": "Organization",
+      "name": "Hackabacus",
+      "url": "https://hackabacus.com"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Hackabacus",
+      "url": "https://hackabacus.com"
+    },
+    "mainEntityOfPage": "https://hackabacus.com/docs",
+    "proficiencyLevel": "Beginner",
+    "dependencies": "Microsoft Excel, Microsoft PowerPoint",
+    "about": {
+      "@type": "SoftwareApplication",
+      "name": "Hackabacus",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Windows, macOS"
+    }
+  }
+  </script>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%231A1815'/><text x='50' y='68' font-family='system-ui' font-size='56' font-weight='700' fill='%238B7355' text-anchor='middle'>H</text></svg>" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet" />
+
+  <style>
+    /* -- Font Faces ------------------------------------------------ */
+    @font-face {
+      font-family: 'Suisse Intl Trial';
+      src: url('fonts/SuisseIntlTrial-Medium.otf') format('opentype');
+      font-weight: 500;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'Suisse Intl Trial';
+      src: url('fonts/SuisseIntlTrial-Semibold.otf') format('opentype');
+      font-weight: 600;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    /* -- Reset & Tokens ------------------------------------------- */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream:        #F5F3EE;
+      --warm-white:   #FAF9F6;
+      --sand:         #E8E4DD;
+      --stone:        #B8B2A8;
+      --graphite:     #6B6560;
+      --charcoal:     #2A2725;
+      --ink:          #1A1815;
+      --copper:       #8B7355;
+      --copper-light: #A89070;
+      --copper-glow:  rgba(139,115,85,0.1);
+
+      --font-display: 'Suisse Intl Trial', 'Inter', -apple-system, sans-serif;
+      --font-body:    'IBM Plex Sans', -apple-system, sans-serif;
+
+      --radius:    20px;
+      --radius-sm: 12px;
+      --ease:      cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    html { scroll-behavior: smooth; font-size: 16px; overflow-x: hidden; }
+    h1, h2, h3 { text-wrap: balance; }
+    p { text-wrap: pretty; }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--cream);
+      color: var(--charcoal);
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Grain overlay */
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwBAMAAAClLOS0AAAAElBMVEUAAAAAAAAAAAAAAAAAAAAAAADgKxmiAAAABnRSTlMFCA0RFRkEEiizAAAASklEQVQ4y2NghgIGBgYFBigghAIGJiggiAImKGCAAkYmKMAJGBgYGIVgAhCVMEAIBUwMUANggBEKcAJGKGBiggJGKGBkgAIAaaEFvbMUjEkAAAAASUVORK5CYII=");
+      pointer-events: none;
+      z-index: 100;
+      opacity: 0.04;
+    }
+
+    ::selection { background: var(--copper); color: var(--warm-white); }
+
+    :focus-visible { outline: 2px solid var(--copper); outline-offset: 3px; }
+    button:focus-visible, a:focus-visible { outline: 2px solid var(--copper); outline-offset: 3px; border-radius: 4px; }
+
+    .skip-link {
+      position: absolute; top: -100%; left: 16px;
+      background: var(--ink); color: var(--warm-white);
+      padding: 12px 24px; border-radius: 8px;
+      font-size: 14px; font-weight: 500; z-index: 300; transition: top 0.2s;
+    }
+    .skip-link:focus { top: 12px; }
+
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+
+    .container { max-width: 1120px; margin: 0 auto; padding: 0 32px; }
+
+    .eyebrow {
+      font-family: var(--font-body);
+      font-size: 13px; font-weight: 500;
+      letter-spacing: 0.15em; text-transform: uppercase;
+      color: var(--copper);
+    }
+
+    /* -- Nav ------------------------------------------------------ */
+    .top-nav {
+      position: sticky; top: 0; z-index: 50;
+      background: rgba(245,243,238,0.85);
+      backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--sand);
+      padding: 0 32px;
+    }
+    .top-nav-inner {
+      max-width: 1120px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 64px;
+    }
+    .nav-logo {
+      font-family: var(--font-display);
+      font-size: 22px; font-weight: 700;
+      letter-spacing: -0.03em; color: var(--ink);
+    }
+    .nav-logo span { font-weight: 400; color: var(--copper); }
+
+    .nav-back {
+      font-size: 14px; font-weight: 500; color: var(--graphite);
+      transition: color 0.3s;
+    }
+    .nav-back:hover { color: var(--copper); }
+    .nav-back svg { display: inline-block; vertical-align: middle; margin-right: 6px; }
+
+    /* -- Page Layout ---------------------------------------------- */
+    .docs-layout {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: 56px;
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 64px 32px 120px;
+    }
+
+    /* -- Sidebar -------------------------------------------------- */
+    .docs-sidebar {
+      position: sticky; top: 96px; align-self: start;
+    }
+    .sidebar-label {
+      font-size: 11px; font-weight: 600;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--copper); opacity: 0.7;
+      margin-bottom: 20px;
+    }
+    .sidebar-nav { list-style: none; display: flex; flex-direction: column; gap: 6px; }
+    .sidebar-nav a {
+      display: block;
+      font-size: 14px; font-weight: 400; color: var(--graphite);
+      padding: 8px 14px; border-radius: 8px;
+      transition: background 0.25s, color 0.25s;
+    }
+    .sidebar-nav a:hover { background: var(--sand); color: var(--charcoal); }
+    .sidebar-nav a.active { background: var(--copper-glow); color: var(--copper); font-weight: 500; }
+
+    /* -- Hero ----------------------------------------------------- */
+    .docs-hero {
+      margin-bottom: 56px;
+    }
+    .docs-hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(32px, 4vw, 44px);
+      font-weight: 600; letter-spacing: -0.03em;
+      color: var(--ink); line-height: 1.15;
+      margin-bottom: 16px;
+    }
+    .docs-hero p {
+      font-size: 17px; font-weight: 300; color: var(--graphite);
+      line-height: 1.7; max-width: 640px;
+    }
+
+    /* -- Section -------------------------------------------------- */
+    .docs-section { margin-bottom: 64px; }
+    .docs-section-header {
+      display: flex; align-items: center; gap: 12px;
+      margin-bottom: 28px;
+    }
+    .docs-section-icon {
+      width: 40px; height: 40px;
+      display: flex; align-items: center; justify-content: center;
+      border-radius: 10px; font-size: 18px;
+      background: var(--copper-glow); color: var(--copper);
+      flex-shrink: 0;
+    }
+    .docs-section-header h2 {
+      font-family: var(--font-display);
+      font-size: 22px; font-weight: 600;
+      letter-spacing: -0.02em; color: var(--ink);
+    }
+
+    /* -- Card Grid ------------------------------------------------ */
+    .doc-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 16px;
+    }
+    .doc-card {
+      display: flex; align-items: flex-start; gap: 14px;
+      background: var(--warm-white);
+      border: 1px solid var(--sand);
+      border-radius: var(--radius-sm);
+      padding: 22px 20px;
+      transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s var(--ease);
+    }
+    .doc-card:hover {
+      border-color: var(--copper-light);
+      box-shadow: 0 4px 20px rgba(139,115,85,0.08);
+      transform: translateY(-2px);
+    }
+    .doc-card-icon {
+      width: 36px; height: 36px; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      border-radius: 8px;
+      background: var(--cream); color: var(--copper);
+      font-size: 16px;
+    }
+    .doc-card-body h3 {
+      font-family: var(--font-display);
+      font-size: 15px; font-weight: 600; color: var(--ink);
+      margin-bottom: 6px;
+    }
+    .doc-card-body p {
+      font-size: 13px; font-weight: 300; color: var(--graphite);
+      line-height: 1.55;
+    }
+
+    /* -- Footer --------------------------------------------------- */
+    footer {
+      background: var(--ink);
+      border-top: 1px solid rgba(255,255,255,0.04);
+      padding: 72px 32px 44px;
+    }
+    .footer-inner {
+      display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 56px; max-width: 1120px; margin: 0 auto;
+    }
+    .footer-brand .nav-logo { color: var(--warm-white); display: block; margin-bottom: 20px; }
+    .footer-brand .nav-logo span { color: var(--copper); }
+    .footer-tagline {
+      font-size: 14px; font-weight: 300;
+      color: rgba(255,255,255,0.3); line-height: 1.65; max-width: 300px;
+    }
+    .footer-col h4 {
+      font-size: 12px; font-weight: 600;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--copper); margin-bottom: 24px; opacity: 0.7;
+    }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 14px; }
+    .footer-col a { font-size: 14px; color: rgba(255,255,255,0.4); transition: color 0.3s; font-weight: 300; }
+    .footer-col a:hover { color: rgba(255,255,255,0.8); }
+    .footer-bottom {
+      display: flex; justify-content: space-between; align-items: center;
+      max-width: 1120px; margin: 56px auto 0;
+      padding-top: 28px; border-top: 1px solid rgba(255,255,255,0.04);
+    }
+    .footer-copy { font-size: 12px; color: rgba(255,255,255,0.2); font-weight: 300; }
+    .footer-legal { display: flex; gap: 24px; }
+    .footer-legal a { font-size: 12px; color: rgba(255,255,255,0.2); transition: color 0.3s; font-weight: 300; }
+    .footer-legal a:hover { color: rgba(255,255,255,0.5); }
+
+    /* -- Scroll reveal --------------------------------------------- */
+    .reveal {
+      opacity: 0; transform: translateY(32px);
+      transition: opacity 0.8s var(--ease), transform 0.8s var(--ease);
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+
+    /* -- Responsive ----------------------------------------------- */
+    @media (max-width: 900px) {
+      .docs-layout {
+        grid-template-columns: 1fr;
+        gap: 0; padding: 40px 24px 80px;
+      }
+      .docs-sidebar {
+        position: relative; top: 0;
+        margin-bottom: 40px;
+        padding-bottom: 24px;
+        border-bottom: 1px solid var(--sand);
+      }
+      .sidebar-nav {
+        flex-direction: row; flex-wrap: wrap; gap: 8px;
+      }
+      .sidebar-nav a { padding: 6px 12px; font-size: 13px; }
+      .footer-inner { grid-template-columns: 1fr 1fr; gap: 36px; }
+      .footer-bottom { flex-direction: column; gap: 14px; text-align: center; }
+    }
+
+    @media (max-width: 600px) {
+      .top-nav { padding: 0 20px; }
+      .docs-layout { padding: 32px 20px 64px; }
+      .doc-cards { grid-template-columns: 1fr; }
+      .docs-hero h1 { font-size: 28px; }
+      footer { padding: 48px 24px 32px; }
+      .footer-inner { grid-template-columns: 1fr; gap: 28px; }
+    }
+  </style>
+</head>
+<body>
+
+  <a href="#main" class="skip-link">Skip to content</a>
+
+  <!-- Nav -->
+  <nav class="top-nav" role="navigation" aria-label="Main navigation">
+    <div class="top-nav-inner">
+      <a href="/" class="nav-logo">Hack<span>abacus</span></a>
+      <a href="/" class="nav-back">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10 12L6 8l4-4"/></svg>Back to Home
+      </a>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main id="main">
+    <div class="docs-layout">
+
+      <!-- Sidebar -->
+      <aside class="docs-sidebar" role="navigation" aria-label="Documentation sections">
+        <p class="sidebar-label">Categories</p>
+        <ul class="sidebar-nav">
+          <li><a href="#getting-started" class="active">Getting Started</a></li>
+          <li><a href="#excel-tools">Excel Tools</a></li>
+          <li><a href="#powerpoint-tools">PowerPoint Tools</a></li>
+          <li><a href="#advanced">Advanced</a></li>
+        </ul>
+      </aside>
+
+      <!-- Content -->
+      <div class="docs-content">
+
+        <header class="docs-hero reveal">
+          <p class="eyebrow">Documentation</p>
+          <h1>Hackabacus Docs</h1>
+          <p>Everything you need to get started with Hackabacus and make the most of its Excel and PowerPoint tools for financial modeling, formatting, and slide automation.</p>
+        </header>
+
+        <!-- Getting Started -->
+        <section id="getting-started" class="docs-section reveal">
+          <div class="docs-section-header">
+            <div class="docs-section-icon" aria-hidden="true">&#9654;</div>
+            <h2>Getting Started</h2>
+          </div>
+          <div class="doc-cards">
+            <a href="installation.html" class="doc-card">
+              <div class="doc-card-icon" aria-hidden="true">&#128203;</div>
+              <div class="doc-card-body">
+                <h3>Installation Guide</h3>
+                <p>Download and install Hackabacus on Windows or macOS in under two minutes.</p>
+              </div>
+            </a>
+            <a href="#" class="doc-card">
+              <div class="doc-card-icon" aria-hidden="true">&#9889;</div>
+              <div class="doc-card-body">
+                <h3>Quick Start Guide</h3>
+                <p>Format your first model and generate a slide deck in five minutes flat.</p>
+              </div>
+            </a>
+            <a href="#" class="doc-card">
+              <div class="doc-card-icon" aria-hidden="true">&#9881;</div>
+              <div class="doc-card-body">
+                <h3>System Requirements</h3>
+                <p>Supported OS versions, Office compatibility, and hardware specifications.</p>
+              </div>
+            </a>
+            <a href="#" class="doc-card">
+              <div class="doc-card-icon" aria-hidden="true">&#9919;</div>
+              <div class="doc-card-body">
+                <h3>Activation &amp; Licensing</h3>
+                <p>Activate your license key, manage seats, and configure team deployments.</p>
+              </div>
+            </a>
+          </div>
+        </section>
+
+        <!-- Excel Tools -->
+        <section id="excel-tools" class="docs-section reveal">
+          <div class="docs-section-header">
+            <div class="docs-section-icon" aria-hidden="true">&#9638;</div>
+            <h2>Excel Tools</h2>
+          </div>
+          <div class="doc-cards">
+            <a href="#" class="doc-card">
+              <div class="doc-card-icon" aria-hidden="true">#</div>
+              <div class="doc-card-body">
+                <h3>Number Formatting</h3>
+                <p>Apply institutional-grade number formats, units toggles, and GAAP-compliant styles.</p>
+              </div>
+            </a>
+            <a href="#" class="doc-card">
+              <div class="doc-card-icon" aria-hidden="true">&#9632;</div>
+              <div class="doc-card-body">
+                <h3>Cell Styling</h3>
+                <p>One-click cell borders, shading, and font styles built for financial models.</p>
+              </div>
+            </a>
+            <a href="#" class="doc-card">
+              <div class="doc-card-icon" aria-hidden="true">&#10003;</div>
+              <div class="doc-card-body">
+                <h3>Model Audit</h3>
+                <p>Trace precedents, flag hardcodes, and audit formula integrity across tabs.</p>
+              </div>
+            </a>
+            <a href="#" class="doc-card">
+              <div class="doc-card-icon" aria-hidden="true">&#402;</div>
+              <div class="doc-card-body">
+                <h3>Formula Tools</h3>
+                <p>Smart formula helpers, range naming conventions, and function reference.</p>
+              </div>
+            </a>
+            <a href="#" class="doc-card">
+              <div class="doc-card-icon" aria-hidden="true">&#9783;</div>
+              <div class="doc-card-body">
+                <h3>Conditional Formatting</h3>
+                <p>Pre-built conditional formatting rules for sensitivity tables, RAG status, and KPIs.</p>
+              </div>
+            </a>
+          </div>
+        </section>
+
+        <!-- PowerPoint Tools -->
+        <section id="powerpoint-tools" class="docs-section reveal">
+          <div class="docs-section-header">
+            <div class="docs-section-icon" aria-hidden="true">&#9707;</div>
+            <h2>PowerPoint Tools</h2>
+          </div>
+          <div class="doc-cards">
+            <a href="#" class="doc-card">
+              <div class="doc-card-icon" aria-hidden="true">&#9744;</div>
+              <div class="doc-card-body">
+                <h3>Slide Templates</h3>
+                <p>CIM covers, process pages, and deal summary layouts ready for your brand.</p>
+              </div>
+            </a>
+            <a href="#" class="doc-card">
+              <div class="doc-card-icon" aria-hidden="true">&#8644;</div>
+              <div class="doc-card-body">
+                <h3>Batch Generation</h3>
+                <p>Generate dozens of formatted slides from Excel data in a single click.</p>
+              </div>
+            </a>
+            <a href="#" class="doc-card">
+              <div class="doc-card-icon" aria-hidden="true">&#9650;</div>
+              <div class="doc-card-body">
+                <h3>Chart Formatting</h3>
+                <p>Standardize chart colors, axes, labels, and legends to institutional specs.</p>
+              </div>
+            </a>
+            <a href="#" class="doc-card">
+              <div class="doc-card-icon" aria-hidden="true">&#9638;</div>
+              <div class="doc-card-body">
+                <h3>Table Styling</h3>
+                <p>Uniform table borders, alternating rows, and header styling in one action.</p>
+              </div>
+            </a>
+          </div>
+        </section>
+
+        <!-- Advanced -->
+        <section id="advanced" class="docs-section reveal">
+          <div class="docs-section-header">
+            <div class="docs-section-icon" aria-hidden="true">&#9883;</div>
+            <h2>Advanced</h2>
+          </div>
+          <div class="doc-cards">
+            <a href="#" class="doc-card">
+              <div class="doc-card-icon" aria-hidden="true">&#8984;</div>
+              <div class="doc-card-body">
+                <h3>Keyboard Shortcuts</h3>
+                <p>Complete shortcut reference for power users on Windows and macOS.</p>
+              </div>
+            </a>
+            <a href="#" class="doc-card">
+              <div class="doc-card-icon" aria-hidden="true">&#9881;</div>
+              <div class="doc-card-body">
+                <h3>Custom Presets</h3>
+                <p>Create, export, and share formatting presets across your team.</p>
+              </div>
+            </a>
+            <a href="#" class="doc-card">
+              <div class="doc-card-icon" aria-hidden="true">&#9734;</div>
+              <div class="doc-card-body">
+                <h3>Team Configuration</h3>
+                <p>Admin console, SSO setup, and centralized preset management for firms.</p>
+              </div>
+            </a>
+            <a href="#" class="doc-card">
+              <div class="doc-card-icon" aria-hidden="true">&lt;/&gt;</div>
+              <div class="doc-card-body">
+                <h3>API Reference</h3>
+                <p>Integrate Hackabacus into internal workflows with the REST API and webhooks.</p>
+              </div>
+            </a>
+          </div>
+        </section>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="/" class="nav-logo">Hack<span>abacus</span></a>
+        <p class="footer-tagline">The finance professional's Excel and PowerPoint suite. Built for PE, banking, and infrastructure deal teams.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Product</h4>
+        <ul>
+          <li><a href="about.html">About</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="careers.html">Careers</a></li>
+          <li><a href="changelog.html">Changelog</a></li>
+          <li><a href="roadmap.html">Roadmap</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Resources</h4>
+        <ul>
+          <li><a href="docs.html">Documentation</a></li>
+          <li><a href="installation.html">Installation Guide</a></li>
+          <li><a href="mailto:support@hackabacus.com">Help Center</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="privacy.html">Privacy Policy</a></li>
+          <li><a href="terms.html">Terms of Service</a></li>
+          <li><a href="cookies.html">Cookie Policy</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy">&copy; 2026 Hackabacus, LLC. All rights reserved.</p>
+      <div class="footer-legal">
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+        <a href="cookies.html">Cookies</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Scroll reveal
+    const revealEls = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+    revealEls.forEach(el => observer.observe(el));
+
+    // Sidebar active state on scroll
+    const sections = document.querySelectorAll('.docs-section');
+    const sidebarLinks = document.querySelectorAll('.sidebar-nav a');
+
+    const sectionObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const id = entry.target.getAttribute('id');
+          sidebarLinks.forEach(link => {
+            link.classList.toggle('active', link.getAttribute('href') === '#' + id);
+          });
+        }
+      });
+    }, { threshold: 0.2, rootMargin: '-80px 0px -60% 0px' });
+    sections.forEach(s => sectionObserver.observe(s));
+
+    // Smooth scroll for sidebar links
+    sidebarLinks.forEach(link => {
+      link.addEventListener('click', e => {
+        const target = document.querySelector(link.getAttribute('href'));
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+  </script>
+</body>
+</html>
