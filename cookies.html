@@ -6,13 +6,14 @@
   <title>Cookie Policy — Hackabacus</title>
 
   <!-- SEO Meta -->
-  <meta name="description" content="Learn how Hackabacus uses cookies on our website. This Cookie Policy explains the types of cookies we use, their purpose, and how you can manage your cookie preferences." />
+  <meta name="description" content="Learn how Hackabacus uses cookies on our website. Our cookie policy explains the types of cookies we use, their purpose, duration, and how you can manage your cookie preferences." />
+  <meta name="keywords" content="Hackabacus cookie policy, cookies, tracking, website cookies, Excel plugin cookies, finance software" />
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://hackabacus.com/cookies" />
 
   <!-- Open Graph -->
   <meta property="og:title" content="Cookie Policy — Hackabacus" />
-  <meta property="og:description" content="Learn how Hackabacus uses cookies on our website, including what types we use and how to manage your preferences." />
+  <meta property="og:description" content="Learn how Hackabacus uses cookies and how to manage your preferences on our website." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://hackabacus.com/cookies" />
   <meta property="og:image" content="https://hackabacus.com/og-image.jpg" />
@@ -21,7 +22,7 @@
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Cookie Policy — Hackabacus" />
-  <meta name="twitter:description" content="Learn how Hackabacus uses cookies on our website, including what types we use and how to manage your preferences." />
+  <meta name="twitter:description" content="Learn how Hackabacus uses cookies and how to manage your preferences on our website." />
   <meta name="twitter:image" content="https://hackabacus.com/og-image.jpg" />
 
   <!-- Structured Data: WebPage -->
@@ -29,22 +30,26 @@
   {
     "@context": "https://schema.org",
     "@type": "WebPage",
-    "name": "Cookie Policy — Hackabacus",
-    "description": "Learn how Hackabacus uses cookies on our website. This Cookie Policy explains the types of cookies we use, their purpose, and how you can manage your cookie preferences.",
+    "name": "Cookie Policy",
+    "description": "Cookie policy for Hackabacus, the professional Excel and PowerPoint plugin for PE, banking, and finance teams.",
     "url": "https://hackabacus.com/cookies",
-    "inLanguage": "en",
+    "inLanguage": "en-US",
     "isPartOf": {
       "@type": "WebSite",
       "name": "Hackabacus",
       "url": "https://hackabacus.com"
     },
+    "dateModified": "2026-03-01",
     "publisher": {
       "@type": "Organization",
       "name": "Hackabacus, LLC",
       "url": "https://hackabacus.com",
-      "email": "hello@hackabacus.com"
-    },
-    "dateModified": "2026-03-01"
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "email": "hello@hackabacus.com",
+        "contactType": "customer service"
+      }
+    }
   }
   </script>
 
@@ -57,7 +62,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet" />
 
   <style>
-    /* ── Font Faces ──────────────────────────────────────── */
+    /* -- Font Faces ------------------------------------------------ */
     @font-face {
       font-family: 'Suisse Intl Trial';
       src: url('fonts/SuisseIntlTrial-Medium.otf') format('opentype');
@@ -73,43 +78,44 @@
       font-display: swap;
     }
 
-    /* ── Reset & Tokens ───────────────────────────────────── */
+    /* -- Reset & Tokens ------------------------------------------- */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --cream:      #F5F3EE;
-      --warm-white: #FAF9F6;
-      --sand:       #E8E4DD;
-      --stone:      #B8B2A8;
-      --graphite:   #6B6560;
-      --charcoal:   #2A2725;
-      --ink:        #1A1815;
-      --copper:     #8B7355;
+      --cream:        #F5F3EE;
+      --warm-white:   #FAF9F6;
+      --sand:         #E8E4DD;
+      --stone:        #B8B2A8;
+      --graphite:     #6B6560;
+      --charcoal:     #2A2725;
+      --ink:          #1A1815;
+      --copper:       #8B7355;
       --copper-light: #A89070;
+      --copper-glow:  rgba(139,115,85,0.1);
 
       --font-display: 'Suisse Intl Trial', 'Inter', -apple-system, sans-serif;
       --font-body:    'IBM Plex Sans', -apple-system, sans-serif;
 
-      --radius:     20px;
-      --radius-sm:  12px;
+      --radius:       20px;
+      --radius-sm:    12px;
+      --ease:         cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     html {
       scroll-behavior: smooth;
       font-size: 16px;
+      overflow-x: hidden;
     }
 
     h1, h2, h3 { text-wrap: balance; }
-    p { text-wrap: pretty; }
 
     body {
       font-family: var(--font-body);
       background: var(--cream);
       color: var(--charcoal);
       -webkit-font-smoothing: antialiased;
-      overflow-x: hidden;
-      position: relative;
-      line-height: 1.7;
+      -moz-osx-font-smoothing: grayscale;
+      line-height: 1.6;
     }
 
     /* Grain overlay */
@@ -136,73 +142,136 @@
       border-radius: 4px;
     }
 
-    img { max-width: 100%; display: block; }
-    a { color: inherit; text-decoration: none; }
+    a { color: var(--copper); text-decoration: none; transition: color 0.3s; }
+    a:hover { color: var(--copper-light); }
 
-    /* ── Nav ──────────────────────────────────────────────── */
-    .top-nav {
+    /* -- Nav ------------------------------------------------------ */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 50;
+      background: rgba(245,243,238,0.85);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(26,24,21,0.06);
+      padding: 0 32px;
+    }
+
+    .nav-inner {
+      max-width: 1120px;
+      margin: 0 auto;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      max-width: 780px;
-      margin: 0 auto;
-      padding: 32px 24px;
+      height: 64px;
     }
 
     .nav-logo {
       font-family: var(--font-display);
-      font-size: 20px;
       font-weight: 600;
+      font-size: 20px;
       color: var(--ink);
-      letter-spacing: -0.02em;
+      text-decoration: none;
+      letter-spacing: -0.01em;
     }
     .nav-logo span { color: var(--copper); }
+    .nav-logo:hover { color: var(--ink); }
 
-    .back-link {
+    .nav-back {
       font-family: var(--font-body);
       font-size: 14px;
       font-weight: 400;
       color: var(--graphite);
+      text-decoration: none;
       transition: color 0.3s;
     }
-    .back-link:hover { color: var(--copper); }
+    .nav-back:hover { color: var(--copper); }
 
-    /* ── Main Content ────────────────────────────────────── */
-    .legal-container {
+    /* -- Page Header ---------------------------------------------- */
+    .page-header {
       max-width: 780px;
       margin: 0 auto;
-      padding: 0 24px 96px;
+      padding: 144px 32px 48px;
     }
 
-    .legal-header {
-      margin-bottom: 56px;
-      padding-bottom: 32px;
-      border-bottom: 1px solid var(--sand);
-    }
-
-    .legal-header h1 {
+    .page-header h1 {
       font-family: var(--font-display);
       font-size: clamp(32px, 5vw, 44px);
       font-weight: 600;
       color: var(--ink);
-      letter-spacing: -0.03em;
-      margin-bottom: 12px;
+      letter-spacing: -0.025em;
+      line-height: 1.15;
+      margin-bottom: 16px;
     }
 
-    .legal-updated {
+    .page-header .last-updated {
       font-size: 14px;
-      color: var(--stone);
+      color: var(--graphite);
       font-weight: 300;
     }
 
-    .legal-intro {
-      font-size: 17px;
-      color: var(--graphite);
-      line-height: 1.75;
-      margin-bottom: 48px;
+    /* -- Legal Content -------------------------------------------- */
+    .legal-content {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 0 32px 120px;
     }
 
-    /* ── Sections ─────────────────────────────────────────── */
+    /* Table of Contents */
+    .toc {
+      background: var(--warm-white);
+      border: 1px solid var(--sand);
+      border-radius: var(--radius-sm);
+      padding: 32px 36px;
+      margin-bottom: 56px;
+    }
+
+    .toc h2 {
+      font-family: var(--font-display);
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--copper);
+      margin-bottom: 20px;
+    }
+
+    .toc ol {
+      list-style: none;
+      counter-reset: toc-counter;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .toc ol li {
+      counter-increment: toc-counter;
+    }
+
+    .toc ol li a {
+      font-size: 15px;
+      font-weight: 400;
+      color: var(--charcoal);
+      text-decoration: none;
+      transition: color 0.3s;
+      display: flex;
+      align-items: baseline;
+      gap: 12px;
+    }
+
+    .toc ol li a::before {
+      content: counter(toc-counter) ".";
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--stone);
+      min-width: 22px;
+    }
+
+    .toc ol li a:hover { color: var(--copper); }
+
+    /* Sections */
     .legal-section {
       margin-bottom: 48px;
     }
@@ -212,10 +281,9 @@
       font-size: 22px;
       font-weight: 600;
       color: var(--ink);
-      letter-spacing: -0.02em;
-      margin-bottom: 16px;
-      padding-bottom: 10px;
-      border-bottom: 1px solid var(--sand);
+      letter-spacing: -0.015em;
+      margin-bottom: 20px;
+      padding-top: 16px;
     }
 
     .legal-section h3 {
@@ -223,53 +291,63 @@
       font-size: 17px;
       font-weight: 500;
       color: var(--charcoal);
-      margin-bottom: 10px;
-      margin-top: 24px;
+      margin-bottom: 12px;
+      margin-top: 28px;
     }
 
     .legal-section p {
       font-size: 15px;
-      color: var(--graphite);
       line-height: 1.75;
+      color: var(--charcoal);
+      font-weight: 300;
       margin-bottom: 16px;
     }
 
-    .legal-section ul,
-    .legal-section ol {
-      padding-left: 24px;
+    .legal-section ul {
+      list-style: none;
       margin-bottom: 16px;
+      padding-left: 0;
     }
 
-    .legal-section li {
+    .legal-section ul li {
       font-size: 15px;
-      color: var(--graphite);
       line-height: 1.75;
-      margin-bottom: 8px;
+      color: var(--charcoal);
+      font-weight: 300;
+      padding-left: 20px;
+      position: relative;
+      margin-bottom: 6px;
+    }
+
+    .legal-section ul li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 11px;
+      width: 5px;
+      height: 5px;
+      background: var(--copper);
+      border-radius: 50%;
+      opacity: 0.5;
+    }
+
+    .legal-section strong {
+      font-weight: 500;
+      color: var(--ink);
     }
 
     .legal-section a {
       color: var(--copper);
       text-decoration: underline;
-      text-underline-offset: 2px;
-      transition: color 0.3s;
-    }
-    .legal-section a:hover { color: var(--copper-light); }
-
-    .legal-section strong {
-      font-weight: 600;
-      color: var(--charcoal);
+      text-underline-offset: 3px;
+      text-decoration-thickness: 1px;
     }
 
-    .legal-section code {
-      font-size: 13px;
-      background: var(--warm-white);
-      border: 1px solid var(--sand);
-      padding: 2px 6px;
-      border-radius: 4px;
-      color: var(--charcoal);
+    .legal-section a:hover {
+      color: var(--copper-light);
     }
 
-    /* ── Tables ───────────────────────────────────────────── */
+    /* Cookie Table */
     .table-wrapper {
       overflow-x: auto;
       -webkit-overflow-scrolling: touch;
@@ -282,73 +360,77 @@
       width: 100%;
       border-collapse: collapse;
       font-size: 14px;
-      min-width: 580px;
-    }
-
-    .cookie-table thead {
-      background: var(--ink);
+      min-width: 560px;
     }
 
     .cookie-table th {
+      background: var(--copper);
+      color: #fff;
       font-family: var(--font-display);
-      font-size: 12px;
       font-weight: 600;
-      letter-spacing: 0.06em;
+      font-size: 13px;
+      letter-spacing: 0.04em;
       text-transform: uppercase;
-      color: var(--copper);
       text-align: left;
       padding: 14px 18px;
       white-space: nowrap;
     }
 
+    .cookie-table th:first-child { border-radius: var(--radius-sm) 0 0 0; }
+    .cookie-table th:last-child  { border-radius: 0 var(--radius-sm) 0 0; }
+
     .cookie-table td {
       padding: 12px 18px;
-      color: var(--graphite);
-      line-height: 1.6;
+      font-weight: 300;
+      color: var(--charcoal);
       border-bottom: 1px solid var(--sand);
       vertical-align: top;
+      line-height: 1.6;
     }
 
-    .cookie-table tbody tr:nth-child(odd) {
-      background: var(--warm-white);
-    }
+    .cookie-table tbody tr:nth-child(odd) { background: var(--warm-white); }
+    .cookie-table tbody tr:nth-child(even) { background: var(--cream); }
 
-    .cookie-table tbody tr:nth-child(even) {
-      background: var(--cream);
-    }
+    .cookie-table tbody tr:last-child td { border-bottom: none; }
 
-    .cookie-table tbody tr:last-child td {
-      border-bottom: none;
-    }
-
-    .badge {
-      display: inline-block;
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-      padding: 3px 8px;
+    .cookie-table code {
+      font-size: 13px;
+      background: rgba(139,115,85,0.08);
+      border: 1px solid var(--sand);
+      padding: 2px 6px;
       border-radius: 4px;
+      color: var(--ink);
       white-space: nowrap;
     }
-    .badge--essential {
-      background: rgba(45,122,79,0.1);
-      color: #2D7A4F;
-    }
-    .badge--analytics {
-      background: rgba(26,56,100,0.1);
-      color: #1A3864;
-    }
-    .badge--functional {
-      background: rgba(139,115,85,0.12);
-      color: var(--copper);
-    }
-    .badge--marketing {
-      background: rgba(107,101,96,0.1);
-      color: var(--graphite);
+
+    .type-badge {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.03em;
+      padding: 3px 10px;
+      border-radius: 100px;
+      white-space: nowrap;
     }
 
-    /* ── Footer ───────────────────────────────────────────── */
+    .type-badge.essential  { background: rgba(139,115,85,0.12); color: var(--copper); }
+    .type-badge.analytics  { background: rgba(107,101,96,0.10); color: var(--graphite); }
+    .type-badge.functional { background: rgba(184,178,168,0.20); color: var(--charcoal); }
+
+    /* Contact block */
+    .contact-block {
+      background: var(--warm-white);
+      border: 1px solid var(--sand);
+      border-radius: var(--radius-sm);
+      padding: 28px 32px;
+      margin-top: 8px;
+    }
+
+    .contact-block p {
+      margin-bottom: 0;
+    }
+
+    /* -- Footer --------------------------------------------------- */
     footer {
       background: var(--ink);
       border-top: 1px solid rgba(255,255,255,0.04);
@@ -395,6 +477,7 @@
       color: rgba(255,255,255,0.4);
       transition: color 0.3s;
       font-weight: 300;
+      text-decoration: none;
     }
     .footer-col a:hover { color: rgba(255,255,255,0.8); }
 
@@ -424,86 +507,104 @@
       color: rgba(255,255,255,0.2);
       transition: color 0.3s;
       font-weight: 300;
+      text-decoration: none;
     }
     .footer-legal a:hover { color: rgba(255,255,255,0.5); }
 
-    /* ── Responsive ───────────────────────────────────────── */
-    @media (max-width: 768px) {
-      .footer-inner { grid-template-columns: 1fr 1fr; gap: 36px; }
-      .footer-bottom { flex-direction: column; gap: 14px; text-align: center; }
+    /* -- Responsive ----------------------------------------------- */
+    @media (max-width: 900px) {
+      .footer-inner {
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+      }
     }
 
-    @media (max-width: 520px) {
-      .top-nav { padding: 24px 16px; }
-      .legal-container { padding: 0 16px 64px; }
-      .legal-header { margin-bottom: 36px; }
-      footer { padding: 48px 24px 32px; }
-      .footer-inner { grid-template-columns: 1fr; gap: 28px; }
+    @media (max-width: 600px) {
+      .page-header { padding: 112px 20px 36px; }
+      .legal-content { padding: 0 20px 80px; }
+      .toc { padding: 24px 24px; }
+
+      .footer-inner {
+        grid-template-columns: 1fr;
+        gap: 36px;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+        gap: 16px;
+        text-align: center;
+      }
+
+      .footer-legal {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      nav { padding: 0 20px; }
     }
   </style>
 </head>
 <body>
 
-  <!-- ── Top Nav ─────────────────────────────────────────── -->
-  <nav class="top-nav" aria-label="Page navigation">
-    <a href="/" class="nav-logo">Hack<span>abacus</span></a>
-    <a href="/" class="back-link">&larr; Back to Home</a>
+  <!-- -- Navigation ------------------------------------------------ -->
+  <nav>
+    <div class="nav-inner">
+      <a href="/" class="nav-logo">Hack<span>abacus</span></a>
+      <a href="/" class="nav-back">&larr; Back to Home</a>
+    </div>
   </nav>
 
-  <!-- ── Main Content ────────────────────────────────────── -->
-  <main class="legal-container">
-    <header class="legal-header">
-      <h1>Cookie Policy</h1>
-      <p class="legal-updated">Last updated: March 1, 2026</p>
-    </header>
+  <!-- -- Page Header ----------------------------------------------- -->
+  <header class="page-header">
+    <h1>Cookie Policy</h1>
+    <p class="last-updated">Last updated: March 1, 2026</p>
+  </header>
 
-    <p class="legal-intro">
-      This Cookie Policy explains how Hackabacus, LLC ("Hackabacus," "we," "us," or "our") uses cookies and similar tracking technologies when you visit our website at <a href="https://hackabacus.com">hackabacus.com</a>. It describes what these technologies are, why we use them, and your rights to control their use.
-    </p>
+  <!-- -- Legal Content --------------------------------------------- -->
+  <main class="legal-content">
 
-    <!-- What Are Cookies -->
-    <section class="legal-section">
-      <h2>What Are Cookies</h2>
-      <p>
-        Cookies are small text files that are placed on your computer or mobile device when you visit a website. They are widely used to make websites work more efficiently, provide a better browsing experience, and supply information to website owners.
-      </p>
-      <p>
-        Cookies can be "first-party" (set by the website you are visiting) or "third-party" (set by a service other than the website you are visiting). Cookies can also be "session" cookies (deleted when you close your browser) or "persistent" cookies (remaining on your device for a set period or until you delete them).
-      </p>
+    <!-- Table of Contents -->
+    <div class="toc">
+      <h2>Table of Contents</h2>
+      <ol>
+        <li><a href="#what-are-cookies">What Are Cookies</a></li>
+        <li><a href="#types-of-cookies">Types of Cookies We Use</a></li>
+        <li><a href="#cookie-details">Cookie Details</a></li>
+        <li><a href="#manage-cookies">How to Manage Cookies</a></li>
+        <li><a href="#third-party-cookies">Third-Party Cookies</a></li>
+        <li><a href="#updates">Updates to This Policy</a></li>
+        <li><a href="#contact">Contact Us</a></li>
+      </ol>
+    </div>
+
+    <p style="font-size:15px;line-height:1.75;color:var(--charcoal);font-weight:300;margin-bottom:48px;">This Cookie Policy explains how Hackabacus, LLC ("Hackabacus," "we," "us," or "our") uses cookies and similar tracking technologies when you visit our website at hackabacus.com. It should be read alongside our <a href="privacy.html" style="color:var(--copper);text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1px;">Privacy Policy</a>, which describes how we handle your personal data more broadly.</p>
+
+    <!-- 1. What Are Cookies -->
+    <section class="legal-section" id="what-are-cookies">
+      <h2>1. What Are Cookies</h2>
+      <p>Cookies are small text files that are placed on your computer, tablet, or mobile device when you visit a website. They are widely used to make websites work more efficiently, provide a better browsing experience, and supply useful information to the site owners.</p>
+      <p>Cookies can be "first-party" (set by the website you are visiting) or "third-party" (set by a service other than the website you are visiting). They can also be "session" cookies, which are deleted when you close your browser, or "persistent" cookies, which remain on your device for a set period or until you delete them manually.</p>
+      <p>We use cookies to ensure our website functions correctly, to understand how visitors interact with our pages, and to remember your preferences so we can deliver a more personalized experience on return visits.</p>
     </section>
 
-    <!-- Types of Cookies We Use -->
-    <section class="legal-section">
-      <h2>Types of Cookies We Use</h2>
-      <p>
-        We use the following categories of cookies on our website. Each type serves a different purpose, and we have outlined their function below.
-      </p>
+    <!-- 2. Types of Cookies We Use -->
+    <section class="legal-section" id="types-of-cookies">
+      <h2>2. Types of Cookies We Use</h2>
 
       <h3>Essential Cookies</h3>
-      <p>
-        These cookies are strictly necessary for the operation of our website. They enable core functionality such as security, session management, and accessibility. Without these cookies, the website cannot function properly. Essential cookies do not require your consent.
-      </p>
+      <p>These cookies are strictly necessary for the website to function properly. They enable core functionality such as session management, authentication, and security. Without these cookies, services you have requested cannot be provided. Essential cookies do not require your consent as the site cannot operate without them.</p>
 
       <h3>Analytics Cookies</h3>
-      <p>
-        Analytics cookies help us understand how visitors interact with our website by collecting information about page views, traffic sources, and usage patterns. This data is aggregated and anonymized, meaning it does not identify you personally. We use this information to improve our website's performance and content.
-      </p>
+      <p>Analytics cookies help us understand how visitors interact with our website by collecting information about page views, traffic sources, and usage patterns. All data collected by these cookies is aggregated and anonymous. We use this information to measure site performance and improve our content and user experience.</p>
 
       <h3>Functional Cookies</h3>
-      <p>
-        Functional cookies allow our website to remember choices you have made, such as your language preference, region, or display settings. They provide enhanced, personalized features. If you disable these cookies, some or all of these features may not function properly.
-      </p>
-
-      <h3>Marketing Cookies</h3>
-      <p>
-        At this time, Hackabacus does not use marketing or advertising cookies. We do not track you across other websites for advertising purposes. Should this change in the future, we will update this policy and obtain your consent where required.
-      </p>
+      <p>Functional cookies allow our website to remember choices you have made, such as your display preferences, language settings, or theme selection. They provide enhanced, personalized features so you do not need to re-configure your settings each time you visit. If you disable these cookies, some features may not work as intended.</p>
     </section>
 
-    <!-- Cookie Table -->
-    <section class="legal-section">
-      <h2>Cookies We Use</h2>
-      <p>The table below lists the specific cookies deployed on our website.</p>
+    <!-- 3. Cookie Details -->
+    <section class="legal-section" id="cookie-details">
+      <h2>3. Cookie Details</h2>
+      <p>The following table lists the specific cookies we use on our website, their purpose, how long they persist, and their type.</p>
 
       <div class="table-wrapper">
         <table class="cookie-table">
@@ -517,136 +618,110 @@
           </thead>
           <tbody>
             <tr>
-              <td><code>__session</code></td>
-              <td>Maintains your active session state and authentication status across pages</td>
+              <td><code>ha_session</code></td>
+              <td>Maintains your active session state as you navigate between pages on the website.</td>
               <td>Session</td>
-              <td><span class="badge badge--essential">Essential</span></td>
+              <td><span class="type-badge essential">Essential</span></td>
             </tr>
             <tr>
-              <td><code>__csrf_token</code></td>
-              <td>Protects against cross-site request forgery attacks on form submissions</td>
-              <td>Session</td>
-              <td><span class="badge badge--essential">Essential</span></td>
-            </tr>
-            <tr>
-              <td><code>__auth</code></td>
-              <td>Stores authentication credentials for logged-in users to maintain secure access</td>
+              <td><code>ha_auth</code></td>
+              <td>Stores encrypted authentication credentials for logged-in users to maintain secure access across visits.</td>
               <td>30 days</td>
-              <td><span class="badge badge--essential">Essential</span></td>
+              <td><span class="type-badge essential">Essential</span></td>
+            </tr>
+            <tr>
+              <td><code>ha_csrf</code></td>
+              <td>Protects against cross-site request forgery attacks by validating form submissions and API requests.</td>
+              <td>Session</td>
+              <td><span class="type-badge essential">Essential</span></td>
             </tr>
             <tr>
               <td><code>_ga</code></td>
-              <td>Google Analytics: distinguishes unique visitors and tracks usage patterns</td>
+              <td>Google Analytics cookie used to distinguish unique visitors and calculate site analytics reports.</td>
               <td>2 years</td>
-              <td><span class="badge badge--analytics">Analytics</span></td>
+              <td><span class="type-badge analytics">Analytics</span></td>
             </tr>
             <tr>
               <td><code>_ga_*</code></td>
-              <td>Google Analytics: maintains session state and tracks page views across visits</td>
+              <td>Google Analytics cookie used to persist session state and track page views across browsing sessions.</td>
               <td>2 years</td>
-              <td><span class="badge badge--analytics">Analytics</span></td>
+              <td><span class="type-badge analytics">Analytics</span></td>
             </tr>
             <tr>
               <td><code>_gid</code></td>
-              <td>Google Analytics: distinguishes users for 24-hour usage pattern analysis</td>
+              <td>Google Analytics cookie that distinguishes users for short-term, 24-hour usage pattern analysis.</td>
               <td>24 hours</td>
-              <td><span class="badge badge--analytics">Analytics</span></td>
+              <td><span class="type-badge analytics">Analytics</span></td>
             </tr>
             <tr>
-              <td><code>_gat</code></td>
-              <td>Google Analytics: throttles request rate to limit data collection frequency</td>
-              <td>1 minute</td>
-              <td><span class="badge badge--analytics">Analytics</span></td>
-            </tr>
-            <tr>
-              <td><code>preferences</code></td>
-              <td>Stores your display settings and interface preferences (e.g., theme, layout)</td>
+              <td><code>ha_preferences</code></td>
+              <td>Remembers your display settings, including theme selection and interface layout preferences.</td>
               <td>1 year</td>
-              <td><span class="badge badge--functional">Functional</span></td>
+              <td><span class="type-badge functional">Functional</span></td>
             </tr>
             <tr>
-              <td><code>cookie_consent</code></td>
-              <td>Records your cookie consent selection so it is not requested on every visit</td>
+              <td><code>ha_cookie_consent</code></td>
+              <td>Records your cookie consent choice so you are not prompted again on subsequent visits.</td>
               <td>1 year</td>
-              <td><span class="badge badge--functional">Functional</span></td>
+              <td><span class="type-badge functional">Functional</span></td>
             </tr>
           </tbody>
         </table>
       </div>
     </section>
 
-    <!-- How to Manage Cookies -->
-    <section class="legal-section">
-      <h2>How to Manage Cookies</h2>
-      <p>
-        Most web browsers allow you to manage your cookie preferences. You can set your browser to refuse cookies or to alert you when cookies are being sent. Please note that disabling cookies may affect the functionality of our website.
-      </p>
+    <!-- 4. How to Manage Cookies -->
+    <section class="legal-section" id="manage-cookies">
+      <h2>4. How to Manage Cookies</h2>
+      <p>You have the right to decide whether to accept or reject cookies. Most web browsers allow you to control cookies through their settings preferences. Below are instructions for the most common browsers.</p>
 
       <h3>Google Chrome</h3>
-      <p>
-        Go to <strong>Settings</strong> &rarr; <strong>Privacy and security</strong> &rarr; <strong>Cookies and other site data</strong>. From here, you can block third-party cookies, block all cookies, or clear existing cookies. You can also add specific sites to an allow or block list.
-      </p>
+      <p>Open Chrome and click the three-dot menu in the top-right corner. Go to <strong>Settings &gt; Privacy and Security &gt; Cookies and other site data</strong>. From here you can block third-party cookies, block all cookies, or clear cookies when you close Chrome. You can also add specific sites to an allow or block list.</p>
 
       <h3>Mozilla Firefox</h3>
-      <p>
-        Go to <strong>Settings</strong> &rarr; <strong>Privacy &amp; Security</strong>. Under <strong>Enhanced Tracking Protection</strong>, choose Standard, Strict, or Custom to control which cookies are blocked. You can also manage site-specific cookie permissions and clear stored cookies.
-      </p>
+      <p>Open Firefox and click the hamburger menu. Go to <strong>Settings &gt; Privacy &amp; Security</strong>. Under the "Enhanced Tracking Protection" section, choose Standard, Strict, or Custom to control which cookies are blocked. You can also manage site-specific cookie permissions and clear stored data.</p>
 
       <h3>Apple Safari</h3>
-      <p>
-        Go to <strong>Safari</strong> &rarr; <strong>Settings</strong> (or <strong>Preferences</strong>) &rarr; <strong>Privacy</strong>. Enable <strong>Prevent cross-site tracking</strong> to block third-party cookies. You can also select <strong>Block all cookies</strong> or manage stored website data.
-      </p>
+      <p>On macOS, open Safari and go to <strong>Safari &gt; Settings &gt; Privacy</strong>. Enable "Prevent cross-site tracking" to block third-party cookies. You can also select "Block all cookies" or click "Manage Website Data" to remove cookies from specific sites. On iOS, go to <strong>Settings &gt; Safari &gt; Privacy &amp; Security</strong> for the same options.</p>
 
       <h3>Microsoft Edge</h3>
-      <p>
-        Go to <strong>Settings</strong> &rarr; <strong>Cookies and site permissions</strong> &rarr; <strong>Manage and delete cookies and site data</strong>. From here you can block third-party cookies, block all cookies, or configure site-specific exceptions.
-      </p>
+      <p>Open Edge and click the three-dot menu. Go to <strong>Settings &gt; Cookies and site permissions &gt; Manage and delete cookies and site data</strong>. You can block third-party cookies, block all cookies, or clear cookies on close. You can also configure site-specific allow and block exceptions.</p>
 
-      <p>
-        For other browsers, please consult the browser's help documentation. You can also visit <a href="https://www.allaboutcookies.org" target="_blank" rel="noopener noreferrer">allaboutcookies.org</a> for general information about cookies and how to manage them.
-      </p>
+      <p><strong>Please note:</strong> If you choose to block or delete cookies, some features of our website may not function properly. Essential cookies cannot be disabled as they are required for the site to operate correctly.</p>
     </section>
 
-    <!-- Third-Party Cookies -->
-    <section class="legal-section">
-      <h2>Third-Party Cookies</h2>
-      <p>
-        We use Google Analytics, a web analytics service provided by Google LLC, to help us understand how visitors use our website. Google Analytics uses cookies to collect information such as how often you visit, which pages you view, and what other sites you visited before coming to ours.
-      </p>
-      <p>
-        Google Analytics collects only the IP address assigned to you on the date you visit our website, rather than your name or other personally identifying information. We do not combine the information collected through Google Analytics with any personally identifiable information.
-      </p>
-      <p>
-        You can opt out of Google Analytics by installing the <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener noreferrer">Google Analytics Opt-out Browser Add-on</a>. For more information on how Google uses data collected through partner sites, see <a href="https://policies.google.com/technologies/partner-sites" target="_blank" rel="noopener noreferrer">Google's privacy policy</a>.
-      </p>
+    <!-- 5. Third-Party Cookies -->
+    <section class="legal-section" id="third-party-cookies">
+      <h2>5. Third-Party Cookies</h2>
+      <p>In addition to our own first-party cookies, we use cookies set by trusted third-party services that we have integrated into our website. These third-party cookies are governed by the respective privacy policies of their providers.</p>
+      <ul>
+        <li><strong>Google Analytics:</strong> We use Google Analytics to understand website traffic and usage patterns. Google may set cookies such as <code style="font-size:13px;background:rgba(139,115,85,0.08);border:1px solid var(--sand);padding:2px 6px;border-radius:4px;color:var(--ink);">_ga</code>, <code style="font-size:13px;background:rgba(139,115,85,0.08);border:1px solid var(--sand);padding:2px 6px;border-radius:4px;color:var(--ink);">_ga_*</code>, and <code style="font-size:13px;background:rgba(139,115,85,0.08);border:1px solid var(--sand);padding:2px 6px;border-radius:4px;color:var(--ink);">_gid</code> to collect anonymous statistical data. You can opt out by installing the <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener noreferrer">Google Analytics Opt-Out Browser Add-on</a>.</li>
+        <li><strong>Payment Processor:</strong> When you access billing or payment pages, our payment processor may set cookies necessary to complete transactions securely. These cookies are essential to the payment flow and are subject to the processor's own privacy policy.</li>
+      </ul>
+      <p>We do not allow third-party advertising networks to set cookies on our website. We do not use cookies for targeted advertising or cross-site behavioral tracking for marketing purposes.</p>
     </section>
 
-    <!-- Updates to This Policy -->
-    <section class="legal-section">
-      <h2>Updates to This Policy</h2>
-      <p>
-        We may update this Cookie Policy from time to time to reflect changes in our practices or for operational, legal, or regulatory reasons. When we make changes, we will revise the "Last updated" date at the top of this page. We encourage you to review this policy periodically to stay informed about how we use cookies.
-      </p>
-      <p>
-        If we make material changes that significantly affect your privacy rights, we will provide a more prominent notice, such as a banner on our website or an email notification to registered users.
-      </p>
+    <!-- 6. Updates to This Policy -->
+    <section class="legal-section" id="updates">
+      <h2>6. Updates to This Policy</h2>
+      <p>We may update this Cookie Policy from time to time to reflect changes in our use of cookies or for other operational, legal, or regulatory reasons. When we make changes, we will update the "Last updated" date at the top of this page.</p>
+      <p>If we make material changes that significantly affect how cookies are used, we will provide a more prominent notice, such as a banner on our website or an email notification to registered users. We encourage you to review this policy periodically to stay informed.</p>
     </section>
 
-    <!-- Contact -->
-    <section class="legal-section">
-      <h2>Contact Us</h2>
-      <p>
-        If you have any questions about this Cookie Policy or our use of cookies, please contact us at:
-      </p>
-      <p>
-        <strong>Hackabacus, LLC</strong><br />
-        Email: <a href="mailto:hello@hackabacus.com">hello@hackabacus.com</a><br />
-        Web: <a href="https://hackabacus.com">hackabacus.com</a>
-      </p>
+    <!-- 7. Contact Us -->
+    <section class="legal-section" id="contact">
+      <h2>7. Contact Us</h2>
+      <p>If you have any questions about our use of cookies or this Cookie Policy, please reach out to us.</p>
+      <div class="contact-block">
+        <p><strong>Hackabacus, LLC</strong></p>
+        <p>United States</p>
+        <p>Email: <a href="mailto:hello@hackabacus.com">hello@hackabacus.com</a></p>
+      </div>
     </section>
+
   </main>
 
-  <!-- ── Footer ──────────────────────────────────────────── -->
+  <!-- -- Footer ---------------------------------------------------- -->
   <footer>
     <div class="footer-inner">
       <div class="footer-brand">
@@ -683,9 +758,9 @@
     <div class="footer-bottom">
       <p class="footer-copy">&copy; 2026 Hackabacus, LLC. All rights reserved.</p>
       <div class="footer-legal">
-        <a href="privacy.html">Privacy Policy</a>
-        <a href="terms.html">Terms of Service</a>
-        <a href="cookies.html">Cookie Policy</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+        <a href="cookies.html">Cookies</a>
       </div>
     </div>
   </footer>

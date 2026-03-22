@@ -6,14 +6,14 @@
   <title>Hackabacus Documentation — Excel &amp; PowerPoint Plugin Guide</title>
 
   <!-- SEO Meta -->
-  <meta name="description" content="Learn how to use the Hackabacus Excel and PowerPoint plugin. Guides for financial modeling formatting, slide automation, keyboard shortcuts, and team configuration for PE and banking professionals." />
+  <meta name="description" content="Comprehensive guides for the Hackabacus Excel and PowerPoint plugin covering financial modeling formatting and slide automation." />
   <meta name="keywords" content="Hackabacus documentation, Excel plugin guide, PowerPoint automation docs, financial modeling formatting, slide automation tutorial, PE Excel tools, investment banking plugin help" />
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://hackabacus.com/docs" />
 
   <!-- Open Graph -->
   <meta property="og:title" content="Hackabacus Documentation — Excel &amp; PowerPoint Plugin Guide" />
-  <meta property="og:description" content="Comprehensive guides for using Hackabacus Excel and PowerPoint tools. Financial modeling formatting, slide automation, and team configuration for finance professionals." />
+  <meta property="og:description" content="Comprehensive guides for the Hackabacus Excel and PowerPoint plugin covering financial modeling formatting and slide automation." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://hackabacus.com/docs" />
   <meta property="og:image" content="https://hackabacus.com/og-image.jpg" />
@@ -22,7 +22,7 @@
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Hackabacus Documentation — Excel &amp; PowerPoint Plugin Guide" />
-  <meta name="twitter:description" content="Comprehensive guides for using Hackabacus Excel and PowerPoint tools for PE and banking teams." />
+  <meta name="twitter:description" content="Comprehensive guides for the Hackabacus Excel and PowerPoint plugin covering financial modeling formatting and slide automation." />
   <meta name="twitter:image" content="https://hackabacus.com/og-image.jpg" />
 
   <!-- Structured Data: TechArticle -->
@@ -31,7 +31,7 @@
     "@context": "https://schema.org",
     "@type": "TechArticle",
     "headline": "Hackabacus Documentation — Excel & PowerPoint Plugin Guide",
-    "description": "Learn how to use the Hackabacus Excel and PowerPoint plugin with guides for financial modeling formatting and slide automation.",
+    "description": "Comprehensive guides for the Hackabacus Excel and PowerPoint plugin covering financial modeling formatting and slide automation.",
     "url": "https://hackabacus.com/docs",
     "author": {
       "@type": "Organization",
@@ -154,7 +154,7 @@
 
     /* -- Nav ------------------------------------------------------ */
     .top-nav {
-      position: sticky; top: 0; z-index: 50;
+      position: fixed; top: 0; left: 0; right: 0; z-index: 50;
       background: rgba(245,243,238,0.85);
       backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
       border-bottom: 1px solid var(--sand);
@@ -186,7 +186,7 @@
       gap: 56px;
       max-width: 1120px;
       margin: 0 auto;
-      padding: 64px 32px 120px;
+      padding: 128px 32px 120px;
     }
 
     /* -- Sidebar -------------------------------------------------- */
@@ -247,15 +247,15 @@
     /* -- Card Grid ------------------------------------------------ */
     .doc-cards {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      grid-template-columns: repeat(2, 1fr);
       gap: 16px;
     }
     .doc-card {
       display: flex; align-items: flex-start; gap: 14px;
       background: var(--warm-white);
       border: 1px solid var(--sand);
-      border-radius: var(--radius-sm);
-      padding: 22px 20px;
+      border-radius: 12px;
+      padding: 24px;
       transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s var(--ease);
     }
     .doc-card:hover {
@@ -329,7 +329,7 @@
     @media (max-width: 900px) {
       .docs-layout {
         grid-template-columns: 1fr;
-        gap: 0; padding: 40px 24px 80px;
+        gap: 0; padding: 104px 24px 80px;
       }
       .docs-sidebar {
         position: relative; top: 0;
@@ -347,7 +347,7 @@
 
     @media (max-width: 600px) {
       .top-nav { padding: 0 20px; }
-      .docs-layout { padding: 32px 20px 64px; }
+      .docs-layout { padding: 96px 20px 64px; }
       .doc-cards { grid-template-columns: 1fr; }
       .docs-hero h1 { font-size: 28px; }
       footer { padding: 48px 24px 32px; }
@@ -396,33 +396,33 @@
         <!-- Getting Started -->
         <section id="getting-started" class="docs-section reveal">
           <div class="docs-section-header">
-            <div class="docs-section-icon" aria-hidden="true">&#9654;</div>
+            <div class="docs-section-icon" aria-hidden="true">&#x1F680;</div>
             <h2>Getting Started</h2>
           </div>
           <div class="doc-cards">
             <a href="installation.html" class="doc-card">
-              <div class="doc-card-icon" aria-hidden="true">&#128203;</div>
+              <div class="doc-card-icon" aria-hidden="true">&#x1F4CB;</div>
               <div class="doc-card-body">
                 <h3>Installation Guide</h3>
                 <p>Download and install Hackabacus on Windows or macOS in under two minutes.</p>
               </div>
             </a>
             <a href="#" class="doc-card">
-              <div class="doc-card-icon" aria-hidden="true">&#9889;</div>
+              <div class="doc-card-icon" aria-hidden="true">&#x26A1;</div>
               <div class="doc-card-body">
                 <h3>Quick Start Guide</h3>
                 <p>Format your first model and generate a slide deck in five minutes flat.</p>
               </div>
             </a>
             <a href="#" class="doc-card">
-              <div class="doc-card-icon" aria-hidden="true">&#9881;</div>
+              <div class="doc-card-icon" aria-hidden="true">&#x2699;&#xFE0F;</div>
               <div class="doc-card-body">
                 <h3>System Requirements</h3>
                 <p>Supported OS versions, Office compatibility, and hardware specifications.</p>
               </div>
             </a>
             <a href="#" class="doc-card">
-              <div class="doc-card-icon" aria-hidden="true">&#9919;</div>
+              <div class="doc-card-icon" aria-hidden="true">&#x1F511;</div>
               <div class="doc-card-body">
                 <h3>Activation &amp; Licensing</h3>
                 <p>Activate your license key, manage seats, and configure team deployments.</p>
@@ -434,7 +434,7 @@
         <!-- Excel Tools -->
         <section id="excel-tools" class="docs-section reveal">
           <div class="docs-section-header">
-            <div class="docs-section-icon" aria-hidden="true">&#9638;</div>
+            <div class="docs-section-icon" aria-hidden="true">&#x1F4CA;</div>
             <h2>Excel Tools</h2>
           </div>
           <div class="doc-cards">
@@ -446,28 +446,28 @@
               </div>
             </a>
             <a href="#" class="doc-card">
-              <div class="doc-card-icon" aria-hidden="true">&#9632;</div>
+              <div class="doc-card-icon" aria-hidden="true">&#x1F3A8;</div>
               <div class="doc-card-body">
                 <h3>Cell Styling</h3>
                 <p>One-click cell borders, shading, and font styles built for financial models.</p>
               </div>
             </a>
             <a href="#" class="doc-card">
-              <div class="doc-card-icon" aria-hidden="true">&#10003;</div>
+              <div class="doc-card-icon" aria-hidden="true">&#x2705;</div>
               <div class="doc-card-body">
                 <h3>Model Audit</h3>
                 <p>Trace precedents, flag hardcodes, and audit formula integrity across tabs.</p>
               </div>
             </a>
             <a href="#" class="doc-card">
-              <div class="doc-card-icon" aria-hidden="true">&#402;</div>
+              <div class="doc-card-icon" aria-hidden="true">&#x1D453;</div>
               <div class="doc-card-body">
                 <h3>Formula Tools</h3>
                 <p>Smart formula helpers, range naming conventions, and function reference.</p>
               </div>
             </a>
             <a href="#" class="doc-card">
-              <div class="doc-card-icon" aria-hidden="true">&#9783;</div>
+              <div class="doc-card-icon" aria-hidden="true">&#x1F308;</div>
               <div class="doc-card-body">
                 <h3>Conditional Formatting</h3>
                 <p>Pre-built conditional formatting rules for sensitivity tables, RAG status, and KPIs.</p>
@@ -479,33 +479,33 @@
         <!-- PowerPoint Tools -->
         <section id="powerpoint-tools" class="docs-section reveal">
           <div class="docs-section-header">
-            <div class="docs-section-icon" aria-hidden="true">&#9707;</div>
+            <div class="docs-section-icon" aria-hidden="true">&#x1F4D1;</div>
             <h2>PowerPoint Tools</h2>
           </div>
           <div class="doc-cards">
             <a href="#" class="doc-card">
-              <div class="doc-card-icon" aria-hidden="true">&#9744;</div>
+              <div class="doc-card-icon" aria-hidden="true">&#x1F5C2;</div>
               <div class="doc-card-body">
                 <h3>Slide Templates</h3>
                 <p>CIM covers, process pages, and deal summary layouts ready for your brand.</p>
               </div>
             </a>
             <a href="#" class="doc-card">
-              <div class="doc-card-icon" aria-hidden="true">&#8644;</div>
+              <div class="doc-card-icon" aria-hidden="true">&#x1F504;</div>
               <div class="doc-card-body">
                 <h3>Batch Generation</h3>
                 <p>Generate dozens of formatted slides from Excel data in a single click.</p>
               </div>
             </a>
             <a href="#" class="doc-card">
-              <div class="doc-card-icon" aria-hidden="true">&#9650;</div>
+              <div class="doc-card-icon" aria-hidden="true">&#x1F4C8;</div>
               <div class="doc-card-body">
                 <h3>Chart Formatting</h3>
                 <p>Standardize chart colors, axes, labels, and legends to institutional specs.</p>
               </div>
             </a>
             <a href="#" class="doc-card">
-              <div class="doc-card-icon" aria-hidden="true">&#9638;</div>
+              <div class="doc-card-icon" aria-hidden="true">&#x1F5C3;</div>
               <div class="doc-card-body">
                 <h3>Table Styling</h3>
                 <p>Uniform table borders, alternating rows, and header styling in one action.</p>
@@ -517,26 +517,26 @@
         <!-- Advanced -->
         <section id="advanced" class="docs-section reveal">
           <div class="docs-section-header">
-            <div class="docs-section-icon" aria-hidden="true">&#9883;</div>
+            <div class="docs-section-icon" aria-hidden="true">&#x2699;&#xFE0F;</div>
             <h2>Advanced</h2>
           </div>
           <div class="doc-cards">
             <a href="#" class="doc-card">
-              <div class="doc-card-icon" aria-hidden="true">&#8984;</div>
+              <div class="doc-card-icon" aria-hidden="true">&#x2328;</div>
               <div class="doc-card-body">
                 <h3>Keyboard Shortcuts</h3>
                 <p>Complete shortcut reference for power users on Windows and macOS.</p>
               </div>
             </a>
             <a href="#" class="doc-card">
-              <div class="doc-card-icon" aria-hidden="true">&#9881;</div>
+              <div class="doc-card-icon" aria-hidden="true">&#x1F527;</div>
               <div class="doc-card-body">
                 <h3>Custom Presets</h3>
                 <p>Create, export, and share formatting presets across your team.</p>
               </div>
             </a>
             <a href="#" class="doc-card">
-              <div class="doc-card-icon" aria-hidden="true">&#9734;</div>
+              <div class="doc-card-icon" aria-hidden="true">&#x1F465;</div>
               <div class="doc-card-body">
                 <h3>Team Configuration</h3>
                 <p>Admin console, SSO setup, and centralized preset management for firms.</p>

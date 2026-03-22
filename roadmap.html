@@ -6,22 +6,23 @@
   <title>Hackabacus Product Roadmap — What's Coming Next</title>
 
   <!-- SEO Meta -->
-  <meta name="description" content="Explore the Hackabacus product roadmap. See completed features, current development, and planned enhancements for our Excel and PowerPoint plugin built for private equity, banking, and finance teams." />
-  <meta name="keywords" content="Hackabacus roadmap, Excel plugin updates, PowerPoint automation features, finance tools roadmap, PE Excel add-in development, financial modeling plugin" />
+  <meta name="description" content="Explore the Hackabacus product roadmap. See upcoming features for the Excel and PowerPoint finance plugin, including AI-assisted formula review, batch slide generation, and more." />
+  <meta name="keywords" content="Hackabacus roadmap, Excel plugin roadmap, PowerPoint automation features, finance tools upcoming, Hackabacus features, Excel add-in planned features" />
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://hackabacus.com/roadmap" />
 
   <!-- Open Graph -->
   <meta property="og:title" content="Hackabacus Product Roadmap — What's Coming Next" />
-  <meta property="og:description" content="See what we've shipped, what we're building, and what's planned next for Hackabacus — the finance professional's Excel and PowerPoint suite." />
+  <meta property="og:description" content="See what's coming to Hackabacus. Upcoming features and improvements for the Excel and PowerPoint finance plugin." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://hackabacus.com/roadmap" />
   <meta property="og:image" content="https://hackabacus.com/og-image.jpg" />
+  <meta property="og:site_name" content="Hackabacus" />
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Hackabacus Product Roadmap — What's Coming Next" />
-  <meta name="twitter:description" content="See what we've shipped, what we're building, and what's planned next for Hackabacus." />
+  <meta name="twitter:description" content="See what's coming to Hackabacus. Upcoming features and improvements for the Excel and PowerPoint finance plugin." />
 
   <!-- Structured Data: SoftwareApplication -->
   <script type="application/ld+json">
@@ -31,7 +32,8 @@
     "name": "Hackabacus",
     "applicationCategory": "BusinessApplication",
     "operatingSystem": "Windows, macOS",
-    "description": "Professional Excel and PowerPoint plugin suite for private equity and finance professionals.",
+    "description": "Professional Excel and PowerPoint plugin suite for private equity, investment banking, and finance professionals.",
+    "url": "https://hackabacus.com",
     "offers": [
       {
         "@type": "Offer",
@@ -65,7 +67,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet" />
 
   <style>
-    /* ── Font Faces ──────────────────────────────────────── */
+    /* -- Font Faces ---------------------------------------- */
     @font-face {
       font-family: 'Suisse Intl Trial';
       src: url('fonts/SuisseIntlTrial-Medium.otf') format('opentype');
@@ -81,29 +83,25 @@
       font-display: swap;
     }
 
-    /* ── Reset & Tokens ───────────────────────────────────── */
+    /* -- Reset & Tokens ----------------------------------- */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --cream:      #F5F3EE;
-      --warm-white: #FAF9F6;
-      --sand:       #E8E4DD;
-      --stone:      #B8B2A8;
-      --graphite:   #6B6560;
-      --charcoal:   #2A2725;
-      --ink:        #1A1815;
-      --copper:     #8B7355;
+      --cream:        #F5F3EE;
+      --warm-white:   #FAF9F6;
+      --sand:         #E8E4DD;
+      --stone:        #B8B2A8;
+      --graphite:     #6B6560;
+      --charcoal:     #2A2725;
+      --ink:          #1A1815;
+      --copper:       #8B7355;
       --copper-light: #A89070;
-      --copper-glow: rgba(139,115,85,0.1);
-      --emerald:    #2D7A4F;
-      --emerald-light: #34925D;
+      --emerald:      #2D7A4F;
 
       --font-display: 'Suisse Intl Trial', 'Inter', -apple-system, sans-serif;
       --font-body:    'IBM Plex Sans', -apple-system, sans-serif;
 
-      --radius:      20px;
-      --radius-sm:   12px;
-      --ease:        cubic-bezier(0.16, 1, 0.3, 1);
+      --ease: cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     html {
@@ -141,41 +139,39 @@
       outline: 2px solid var(--copper);
       outline-offset: 3px;
     }
+    button:focus-visible,
+    a:focus-visible {
+      outline: 2px solid var(--copper);
+      outline-offset: 3px;
+      border-radius: 4px;
+    }
+
+    .skip-link {
+      position: absolute;
+      top: -100%;
+      left: 16px;
+      background: var(--ink);
+      color: var(--warm-white);
+      padding: 12px 24px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 500;
+      z-index: 300;
+      transition: top 0.2s;
+    }
+    .skip-link:focus { top: 12px; }
 
     img { max-width: 100%; display: block; }
     a { color: inherit; text-decoration: none; }
 
-    /* ── Utility ──────────────────────────────────────────── */
+    /* -- Container ---------------------------------------- */
     .container {
       max-width: 1120px;
       margin: 0 auto;
       padding: 0 32px;
     }
 
-    .eyebrow {
-      font-family: var(--font-body);
-      font-size: 13px;
-      font-weight: 500;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--copper);
-    }
-
-    /* ── Scroll reveal ───────────────────────────────────── */
-    .reveal {
-      opacity: 0;
-      transform: translateY(48px);
-      transition: opacity 1s var(--ease), transform 1s var(--ease);
-    }
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    .reveal-delay-1 { transition-delay: 0.12s; }
-    .reveal-delay-2 { transition-delay: 0.24s; }
-    .reveal-delay-3 { transition-delay: 0.36s; }
-
-    /* ── Navigation ───────────────────────────────────────── */
+    /* -- Nav ---------------------------------------------- */
     nav {
       position: fixed;
       top: 0; left: 0; right: 0;
@@ -212,65 +208,55 @@
       color: var(--copper);
     }
 
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 36px;
-      list-style: none;
-    }
-
-    .nav-links a {
+    .nav-back {
       font-size: 14px;
       font-weight: 400;
       color: var(--graphite);
       transition: color 0.3s;
-      position: relative;
+    }
+    .nav-back:hover {
+      color: var(--copper);
+    }
+    .nav-back svg {
+      display: inline-block;
+      vertical-align: middle;
+      margin-right: 6px;
+      transition: transform 0.3s var(--ease);
+    }
+    .nav-back:hover svg {
+      transform: translateX(-3px);
     }
 
-    .nav-links a::after {
-      content: '';
-      position: absolute;
-      bottom: -4px; left: 0;
-      width: 0;
-      height: 1.5px;
-      background: var(--copper);
-      transition: width 0.4s var(--ease);
-    }
-
-    .nav-links a:hover { color: var(--ink); }
-    .nav-links a:hover::after { width: 100%; }
-
-    /* ── Hero ─────────────────────────────────────────────── */
-    .hero {
-      padding: 140px 0 80px;
+    /* -- Page Header -------------------------------------- */
+    .page-header {
+      padding: 140px 0 64px;
       text-align: center;
     }
 
-    .hero h1 {
+    .page-header h1 {
       font-family: var(--font-display);
-      font-size: clamp(36px, 5vw, 56px);
+      font-size: clamp(32px, 5vw, 48px);
       font-weight: 600;
-      letter-spacing: -0.035em;
-      line-height: 1.1;
+      letter-spacing: -0.03em;
       color: var(--ink);
-      margin-bottom: 20px;
+      margin-bottom: 16px;
     }
 
-    .hero p {
+    .page-header p {
       font-size: 18px;
       font-weight: 300;
       color: var(--graphite);
-      line-height: 1.65;
-      max-width: 600px;
+      max-width: 560px;
       margin: 0 auto;
+      line-height: 1.65;
     }
 
-    /* ── Roadmap Grid ─────────────────────────────────────── */
-    .roadmap-section {
-      padding: 40px 0 120px;
+    /* -- Roadmap Grid ------------------------------------- */
+    .roadmap {
+      padding: 0 0 120px;
     }
 
-    .roadmap-columns {
+    .roadmap-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 32px;
@@ -283,210 +269,109 @@
     }
 
     .column-header {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      padding: 20px 24px;
-      border-radius: var(--radius-sm);
+      border-top: 3px solid var(--stone);
+      padding-top: 20px;
       margin-bottom: 4px;
     }
 
     .column-header--completed {
-      background: rgba(45,122,79,0.06);
-      border: 1px solid rgba(45,122,79,0.12);
+      border-top-color: var(--emerald);
     }
 
     .column-header--in-progress {
-      background: var(--copper-glow);
-      border: 1px solid rgba(139,115,85,0.15);
+      border-top-color: var(--copper);
     }
 
     .column-header--planned {
-      background: rgba(184,178,168,0.12);
-      border: 1px solid rgba(184,178,168,0.2);
-    }
-
-    .column-icon {
-      width: 36px;
-      height: 36px;
-      border-radius: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-    }
-
-    .column-icon--completed {
-      background: var(--emerald);
-    }
-
-    .column-icon--in-progress {
-      background: var(--copper);
-    }
-
-    .column-icon--planned {
-      background: var(--stone);
-    }
-
-    .column-icon svg {
-      width: 18px;
-      height: 18px;
-      stroke: var(--warm-white);
-      fill: none;
-      stroke-width: 2;
-      stroke-linecap: round;
-      stroke-linejoin: round;
+      border-top-color: var(--stone);
     }
 
     .column-header h2 {
       font-family: var(--font-display);
-      font-size: 18px;
+      font-size: 20px;
       font-weight: 600;
       letter-spacing: -0.02em;
       color: var(--ink);
+      margin-bottom: 4px;
     }
 
-    .column-header .column-count {
-      font-size: 13px;
-      font-weight: 400;
+    .column-header p {
+      font-size: 14px;
+      font-weight: 300;
       color: var(--graphite);
-      margin-left: auto;
+      line-height: 1.5;
     }
 
-    /* ── Feature Card ─────────────────────────────────────── */
+    /* -- Feature Card ------------------------------------- */
     .feature-card {
       background: var(--warm-white);
-      border: 1px solid var(--sand);
-      border-radius: var(--radius-sm);
+      border-radius: 12px;
       padding: 24px;
-      transition: transform 0.4s var(--ease), box-shadow 0.4s var(--ease);
+      transition: box-shadow 0.3s var(--ease), transform 0.3s var(--ease);
     }
 
     .feature-card:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 8px 32px rgba(26,24,21,0.06);
+      box-shadow: 0 4px 24px rgba(0,0,0,0.04);
+      transform: translateY(-2px);
     }
 
-    .feature-card__header {
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-      gap: 12px;
-      margin-bottom: 10px;
-    }
-
-    .feature-card__title {
+    .feature-card h3 {
       font-family: var(--font-display);
-      font-size: 15px;
+      font-size: 16px;
       font-weight: 600;
       color: var(--ink);
+      margin-bottom: 8px;
       letter-spacing: -0.01em;
-      line-height: 1.35;
     }
 
-    .feature-card__desc {
-      font-size: 13.5px;
+    .feature-card .description {
+      font-size: 14px;
       font-weight: 300;
       color: var(--graphite);
-      line-height: 1.6;
+      line-height: 1.55;
+      margin-bottom: 14px;
     }
 
-    /* ── Status Badge ─────────────────────────────────────── */
+    /* -- Status Badge ------------------------------------- */
     .badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
+      display: inline-block;
       font-size: 11px;
-      font-weight: 500;
-      letter-spacing: 0.03em;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
       padding: 4px 10px;
-      border-radius: 980px;
-      white-space: nowrap;
-      flex-shrink: 0;
+      border-radius: 6px;
     }
 
     .badge--completed {
-      background: rgba(45,122,79,0.08);
+      background: rgba(45,122,79,0.1);
       color: var(--emerald);
     }
 
     .badge--in-progress {
-      background: var(--copper-glow);
+      background: rgba(139,115,85,0.1);
       color: var(--copper);
     }
 
     .badge--planned {
       background: rgba(184,178,168,0.15);
-      color: var(--graphite);
+      color: var(--stone);
     }
 
-    .badge__dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
+    /* -- Reveal Animation --------------------------------- */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
     }
-
-    .badge--completed .badge__dot { background: var(--emerald); }
-    .badge--in-progress .badge__dot { background: var(--copper); animation: pulse 2s ease-in-out infinite; }
-    .badge--planned .badge__dot { background: var(--stone); }
-
-    @keyframes pulse {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.4; }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
     }
+    .reveal-delay-1 { transition-delay: 0.12s; }
+    .reveal-delay-2 { transition-delay: 0.24s; }
 
-    /* ── CTA Section ──────────────────────────────────────── */
-    .cta-section {
-      padding: 80px 0;
-      text-align: center;
-    }
-
-    .cta-box {
-      background: var(--ink);
-      border-radius: var(--radius);
-      padding: 64px 48px;
-      max-width: 720px;
-      margin: 0 auto;
-    }
-
-    .cta-box h2 {
-      font-family: var(--font-display);
-      font-size: clamp(24px, 3vw, 32px);
-      font-weight: 600;
-      color: var(--warm-white);
-      letter-spacing: -0.03em;
-      margin-bottom: 12px;
-    }
-
-    .cta-box p {
-      font-size: 15px;
-      font-weight: 300;
-      color: rgba(255,255,255,0.45);
-      margin-bottom: 32px;
-      line-height: 1.6;
-    }
-
-    .btn-primary {
-      display: inline-block;
-      background: var(--copper);
-      color: var(--warm-white);
-      padding: 14px 32px;
-      border-radius: 980px;
-      font-size: 14px;
-      font-weight: 500;
-      letter-spacing: -0.01em;
-      transition: all 0.3s var(--ease);
-      border: none;
-      cursor: pointer;
-    }
-
-    .btn-primary:hover {
-      background: var(--copper-light);
-      transform: translateY(-2px);
-      box-shadow: 0 8px 24px rgba(139,115,85,0.25);
-    }
-
-    /* ── Footer ───────────────────────────────────────────── */
+    /* -- Footer ------------------------------------------- */
     footer {
       background: var(--ink);
       border-top: 1px solid rgba(255,255,255,0.04);
@@ -568,216 +453,153 @@
 
     .footer-legal a:hover { color: rgba(255,255,255,0.5); }
 
-    /* ── Responsive ───────────────────────────────────────── */
-    @media (max-width: 900px) {
-      .roadmap-columns {
-        grid-template-columns: 1fr;
-        gap: 48px;
-      }
+    /* -- Responsive --------------------------------------- */
+    @media (max-width: 1024px) {
+      .roadmap-grid { grid-template-columns: 1fr 1fr; gap: 28px; }
+      .footer-inner { grid-template-columns: 1fr 1fr; gap: 36px; }
+      .footer-bottom { flex-direction: column; gap: 14px; text-align: center; }
+    }
 
-      .footer-inner {
-        grid-template-columns: 1fr 1fr;
-        gap: 40px;
-      }
+    @media (max-width: 768px) {
+      .page-header { padding: 120px 0 48px; }
+      .page-header p { font-size: 16px; }
+      .roadmap-grid { grid-template-columns: 1fr; gap: 24px; }
+      .roadmap { padding: 0 0 80px; }
     }
 
     @media (max-width: 600px) {
-      .hero { padding: 120px 0 56px; }
-      .hero p { font-size: 16px; }
-
-      .feature-card { padding: 20px; }
-
-      .cta-box { padding: 48px 28px; }
-
-      .footer-inner {
-        grid-template-columns: 1fr;
-        gap: 32px;
-      }
-
-      .footer-bottom {
-        flex-direction: column;
-        gap: 16px;
-        text-align: center;
-      }
-
-      .nav-links { gap: 20px; }
-      .nav-links a { font-size: 13px; }
+      footer { padding: 48px 32px 32px; }
+      .footer-inner { grid-template-columns: 1fr; gap: 28px; }
+      .footer-bottom { margin: 36px auto 0; }
+      .footer-legal { flex-wrap: wrap; justify-content: center; }
     }
   </style>
 </head>
-<body>
 
-  <!-- ── Navigation ──────────────────────────────────────── -->
+<body>
+  <a href="#main" class="skip-link">Skip to content</a>
+
   <nav>
     <div class="nav-inner">
       <a href="/" class="nav-logo">Hack<span>abacus</span></a>
-      <ul class="nav-links">
-        <li><a href="/">Back to Home</a></li>
-      </ul>
+      <a href="/" class="nav-back">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M10 12L6 8l4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Back to Home</a>
     </div>
   </nav>
 
-  <!-- ── Hero ────────────────────────────────────────────── -->
   <main id="main">
-    <section class="hero">
+    <section class="page-header">
       <div class="container">
-        <p class="eyebrow" style="margin-bottom:16px;">Product Roadmap</p>
-        <h1>What we're building next</h1>
-        <p>A transparent look at where Hackabacus is headed. See what we've shipped, what's in progress, and what's on deck for finance teams everywhere.</p>
+        <h1>Product Roadmap</h1>
+        <p>A look at where Hackabacus has been, what we're building now, and what's coming next for finance teams.</p>
       </div>
     </section>
 
-    <!-- ── Roadmap ──────────────────────────────────────── -->
-    <section class="roadmap-section">
+    <section class="roadmap">
       <div class="container">
-        <div class="roadmap-columns">
+        <div class="roadmap-grid">
 
-          <!-- ── Completed ──────────────────────────────── -->
+          <!-- Completed Column -->
           <div class="roadmap-column reveal">
             <div class="column-header column-header--completed">
-              <div class="column-icon column-icon--completed">
-                <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
-              </div>
               <h2>Completed</h2>
-              <span class="column-count">4 features</span>
+              <p>Shipped and available now</p>
             </div>
 
-            <article class="feature-card">
-              <div class="feature-card__header">
-                <h3 class="feature-card__title">One-click number formatting</h3>
-                <span class="badge badge--completed"><span class="badge__dot"></span>Shipped</span>
-              </div>
-              <p class="feature-card__desc">Apply institutional-grade number formats to any Excel range in a single click. Supports GAAP, IFRS, and PE-standard conventions including parenthetical negatives and basis-point notation.</p>
-            </article>
+            <div class="feature-card">
+              <h3>One-Click Number Formatting</h3>
+              <p class="description">Apply institutional-grade number formats to any Excel range in a single click.</p>
+              <span class="badge badge--completed">Completed</span>
+            </div>
 
-            <article class="feature-card">
-              <div class="feature-card__header">
-                <h3 class="feature-card__title">Excel cell styling engine</h3>
-                <span class="badge badge--completed"><span class="badge__dot"></span>Shipped</span>
-              </div>
-              <p class="feature-card__desc">Enforce firm-wide formatting standards across workbooks. Automatically styles headers, inputs, outputs, and check cells to match your team's style guide.</p>
-            </article>
+            <div class="feature-card">
+              <h3>Excel Cell Styling Engine</h3>
+              <p class="description">Consistent cell borders, shading, and font styles that match your firm's standards.</p>
+              <span class="badge badge--completed">Completed</span>
+            </div>
 
-            <article class="feature-card">
-              <div class="feature-card__header">
-                <h3 class="feature-card__title">PowerPoint template library</h3>
-                <span class="badge badge--completed"><span class="badge__dot"></span>Shipped</span>
-              </div>
-              <p class="feature-card__desc">Curated library of 40+ finance-ready slide layouts. Includes deal overview, waterfall charts, org structures, and IC memo templates built for banking and PE workflows.</p>
-            </article>
+            <div class="feature-card">
+              <h3>PowerPoint Template Library</h3>
+              <p class="description">Pre-built slide layouts designed for deal team presentations and IC decks.</p>
+              <span class="badge badge--completed">Completed</span>
+            </div>
 
-            <article class="feature-card">
-              <div class="feature-card__header">
-                <h3 class="feature-card__title">Model audit trail</h3>
-                <span class="badge badge--completed"><span class="badge__dot"></span>Shipped</span>
-              </div>
-              <p class="feature-card__desc">Track every change to your financial model with timestamped logs. See who modified which cells, when, and what the previous values were for full audit compliance.</p>
-            </article>
+            <div class="feature-card">
+              <h3>Model Audit Trail</h3>
+              <p class="description">Track every change to your financial model with timestamped revision history.</p>
+              <span class="badge badge--completed">Completed</span>
+            </div>
           </div>
 
-          <!-- ── In Progress ────────────────────────────── -->
+          <!-- In Progress Column -->
           <div class="roadmap-column reveal reveal-delay-1">
             <div class="column-header column-header--in-progress">
-              <div class="column-icon column-icon--in-progress">
-                <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
-              </div>
               <h2>In Progress</h2>
-              <span class="column-count">4 features</span>
+              <p>Currently in development</p>
             </div>
 
-            <article class="feature-card">
-              <div class="feature-card__header">
-                <h3 class="feature-card__title">AI-assisted formula review</h3>
-                <span class="badge badge--in-progress"><span class="badge__dot"></span>Building</span>
-              </div>
-              <p class="feature-card__desc">Intelligent analysis that scans your model for broken references, circular logic, and hardcoded assumptions. Flags errors before they reach your managing director's desk.</p>
-            </article>
+            <div class="feature-card">
+              <h3>AI-Assisted Formula Review</h3>
+              <p class="description">Intelligent detection of formula errors, circular references, and logic issues.</p>
+              <span class="badge badge--in-progress">In Progress</span>
+            </div>
 
-            <article class="feature-card">
-              <div class="feature-card__header">
-                <h3 class="feature-card__title">Batch slide generation</h3>
-                <span class="badge badge--in-progress"><span class="badge__dot"></span>Building</span>
-              </div>
-              <p class="feature-card__desc">Generate dozens of formatted slides from a single data source. Map Excel tables directly to PowerPoint templates and produce entire pitch decks in minutes, not hours.</p>
-            </article>
+            <div class="feature-card">
+              <h3>Batch Slide Generation</h3>
+              <p class="description">Generate multiple formatted slides from structured data in one automated pass.</p>
+              <span class="badge badge--in-progress">In Progress</span>
+            </div>
 
-            <article class="feature-card">
-              <div class="feature-card__header">
-                <h3 class="feature-card__title">Custom formatting presets</h3>
-                <span class="badge badge--in-progress"><span class="badge__dot"></span>Building</span>
-              </div>
-              <p class="feature-card__desc">Save and share your firm's exact formatting rules as reusable presets. Apply them across workbooks with one click and distribute to your entire team seamlessly.</p>
-            </article>
+            <div class="feature-card">
+              <h3>Custom Formatting Presets</h3>
+              <p class="description">Save and share your team's preferred number formats and cell styles as reusable presets.</p>
+              <span class="badge badge--in-progress">In Progress</span>
+            </div>
 
-            <article class="feature-card">
-              <div class="feature-card__header">
-                <h3 class="feature-card__title">Team collaboration sync</h3>
-                <span class="badge badge--in-progress"><span class="badge__dot"></span>Building</span>
-              </div>
-              <p class="feature-card__desc">Real-time syncing of styles, templates, and presets across your team. Admin controls for brand consistency so every analyst outputs work that looks like it came from one hand.</p>
-            </article>
+            <div class="feature-card">
+              <h3>Team Collaboration Sync</h3>
+              <p class="description">Real-time syncing of formatting presets and templates across your deal team.</p>
+              <span class="badge badge--in-progress">In Progress</span>
+            </div>
           </div>
 
-          <!-- ── Planned ────────────────────────────────── -->
+          <!-- Planned Column -->
           <div class="roadmap-column reveal reveal-delay-2">
             <div class="column-header column-header--planned">
-              <div class="column-icon column-icon--planned">
-                <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="16"></line><line x1="8" y1="12" x2="16" y2="12"></line></svg>
-              </div>
               <h2>Planned</h2>
-              <span class="column-count">4 features</span>
+              <p>On the horizon</p>
             </div>
 
-            <article class="feature-card">
-              <div class="feature-card__header">
-                <h3 class="feature-card__title">Excel web add-in support</h3>
-                <span class="badge badge--planned"><span class="badge__dot"></span>Planned</span>
-              </div>
-              <p class="feature-card__desc">Bring Hackabacus formatting and automation tools to Excel for the web. Work from any browser with the same powerful features available in the desktop plugin.</p>
-            </article>
+            <div class="feature-card">
+              <h3>Excel Web Add-In Support</h3>
+              <p class="description">Full Hackabacus functionality available directly in Excel for the web.</p>
+              <span class="badge badge--planned">Planned</span>
+            </div>
 
-            <article class="feature-card">
-              <div class="feature-card__header">
-                <h3 class="feature-card__title">Automated IC memo builder</h3>
-                <span class="badge badge--planned"><span class="badge__dot"></span>Planned</span>
-              </div>
-              <p class="feature-card__desc">Pull key metrics from your model and auto-populate investment committee memo templates. Reduce hours of copy-paste into a structured, presentation-ready document.</p>
-            </article>
+            <div class="feature-card">
+              <h3>Automated IC Memo Builder</h3>
+              <p class="description">Generate investment committee memos from model outputs and deal data automatically.</p>
+              <span class="badge badge--planned">Planned</span>
+            </div>
 
-            <article class="feature-card">
-              <div class="feature-card__header">
-                <h3 class="feature-card__title">Data room integration</h3>
-                <span class="badge badge--planned"><span class="badge__dot"></span>Planned</span>
-              </div>
-              <p class="feature-card__desc">Connect directly to major virtual data room providers. Import documents, extract key data points, and link source materials to your model cells for seamless diligence workflows.</p>
-            </article>
+            <div class="feature-card">
+              <h3>Data Room Integration</h3>
+              <p class="description">Connect directly to virtual data rooms to pull source documents into your models.</p>
+              <span class="badge badge--planned">Planned</span>
+            </div>
 
-            <article class="feature-card">
-              <div class="feature-card__header">
-                <h3 class="feature-card__title">Multi-language support</h3>
-                <span class="badge badge--planned"><span class="badge__dot"></span>Planned</span>
-              </div>
-              <p class="feature-card__desc">Localized interface and formatting conventions for international teams. Support for European number formats, multilingual templates, and region-specific financial standards.</p>
-            </article>
+            <div class="feature-card">
+              <h3>Multi-Language Support</h3>
+              <p class="description">Localized interface and formatting conventions for international finance teams.</p>
+              <span class="badge badge--planned">Planned</span>
+            </div>
           </div>
 
-        </div>
-      </div>
-    </section>
-
-    <!-- ── CTA ──────────────────────────────────────────── -->
-    <section class="cta-section reveal">
-      <div class="container">
-        <div class="cta-box">
-          <h2>Have a feature request?</h2>
-          <p>We build Hackabacus based on what finance professionals actually need. Tell us what would make your workflow faster.</p>
-          <a href="mailto:hello@hackabacus.com" class="btn-primary">Send us feedback</a>
         </div>
       </div>
     </section>
   </main>
 
-  <!-- ── Footer ──────────────────────────────────────────── -->
   <footer>
     <div class="footer-inner">
       <div class="footer-brand">
@@ -787,6 +609,7 @@
       <div class="footer-col">
         <h4>Product</h4>
         <ul>
+          <li><a href="compare.html">Compare</a></li>
           <li><a href="changelog.html">Changelog</a></li>
           <li><a href="roadmap.html">Roadmap</a></li>
           <li><a href="docs.html">Documentation</a></li>
@@ -814,16 +637,14 @@
     <div class="footer-bottom">
       <p class="footer-copy">&copy; 2026 Hackabacus, LLC. All rights reserved.</p>
       <div class="footer-legal">
-        <a href="privacy.html">Privacy Policy</a>
-        <a href="terms.html">Terms of Service</a>
-        <a href="cookies.html">Cookie Policy</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+        <a href="cookies.html">Cookies</a>
       </div>
     </div>
   </footer>
 
-  <!-- ── Scripts ─────────────────────────────────────────── -->
   <script>
-    // Scroll reveal
     const revealEls = document.querySelectorAll('.reveal');
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
