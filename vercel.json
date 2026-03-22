@@ -1,5 +1,15 @@
 {
   "rewrites": [
-    { "source": "/compare", "destination": "/compare.html" }
+    { "source": "/compare", "destination": "/compare.html" },
+    { "source": "/about", "destination": "/about.html" },
+    { "source": "/blog", "destination": "/blog.html" },
+    { "source": "/careers", "destination": "/careers.html" },
+    { "source": "/changelog", "destination": "/changelog.html" },
+    { "source": "/roadmap", "destination": "/roadmap.html" },
+    { "source": "/docs", "destination": "/docs.html" },
+    { "source": "/installation", "destination": "/installation.html" },
+    { "source": "/privacy", "destination": "/privacy.html" },
+    { "source": "/terms", "destination": "/terms.html" },
+    { "source": "/cookies", "destination": "/cookies.html" }
   ]
 }
