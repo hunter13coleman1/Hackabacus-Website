@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hackabacus Changelog — Latest Updates &amp; New Features</title>
+
+  <!-- SEO Meta -->
+  <meta name="description" content="Stay up to date with the latest Hackabacus product updates, new features, and improvements for our Excel and PowerPoint finance plugin. See what's new in every release." />
+  <meta name="keywords" content="Hackabacus changelog, Excel plugin updates, PowerPoint finance tools updates, Hackabacus release notes, finance plugin new features" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://hackabacus.com/changelog" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Hackabacus Changelog — Latest Updates & New Features" />
+  <meta property="og:description" content="Stay up to date with the latest Hackabacus product updates, new features, and improvements for our Excel and PowerPoint finance plugin." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://hackabacus.com/changelog" />
+  <meta property="og:image" content="https://hackabacus.com/og-image.jpg" />
+  <meta property="og:site_name" content="Hackabacus" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Hackabacus Changelog — Latest Updates & New Features" />
+  <meta name="twitter:description" content="Stay up to date with the latest Hackabacus product updates and new features for the finance plugin." />
+
+  <!-- Structured Data: SoftwareApplication -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Hackabacus",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "Windows",
+    "description": "Professional Excel and PowerPoint plugin suite for private equity and finance professionals.",
+    "offers": [
+      {
+        "@type": "Offer",
+        "name": "Individual Monthly",
+        "price": "19",
+        "priceCurrency": "USD",
+        "priceValidUntil": "2026-12-31"
+      },
+      {
+        "@type": "Offer",
+        "name": "Individual Annual",
+        "price": "149",
+        "priceCurrency": "USD"
+      },
+      {
+        "@type": "Offer",
+        "name": "Individual Perpetual",
+        "price": "349",
+        "priceCurrency": "USD"
+      }
+    ]
+  }
+  </script>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%231A1815'/><text x='50' y='68' font-family='system-ui' font-size='56' font-weight='700' fill='%238B7355' text-anchor='middle'>H</text></svg>" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ── Font Faces ──────────────────────────────────────── */
+    @font-face {
+      font-family: 'Suisse Intl Trial';
+      src: url('fonts/SuisseIntlTrial-Medium.otf') format('opentype');
+      font-weight: 500;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'Suisse Intl Trial';
+      src: url('fonts/SuisseIntlTrial-Semibold.otf') format('opentype');
+      font-weight: 600;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    /* ── Reset & Tokens ───────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream:      #F5F3EE;
+      --warm-white: #FAF9F6;
+      --sand:       #E8E4DD;
+      --stone:      #B8B2A8;
+      --graphite:   #6B6560;
+      --charcoal:   #2A2725;
+      --ink:        #1A1815;
+      --copper:     #8B7355;
+      --copper-light: #A89070;
+      --copper-glow: rgba(139,115,85,0.1);
+
+      --font-display: 'Suisse Intl Trial', 'Inter', -apple-system, sans-serif;
+      --font-body:    'IBM Plex Sans', -apple-system, sans-serif;
+
+      --radius:      20px;
+      --radius-sm:   12px;
+      --ease:        cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3 { text-wrap: balance; }
+    p { text-wrap: pretty; }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--cream);
+      color: var(--charcoal);
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Grain overlay */
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwBAMAAAClLOS0AAAAElBMVEUAAAAAAAAAAAAAAAAAAAAAAADgKxmiAAAABnRSTlMFCA0RFRkEEiizAAAASklEQVQ4y2NghgIGBgYFBigghAIGJiggiAImKGCAAkYmKMAJGBgYGIVgAhCVMEAIBUwMUANggBEKcAJGKGBiggJGKGBkgAIAaaEFvbMUjEkAAAAASUVORK5CYII=");
+      pointer-events: none;
+      z-index: 100;
+      opacity: 0.04;
+    }
+
+    ::selection { background: var(--copper); color: var(--warm-white); }
+
+    :focus-visible {
+      outline: 2px solid var(--copper);
+      outline-offset: 3px;
+    }
+
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+
+    /* ── Utility ──────────────────────────────────────────── */
+    .container {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+
+    .eyebrow {
+      font-family: var(--font-body);
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--copper);
+    }
+
+    /* ── Scroll reveal ───────────────────────────────────── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(48px);
+      transition: opacity 1s var(--ease), transform 1s var(--ease);
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal-delay-1 { transition-delay: 0.12s; }
+    .reveal-delay-2 { transition-delay: 0.24s; }
+    .reveal-delay-3 { transition-delay: 0.36s; }
+
+    /* ── Navigation ───────────────────────────────────────── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      background: rgba(245,243,238,0.88);
+      backdrop-filter: saturate(180%) blur(24px);
+      -webkit-backdrop-filter: saturate(180%) blur(24px);
+      border-bottom: 1px solid rgba(0,0,0,0.05);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      max-width: 1320px;
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+
+    .nav-logo {
+      font-family: var(--font-display);
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      color: var(--ink);
+    }
+
+    .nav-logo span {
+      font-weight: 400;
+      color: var(--copper);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 36px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 14px;
+      font-weight: 400;
+      color: var(--graphite);
+      transition: color 0.3s;
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px; left: 0;
+      width: 0;
+      height: 1.5px;
+      background: var(--copper);
+      transition: width 0.4s var(--ease);
+    }
+
+    .nav-links a:hover { color: var(--ink); }
+    .nav-links a:hover::after { width: 100%; }
+
+    /* ── Hero ─────────────────────────────────────────────── */
+    .hero {
+      padding: 140px 0 80px;
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(36px, 5vw, 56px);
+      font-weight: 600;
+      letter-spacing: -0.035em;
+      line-height: 1.1;
+      color: var(--ink);
+      margin-bottom: 20px;
+    }
+
+    .hero p {
+      font-size: 18px;
+      font-weight: 300;
+      color: var(--graphite);
+      line-height: 1.65;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    /* ── Changelog Timeline ──────────────────────────────── */
+    .changelog-section {
+      padding: 0 0 120px;
+    }
+
+    .timeline {
+      position: relative;
+      max-width: 800px;
+      margin: 0 auto;
+      padding-left: 40px;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 7px;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--copper-light), var(--sand), transparent);
+    }
+
+    .timeline-entry {
+      position: relative;
+      margin-bottom: 48px;
+    }
+
+    .timeline-entry:last-child {
+      margin-bottom: 0;
+    }
+
+    .timeline-dot {
+      position: absolute;
+      left: -40px;
+      top: 36px;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: var(--copper);
+      border: 3px solid var(--cream);
+      box-shadow: 0 0 0 2px var(--sand);
+      z-index: 1;
+    }
+
+    .timeline-entry:first-child .timeline-dot {
+      background: var(--copper-light);
+      box-shadow: 0 0 0 2px var(--copper), 0 0 16px var(--copper-glow);
+    }
+
+    .entry-card {
+      background: var(--warm-white);
+      border-radius: 12px;
+      padding: 32px 40px;
+      border: 1px solid var(--sand);
+      transition: box-shadow 0.4s var(--ease), transform 0.4s var(--ease);
+    }
+
+    .entry-card:hover {
+      box-shadow: 0 8px 32px rgba(26,24,21,0.06);
+      transform: translateY(-2px);
+    }
+
+    .entry-meta {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+    }
+
+    .version-badge {
+      display: inline-block;
+      background: var(--copper);
+      color: #fff;
+      font-family: var(--font-body);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      padding: 4px 14px;
+      border-radius: 20px;
+      line-height: 1.4;
+    }
+
+    .entry-date {
+      font-size: 14px;
+      font-weight: 400;
+      color: var(--stone);
+    }
+
+    .entry-card h3 {
+      font-family: var(--font-display);
+      font-size: 22px;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+      margin-bottom: 16px;
+      line-height: 1.3;
+    }
+
+    .entry-card ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .entry-card li {
+      font-size: 15px;
+      font-weight: 300;
+      color: var(--graphite);
+      line-height: 1.6;
+      padding-left: 20px;
+      position: relative;
+    }
+
+    .entry-card li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 10px;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--copper-light);
+    }
+
+    /* ── CTA ──────────────────────────────────────────────── */
+    .cta-section {
+      padding: 0 0 120px;
+    }
+
+    .cta-box {
+      background: var(--ink);
+      border-radius: var(--radius);
+      padding: 72px 56px;
+      text-align: center;
+    }
+
+    .cta-box h2 {
+      font-family: var(--font-display);
+      font-size: clamp(28px, 3vw, 36px);
+      font-weight: 600;
+      letter-spacing: -0.03em;
+      color: #fff;
+      margin-bottom: 16px;
+    }
+
+    .cta-box p {
+      font-size: 16px;
+      font-weight: 300;
+      color: rgba(255,255,255,0.5);
+      line-height: 1.65;
+      max-width: 500px;
+      margin: 0 auto 32px;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      padding: 14px 36px;
+      background: var(--copper);
+      color: #fff;
+      font-family: var(--font-body);
+      font-size: 14px;
+      font-weight: 500;
+      border-radius: 10px;
+      transition: background 0.3s, transform 0.3s;
+    }
+
+    .btn-primary:hover {
+      background: var(--copper-light);
+      transform: translateY(-1px);
+    }
+
+    /* ── Footer ───────────────────────────────────────────── */
+    footer {
+      background: var(--ink);
+      padding: 80px 32px 48px;
+      color: rgba(255,255,255,0.5);
+    }
+
+    .footer-inner {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 56px;
+      max-width: 1120px;
+      margin: 0 auto;
+    }
+
+    .footer-brand { max-width: 280px; }
+
+    .footer-brand .nav-logo {
+      color: #fff;
+      margin-bottom: 16px;
+      display: inline-block;
+    }
+
+    .footer-brand .nav-logo span { color: var(--copper-light); }
+
+    .footer-tagline {
+      font-size: 14px;
+      font-weight: 300;
+      line-height: 1.65;
+      color: rgba(255,255,255,0.35);
+    }
+
+    .footer-col h4 {
+      font-family: var(--font-display);
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.6);
+      margin-bottom: 20px;
+    }
+
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 14px; }
+
+    .footer-col a {
+      font-size: 14px;
+      color: rgba(255,255,255,0.4);
+      transition: color 0.3s;
+      font-weight: 300;
+    }
+
+    .footer-col a:hover { color: rgba(255,255,255,0.8); }
+
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1120px;
+      margin: 56px auto 0;
+      padding-top: 28px;
+      border-top: 1px solid rgba(255,255,255,0.04);
+    }
+
+    .footer-copy {
+      font-size: 12px;
+      color: rgba(255,255,255,0.2);
+      font-weight: 300;
+    }
+
+    .footer-legal {
+      display: flex;
+      gap: 24px;
+    }
+
+    .footer-legal a {
+      font-size: 12px;
+      color: rgba(255,255,255,0.2);
+      transition: color 0.3s;
+      font-weight: 300;
+    }
+
+    .footer-legal a:hover { color: rgba(255,255,255,0.5); }
+
+    /* ── Responsive ───────────────────────────────────────── */
+    @media (max-width: 900px) {
+      .footer-inner {
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+      }
+    }
+
+    @media (max-width: 700px) {
+      .timeline {
+        padding-left: 32px;
+      }
+
+      .timeline-dot {
+        left: -32px;
+        width: 14px;
+        height: 14px;
+      }
+
+      .timeline::before {
+        left: 6px;
+      }
+
+      .entry-card {
+        padding: 24px 24px;
+      }
+
+      .entry-card h3 {
+        font-size: 19px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .hero { padding: 120px 0 56px; }
+      .hero p { font-size: 16px; }
+
+      .cta-box { padding: 48px 28px; }
+
+      .footer-inner {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+        gap: 16px;
+        text-align: center;
+      }
+
+      .nav-links { gap: 20px; }
+      .nav-links a { font-size: 13px; }
+
+      .timeline {
+        padding-left: 0;
+      }
+
+      .timeline::before { display: none; }
+      .timeline-dot { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── Navigation ──────────────────────────────────────── -->
+  <nav>
+    <div class="nav-inner">
+      <a href="/" class="nav-logo">Hack<span>abacus</span></a>
+      <ul class="nav-links">
+        <li><a href="/">Back to Home</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- ── Hero ────────────────────────────────────────────── -->
+  <main id="main">
+    <section class="hero">
+      <div class="container">
+        <p class="eyebrow" style="margin-bottom:16px;">Changelog</p>
+        <h1>What's new in Hackabacus</h1>
+        <p>Every update, improvement, and fix shipped to the Hackabacus Excel and PowerPoint plugin. Follow along as we build the best finance toolkit available.</p>
+      </div>
+    </section>
+
+    <!-- ── Changelog Timeline ────────────────────────────── -->
+    <section class="changelog-section">
+      <div class="container">
+        <div class="timeline">
+
+          <!-- v2.4.0 -->
+          <div class="timeline-entry reveal">
+            <div class="timeline-dot"></div>
+            <div class="entry-card">
+              <div class="entry-meta">
+                <span class="version-badge">v2.4.0</span>
+                <span class="entry-date">March 2026</span>
+              </div>
+              <h3>AI-Assisted Formula Review &amp; Batch Slides</h3>
+              <ul>
+                <li>Introduced AI-assisted formula review in beta &mdash; scans models for broken references, circular logic, and hardcoded assumptions before they reach your MD's desk</li>
+                <li>Batch slide generation now lets you produce entire pitch decks from a single data source, mapping Excel tables directly to PowerPoint templates</li>
+                <li>Rebuilt the number formatting engine for faster parsing, better edge-case handling, and support for additional GAAP and IFRS conventions</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- v2.3.1 -->
+          <div class="timeline-entry reveal">
+            <div class="timeline-dot"></div>
+            <div class="entry-card">
+              <div class="entry-meta">
+                <span class="version-badge">v2.3.1</span>
+                <span class="entry-date">February 2026</span>
+              </div>
+              <h3>Stability &amp; Compatibility Fixes</h3>
+              <ul>
+                <li>Resolved intermittent COM add-in stability issues that caused the plugin to disconnect during long Excel sessions</li>
+                <li>Improved compatibility with Excel 365 semi-annual and current channel builds, including the latest ribbon API changes</li>
+                <li>Fixed a rare crash when applying formatting presets to merged cell ranges</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- v2.3.0 -->
+          <div class="timeline-entry reveal">
+            <div class="timeline-dot"></div>
+            <div class="entry-card">
+              <div class="entry-meta">
+                <span class="version-badge">v2.3.0</span>
+                <span class="entry-date">January 2026</span>
+              </div>
+              <h3>Custom Presets &amp; Team Collaboration</h3>
+              <ul>
+                <li>Custom formatting presets let you save and share your firm's exact formatting rules as reusable one-click configurations</li>
+                <li>Team collaboration sync keeps styles, templates, and presets in lockstep across your entire team with admin-controlled brand consistency</li>
+                <li>Added new PowerPoint templates including waterfall charts, IC memo layouts, and deal overview slides purpose-built for PE workflows</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- v2.2.0 -->
+          <div class="timeline-entry reveal">
+            <div class="timeline-dot"></div>
+            <div class="entry-card">
+              <div class="entry-meta">
+                <span class="version-badge">v2.2.0</span>
+                <span class="entry-date">November 2025</span>
+              </div>
+              <h3>Model Audit Trail &amp; Performance Overhaul</h3>
+              <ul>
+                <li>Model audit trail tracks every change to your financial model with timestamped logs &mdash; see who modified which cells, when, and what the previous values were</li>
+                <li>Complete rewrite of the cell styling engine for more reliable formatting across complex workbooks with heavy conditional formatting</li>
+                <li>40% performance improvement across all formatting operations through optimized COM interop calls and smarter batch processing</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- v2.1.0 -->
+          <div class="timeline-entry reveal">
+            <div class="timeline-dot"></div>
+            <div class="entry-card">
+              <div class="entry-meta">
+                <span class="version-badge">v2.1.0</span>
+                <span class="entry-date">September 2025</span>
+              </div>
+              <h3>PowerPoint Template Library &amp; Chart Tools</h3>
+              <ul>
+                <li>Launched the PowerPoint template library with 40+ finance-ready slide layouts including deal overview, org structure, and waterfall chart templates</li>
+                <li>New chart formatting tools automatically apply institutional styling to PowerPoint charts, matching your firm's color palette and typography</li>
+                <li>Multi-monitor support ensures the Hackabacus task pane and dialogs render correctly across mixed-DPI display configurations</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- v2.0.0 -->
+          <div class="timeline-entry reveal">
+            <div class="timeline-dot"></div>
+            <div class="entry-card">
+              <div class="entry-meta">
+                <span class="version-badge">v2.0.0</span>
+                <span class="entry-date">July 2025</span>
+              </div>
+              <h3>Hackabacus 2.0 &mdash; Complete Redesign</h3>
+              <ul>
+                <li>Complete UI overhaul with a redesigned ribbon, modernized task pane, and streamlined workflows that cut clicks in half across every major feature</li>
+                <li>One-click number formatting applies institutional-grade formats to any Excel range instantly &mdash; supports GAAP, IFRS, and PE-standard conventions</li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ── CTA ──────────────────────────────────────────── -->
+    <section class="cta-section reveal">
+      <div class="container">
+        <div class="cta-box">
+          <h2>Want to see what's coming next?</h2>
+          <p>Check out our product roadmap for upcoming features, or let us know what you'd like to see in the next release.</p>
+          <a href="roadmap.html" class="btn-primary">View roadmap</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ── Footer ──────────────────────────────────────────── -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="/" class="nav-logo">Hack<span>abacus</span></a>
+        <p class="footer-tagline">The finance professional's Excel and PowerPoint suite. Built for PE, banking, and infrastructure deal teams.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Product</h4>
+        <ul>
+          <li><a href="/#features">Features</a></li>
+          <li><a href="/#demo">Demo</a></li>
+          <li><a href="/#pricing">Pricing</a></li>
+          <li><a href="/#faq">FAQ</a></li>
+          <li><a href="compare.html">Compare</a></li>
+          <li><a href="changelog.html">Changelog</a></li>
+          <li><a href="roadmap.html">Roadmap</a></li>
+          <li><a href="/download">Download</a></li>
+          <li><a href="docs.html">Documentation</a></li>
+          <li><a href="installation.html">Installation Guide</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="about.html">About</a></li>
+          <li><a href="blog.html">Blog</a></li>
+
+          <li><a href="mailto:hello@hackabacus.com">Contact</a></li>
+          <li><a href="mailto:press@hackabacus.com">Press</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="privacy.html">Privacy Policy</a></li>
+          <li><a href="terms.html">Terms of Service</a></li>
+          <li><a href="cookies.html">Cookie Policy</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy">&copy; 2026 Hackabacus, LLC. All rights reserved.</p>
+      <div class="footer-legal">
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms of Service</a>
+        <a href="cookies.html">Cookie Policy</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ── Scripts ─────────────────────────────────────────── -->
+  <script>
+    // Scroll reveal
+    const revealEls = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.08,
+      rootMargin: '0px 0px -60px 0px'
+    });
+    revealEls.forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>

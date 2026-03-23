@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hackabacus Blog — Excel & PowerPoint Tips for Finance Professionals</title>
+
+  <!-- SEO Meta -->
+  <meta name="description" content="Expert finance Excel tips, PowerPoint automation guides, and financial modeling best practices for private equity analysts and investment banking teams. Learn PE workflows, LBO formatting, and deal team productivity with Hackabacus." />
+  <meta name="keywords" content="Excel plugin, PowerPoint automation, financial modeling, private equity, investment banking, PE Excel tips, LBO model formatting, Excel shortcuts finance, deal team productivity, Macabacus alternative, Excel add-in finance, infrastructure deals" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://hackabacus.com/blog" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Hackabacus Blog — Excel & PowerPoint Tips for Finance Professionals" />
+  <meta property="og:description" content="Expert guides on Excel formatting, PowerPoint automation, and financial modeling best practices for private equity and investment banking teams." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://hackabacus.com/blog" />
+  <meta property="og:image" content="https://hackabacus.com/og-image.jpg" />
+  <meta property="og:site_name" content="Hackabacus" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Hackabacus Blog — Excel & PowerPoint Tips for Finance Professionals" />
+  <meta name="twitter:description" content="Expert guides on Excel formatting, PowerPoint automation, and financial modeling best practices for PE and banking teams." />
+  <meta name="twitter:image" content="https://hackabacus.com/og-image.jpg" />
+
+  <!-- Structured Data: Blog -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Blog",
+    "name": "Hackabacus Blog",
+    "description": "Expert finance Excel tips, PowerPoint automation guides, and financial modeling best practices for private equity analysts and investment banking teams.",
+    "url": "https://hackabacus.com/blog",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Hackabacus",
+      "url": "https://hackabacus.com",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://hackabacus.com/og-image.jpg"
+      }
+    },
+    "blogPost": [
+      {
+        "@type": "BlogPosting",
+        "headline": "10 Excel Shortcuts Every PE Analyst Should Know",
+        "datePublished": "2026-03-15",
+        "description": "Master the essential Excel keyboard shortcuts that top private equity analysts use daily to build models faster and format with precision.",
+        "url": "https://hackabacus.com/blog#"
+      },
+      {
+        "@type": "BlogPosting",
+        "headline": "How to Automate PowerPoint Decks for Investment Committee Meetings",
+        "datePublished": "2026-03-08",
+        "description": "Stop spending hours on IC decks. Learn how to automate slide generation and data linking for investment committee presentations.",
+        "url": "https://hackabacus.com/blog#"
+      },
+      {
+        "@type": "BlogPosting",
+        "headline": "Hackabacus vs Macabacus: Which Excel Plugin is Right for Your Team?",
+        "datePublished": "2026-02-28",
+        "description": "An honest feature-by-feature comparison of the two leading Excel plugins for finance professionals.",
+        "url": "https://hackabacus.com/blog#"
+      },
+      {
+        "@type": "BlogPosting",
+        "headline": "Financial Modeling Best Practices for Infrastructure Deals",
+        "datePublished": "2026-02-18",
+        "description": "Infrastructure models have unique requirements. Learn the formatting and structural best practices used by top infrastructure funds.",
+        "url": "https://hackabacus.com/blog#"
+      },
+      {
+        "@type": "BlogPosting",
+        "headline": "Why Your Deal Team Needs Standardized Excel Formatting",
+        "datePublished": "2026-02-05",
+        "description": "Inconsistent formatting costs deal teams hours every week. Here's how standardized formatting improves speed, accuracy, and credibility.",
+        "url": "https://hackabacus.com/blog#"
+      },
+      {
+        "@type": "BlogPosting",
+        "headline": "The Complete Guide to LBO Model Formatting in Excel",
+        "datePublished": "2026-01-22",
+        "description": "A comprehensive guide to formatting leveraged buyout models that are clear, auditable, and presentation-ready.",
+        "url": "https://hackabacus.com/blog#"
+      }
+    ]
+  }
+  </script>
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%231A1815'/><text x='50' y='68' font-family='system-ui' font-size='56' font-weight='700' fill='%238B7355' text-anchor='middle'>H</text></svg>" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ── Font Faces ──────────────────────────────────────── */
+    @font-face {
+      font-family: 'Suisse Intl Trial';
+      src: url('fonts/SuisseIntlTrial-Medium.otf') format('opentype');
+      font-weight: 500;
+      font-style: normal;
+      font-display: swap;
+    }
+    @font-face {
+      font-family: 'Suisse Intl Trial';
+      src: url('fonts/SuisseIntlTrial-Semibold.otf') format('opentype');
+      font-weight: 600;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    /* ── Reset & Tokens ───────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream:      #F5F3EE;
+      --warm-white: #FAF9F6;
+      --sand:       #E8E4DD;
+      --stone:      #B8B2A8;
+      --graphite:   #6B6560;
+      --charcoal:   #2A2725;
+      --ink:        #1A1815;
+      --copper:     #8B7355;
+      --copper-light: #A89070;
+      --copper-glow: rgba(139,115,85,0.1);
+      --emerald:    #2D7A4F;
+      --navy:       #1A3864;
+
+      --font-display: 'Suisse Intl Trial', 'Inter', -apple-system, sans-serif;
+      --font-body:    'IBM Plex Sans', -apple-system, sans-serif;
+
+      --radius:      20px;
+      --radius-sm:   12px;
+      --ease:        cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3 { text-wrap: balance; }
+    p { text-wrap: pretty; }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--cream);
+      color: var(--charcoal);
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Grain overlay */
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwBAMAAAClLOS0AAAAElBMVEUAAAAAAAAAAAAAAAAAAAAAAADgKxmiAAAABnRSTlMFCA0RFRkEEiizAAAASklEQVQ4y2NghgIGBgYFBigghAIGJiggiAImKGCAAkYmKMAJGBgYGIVgAhCVMEAIBUwMUANggBEKcAJGKGBiggJGKGBkgAIAaaEFvbMUjEkAAAAASUVORK5CYII=");
+      pointer-events: none;
+      z-index: 100;
+      opacity: 0.04;
+    }
+
+    ::selection { background: var(--copper); color: var(--warm-white); }
+
+    :focus-visible {
+      outline: 2px solid var(--copper);
+      outline-offset: 3px;
+    }
+    button:focus-visible,
+    a:focus-visible {
+      outline: 2px solid var(--copper);
+      outline-offset: 3px;
+      border-radius: 4px;
+    }
+
+    .skip-link {
+      position: absolute;
+      top: -100%;
+      left: 16px;
+      background: var(--ink);
+      color: var(--warm-white);
+      padding: 12px 24px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 500;
+      z-index: 300;
+      transition: top 0.2s;
+    }
+    .skip-link:focus { top: 12px; }
+
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+
+    /* ── Utility ──────────────────────────────────────────── */
+    .container {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+
+    .eyebrow {
+      font-family: var(--font-body);
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--copper);
+    }
+
+    /* ── Nav ──────────────────────────────────────────────── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      background: rgba(245,243,238,0.88);
+      backdrop-filter: saturate(180%) blur(24px);
+      -webkit-backdrop-filter: saturate(180%) blur(24px);
+      border-bottom: 1px solid rgba(0,0,0,0.05);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      max-width: 1320px;
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+
+    .nav-logo {
+      font-family: var(--font-display);
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      color: var(--ink);
+    }
+
+    .nav-logo span {
+      font-weight: 400;
+      color: var(--copper);
+    }
+
+    .nav-back {
+      font-size: 14px;
+      font-weight: 400;
+      color: var(--graphite);
+      transition: color 0.3s;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .nav-back:hover { color: var(--copper); }
+
+    .nav-back svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    /* ── Blog Hero ────────────────────────────────────────── */
+    .blog-hero {
+      padding: 140px 0 72px;
+      text-align: center;
+    }
+
+    .blog-hero .eyebrow {
+      margin-bottom: 20px;
+    }
+
+    .blog-hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(36px, 5vw, 56px);
+      font-weight: 600;
+      letter-spacing: -0.03em;
+      color: var(--ink);
+      line-height: 1.1;
+      margin-bottom: 20px;
+    }
+
+    .blog-hero p {
+      font-size: 18px;
+      font-weight: 300;
+      color: var(--graphite);
+      line-height: 1.7;
+      max-width: 640px;
+      margin: 0 auto;
+    }
+
+    /* ── Blog Grid ────────────────────────────────────────── */
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+      padding-bottom: 120px;
+    }
+
+    /* ── Blog Card ────────────────────────────────────────── */
+    .blog-card {
+      background: var(--warm-white);
+      border-radius: var(--radius-sm);
+      box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 4px 16px rgba(0,0,0,0.03);
+      transition: transform 0.4s var(--ease), box-shadow 0.4s var(--ease);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .blog-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 8px 32px rgba(0,0,0,0.08), 0 2px 8px rgba(0,0,0,0.04);
+    }
+
+    .blog-card-body {
+      padding: 32px 28px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+    }
+
+    .blog-card-meta {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .blog-card-date {
+      font-size: 13px;
+      font-weight: 300;
+      color: var(--stone);
+    }
+
+    .blog-card-tag {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--copper);
+      background: var(--copper-glow);
+      padding: 4px 10px;
+      border-radius: 6px;
+    }
+
+    .blog-card h2 {
+      font-family: var(--font-display);
+      font-size: 20px;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      color: var(--ink);
+      line-height: 1.3;
+      margin-bottom: 12px;
+    }
+
+    .blog-card p {
+      font-size: 14px;
+      font-weight: 300;
+      color: var(--graphite);
+      line-height: 1.7;
+      flex: 1;
+    }
+
+    .blog-card-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--copper);
+      margin-top: 20px;
+      transition: gap 0.3s var(--ease), color 0.3s;
+    }
+
+    .blog-card-link:hover {
+      gap: 10px;
+      color: var(--copper-light);
+    }
+
+    .blog-card-link svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    /* ── Footer ───────────────────────────────────────────── */
+    footer {
+      background: var(--ink);
+      border-top: 1px solid rgba(255,255,255,0.04);
+      padding: 72px 32px 44px;
+    }
+
+    .footer-inner {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 56px;
+      max-width: 1120px;
+      margin: 0 auto;
+    }
+
+    .footer-brand .nav-logo {
+      color: var(--warm-white);
+      display: block;
+      margin-bottom: 20px;
+    }
+
+    .footer-brand .nav-logo span { color: var(--copper); }
+
+    .footer-tagline {
+      font-size: 14px;
+      font-weight: 300;
+      color: rgba(255,255,255,0.3);
+      line-height: 1.65;
+      max-width: 300px;
+    }
+
+    .footer-col h4 {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--copper);
+      margin-bottom: 24px;
+      opacity: 0.7;
+    }
+
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 14px; }
+
+    .footer-col a {
+      font-size: 14px;
+      color: rgba(255,255,255,0.4);
+      transition: color 0.3s;
+      font-weight: 300;
+    }
+
+    .footer-col a:hover { color: rgba(255,255,255,0.8); }
+
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1120px;
+      margin: 56px auto 0;
+      padding-top: 28px;
+      border-top: 1px solid rgba(255,255,255,0.04);
+    }
+
+    .footer-copy {
+      font-size: 12px;
+      color: rgba(255,255,255,0.2);
+      font-weight: 300;
+    }
+
+    .footer-legal {
+      display: flex;
+      gap: 24px;
+    }
+
+    .footer-legal a {
+      font-size: 12px;
+      color: rgba(255,255,255,0.2);
+      transition: color 0.3s;
+      font-weight: 300;
+    }
+
+    .footer-legal a:hover { color: rgba(255,255,255,0.5); }
+
+    /* ── Responsive ───────────────────────────────────────── */
+    @media (max-width: 960px) {
+      .blog-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 24px;
+      }
+
+      .footer-inner {
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .blog-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+
+      .blog-hero {
+        padding: 120px 0 48px;
+      }
+
+      .blog-hero h1 {
+        font-size: 32px;
+      }
+
+      .blog-card-body {
+        padding: 24px 20px;
+      }
+
+      .footer-inner {
+        grid-template-columns: 1fr;
+        gap: 36px;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+        gap: 16px;
+        text-align: center;
+      }
+
+      .footer-legal {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <a href="#main" class="skip-link">Skip to content</a>
+
+  <!-- ── Nav ─────────────────────────────────────────────── -->
+  <nav aria-label="Main navigation">
+    <div class="nav-inner">
+      <a href="/" class="nav-logo">Hack<span>abacus</span></a>
+      <a href="/" class="nav-back">
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10 12L6 8l4-4"/></svg>
+        Back to Home
+      </a>
+    </div>
+  </nav>
+
+  <!-- ── Blog Hero ───────────────────────────────────────── -->
+  <main id="main">
+    <section class="blog-hero">
+      <div class="container">
+        <p class="eyebrow">Blog</p>
+        <h1>Excel &amp; PowerPoint Insights for Finance Teams</h1>
+        <p>Practical tips on financial modeling, Excel plugin workflows, PowerPoint automation, and best practices for private equity and investment banking professionals.</p>
+      </div>
+    </section>
+
+    <!-- ── Blog Grid ───────────────────────────────────────── -->
+    <section class="container">
+      <div class="blog-grid">
+
+        <!-- Card 1 -->
+        <article class="blog-card">
+          <div class="blog-card-body">
+            <div class="blog-card-meta">
+              <time class="blog-card-date" datetime="2026-03-15">Mar 15, 2026</time>
+              <span class="blog-card-tag">Excel Tips</span>
+            </div>
+            <h2>10 Excel Shortcuts Every PE Analyst Should Know</h2>
+            <p>Master the essential Excel keyboard shortcuts that top private equity analysts use daily to build financial models faster, format cells with precision, and navigate complex workbooks without touching the mouse.</p>
+            <a href="#" class="blog-card-link">Read more <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+          </div>
+        </article>
+
+        <!-- Card 2 -->
+        <article class="blog-card">
+          <div class="blog-card-body">
+            <div class="blog-card-meta">
+              <time class="blog-card-date" datetime="2026-03-08">Mar 8, 2026</time>
+              <span class="blog-card-tag">PowerPoint</span>
+            </div>
+            <h2>How to Automate PowerPoint Decks for Investment Committee Meetings</h2>
+            <p>Stop spending hours on IC decks. Learn how to automate slide generation, link live Excel data, and produce presentation-ready investment committee materials in minutes with PowerPoint automation tools.</p>
+            <a href="#" class="blog-card-link">Read more <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+          </div>
+        </article>
+
+        <!-- Card 3 -->
+        <article class="blog-card">
+          <div class="blog-card-body">
+            <div class="blog-card-meta">
+              <time class="blog-card-date" datetime="2026-02-28">Feb 28, 2026</time>
+              <span class="blog-card-tag">Comparison</span>
+            </div>
+            <h2>Hackabacus vs Macabacus: Which Excel Plugin is Right for Your Team?</h2>
+            <p>An honest feature-by-feature comparison of the two leading Excel plugins for finance professionals. We break down pricing, functionality, and user experience so you can choose the right tool for your deal team.</p>
+            <a href="#" class="blog-card-link">Read more <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+          </div>
+        </article>
+
+        <!-- Card 4 -->
+        <article class="blog-card">
+          <div class="blog-card-body">
+            <div class="blog-card-meta">
+              <time class="blog-card-date" datetime="2026-02-18">Feb 18, 2026</time>
+              <span class="blog-card-tag">Modeling</span>
+            </div>
+            <h2>Financial Modeling Best Practices for Infrastructure Deals</h2>
+            <p>Infrastructure models have unique requirements around concession periods, revenue ramps, and debt sculpting. Learn the formatting and structural best practices used by top infrastructure funds to build clear, auditable models.</p>
+            <a href="#" class="blog-card-link">Read more <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+          </div>
+        </article>
+
+        <!-- Card 5 -->
+        <article class="blog-card">
+          <div class="blog-card-body">
+            <div class="blog-card-meta">
+              <time class="blog-card-date" datetime="2026-02-05">Feb 5, 2026</time>
+              <span class="blog-card-tag">Workflow</span>
+            </div>
+            <h2>Why Your Deal Team Needs Standardized Excel Formatting</h2>
+            <p>Inconsistent formatting costs deal teams hours every week and undermines credibility with LPs and counterparties. Here is how standardized Excel formatting with an Excel plugin improves speed, accuracy, and professionalism across your firm.</p>
+            <a href="#" class="blog-card-link">Read more <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+          </div>
+        </article>
+
+        <!-- Card 6 -->
+        <article class="blog-card">
+          <div class="blog-card-body">
+            <div class="blog-card-meta">
+              <time class="blog-card-date" datetime="2026-01-22">Jan 22, 2026</time>
+              <span class="blog-card-tag">LBO Guide</span>
+            </div>
+            <h2>The Complete Guide to LBO Model Formatting in Excel</h2>
+            <p>A comprehensive guide to formatting leveraged buyout models that are clear, auditable, and presentation-ready. Covers color coding conventions, input vs. output styling, sign conventions, and how to enforce consistency with an Excel add-in.</p>
+            <a href="#" class="blog-card-link">Read more <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+          </div>
+        </article>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- ── Footer ──────────────────────────────────────────── -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <a href="/" class="nav-logo">Hack<span>abacus</span></a>
+        <p class="footer-tagline">The finance professional's Excel and PowerPoint suite. Built for PE, banking, and infrastructure deal teams.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Product</h4>
+        <ul>
+          <li><a href="/#features">Features</a></li>
+          <li><a href="/#demo">Demo</a></li>
+          <li><a href="/#pricing">Pricing</a></li>
+          <li><a href="compare.html">Compare</a></li>
+          <li><a href="changelog.html">Changelog</a></li>
+          <li><a href="roadmap.html">Roadmap</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="about.html">About</a></li>
+          <li><a href="blog.html">Blog</a></li>
+
+          <li><a href="mailto:hello@hackabacus.com">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Support</h4>
+        <ul>
+          <li><a href="/download">Download</a></li>
+          <li><a href="docs.html">Documentation</a></li>
+          <li><a href="installation.html">Installation Guide</a></li>
+          <li><a href="/#faq">FAQ</a></li>
+          <li><a href="mailto:support@hackabacus.com">Help Center</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy">&copy; 2026 Hackabacus, LLC. All rights reserved.</p>
+      <div class="footer-legal">
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms of Service</a>
+        <a href="cookies.html">Cookie Policy</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
