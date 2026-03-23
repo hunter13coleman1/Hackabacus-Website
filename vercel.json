@@ -12,8 +12,7 @@
     { "source": "/terms", "destination": "/terms.html" },
     { "source": "/cookies", "destination": "/cookies.html" },
     { "source": "/download", "destination": "/download.html" },
-    { "source": "/download/windows", "destination": "/downloads/HackabacusSetup.exe" },
-    { "source": "/download/mac", "destination": "/downloads/Hackabacus.dmg" }
+    { "source": "/download/windows", "destination": "/downloads/HackabacusSetup.exe" }
   ],
   "headers": [
     {
