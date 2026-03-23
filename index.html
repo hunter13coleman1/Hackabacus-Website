@@ -1190,7 +1190,7 @@
 
     .compare-table-wrap {
       max-width: 880px;
-      margin: 64px auto 0;
+      margin: 80px auto 0;
       border-radius: var(--radius);
       overflow: visible;
       border: 1px solid var(--sand);
@@ -1198,7 +1198,8 @@
 
     .compare-table {
       width: 100%;
-      border-collapse: collapse;
+      border-collapse: separate;
+      border-spacing: 0;
       text-align: left;
       font-size: 15px;
       table-layout: fixed;
@@ -1237,9 +1238,9 @@
     .compare-table thead th.highlight-col::before {
       content: 'Best Value';
       position: absolute;
-      top: -13px;
+      top: -14px;
       left: 50%;
-      transform: translateX(-50%);
+      transform: translate(-50%, -50%);
       background: var(--copper);
       color: white;
       font-size: 10px;
