@@ -1635,6 +1635,7 @@
       display: block;
       width: 100%;
       text-align: center;
+      text-decoration: none;
       background: transparent;
       color: var(--charcoal);
       padding: 16px;
@@ -2935,7 +2936,7 @@
             <li><span class="check">&#10003;</span>Email support</li>
             <li><span class="check">&#10003;</span>Free updates</li>
           </ul>
-          <button class="btn-pricing-ghost">Start 14-Day Free Trial</button>
+          <a id="indSubscribeBtn" href="https://hackabacus.lemonsqueezy.com/checkout/buy/da284c68-831e-480f-b1c3-c5b6f3218778?embed=1&logo=0" class="lemonsqueezy-button btn-pricing-ghost">Subscribe</a>
         </div>
 
         <!-- Team (Featured) -->
@@ -3226,6 +3227,15 @@
       indPeriod.textContent  = prices[mode].indPeriod;
       teamPeriod.textContent = prices[mode].teamPeriod;
 
+      // Update Individual subscribe link for Lemon Squeezy
+      const indBtn = document.getElementById('indSubscribeBtn');
+      const lsLinks = {
+        monthly:   'https://hackabacus.lemonsqueezy.com/checkout/buy/da284c68-831e-480f-b1c3-c5b6f3218778?embed=1&logo=0',
+        annual:    'https://hackabacus.lemonsqueezy.com/checkout/buy/8097bb0b-03c3-42e8-a967-aa8dac7484f2?embed=1&logo=0',
+        perpetual: 'https://hackabacus.lemonsqueezy.com/checkout/buy/da284c68-831e-480f-b1c3-c5b6f3218778?embed=1&logo=0'
+      };
+      if (indBtn) indBtn.href = lsLinks[mode];
+
       // Hide Team & Enterprise cards for Buy Outright
       const pricingCards = document.querySelector('.pricing-cards');
       const allCards = pricingCards.querySelectorAll('.pricing-card');
@@ -3390,5 +3400,6 @@
     resetPricingScroll();
     window.addEventListener('pageshow', resetPricingScroll);
   </script>
+<script src="https://assets.lemonsqueezy.com/lemon.js" defer></script>
 </body>
 </html>
