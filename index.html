@@ -1443,6 +1443,13 @@
 
     .pricing-cards.perpetual-mode {
       gap: 0;
+      justify-content: center;
+    }
+
+    .pricing-cards.perpetual-mode > .pricing-card:first-child {
+      flex: 0 0 auto;
+      width: calc(33.333% - 16px);
+      max-width: 400px;
     }
 
     .pricing-card {
@@ -1460,12 +1467,13 @@
       opacity: 0;
       transform: translateY(40px) scale(0.95) !important;
       max-height: 0;
-      padding-top: 0;
-      padding-bottom: 0;
+      padding: 0;
       margin: 0;
       border-width: 0;
       pointer-events: none;
       flex: 0 0 0% !important;
+      width: 0;
+      min-width: 0;
       overflow: hidden;
       gap: 0;
     }
