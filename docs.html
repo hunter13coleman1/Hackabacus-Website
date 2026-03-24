@@ -166,11 +166,13 @@
       height: 64px;
     }
     .nav-logo {
-      font-family: var(--font-display);
-      font-size: 22px; font-weight: 700;
-      letter-spacing: -0.03em; color: var(--ink);
+      display: flex;
+      align-items: center;
     }
-    .nav-logo span { font-weight: 400; color: var(--copper); }
+    .nav-logo-img {
+      height: 168px;
+      width: auto;
+    }
 
     .nav-back {
       font-size: 14px; font-weight: 500; color: var(--graphite);
@@ -290,8 +292,13 @@
       display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
       gap: 56px; max-width: 1120px; margin: 0 auto;
     }
-    .footer-brand .nav-logo { color: var(--warm-white); display: block; margin-bottom: 20px; }
-    .footer-brand .nav-logo span { color: var(--copper); }
+    .footer-brand .nav-logo {
+      display: block;
+      margin-bottom: 20px;
+    }
+    .footer-brand .nav-logo-img {
+      height: 168px;
+    }
     .footer-tagline {
       font-size: 14px; font-weight: 300;
       color: rgba(255,255,255,0.3); line-height: 1.65; max-width: 300px;
@@ -362,7 +369,7 @@
   <!-- Nav -->
   <nav class="top-nav" role="navigation" aria-label="Main navigation">
     <div class="top-nav-inner">
-      <a href="/" class="nav-logo">Hack<span>abacus</span></a>
+      <a href="/" class="nav-logo"><img src="logos/hackabacus-logo.svg" alt="Hackabacus" class="nav-logo-img"></a>
       <a href="/" class="nav-back">
         <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10 12L6 8l4-4"/></svg>Back to Home
       </a>
@@ -560,7 +567,7 @@
   <footer>
     <div class="footer-inner">
       <div class="footer-brand">
-        <a href="/" class="nav-logo">Hack<span>abacus</span></a>
+        <a href="/" class="nav-logo"><img src="logos/hackabacus-logo-light.svg" alt="Hackabacus" class="nav-logo-img"></a>
         <p class="footer-tagline">The finance professional's Excel and PowerPoint suite. Built for PE, banking, and infrastructure deal teams.</p>
       </div>
       <div class="footer-col">
