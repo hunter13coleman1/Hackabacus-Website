@@ -129,15 +129,14 @@
     }
 
     .nav-logo {
-      font-family: var(--font-display);
-      font-size: 20px;
-      font-weight: 500;
-      color: var(--ink);
-      text-decoration: none;
-      letter-spacing: -0.03em;
+      display: flex;
+      align-items: center;
     }
 
-    .nav-logo span { font-style: italic; color: var(--copper); }
+    .nav-logo-img {
+      height: 168px;
+      width: auto;
+    }
 
     .nav-links {
       display: flex;
@@ -558,7 +557,7 @@
   <!-- ── Navigation ─────────────────────────────────────── -->
   <nav aria-label="Main navigation">
     <div class="nav-inner">
-      <a href="/" class="nav-logo">Hack<span>abacus</span></a>
+      <a href="/" class="nav-logo"><img src="logos/hackabacus-logo.svg" alt="Hackabacus" class="nav-logo-img"></a>
       <ul class="nav-links">
         <li><a href="/#features">Features</a></li>
         <li><a href="/#demo">Demo</a></li>
