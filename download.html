@@ -103,13 +103,14 @@
       justify-content: space-between;
     }
     .nav-logo {
-      font-family: var(--font-display);
-      font-weight: 600;
-      font-size: 20px;
-      color: var(--warm-white);
-      letter-spacing: -0.01em;
+      display: flex;
+      align-items: center;
     }
-    .nav-logo span { color: var(--copper); }
+    .nav-logo-img {
+      height: 28px;
+      width: auto;
+      filter: brightness(0) invert(1);
+    }
     .nav-links {
       display: flex;
       align-items: center;
@@ -333,11 +334,13 @@
       margin: 0 auto;
     }
     .footer-brand .nav-logo {
-      color: var(--warm-white);
       display: block;
       margin-bottom: 20px;
     }
-    .footer-brand .nav-logo span { color: var(--copper); }
+    .footer-brand .nav-logo-img {
+      height: 28px;
+      filter: brightness(0) invert(1);
+    }
     .footer-tagline {
       font-size: 14px;
       font-weight: 300;
@@ -448,7 +451,7 @@
   <!-- ── Navigation ─────────────────────────────────────── -->
   <nav>
     <div class="nav-inner">
-      <a href="/" class="nav-logo">Hack<span>abacus</span></a>
+      <a href="/" class="nav-logo"><img src="logos/hackabacus-logo.svg" alt="Hackabacus" class="nav-logo-img"></a>
       <ul class="nav-links">
         <li><a href="/">Back to Home</a></li>
       </ul>
@@ -543,7 +546,7 @@
   <footer>
     <div class="footer-inner">
       <div class="footer-brand">
-        <a href="/" class="nav-logo">Hack<span>abacus</span></a>
+        <a href="/" class="nav-logo"><img src="logos/hackabacus-logo.svg" alt="Hackabacus" class="nav-logo-img"></a>
         <p class="footer-tagline">The finance professional's Excel and PowerPoint suite. Built for PE, banking, and infrastructure deal teams.</p>
       </div>
       <div class="footer-col">
