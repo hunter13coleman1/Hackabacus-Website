@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hackabacus vs Macabacus vs Training the Street — Full Comparison</title>
+  <title>Hackabacus vs Macabacus vs think-cell vs UpSlide — Full Comparison</title>
 
-  <meta name="description" content="Compare Hackabacus, Macabacus, and Training the Street side by side. See which Excel and PowerPoint tool is best for finance professionals." />
+  <meta name="description" content="Compare Hackabacus against Macabacus, think-cell, PPT Productivity, Power-user, BrightSlide, and UpSlide. Full feature matrix for Excel and PowerPoint add-ins for finance professionals." />
   <meta name="robots" content="index, follow" />
 
   <!-- Favicon -->
@@ -311,30 +311,41 @@
 
     .detail-table-wrap {
       border-radius: var(--radius);
-      overflow: hidden;
+      overflow-x: auto;
       border: 1px solid var(--sand);
       background: var(--warm-white);
+      -webkit-overflow-scrolling: touch;
     }
 
     .detail-table {
       width: 100%;
+      min-width: 1100px;
       border-collapse: collapse;
-      text-align: left;
-      font-size: 14px;
+      text-align: center;
+      font-size: 13px;
     }
 
     .detail-table thead th {
-      padding: 18px 24px;
+      padding: 14px 12px;
       font-weight: 600;
-      font-size: 12px;
-      letter-spacing: 0.06em;
+      font-size: 11px;
+      letter-spacing: 0.04em;
       text-transform: uppercase;
       background: var(--cream);
       border-bottom: 1px solid var(--sand);
       color: var(--graphite);
+      white-space: nowrap;
     }
 
-    .detail-table thead th:first-child { color: var(--ink); }
+    .detail-table thead th:first-child {
+      color: var(--ink);
+      text-align: left;
+      position: sticky;
+      left: 0;
+      background: var(--cream);
+      z-index: 2;
+      min-width: 200px;
+    }
 
     .detail-table thead th.hl {
       background: var(--ink);
@@ -342,17 +353,22 @@
     }
 
     .detail-table tbody td {
-      padding: 14px 24px;
+      padding: 11px 12px;
       border-bottom: 1px solid rgba(232,228,221,0.6);
       color: var(--charcoal);
       font-weight: 300;
-      vertical-align: top;
-      line-height: 1.5;
+      vertical-align: middle;
+      line-height: 1.4;
     }
 
     .detail-table tbody td:first-child {
       font-weight: 500;
       color: var(--ink);
+      text-align: left;
+      position: sticky;
+      left: 0;
+      background: var(--warm-white);
+      z-index: 1;
     }
 
     .detail-table tbody td.hl {
@@ -366,6 +382,7 @@
     .yes { color: var(--emerald); font-weight: 600; }
     .no  { color: #C44D2C; font-weight: 600; }
     .mid { color: #C4862C; font-weight: 500; }
+    .wip { color: #7B68A8; font-weight: 500; }
 
     .detail-note {
       display: block;
@@ -572,30 +589,30 @@
   <!-- ── Hero ───────────────────────────────────────────── -->
   <section class="compare-hero">
     <div class="container">
-      <p class="eyebrow reveal">Full comparison</p>
+      <p class="eyebrow reveal">Competitive feature matrix &middot; March 2026</p>
       <h1 class="reveal reveal-delay-1">
-        Hackabacus vs Macabacus vs<br/><em>Training the Street</em>
+        Hackabacus vs<br/><em>everyone else.</em>
       </h1>
       <p class="subtitle reveal reveal-delay-2">
-        A detailed, feature-by-feature breakdown of the three most popular Excel and PowerPoint tools for finance professionals.
+        Entry-tier pricing compared. A full feature-by-feature breakdown of 9 Excel and PowerPoint add-ins for finance professionals.
       </p>
 
       <!-- Summary cards -->
       <div class="summary-cards">
         <div class="summary-card featured reveal reveal-delay-1">
           <div class="card-name">Hackabacus</div>
-          <div class="card-price">$14<span class="card-period">/seat/mo</span></div>
-          <p class="card-tagline">Built for speed. Full Excel &amp; PowerPoint suite with instant formatting, formula auditing, and zero wait times.</p>
+          <div class="card-price">$48<span class="card-period">/yr per user</span></div>
+          <p class="card-tagline">Full Excel &amp; PowerPoint suite with finance-specific tools, cross-app linking, and content library.</p>
         </div>
         <div class="summary-card reveal reveal-delay-2">
           <div class="card-name">Macabacus</div>
-          <div class="card-price">$25<span class="card-period">/seat/mo</span></div>
-          <p class="card-tagline">Established player with broad features, but known for slow tool execution and wait times that disrupt workflows.</p>
+          <div class="card-price">$200<span class="card-period">/yr (Basic) &middot; $360/yr (Pro)</span></div>
+          <p class="card-tagline">Established player. Basic tier lacks key features; Pro adds content library but at higher cost.</p>
         </div>
         <div class="summary-card reveal reveal-delay-3">
-          <div class="card-name">Training the Street</div>
-          <div class="card-price">$20<span class="card-period">/seat/mo</span></div>
-          <p class="card-tagline">Excel-focused toolkit. Good for formatting but lacks PowerPoint tools and auditing capabilities.</p>
+          <div class="card-name">Others</div>
+          <div class="card-price">$59&ndash;$179<span class="card-period">/yr</span></div>
+          <p class="card-tagline">think-cell, PPT Productivity, Power-user, BrightSlide, and UpSlide each cover a subset of the full workflow.</p>
         </div>
       </div>
     </div>
