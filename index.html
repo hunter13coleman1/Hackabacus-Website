@@ -2776,9 +2776,9 @@
             </tr>
             <tr class="price-row">
               <td>Starting price</td>
-              <td class="highlight-col">$14/seat/mo</td>
-              <td>$25/seat/mo</td>
-              <td>$20/seat/mo</td>
+              <td class="highlight-col">$14/seat</td>
+              <td>$25/seat</td>
+              <td>$20/seat</td>
             </tr>
           </tbody>
         </table>
@@ -2814,7 +2814,7 @@
             </div>
             <div class="compare-card-row card-price-row">
               <span class="row-label">Starting price</span>
-              <span class="row-value">$14/seat/mo</span>
+              <span class="row-value">$14/seat</span>
             </div>
           </div>
         </div>
@@ -2844,7 +2844,7 @@
             </div>
             <div class="compare-card-row card-price-row">
               <span class="row-label">Starting price</span>
-              <span class="row-value">$25/seat/mo</span>
+              <span class="row-value">$25/seat</span>
             </div>
           </div>
         </div>
@@ -2874,7 +2874,7 @@
             </div>
             <div class="compare-card-row card-price-row">
               <span class="row-label">Starting price</span>
-              <span class="row-value">$20/seat/mo</span>
+              <span class="row-value">$20/seat</span>
             </div>
           </div>
         </div>
@@ -2911,7 +2911,7 @@
           <div class="pricing-price">
             <span class="price-currency">$</span>
             <span class="price-amount" id="indPrice">14</span>
-            <span class="price-period" id="indPeriod">/mo</span>
+            <span class="price-period" id="indPeriod"></span>
           </div>
           <p class="pricing-desc">Everything you need to build and format models at professional speed. Perfect for solo analysts and associates.</p>
           <ul class="pricing-features">
@@ -2932,7 +2932,7 @@
           <div class="pricing-price">
             <span class="price-currency">$</span>
             <span class="price-amount" id="teamPrice">12</span>
-            <span class="price-period" id="teamPeriod">/seat/mo</span>
+            <span class="price-period" id="teamPeriod">/seat</span>
           </div>
           <p class="pricing-desc">For deal teams that move together. Shared style libraries, centralized license management, and priority support.</p>
           <ul class="pricing-features">
@@ -3191,9 +3191,9 @@
 
     // ── Pricing toggle ───────────────────────────────────
     const prices = {
-      monthly:   { ind: 14,  team: 12,  indPeriod: '/mo',        teamPeriod: '/seat/mo' },
-      annual:    { ind: 139, team: 99,  indPeriod: '/yr',        teamPeriod: '/seat/yr' },
-      perpetual: { ind: 349, team: 249, indPeriod: ' one-time',  teamPeriod: '/seat one-time' }
+      monthly:   { ind: 14,  team: 12,  indPeriod: '',           teamPeriod: '/seat' },
+      annual:    { ind: 139, team: 99,  indPeriod: '',           teamPeriod: '/seat' },
+      perpetual: { ind: 349, team: 249, indPeriod: '',           teamPeriod: '/seat' }
     };
 
     function setPricing(mode) {
