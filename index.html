@@ -1089,10 +1089,6 @@
       align-items: start;
     }
 
-    .testimonial:nth-child(2) {
-      transform: translateY(24px);
-    }
-
     .testimonial {
       background: var(--cream);
       border-radius: var(--radius);
@@ -1118,10 +1114,6 @@
       transform: translateY(-4px);
       box-shadow: 0 20px 60px rgba(0,0,0,0.05);
       border-color: var(--copper-light);
-    }
-
-    .testimonial:nth-child(2):hover {
-      transform: translateY(20px);
     }
 
     .testimonial-quote {
@@ -1981,8 +1973,6 @@
 
       /* Testimonials: show 2 columns on tablet */
       .testimonials-grid { grid-template-columns: repeat(2, 1fr); }
-      .testimonial:nth-child(2) { transform: none; }
-      .testimonial:nth-child(2):hover { transform: translateY(-4px); }
       .testimonial:nth-child(3) { grid-column: 1 / -1; max-width: 480px; justify-self: center; }
 
       .stat-card {
@@ -2153,8 +2143,6 @@
       }
 
       /* Testimonials: reset stagger */
-      .testimonial:nth-child(2) { transform: none; }
-      .testimonial:nth-child(2):hover { transform: translateY(-4px); }
       .testimonial:nth-child(3) { max-width: none; }
 
       /* Pricing — pad top so "Most Popular" badge isn't clipped */
