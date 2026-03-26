@@ -1437,7 +1437,7 @@
       justify-content: center;
     }
 
-    .pricing-cards.perpetual-mode > .pricing-card:first-child {
+    .pricing-cards.perpetual-mode > .pricing-card:nth-child(2) {
       flex: 0 0 auto;
       width: calc(33.333% - 16px);
       max-width: 400px;
@@ -2155,7 +2155,7 @@
         scroll-snap-type: none;
         justify-content: center;
       }
-      .pricing-cards.perpetual-mode .pricing-card:first-child {
+      .pricing-cards.perpetual-mode .pricing-card:nth-child(2) {
         flex: 0 0 85%;
       }
       .pricing-cards.perpetual-mode .card-hidden {
@@ -3243,7 +3243,7 @@
       // Hide Team & Enterprise cards for Buy Outright
       const pricingCards = document.querySelector('.pricing-cards');
       const allCards = pricingCards.querySelectorAll('.pricing-card');
-      const teamCard = allCards[1];       // Team (Featured)
+      const teamCard = allCards[0];       // Team
       const enterpriseCard = allCards[2]; // Enterprise
       const dotsContainer = document.querySelector('.carousel-dots[data-for="pricing-cards"]');
 
