@@ -2600,6 +2600,34 @@
       /* Compact buttons */
       .btn-primary, .btn-secondary { padding: 14px 24px; font-size: 14px; }
     }
+
+    /* ── Dark mode targeted fixes ──────────────────────── */
+    @media (prefers-color-scheme: dark) {
+      /* Swap nav logo to light variant */
+      nav .nav-logo-img {
+        content: url('logos/hackabacus-logo-light.svg');
+      }
+      /* Protect demo container backgrounds from auto-darkening */
+      .demo-container {
+        background: #F2F5F7 !important;
+        color-scheme: light;
+      }
+      .demo-window,
+      .demo-spreadsheet,
+      .demo-slide,
+      .demo-excel-chart,
+      .demo-slide-chart {
+        background-color: #fff !important;
+        color-scheme: light;
+      }
+      .demo-slide {
+        background-color: #F7F7FA !important;
+      }
+      .demo-ppt-ribbon,
+      .demo-ribbon {
+        background-color: #F5F7FA !important;
+      }
+    }
   </style>
 
   <!-- Vercel Web Analytics -->
