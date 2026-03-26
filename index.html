@@ -2243,6 +2243,13 @@
       .hero-actions { justify-content: center; }
       .hero-tagline { text-align: center; }
 
+      /* Scale down demo for tablet */
+      .demo-container { padding: 14px; gap: 12px; }
+      .demo-ppt { height: 180px; }
+      .demo-excel { height: 260px; }
+      .demo-ribbon { height: 40px; }
+      .demo-ribbon-icon { width: 20px; height: 20px; margin: 0 8px; }
+
       /* Tighten demo section */
       .demo-header { margin-bottom: 48px; }
       .demo-panel {
@@ -2559,6 +2566,35 @@
       .hero h1 { font-size: clamp(32px, 8vw, 48px); }
       .hero-social-proof { margin-top: 36px; padding: 28px 16px; }
       .hero-social-proof .proof-label { font-size: 11px; margin-bottom: 20px; }
+
+      /* Scale down demo for mobile */
+      .demo-container { padding: 10px; gap: 10px; border-radius: 8px; }
+      .demo-ppt { height: 150px; }
+      .demo-excel { height: 220px; }
+      .demo-titlebar { height: 24px; font-size: 9px; gap: 8px; padding: 0 10px; }
+      .demo-dots span { width: 6px; height: 6px; }
+      .demo-dots { gap: 4px; }
+      .demo-ppt-ribbon { height: 22px; padding-left: 8px; }
+      .demo-ppt-icon { width: 12px; height: 12px; border-radius: 3px; margin: 0 6px; }
+      .demo-ribbon { height: 34px; padding-left: 8px; }
+      .demo-ribbon-icon { width: 16px; height: 16px; border-radius: 4px; margin: 0 5px; }
+      .demo-ribbon-icon.highlight::before { inset: -4px; border-radius: 7px; }
+      .demo-col-headers span { font-size: 7px; width: 60px; }
+      .demo-spreadsheet {
+        background-image:
+          repeating-linear-gradient(to bottom, transparent, transparent 19px, #EBEDF0 19px, #EBEDF0 20px),
+          repeating-linear-gradient(to right, transparent, transparent 59px, #EBEDF0 59px, #EBEDF0 60px);
+      }
+      .demo-data-row { height: 20px; }
+      .demo-data-cell { width: 60px; padding-left: 4px; }
+      .demo-data-cell div { height: 9px; }
+      .demo-chart-title { width: 48px; height: 5px; margin-bottom: 5px; }
+      .demo-stext-title { height: 8px; margin-bottom: 6px; }
+      .demo-stext-sub { height: 5px; margin-bottom: 10px; }
+      .demo-stext-line { height: 4px; margin-bottom: 5px; }
+      .demo-stext-bullet { margin-bottom: 4px; gap: 4px; }
+      .demo-stext-bullet div { height: 3px; }
+      .demo-bullet-dot { width: 3px; height: 3px; }
 
       /* Compact buttons */
       .btn-primary, .btn-secondary { padding: 14px 24px; font-size: 14px; }
