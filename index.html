@@ -494,6 +494,234 @@
       font-size: 14px;
     }
 
+    /* ── Animated Demo ──────────────────────────────────── */
+    .demo-container {
+      background: #F2F5F7;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      padding: 20px;
+      border-radius: 12px;
+      overflow: hidden;
+      opacity: 0;
+      animation: floatUp 1.2s var(--ease) 0.4s forwards;
+    }
+    .demo-window {
+      display: flex;
+      flex-direction: column;
+      border-radius: 10px;
+      overflow: hidden;
+      background: #fff;
+      border: 1px solid #EBEDF0;
+      box-shadow: 0 4px 24px -8px rgba(0,0,0,0.07);
+    }
+    .demo-ppt { height: 220px; flex-shrink: 0; }
+    .demo-excel { height: 320px; flex-shrink: 0; }
+    .demo-titlebar {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 0 14px;
+      height: 30px;
+      flex-shrink: 0;
+      color: rgba(255,255,255,0.9);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.01em;
+    }
+    .demo-ppt-bar { background: #8C3826; border-radius: 10px 10px 0 0; }
+    .demo-excel-bar { background: #2E6147; border-radius: 10px 10px 0 0; }
+    .demo-dots { display: flex; gap: 5px; }
+    .demo-dots span {
+      width: 8px; height: 8px; border-radius: 50%; display: block;
+    }
+    .demo-dots span:nth-child(1) { background: rgba(255,255,255,0.3); }
+    .demo-dots span:nth-child(2) { background: rgba(255,255,255,0.3); }
+    .demo-dots span:nth-child(3) { background: rgba(255,255,255,0.3); }
+
+    /* PPT ribbon */
+    .demo-ppt-ribbon {
+      background: #F5F7FA;
+      height: 30px;
+      display: flex;
+      align-items: center;
+      padding-left: 14px;
+      border-bottom: 1px solid #EBEDF0;
+      flex-shrink: 0;
+    }
+    .demo-ppt-icon {
+      width: 16px; height: 16px; border-radius: 4px; opacity: 0.72;
+      margin: 0 12px;
+    }
+
+    /* PPT slide area */
+    .demo-slide {
+      flex: 1;
+      position: relative;
+      background: #F7F7FA;
+      overflow: hidden;
+    }
+    .demo-slide-accent {
+      position: absolute; top: 0; left: 0; right: 0;
+      height: 3px; background: #1B2A4A; opacity: 0;
+      transform: scaleX(0); transform-origin: left;
+      transition: transform 0.4s cubic-bezier(0.16,1,0.3,1), opacity 0.3s;
+    }
+    .demo-slide-accent.active { opacity: 0.65; transform: scaleX(1); }
+
+    .demo-slide-text {
+      position: absolute; left: 18px; top: 12px; width: 45%;
+      opacity: 0; transform: translateX(-10px);
+      transition: opacity 0.4s, transform 0.4s cubic-bezier(0.16,1,0.3,1);
+    }
+    .demo-slide-text.active { opacity: 1; transform: translateX(0); }
+    .demo-stext-title {
+      width: 68%; height: 12px; border-radius: 3px;
+      background: #1E2228; opacity: 0.22; margin-bottom: 10px;
+    }
+    .demo-stext-sub {
+      width: 48%; height: 7px; border-radius: 2px;
+      background: #3A3D44; opacity: 0.14; margin-bottom: 16px;
+    }
+    .demo-stext-line {
+      height: 6px; border-radius: 2px;
+      background: #454850; opacity: 0.1; margin-bottom: 8px;
+    }
+    .demo-stext-bullets { margin-top: 10px; }
+    .demo-stext-bullet {
+      display: flex; align-items: center; gap: 6px; margin-bottom: 7px;
+    }
+    .demo-bullet-dot {
+      width: 4px; height: 4px; border-radius: 50%;
+      background: #1B2A4A; opacity: 0.3; flex-shrink: 0;
+    }
+    .demo-stext-bullet div {
+      height: 5px; border-radius: 2px; background: #454850; opacity: 0.09;
+    }
+    .demo-slide-divider {
+      position: absolute; left: 49%; top: 14px; bottom: 14px;
+      width: 1px; background: #EBEDF0;
+      transform: scaleY(0); transform-origin: top;
+      transition: transform 0.4s cubic-bezier(0.16,1,0.3,1);
+    }
+    .demo-slide-divider.active { transform: scaleY(1); }
+
+    .demo-slide-chart {
+      position: absolute; right: 12px; top: 10px; bottom: 10px; left: 51%;
+      background: #fff; border-radius: 6px; border: 1px solid #EBEDF0;
+      padding: 10px 12px 8px; overflow: hidden;
+      opacity: 0; transform: scale(0.88);
+      transition: opacity 0.4s, transform 0.5s cubic-bezier(0.16,1,0.3,1);
+    }
+    .demo-slide-chart.active { opacity: 1; transform: scale(1); }
+
+    /* Excel ribbon */
+    .demo-ribbon {
+      background: #F5F7FA;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      padding-left: 16px;
+      border-bottom: 1px solid #EBEDF0;
+      flex-shrink: 0;
+    }
+    .demo-ribbon-icon {
+      width: 24px; height: 24px; border-radius: 5px;
+      background: var(--ic); opacity: 0.82;
+      margin: 0 12px;
+      position: relative;
+      transition: transform 0.3s cubic-bezier(0.16,1,0.3,1);
+    }
+    .demo-ribbon-icon.highlight {
+      transform: scale(1.1);
+    }
+    .demo-ribbon-icon.highlight::before {
+      content: '';
+      position: absolute; inset: -6px; border-radius: 9px;
+      background: var(--ic); opacity: 0.15;
+      border: 2px solid var(--ic);
+      animation: popIn 0.3s cubic-bezier(0.16,1,0.3,1);
+    }
+    @keyframes popIn {
+      from { transform: scale(0.6); opacity: 0; }
+      to   { transform: scale(1);   opacity: 1; }
+    }
+
+    /* Spreadsheet */
+    .demo-spreadsheet {
+      flex: 1;
+      position: relative;
+      overflow: hidden;
+      background: #fff;
+      background-image:
+        repeating-linear-gradient(to bottom, transparent, transparent 25px, #EBEDF0 25px, #EBEDF0 26px),
+        repeating-linear-gradient(to right, transparent, transparent 89px, #EBEDF0 89px, #EBEDF0 90px);
+    }
+    .demo-col-headers {
+      display: flex;
+      position: absolute; top: 4px; left: 0; right: 0;
+    }
+    .demo-col-headers span {
+      width: 90px; text-align: center;
+      font-size: 9px; font-weight: 500; color: #9AA0A8;
+    }
+    .demo-data-rows { position: absolute; top: 26px; left: 0; right: 0; }
+    .demo-data-row {
+      display: flex; height: 26px; align-items: center;
+      opacity: 0; transform: translateY(18px);
+      transition: opacity 0.35s cubic-bezier(0.16,1,0.3,1),
+                  transform 0.45s cubic-bezier(0.16,1,0.3,1);
+    }
+    .demo-data-row.visible { opacity: 1; transform: translateY(0); }
+    .demo-data-cell {
+      width: 90px; padding-left: 8px;
+    }
+    .demo-data-cell div {
+      height: 13px; border-radius: 3px; opacity: 0.13;
+    }
+
+    /* Excel chart overlay */
+    .demo-excel-chart {
+      position: absolute; right: 8px; top: 8px; bottom: 8px; width: 42%;
+      background: #fff; border-radius: 6px; border: 1px solid #EBEDF0;
+      padding: 10px 12px 8px; overflow: hidden;
+      opacity: 0; transform: scale(0.88);
+      transition: opacity 0.4s, transform 0.5s cubic-bezier(0.16,1,0.3,1);
+    }
+    .demo-excel-chart.active { opacity: 1; transform: scale(1); }
+
+    /* Shared chart styles */
+    .demo-chart-title {
+      width: 72px; height: 7px; border-radius: 2px;
+      background: #30333A; opacity: 0.22; margin-bottom: 8px;
+    }
+    .demo-chart-area {
+      display: flex; align-items: flex-end; gap: 4px;
+      height: calc(100% - 28px); padding-left: 22px; position: relative;
+    }
+    .demo-chart-yaxis {
+      position: absolute; left: 18px; top: 0; bottom: 0;
+      width: 1px; background: #EBEDF0;
+    }
+    .demo-bar {
+      flex: 1; background: #1B2A4A; border-radius: 2px 2px 0 0;
+      opacity: 0.87; transform-origin: bottom;
+      transform: scaleY(0);
+      transition: transform 0.5s cubic-bezier(0.16,1,0.3,1);
+    }
+    .active .demo-bar { transform: scaleY(1); }
+    .active .demo-bar:nth-child(2) { transition-delay: 0.04s; }
+    .active .demo-bar:nth-child(3) { transition-delay: 0.08s; }
+    .active .demo-bar:nth-child(4) { transition-delay: 0.12s; }
+    .active .demo-bar:nth-child(5) { transition-delay: 0.16s; }
+    .active .demo-bar:nth-child(6) { transition-delay: 0.20s; }
+    .active .demo-bar:nth-child(7) { transition-delay: 0.24s; }
+    .active .demo-bar:nth-child(8) { transition-delay: 0.28s; }
+    .active .demo-bar:nth-child(9) { transition-delay: 0.32s; }
+    .demo-chart-xaxis {
+      height: 1px; background: #EBEDF0; margin-left: 22px; margin-top: 2px;
+    }
+
     /* Social proof bar within hero */
     .hero-social-proof {
       width: 100vw;
@@ -2391,34 +2619,100 @@
         </div>
       </div>
 
-      <!-- Right column: Stacked mockups -->
+      <!-- Right column: Animated demo -->
       <div class="hero-right">
-        <!-- PowerPoint mockup -->
-        <div class="mockup-window ppt">
-          <div class="mockup-titlebar ppt-bar">
-            <div class="mockup-dots"><span></span><span></span><span></span></div>
-            <span>PowerPoint &mdash; Hackabacus</span>
-          </div>
-          <div class="mockup-body">
-            <!-- Replace this placeholder with your PowerPoint ribbon screenshot -->
-            <div class="mockup-placeholder">
-              <div class="placeholder-label">PowerPoint Screenshot</div>
-              Replace with your Hackabacus ribbon screenshot
+        <div class="demo-container" id="hackabacusDemo">
+          <!-- PowerPoint window -->
+          <div class="demo-window demo-ppt">
+            <div class="demo-titlebar demo-ppt-bar">
+              <div class="demo-dots"><span></span><span></span><span></span></div>
+              <span>PowerPoint &mdash; Hackabacus</span>
+            </div>
+            <div class="demo-ppt-ribbon">
+              <div class="demo-ppt-icon" style="background:#8C3826"></div>
+              <div class="demo-ppt-icon" style="background:#5973A6"></div>
+              <div class="demo-ppt-icon" style="background:#738C73"></div>
+              <div class="demo-ppt-icon" style="background:#80668C"></div>
+              <div class="demo-ppt-icon" style="background:#998059"></div>
+              <div class="demo-ppt-icon" style="background:#668099"></div>
+            </div>
+            <div class="demo-slide" id="demoSlide">
+              <div class="demo-slide-accent" id="slideAccent"></div>
+              <div class="demo-slide-text" id="slideText">
+                <div class="demo-stext-title"></div>
+                <div class="demo-stext-sub"></div>
+                <div class="demo-stext-line" style="width:82%"></div>
+                <div class="demo-stext-line" style="width:95%"></div>
+                <div class="demo-stext-line" style="width:74%"></div>
+                <div class="demo-stext-line" style="width:88%"></div>
+                <div class="demo-stext-line" style="width:68%"></div>
+                <div class="demo-stext-line" style="width:78%"></div>
+                <div class="demo-stext-bullets">
+                  <div class="demo-stext-bullet"><span class="demo-bullet-dot"></span><div style="width:55%"></div></div>
+                  <div class="demo-stext-bullet"><span class="demo-bullet-dot"></span><div style="width:70%"></div></div>
+                  <div class="demo-stext-bullet"><span class="demo-bullet-dot"></span><div style="width:60%"></div></div>
+                  <div class="demo-stext-bullet"><span class="demo-bullet-dot"></span><div style="width:52%"></div></div>
+                </div>
+              </div>
+              <div class="demo-slide-divider" id="slideDivider"></div>
+              <div class="demo-slide-chart" id="slideChart">
+                <div class="demo-chart-title"></div>
+                <div class="demo-chart-area">
+                  <div class="demo-chart-yaxis"></div>
+                  <div class="demo-bar" style="height:25%"></div>
+                  <div class="demo-bar" style="height:35%"></div>
+                  <div class="demo-bar" style="height:42%"></div>
+                  <div class="demo-bar" style="height:52%"></div>
+                  <div class="demo-bar" style="height:60%"></div>
+                  <div class="demo-bar" style="height:68%"></div>
+                  <div class="demo-bar" style="height:78%"></div>
+                  <div class="demo-bar" style="height:88%"></div>
+                </div>
+                <div class="demo-chart-xaxis"></div>
+              </div>
             </div>
           </div>
-        </div>
 
-        <!-- Excel mockup -->
-        <div class="mockup-window excel">
-          <div class="mockup-titlebar excel-bar">
-            <div class="mockup-dots"><span></span><span></span><span></span></div>
-            <span>Excel &mdash; Hackabacus</span>
-          </div>
-          <div class="mockup-body">
-            <!-- Replace this placeholder with your Excel ribbon screenshot -->
-            <div class="mockup-placeholder">
-              <div class="placeholder-label">Excel Screenshot</div>
-              Replace with your Hackabacus ribbon screenshot
+          <!-- Excel window -->
+          <div class="demo-window demo-excel">
+            <div class="demo-titlebar demo-excel-bar">
+              <div class="demo-dots"><span></span><span></span><span></span></div>
+              <span>Excel &mdash; Hackabacus</span>
+            </div>
+            <div class="demo-ribbon" id="demoRibbon">
+              <div class="demo-ribbon-icon" data-idx="0" style="--ic:#38856B"></div>
+              <div class="demo-ribbon-icon" data-idx="1" style="--ic:#5973A6"></div>
+              <div class="demo-ribbon-icon" data-idx="2" style="--ic:#A66159"></div>
+              <div class="demo-ribbon-icon" data-idx="3" style="--ic:#4D80A6"></div>
+              <div class="demo-ribbon-icon" data-idx="4" style="--ic:#8C8059"></div>
+              <div class="demo-ribbon-icon" data-idx="5" style="--ic:#668C73"></div>
+              <div class="demo-ribbon-icon" data-idx="6" style="--ic:#80618C"></div>
+              <div class="demo-ribbon-icon" data-idx="7" style="--ic:#597AB3"></div>
+              <div class="demo-ribbon-icon" data-idx="8" style="--ic:#73698C"></div>
+              <div class="demo-ribbon-icon" data-idx="9" style="--ic:#8C7366"></div>
+            </div>
+            <div class="demo-spreadsheet" id="demoSheet">
+              <!-- Grid lines rendered by CSS -->
+              <div class="demo-col-headers">
+                <span>A</span><span>B</span><span>C</span><span>D</span><span>E</span>
+                <span>F</span><span>G</span><span>H</span><span>I</span><span>J</span>
+              </div>
+              <div class="demo-data-rows" id="demoDataRows"></div>
+              <div class="demo-excel-chart" id="excelChart">
+                <div class="demo-chart-title"></div>
+                <div class="demo-chart-area">
+                  <div class="demo-chart-yaxis"></div>
+                  <div class="demo-bar" style="height:25%"></div>
+                  <div class="demo-bar" style="height:35%"></div>
+                  <div class="demo-bar" style="height:42%"></div>
+                  <div class="demo-bar" style="height:52%"></div>
+                  <div class="demo-bar" style="height:60%"></div>
+                  <div class="demo-bar" style="height:68%"></div>
+                  <div class="demo-bar" style="height:78%"></div>
+                  <div class="demo-bar" style="height:88%"></div>
+                </div>
+                <div class="demo-chart-xaxis"></div>
+              </div>
             </div>
           </div>
         </div>
@@ -3206,6 +3500,66 @@
       // Open clicked if it wasn't open
       if (!isOpen) item.classList.add('open');
     }
+
+    // ── Hackabacus animated demo ────────────────────────
+    (function initDemo() {
+      const DATA_COLORS = ['#38856B','#5973A6','#808089','#8C8059','#A66159'];
+      const rowsContainer = document.getElementById('demoDataRows');
+      // Build 8 data rows with 10 cells each
+      for (let r = 0; r < 8; r++) {
+        const row = document.createElement('div');
+        row.className = 'demo-data-row';
+        row.style.transitionDelay = (r * 0.045) + 's';
+        for (let c = 0; c < 10; c++) {
+          const cell = document.createElement('div');
+          cell.className = 'demo-data-cell';
+          const bar = document.createElement('div');
+          bar.style.width = (50 + Math.round(Math.sin(c * 1.7 + r * 0.5) * 18)) + 'px';
+          bar.style.background = DATA_COLORS[(c + r) % 5];
+          cell.appendChild(bar);
+          row.appendChild(cell);
+        }
+        rowsContainer.appendChild(row);
+      }
+
+      const dataRows = rowsContainer.querySelectorAll('.demo-data-row');
+      const ribbonIcons = document.querySelectorAll('.demo-ribbon-icon');
+      const excelChart = document.getElementById('excelChart');
+      const slideChart = document.getElementById('slideChart');
+      const slideText = document.getElementById('slideText');
+      const slideDivider = document.getElementById('slideDivider');
+      const slideAccent = document.getElementById('slideAccent');
+
+      // Phase timing: 0=empty 1=data-in 2=settled 3=icon-click 4=excel-chart 5=flash 6=slide-chart 7=final
+      const PHASE_MS = [400, 350, 700, 200, 550, 100, 450, 1800];
+      let phase = 0;
+
+      function applyPhase() {
+        // Phase 1+: show data rows
+        dataRows.forEach(r => r.classList.toggle('visible', phase >= 1));
+        // Phase 3+: highlight ribbon icon 5
+        ribbonIcons.forEach(ic => ic.classList.remove('highlight'));
+        if (phase >= 3) ribbonIcons[5]?.classList.add('highlight');
+        // Phase 4-5: show excel chart
+        excelChart.classList.toggle('active', phase === 4 || phase === 5);
+        // Phase 6+: show slide chart, text, divider
+        slideChart.classList.toggle('active', phase >= 6);
+        slideText.classList.toggle('active', phase >= 6);
+        slideDivider.classList.toggle('active', phase >= 6);
+        // Phase 7: accent bar
+        slideAccent.classList.toggle('active', phase === 7);
+      }
+
+      function tick() {
+        phase = (phase + 1) % 8;
+        applyPhase();
+        setTimeout(tick, PHASE_MS[phase]);
+      }
+      // Respect prefers-reduced-motion
+      if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        setTimeout(tick, PHASE_MS[0]);
+      }
+    })();
 
     // ── Pricing toggle ───────────────────────────────────
     const prices = {
