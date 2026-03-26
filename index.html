@@ -666,7 +666,7 @@
       width: 90px; text-align: center;
       font-size: 9px; font-weight: 500; color: #9AA0A8;
     }
-    .demo-data-rows { position: absolute; top: 26px; left: 0; right: 0; }
+    .demo-data-rows { position: absolute; top: 30px; left: 0; right: 0; }
     .demo-data-row {
       display: flex; height: 26px; align-items: center;
       opacity: 0; transform: translateY(18px);
@@ -3596,7 +3596,7 @@
       const slideAccent = document.getElementById('slideAccent');
 
       // Phase timing: 0=empty 1=data-in 2=settled 3=icon-click 4=excel-chart 5=flash 6=slide-chart 7=final
-      const PHASE_MS = [2000, 350, 700, 200, 550, 200, 450, 1800];
+      const PHASE_MS = [2500, 440, 875, 250, 750, 350, 660, 2250];
       let phase = 0;
 
       function applyPhase() {
