@@ -1654,7 +1654,7 @@
       justify-content: center;
       gap: 24px;
       margin-top: 64px;
-      align-items: start;
+      align-items: stretch;
       transition: gap 0.5s var(--ease);
     }
 
@@ -1681,6 +1681,8 @@
       background: var(--warm-white);
       text-align: left;
       position: relative;
+      display: flex;
+      flex-direction: column;
       transition: all 0.4s var(--ease), opacity 0.5s var(--ease), transform 0.5s var(--ease), max-height 0.5s var(--ease), padding 0.5s var(--ease), margin 0.5s var(--ease), border-width 0.5s var(--ease), flex 0.5s var(--ease);
       max-height: 800px;
     }
@@ -1783,6 +1785,7 @@
       flex-direction: column;
       gap: 16px;
       margin-bottom: 44px;
+      flex: 1;
     }
 
     .pricing-features li {
@@ -1820,6 +1823,7 @@
       display: block;
       width: 100%;
       text-align: center;
+      margin-top: auto;
       background: var(--ink);
       color: var(--warm-white);
       padding: 16px;
@@ -1856,6 +1860,7 @@
       width: 100%;
       text-align: center;
       text-decoration: none;
+      margin-top: auto;
       background: transparent;
       color: var(--charcoal);
       padding: 16px;
