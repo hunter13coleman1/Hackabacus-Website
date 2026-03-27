@@ -1608,11 +1608,21 @@
       line-height: 1.08;
     }
 
+    .pricing-toggle-wrap {
+      position: sticky;
+      top: 56px;
+      z-index: 40;
+      text-align: center;
+      padding: 12px 0;
+      margin-top: 36px;
+      background: rgba(245,243,238,0.9);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
     .pricing-toggle {
       display: inline-flex;
       align-items: stretch;
       gap: 4px;
-      margin: 48px auto 0;
       background: var(--warm-white);
       border: 1px solid var(--sand);
       border-radius: 980px;
@@ -3274,13 +3284,15 @@
         Start free.<br/>Scale with your team.
       </h2>
 
-      <div class="pricing-toggle">
-        <div class="toggle-option active" id="toggleMonthly" onclick="setPricing('monthly')">Monthly</div>
-        <div class="toggle-option" id="toggleAnnual" onclick="setPricing('annual')">
-          Annual <span class="savings-badge">Save 17%</span>
-        </div>
-        <div class="toggle-option" id="togglePerp" onclick="setPricing('perpetual')">
-          Buy Outright
+      <div class="pricing-toggle-wrap">
+        <div class="pricing-toggle">
+          <div class="toggle-option active" id="toggleMonthly" onclick="setPricing('monthly')">Monthly</div>
+          <div class="toggle-option" id="toggleAnnual" onclick="setPricing('annual')">
+            Annual <span class="savings-badge">Save 17%</span>
+          </div>
+          <div class="toggle-option" id="togglePerp" onclick="setPricing('perpetual')">
+            Buy Outright
+          </div>
         </div>
       </div>
 
