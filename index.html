@@ -3383,7 +3383,7 @@
               <option value="25">25 seats</option>
             </select>
           </div>
-          <a id="teamSubscribeBtn" href="https://hackabacus.lemonsqueezy.com/checkout/buy/2cf6afa4-71fe-493c-abd1-4ae6ad643fc6?embed=1&quantity=10" class="lemonsqueezy-button btn-pricing-ghost">Get Team Access</a>
+          <a id="teamSubscribeBtn" href="https://hackabacus.lemonsqueezy.com/checkout/buy/15cd92ae-c9e4-4094-96af-3f7eec476ed1?embed=1&quantity=10" class="lemonsqueezy-button btn-pricing-ghost">Get Team Access</a>
         </div>
 
         <!-- Individual (Featured) -->
@@ -3404,7 +3404,7 @@
             <li><span class="check">&#10003;</span><span id="indLicenseLine">1 License</span></li>
             <li><span class="check">&#10003;</span>Free updates</li>
           </ul>
-          <a id="indSubscribeBtn" href="https://hackabacus.lemonsqueezy.com/checkout/buy/da284c68-831e-480f-b1c3-c5b6f3218778?embed=1&logo=0" class="lemonsqueezy-button btn-pricing-primary">Subscribe</a>
+          <a id="indSubscribeBtn" href="https://hackabacus.lemonsqueezy.com/checkout/buy/7bcc7179-6d27-44b8-a819-33d9022a9ed6?embed=1" class="lemonsqueezy-button btn-pricing-primary">Subscribe</a>
         </div>
 
         <!-- Enterprise -->
@@ -3716,8 +3716,8 @@
     // Team checkout links per mode (placeholder IDs — replace with real ones)
     let currentPricingMode = 'monthly';
     const teamLsLinks = {
-      monthly: 'https://hackabacus.lemonsqueezy.com/checkout/buy/TEAM_MONTHLY_ID?embed=1',
-      annual:  'https://hackabacus.lemonsqueezy.com/checkout/buy/TEAM_ANNUAL_ID?embed=1'
+      monthly: 'https://hackabacus.lemonsqueezy.com/checkout/buy/15cd92ae-c9e4-4094-96af-3f7eec476ed1?embed=1',
+      annual:  'https://hackabacus.lemonsqueezy.com/checkout/buy/2cf6afa4-71fe-493c-abd1-4ae6ad643fc6?embed=1'
     };
 
     function updateTeamLink() {
@@ -3757,9 +3757,9 @@
       // Update Individual subscribe link for Lemon Squeezy
       const indBtn = document.getElementById('indSubscribeBtn');
       const lsLinks = {
-        monthly:   'https://hackabacus.lemonsqueezy.com/checkout/buy/da284c68-831e-480f-b1c3-c5b6f3218778?embed=1&logo=0',
-        annual:    'https://hackabacus.lemonsqueezy.com/checkout/buy/8097bb0b-03c3-42e8-a967-aa8dac7484f2?embed=1&logo=0',
-        perpetual: 'https://hackabacus.lemonsqueezy.com/checkout/buy/da284c68-831e-480f-b1c3-c5b6f3218778?embed=1&logo=0'
+        monthly:   'https://hackabacus.lemonsqueezy.com/checkout/buy/7bcc7179-6d27-44b8-a819-33d9022a9ed6?embed=1',
+        annual:    'https://hackabacus.lemonsqueezy.com/checkout/buy/dd118cf7-0ee6-45a6-ac0c-8cbecb82a97b?embed=1',
+        perpetual: 'https://hackabacus.lemonsqueezy.com/checkout/buy/f4d56927-2268-4d85-bd5f-17c53477ce8d?embed=1'
       };
       if (indBtn) indBtn.href = lsLinks[mode];
 
