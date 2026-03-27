@@ -3315,7 +3315,7 @@
             <li><span class="check">&#10003;</span>Free updates</li>
             <li style="font-size:13px; opacity:0.75; margin-top:4px">Additional team features such as Admin Dashboard, Shared Libraries, and IT MSI deployment in progress</li>
           </ul>
-          <button class="btn-pricing-ghost">Get Team Access</button>
+          <a id="teamSubscribeBtn" href="https://hackabacus.lemonsqueezy.com/checkout/buy/2cf6afa4-71fe-493c-abd1-4ae6ad643fc6?embed=1" class="lemonsqueezy-button btn-pricing-ghost">Get Team Access</a>
         </div>
 
         <!-- Individual (Featured) -->
@@ -3350,7 +3350,7 @@
             <li><span class="check">&#10003;</span>Everything in Team</li>
             <li><span class="check">&#10003;</span>Unlimited seats</li>
           </ul>
-          <button class="btn-pricing-ghost">Contact Sales &#8594;</button>
+          <a href="mailto:sales@hackabacus.com" class="btn-pricing-ghost">Contact Sales &#8594;</a>
         </div>
       </div>
       <div class="carousel-dots" data-for="pricing-cards"><span class="dot active"></span><span class="dot"></span><span class="dot"></span></div>
@@ -3674,6 +3674,15 @@
         perpetual: 'https://hackabacus.lemonsqueezy.com/checkout/buy/da284c68-831e-480f-b1c3-c5b6f3218778?embed=1&logo=0'
       };
       if (indBtn) indBtn.href = lsLinks[mode];
+
+      // Update Team subscribe link for Lemon Squeezy
+      const teamBtn = document.getElementById('teamSubscribeBtn');
+      const teamLinks = {
+        monthly:   'https://hackabacus.lemonsqueezy.com/checkout/buy/2cf6afa4-71fe-493c-abd1-4ae6ad643fc6?embed=1',
+        annual:    'https://hackabacus.lemonsqueezy.com/checkout/buy/2cf6afa4-71fe-493c-abd1-4ae6ad643fc6?embed=1',
+        perpetual: 'https://hackabacus.lemonsqueezy.com/checkout/buy/2cf6afa4-71fe-493c-abd1-4ae6ad643fc6?embed=1'
+      };
+      if (teamBtn) teamBtn.href = teamLinks[mode];
 
       // Hide Team & Enterprise cards for Buy Outright
       const pricingCards = document.querySelector('.pricing-cards');
