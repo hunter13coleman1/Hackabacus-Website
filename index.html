@@ -3290,12 +3290,13 @@
           </div>
           <p class="pricing-desc">For deal teams that move together. Shared style libraries, centralized license management, and priority support.</p>
           <ul class="pricing-features">
-            <li><span class="check">&#10003;</span>Everything in Individual</li>
-            <li><span class="check">&#10003;</span>Up to 25 seats</li>
-            <li><span class="check">&#10003;</span>Shared color &amp; style libraries</li>
-            <li><span class="check">&#10003;</span>Admin dashboard</li>
-            <li><span class="check">&#10003;</span>Priority support (4hr SLA)</li>
-            <li><span class="check">&#10003;</span>MSI installer for IT deployment</li>
+            <li><span class="check">&#10003;</span>Full Excel ribbon suite</li>
+            <li><span class="check">&#10003;</span>PowerPoint integration</li>
+            <li><span class="check">&#10003;</span>Keyboard shortcut engine</li>
+            <li><span class="check">&#10003;</span>Formula audit &amp; trace tools</li>
+            <li><span class="check">&#10003;</span>5&ndash;25 seats</li>
+            <li><span class="check">&#10003;</span>Free updates</li>
+            <li style="font-size:13px; opacity:0.75; margin-top:4px">Additional team features such as Admin Dashboard, Shared Libraries, and IT MSI deployment in progress</li>
           </ul>
           <button class="btn-pricing-ghost">Get Team Access</button>
         </div>
@@ -3315,7 +3316,7 @@
             <li><span class="check">&#10003;</span>PowerPoint integration</li>
             <li><span class="check">&#10003;</span>Keyboard shortcut engine</li>
             <li><span class="check">&#10003;</span>Formula audit &amp; trace tools</li>
-            <li><span class="check">&#10003;</span>Email support</li>
+            <li><span class="check">&#10003;</span><span id="indLicenseLine">1 License</span></li>
             <li><span class="check">&#10003;</span>Free updates</li>
           </ul>
           <a id="indSubscribeBtn" href="https://hackabacus.lemonsqueezy.com/checkout/buy/da284c68-831e-480f-b1c3-c5b6f3218778?embed=1&logo=0" class="lemonsqueezy-button btn-pricing-primary">Subscribe</a>
@@ -3331,10 +3332,6 @@
           <ul class="pricing-features">
             <li><span class="check">&#10003;</span>Everything in Team</li>
             <li><span class="check">&#10003;</span>Unlimited seats</li>
-            <li><span class="check">&#10003;</span>SSO / SAML integration</li>
-            <li><span class="check">&#10003;</span>Custom firm branding</li>
-            <li><span class="check">&#10003;</span>Dedicated success manager</li>
-            <li><span class="check">&#10003;</span>SLA-backed uptime guarantee</li>
           </ul>
           <button class="btn-pricing-ghost">Contact Sales &#8594;</button>
         </div>
@@ -3647,6 +3644,10 @@
       animatePrice(teamPrice, prices[mode].team);
       indPeriod.textContent  = prices[mode].indPeriod;
       teamPeriod.textContent = prices[mode].teamPeriod;
+
+      // Update license line for Individual card
+      const licLine = document.getElementById('indLicenseLine');
+      if (licLine) licLine.textContent = mode === 'monthly' ? '1 License' : '2 Licenses';
 
       // Update Individual subscribe link for Lemon Squeezy
       const indBtn = document.getElementById('indSubscribeBtn');
