@@ -112,7 +112,7 @@
     html {
       scroll-behavior: smooth;
       font-size: 16px;
-      overflow-x: hidden;
+      overflow-x: clip;
     }
 
     /* Prevent orphaned words on headlines */
@@ -1608,11 +1608,21 @@
       line-height: 1.08;
     }
 
+    .pricing-toggle-wrap {
+      position: sticky;
+      top: 56px;
+      z-index: 1001;
+      text-align: center;
+      padding: 12px 0;
+      margin-top: 36px;
+      background: rgba(245,243,238,0.95);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
     .pricing-toggle {
       display: inline-flex;
       align-items: stretch;
       gap: 4px;
-      margin: 48px auto 0;
       background: var(--warm-white);
       border: 1px solid var(--sand);
       border-radius: 980px;
@@ -1654,7 +1664,7 @@
       justify-content: center;
       gap: 24px;
       margin-top: 64px;
-      align-items: start;
+      align-items: stretch;
       transition: gap 0.5s var(--ease);
     }
 
@@ -1681,6 +1691,8 @@
       background: var(--warm-white);
       text-align: left;
       position: relative;
+      display: flex;
+      flex-direction: column;
       transition: all 0.4s var(--ease), opacity 0.5s var(--ease), transform 0.5s var(--ease), max-height 0.5s var(--ease), padding 0.5s var(--ease), margin 0.5s var(--ease), border-width 0.5s var(--ease), flex 0.5s var(--ease);
       max-height: 800px;
     }
@@ -1783,6 +1795,7 @@
       flex-direction: column;
       gap: 16px;
       margin-bottom: 44px;
+      flex: 1;
     }
 
     .pricing-features li {
@@ -1816,10 +1829,53 @@
       color: var(--copper-light);
     }
 
+    /* Seat selector */
+    .seat-selector {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 20px;
+      padding: 14px 16px;
+      background: var(--cream);
+      border: 1px solid var(--sand);
+      border-radius: var(--radius-sm);
+    }
+    .seat-selector label {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--ink);
+    }
+    .seat-selector select {
+      font-family: var(--font-body);
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--ink);
+      background: var(--warm-white);
+      border: 1px solid var(--sand);
+      border-radius: 8px;
+      padding: 8px 32px 8px 12px;
+      cursor: pointer;
+      appearance: none;
+      -webkit-appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg width='10' height='6' viewBox='0 0 10 6' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%236B6560' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 12px center;
+      transition: border-color 0.3s;
+    }
+    .seat-selector select:hover {
+      border-color: var(--copper);
+    }
+    .seat-selector select:focus {
+      outline: 2px solid var(--copper);
+      outline-offset: 2px;
+    }
+
     .btn-pricing-primary {
       display: block;
       width: 100%;
       text-align: center;
+      margin-top: auto;
       background: var(--ink);
       color: var(--warm-white);
       padding: 16px;
@@ -1856,6 +1912,7 @@
       width: 100%;
       text-align: center;
       text-decoration: none;
+      margin-top: auto;
       background: transparent;
       color: var(--charcoal);
       padding: 16px;
@@ -3269,13 +3326,15 @@
         Start free.<br/>Scale with your team.
       </h2>
 
-      <div class="pricing-toggle">
-        <div class="toggle-option active" id="toggleMonthly" onclick="setPricing('monthly')">Monthly</div>
-        <div class="toggle-option" id="toggleAnnual" onclick="setPricing('annual')">
-          Annual <span class="savings-badge">Save 17%</span>
-        </div>
-        <div class="toggle-option" id="togglePerp" onclick="setPricing('perpetual')">
-          Buy Outright
+      <div class="pricing-toggle-wrap">
+        <div class="pricing-toggle">
+          <div class="toggle-option active" id="toggleMonthly" onclick="setPricing('monthly')">Monthly</div>
+          <div class="toggle-option" id="toggleAnnual" onclick="setPricing('annual')">
+            Annual <span class="savings-badge">Save 17%</span>
+          </div>
+          <div class="toggle-option" id="togglePerp" onclick="setPricing('perpetual')">
+            Buy Outright
+          </div>
         </div>
       </div>
 
@@ -3298,7 +3357,33 @@
             <li><span class="check">&#10003;</span>Free updates</li>
             <li style="font-size:13px; opacity:0.75; margin-top:4px">Additional team features such as Admin Dashboard, Shared Libraries, and IT MSI deployment in progress</li>
           </ul>
-          <button class="btn-pricing-ghost">Get Team Access</button>
+          <div class="seat-selector">
+            <label for="seatCount">Number of seats</label>
+            <select id="seatCount">
+              <option value="5">5 seats</option>
+              <option value="6">6 seats</option>
+              <option value="7">7 seats</option>
+              <option value="8">8 seats</option>
+              <option value="9">9 seats</option>
+              <option value="10" selected>10 seats</option>
+              <option value="11">11 seats</option>
+              <option value="12">12 seats</option>
+              <option value="13">13 seats</option>
+              <option value="14">14 seats</option>
+              <option value="15">15 seats</option>
+              <option value="16">16 seats</option>
+              <option value="17">17 seats</option>
+              <option value="18">18 seats</option>
+              <option value="19">19 seats</option>
+              <option value="20">20 seats</option>
+              <option value="21">21 seats</option>
+              <option value="22">22 seats</option>
+              <option value="23">23 seats</option>
+              <option value="24">24 seats</option>
+              <option value="25">25 seats</option>
+            </select>
+          </div>
+          <a id="teamSubscribeBtn" href="https://hackabacus.lemonsqueezy.com/checkout/buy/15cd92ae-c9e4-4094-96af-3f7eec476ed1?embed=1&quantity=10" class="lemonsqueezy-button btn-pricing-ghost">Get Team Access</a>
         </div>
 
         <!-- Individual (Featured) -->
@@ -3319,7 +3404,7 @@
             <li><span class="check">&#10003;</span><span id="indLicenseLine">1 License</span></li>
             <li><span class="check">&#10003;</span>Free updates</li>
           </ul>
-          <a id="indSubscribeBtn" href="https://hackabacus.lemonsqueezy.com/checkout/buy/da284c68-831e-480f-b1c3-c5b6f3218778?embed=1&logo=0" class="lemonsqueezy-button btn-pricing-primary">Subscribe</a>
+          <a id="indSubscribeBtn" href="https://hackabacus.lemonsqueezy.com/checkout/buy/7bcc7179-6d27-44b8-a819-33d9022a9ed6?embed=1" class="lemonsqueezy-button btn-pricing-primary">Subscribe</a>
         </div>
 
         <!-- Enterprise -->
@@ -3333,7 +3418,7 @@
             <li><span class="check">&#10003;</span>Everything in Team</li>
             <li><span class="check">&#10003;</span>Unlimited seats</li>
           </ul>
-          <button class="btn-pricing-ghost">Contact Sales &#8594;</button>
+          <a href="mailto:sales@hackabacus.com" class="btn-pricing-ghost">Contact Sales &#8594;</a>
         </div>
       </div>
       <div class="carousel-dots" data-for="pricing-cards"><span class="dot active"></span><span class="dot"></span><span class="dot"></span></div>
@@ -3441,7 +3526,7 @@
           <li><a href="about.html">About</a></li>
           <li><a href="blog.html">Blog</a></li>
 
-          <li><a href="mailto:hello@hackabacus.com">Contact</a></li>
+          <li><a href="mailto:hunter@hackabacus.com">Contact</a></li>
         </ul>
       </div>
       <div class="footer-col">
@@ -3628,6 +3713,26 @@
       perpetual: { ind: 349, team: 249, indPeriod: '',           teamPeriod: '/seat' }
     };
 
+    // Team checkout links per mode (placeholder IDs — replace with real ones)
+    let currentPricingMode = 'monthly';
+    const teamLsLinks = {
+      monthly: 'https://hackabacus.lemonsqueezy.com/checkout/buy/15cd92ae-c9e4-4094-96af-3f7eec476ed1?embed=1',
+      annual:  'https://hackabacus.lemonsqueezy.com/checkout/buy/2cf6afa4-71fe-493c-abd1-4ae6ad643fc6?embed=1'
+    };
+
+    function updateTeamLink() {
+      const teamBtn = document.getElementById('teamSubscribeBtn');
+      const seatSelect = document.getElementById('seatCount');
+      if (!teamBtn || !seatSelect) return;
+      const qty = seatSelect.value;
+      const baseUrl = teamLsLinks[currentPricingMode] || teamLsLinks.monthly;
+      teamBtn.href = baseUrl + '&quantity=' + qty;
+    }
+
+    // Update link when seat count changes
+    const seatSelect = document.getElementById('seatCount');
+    if (seatSelect) seatSelect.addEventListener('change', updateTeamLink);
+
     function setPricing(mode) {
       ['toggleMonthly','toggleAnnual','togglePerp'].forEach(id => {
         document.getElementById(id).classList.remove('active');
@@ -3652,11 +3757,15 @@
       // Update Individual subscribe link for Lemon Squeezy
       const indBtn = document.getElementById('indSubscribeBtn');
       const lsLinks = {
-        monthly:   'https://hackabacus.lemonsqueezy.com/checkout/buy/da284c68-831e-480f-b1c3-c5b6f3218778?embed=1&logo=0',
-        annual:    'https://hackabacus.lemonsqueezy.com/checkout/buy/8097bb0b-03c3-42e8-a967-aa8dac7484f2?embed=1&logo=0',
-        perpetual: 'https://hackabacus.lemonsqueezy.com/checkout/buy/da284c68-831e-480f-b1c3-c5b6f3218778?embed=1&logo=0'
+        monthly:   'https://hackabacus.lemonsqueezy.com/checkout/buy/7bcc7179-6d27-44b8-a819-33d9022a9ed6?embed=1',
+        annual:    'https://hackabacus.lemonsqueezy.com/checkout/buy/dd118cf7-0ee6-45a6-ac0c-8cbecb82a97b?embed=1',
+        perpetual: 'https://hackabacus.lemonsqueezy.com/checkout/buy/f4d56927-2268-4d85-bd5f-17c53477ce8d?embed=1'
       };
       if (indBtn) indBtn.href = lsLinks[mode];
+
+      // Update Team subscribe link for Lemon Squeezy (with seat quantity)
+      currentPricingMode = mode;
+      updateTeamLink();
 
       // Hide Team & Enterprise cards for Buy Outright
       const pricingCards = document.querySelector('.pricing-cards');
