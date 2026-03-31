@@ -3264,8 +3264,8 @@
 
       <div class="pricing-toggle-wrap">
         <div class="pricing-toggle">
-          <div class="toggle-option active" id="toggleMonthly" onclick="setPricing('monthly')">Monthly</div>
-          <div class="toggle-option" id="toggleAnnual" onclick="setPricing('annual')">
+          <div class="toggle-option" id="toggleMonthly" onclick="setPricing('monthly')">Monthly</div>
+          <div class="toggle-option active" id="toggleAnnual" onclick="setPricing('annual')">
             Annual <span class="savings-badge">Save 17%</span>
           </div>
           <div class="toggle-option" id="togglePerp" onclick="setPricing('perpetual')">
@@ -3280,7 +3280,7 @@
           <div class="pricing-tier">Team</div>
           <div class="pricing-price">
             <span class="price-currency">$</span>
-            <span class="price-amount" id="teamPrice">12</span>
+            <span class="price-amount" id="teamPrice">99</span>
             <span class="price-period" id="teamPeriod">/seat</span>
           </div>
           <p class="pricing-desc">For deal teams that move together. Shared style libraries, centralized license management, and priority support.</p>
@@ -3319,7 +3319,7 @@
               <option value="25">25 seats</option>
             </select>
           </div>
-          <a id="teamSubscribeBtn" href="https://hackabacus.lemonsqueezy.com/checkout/buy/15cd92ae-c9e4-4094-96af-3f7eec476ed1?embed=1&quantity=10" class="lemonsqueezy-button btn-pricing-ghost">Get Team Access</a>
+          <a id="teamSubscribeBtn" href="https://hackabacus.lemonsqueezy.com/checkout/buy/2cf6afa4-71fe-493c-abd1-4ae6ad643fc6?embed=1&quantity=10" class="lemonsqueezy-button btn-pricing-ghost">Get Team Access</a>
         </div>
 
         <!-- Individual (Featured) -->
@@ -3328,7 +3328,7 @@
           <div class="pricing-tier">Individual</div>
           <div class="pricing-price">
             <span class="price-currency">$</span>
-            <span class="price-amount" id="indPrice">14</span>
+            <span class="price-amount" id="indPrice">139</span>
             <span class="price-period" id="indPeriod"></span>
           </div>
           <p class="pricing-desc">Everything you need to build and format models at professional speed. Perfect for solo analysts and associates.</p>
@@ -3337,10 +3337,10 @@
             <li><span class="check">&#10003;</span>PowerPoint integration</li>
             <li><span class="check">&#10003;</span>Keyboard shortcut engine</li>
             <li><span class="check">&#10003;</span>Formula audit &amp; trace tools</li>
-            <li><span class="check">&#10003;</span><span id="indLicenseLine">1 License</span></li>
+            <li><span class="check">&#10003;</span><span id="indLicenseLine">2 Licenses</span></li>
             <li><span class="check">&#10003;</span>Free updates</li>
           </ul>
-          <a id="indSubscribeBtn" href="https://hackabacus.lemonsqueezy.com/checkout/buy/7bcc7179-6d27-44b8-a819-33d9022a9ed6?embed=1" class="lemonsqueezy-button btn-pricing-primary">Subscribe</a>
+          <a id="indSubscribeBtn" href="https://hackabacus.lemonsqueezy.com/checkout/buy/dd118cf7-0ee6-45a6-ac0c-8cbecb82a97b?embed=1" class="lemonsqueezy-button btn-pricing-primary">Subscribe</a>
         </div>
 
         <!-- Enterprise -->
@@ -3663,7 +3663,7 @@
     };
 
     // Team checkout links per mode (placeholder IDs — replace with real ones)
-    let currentPricingMode = 'monthly';
+    let currentPricingMode = 'annual';
     const teamLsLinks = {
       monthly: 'https://hackabacus.lemonsqueezy.com/checkout/buy/15cd92ae-c9e4-4094-96af-3f7eec476ed1?embed=1',
       annual:  'https://hackabacus.lemonsqueezy.com/checkout/buy/2cf6afa4-71fe-493c-abd1-4ae6ad643fc6?embed=1'
