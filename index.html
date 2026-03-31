@@ -1253,14 +1253,51 @@
       overflow: hidden;
       border: 1px solid rgba(255,255,255,0.04);
       position: relative;
-      aspect-ratio: 16/9;
+      cursor: pointer;
     }
 
-    .video-placeholder iframe {
+    .video-placeholder video {
       width: 100%;
-      height: 100%;
-      border: none;
+      display: block;
       border-radius: var(--radius);
+    }
+
+    .video-play-btn {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(26,24,21,0.35);
+      transition: background 0.3s;
+      z-index: 2;
+    }
+
+    .video-placeholder:hover .video-play-btn {
+      background: rgba(26,24,21,0.2);
+    }
+
+    .video-play-btn.hidden { display: none; }
+
+    .video-play-btn span {
+      width: 72px;
+      height: 72px;
+      border: 2px solid rgba(255,255,255,0.3);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      color: rgba(255,255,255,0.8);
+      background: rgba(0,0,0,0.3);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      transition: transform 0.3s var(--ease), border-color 0.3s;
+    }
+
+    .video-placeholder:hover .video-play-btn span {
+      transform: scale(1.08);
+      border-color: rgba(255,255,255,0.5);
     }
 
     .play-btn {
@@ -2970,8 +3007,11 @@
 
 
       <!-- Video -->
-      <div class="video-placeholder scale-reveal">
-        <iframe src="https://www.youtube.com/embed/BAtlBGEI0ho?autoplay=1&mute=1&loop=1&playlist=BAtlBGEI0ho&controls=0&showinfo=0&modestbranding=1&rel=0&disablekb=1&playsinline=1" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+      <div class="video-placeholder scale-reveal" id="demoVideo" onclick="playDemoVideo()">
+        <div class="video-play-btn" id="videoPlayBtn"><span>&#9654;</span></div>
+        <video id="demoVid" preload="metadata" playsinline loop>
+          <source src="https://h03nnemewnxbi20j.public.blob.vercel-storage.com/Hackabacus%20Promo%20Video%20-%20LinkedIn.mp4" type="video/mp4">
+        </video>
       </div>
     </div>
   </section>
@@ -3530,6 +3570,19 @@
 
       // Open clicked if it wasn't open
       if (!isOpen) item.classList.add('open');
+    }
+
+    // ── Demo video play/pause ──────────────────────────
+    function playDemoVideo() {
+      const vid = document.getElementById('demoVid');
+      const btn = document.getElementById('videoPlayBtn');
+      if (vid.paused) {
+        vid.play();
+        btn.classList.add('hidden');
+      } else {
+        vid.pause();
+        btn.classList.remove('hidden');
+      }
     }
 
     // ── Hackabacus animated demo ────────────────────────
