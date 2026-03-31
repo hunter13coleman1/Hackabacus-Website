@@ -1266,11 +1266,21 @@
       position: absolute;
       inset: 0;
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
+      gap: 16px;
       background: rgba(26,24,21,0.35);
       transition: background 0.3s;
       z-index: 2;
+    }
+
+    .video-play-btn p {
+      font-family: var(--font-display);
+      font-size: 16px;
+      font-weight: 400;
+      color: rgba(255,255,255,0.7);
+      letter-spacing: 0.02em;
     }
 
     .video-placeholder:hover .video-play-btn {
@@ -3008,7 +3018,7 @@
 
       <!-- Video -->
       <div class="video-placeholder scale-reveal" id="demoVideo" onclick="playDemoVideo()">
-        <div class="video-play-btn" id="videoPlayBtn"><span>&#9654;</span></div>
+        <div class="video-play-btn" id="videoPlayBtn"><span>&#9654;</span><p>Click to play demo</p></div>
         <video id="demoVid" preload="metadata" playsinline loop>
           <source src="https://h03nnemewnxbi20j.public.blob.vercel-storage.com/Hackabacus%20Promo%20Video%20-%20LinkedIn.mp4" type="video/mp4">
         </video>
