@@ -1252,22 +1252,13 @@
       border-radius: var(--radius);
       overflow: hidden;
       border: 1px solid rgba(255,255,255,0.04);
-      min-height: 420px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-      gap: 20px;
-      padding: 60px;
       position: relative;
     }
 
-    .video-placeholder::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(ellipse 60% 60% at 50% 50%, rgba(139,115,85,0.06) 0%, transparent 70%);
-      pointer-events: none;
+    .video-placeholder video {
+      width: 100%;
+      display: block;
+      border-radius: var(--radius);
     }
 
     .play-btn {
@@ -2975,117 +2966,12 @@
         </h2>
       </div>
 
-      <div class="demo-panels">
-        <!-- Excel Panel -->
-        <div class="demo-panel reveal">
-          <div class="demo-panel-header">
-            <div class="demo-panel-tag">Excel</div>
-            <h3>Model at full speed.</h3>
-            <p>The formatting, auditing, and navigation tools your keyboard has been missing. Consistent fonts, flagged hardcodes, and zero time wasted on cosmetics.</p>
-          </div>
-          <div class="demo-panel-visual">
-            <div class="mini-excel">
-              <div class="mini-ribbon">
-                <span>File</span>
-                <span>Home</span>
-                <span class="active-tool">&#9889; Hackabacus</span>
-                <span>View</span>
-              </div>
-              <div class="mini-grid">
-                <div class="mini-row">
-                  <div class="mini-cell hdr"></div>
-                  <div class="mini-cell blue-hdr">LBO MODEL &#8212; PROJECT APEX</div>
-                  <div class="mini-cell">2023A</div>
-                  <div class="mini-cell">2024E</div>
-                  <div class="mini-cell">2025E</div>
-                </div>
-                <div class="mini-row">
-                  <div class="mini-cell hdr">2</div>
-                  <div class="mini-cell" style="width:90px; font-weight:700">Revenue</div>
-                  <div class="mini-cell num">$191.4</div>
-                  <div class="mini-cell num">$214.8</div>
-                  <div class="mini-cell num">$241.2</div>
-                </div>
-                <div class="mini-row">
-                  <div class="mini-cell hdr">3</div>
-                  <div class="mini-cell" style="width:90px; padding-left:10px">  % Growth</div>
-                  <div class="mini-cell num">14.2%</div>
-                  <div class="mini-cell num">12.2%</div>
-                  <div class="mini-cell num">12.3%</div>
-                </div>
-                <div class="mini-row">
-                  <div class="mini-cell hdr">4</div>
-                  <div class="mini-cell sub" style="width:90px; font-weight:700">EBITDA</div>
-                  <div class="mini-cell sub num">$60.7</div>
-                  <div class="mini-cell sub num">$68.6</div>
-                  <div class="mini-cell sub num">$77.2</div>
-                </div>
-                <div class="mini-row">
-                  <div class="mini-cell hdr">5</div>
-                  <div class="mini-cell" style="width:90px; padding-left:10px">  Margin</div>
-                  <div class="mini-cell num">31.7%</div>
-                  <div class="mini-cell num">31.9%</div>
-                  <div class="mini-cell num">32.0%</div>
-                </div>
-                <div class="mini-row">
-                  <div class="mini-cell hdr">6</div>
-                  <div class="mini-cell" style="width:90px; font-weight:700">Net Debt</div>
-                  <div class="mini-cell num neg">(312.4)</div>
-                  <div class="mini-cell num neg">(278.1)</div>
-                  <div class="mini-cell num neg">(239.6)</div>
-                </div>
-                <div class="mini-row">
-                  <div class="mini-cell hdr">7</div>
-                  <div class="mini-cell sub" style="width:90px; font-weight:700; font-size:8px">MOIC / IRR</div>
-                  <div class="mini-cell sub num" style="color:#2D7A4F; font-weight:700">2.8&times;</div>
-                  <div class="mini-cell sub num" style="color:#2D7A4F; font-weight:700">24.1%</div>
-                  <div class="mini-cell sub"></div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
 
-        <!-- PowerPoint Panel -->
-        <div class="demo-panel reveal reveal-delay-2">
-          <div class="demo-panel-header">
-            <div class="demo-panel-tag">PowerPoint</div>
-            <h3>CIM-ready slides. Instantly.</h3>
-            <p>Auto-formatted tables, branded templates, and live links to your model. Update the numbers once &#8212; every slide follows.</p>
-          </div>
-          <div class="demo-panel-visual">
-            <div class="mini-slide">
-              <div class="slide-logo-line">
-                <div class="slide-co">HACKABACUS &middot; CONFIDENTIAL</div>
-                <div class="slide-page">3</div>
-              </div>
-              <div>
-                <div class="slide-title">Project Apex &#8212; Returns Summary</div>
-                <div class="slide-sub">Base Case LBO &middot; Entry 8.5&times; EBITDA &middot; 5-Year Hold</div>
-              </div>
-              <div class="slide-chart">
-                <div class="chart-bar" style="height:30%"></div>
-                <div class="chart-bar" style="height:45%"></div>
-                <div class="chart-bar" style="height:60%"></div>
-                <div class="chart-bar highlight" style="height:80%"></div>
-                <div class="chart-bar" style="height:55%"></div>
-                <div class="chart-bar" style="height:40%"></div>
-              </div>
-              <div class="slide-footer">
-                <div class="slide-footer-text">Source: Management projections, Hackabacus LBO model</div>
-                <div class="slide-footer-text">IRR: 24.1% &middot; MOIC: 2.8&times;</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="carousel-dots" data-for="demo-panels" style="position:relative;z-index:10"><span class="dot active"></span><span class="dot"></span></div>
-
-      <!-- Video placeholder -->
+      <!-- Video -->
       <div class="video-placeholder scale-reveal">
-        <div class="play-btn">&#9654;</div>
-        <p style="font-family: var(--font-display); font-size: 22px; font-weight: 400; color: rgba(255,255,255,0.35); font-style: italic; position:relative; z-index:1;">Full product demo &middot; 90 seconds</p>
-        <p style="font-size: 12px; color: rgba(255,255,255,0.15); position:relative; z-index:1;">[ Video asset goes here &#8212; feed from Nano Banana 2 ]</p>
+        <video autoplay muted loop playsinline>
+          <source src="https://h03nnemewnxbi20j.public.blob.vercel-storage.com/Hackabacus%20Promo%20Video%20-%20LinkedIn.mp4" type="video/mp4">
+        </video>
       </div>
     </div>
   </section>
