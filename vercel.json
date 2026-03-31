@@ -12,7 +12,7 @@
     { "source": "/terms", "destination": "/terms.html" },
     { "source": "/cookies", "destination": "/cookies.html" },
     { "source": "/download", "destination": "/download.html" },
-    { "source": "/download/windows", "destination": "https://zqfgy3elexr444hc.public.blob.vercel-storage.com/Hackabacus%20v_1.0.1.msi" }
+    { "source": "/download/windows", "destination": "https://zqfgy3elexr444hc.public.blob.vercel-storage.com/Hackabacus%20v_1.0.2.msi" }
   ],
   "headers": [
     {
