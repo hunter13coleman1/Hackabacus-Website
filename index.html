@@ -1253,11 +1253,13 @@
       overflow: hidden;
       border: 1px solid rgba(255,255,255,0.04);
       position: relative;
+      aspect-ratio: 16/9;
     }
 
-    .video-placeholder video {
+    .video-placeholder iframe {
       width: 100%;
-      display: block;
+      height: 100%;
+      border: none;
       border-radius: var(--radius);
     }
 
@@ -2969,9 +2971,7 @@
 
       <!-- Video -->
       <div class="video-placeholder scale-reveal">
-        <video autoplay muted loop playsinline>
-          <source src="https://h03nnemewnxbi20j.public.blob.vercel-storage.com/Hackabacus%20Promo%20Video%20-%20LinkedIn.mp4" type="video/mp4">
-        </video>
+        <iframe src="https://www.youtube.com/embed/BAtlBGEI0ho?autoplay=1&mute=1&loop=1&playlist=BAtlBGEI0ho&controls=0&showinfo=0&modestbranding=1&rel=0&disablekb=1&playsinline=1" allow="autoplay; encrypted-media" allowfullscreen></iframe>
       </div>
     </div>
   </section>
